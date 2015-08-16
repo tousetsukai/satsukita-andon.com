@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as actions from '../../actions/gallery';
 import { DESC } from '../../api-mock/SortType';
-import helmetTemplate from '../../utils/helmetTemplate';
+import { head } from './../utils';
 
 const select = state => ({
   festivals: state.gallery.festivals
@@ -36,7 +36,7 @@ export default class Top extends Component {
     });
     return (
       <div>
-        {helmetTemplate('Gallery', 'Gallery Top Page')}
+        {head({ title: 'Gallery', description: 'Gallery Top Page' })}
         <ul>{renderedFestivals}</ul>
       </div>
     );

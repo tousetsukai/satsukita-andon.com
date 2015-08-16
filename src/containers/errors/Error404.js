@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import helmetTemplate from '../../utils/helmetTemplate';
+import { head } from '../utils';
 
 export default class Error404 extends Component {
   render() {
     return (
       <div>
-        {helmetTemplate('404 Not Found', '404 Not Found')}
+        {head({ title: '404 Not Found', description: '404 Not Found' })}
         404
       </div>
     );
