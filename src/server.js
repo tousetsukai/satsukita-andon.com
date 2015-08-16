@@ -14,10 +14,16 @@ app.use('/assets', express.static('assets'));
 app.use((req, res) => {
   const location = new Location(req.path, req.query);
   const store = createStore(reducer);
-  Router.run(routes, location, (error, initialState /* , transition */) => {
-    res.send(
-      '<!doctype html>\n' +
-      React.renderToString(<Html store={store} component={makeRoot(store, initialState)} />));
+  Router.run(routes, location, (error, initialState, transition) => {
+    if (error) {
+      res.send(error.toString());
+    } else if (transition.isCancelled && transition.redirectInfo) {
+      res.redirect(transition.redirectInfo.pathname);
+    } else {
+      res.send(
+        '<!doctype html>\n' +
+        React.renderToString(<Html store={store} component={makeRoot(store, initialState)} />));
+    }
   });
 });
 
