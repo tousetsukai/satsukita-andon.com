@@ -8,6 +8,21 @@ export default class OrdInt {
   }
 
   /**
+   * @param {string} str
+   * @return {OrdInt}
+   */
+  static parse(str) {
+    const regexp = /(\d+)(th|st|nd|rd)/;
+    const match = regexp.exec(str);
+    const ordint = new OrdInt(+match[1]);
+    if (ordint.toString() === str) {
+      return ordint;
+    } else {
+      throw new Error(`ParseError: OrdInt.parse(${str})`);
+    }
+  }
+
+  /**
    * @return {string}
    */
   toString() {
