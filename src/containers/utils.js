@@ -9,7 +9,7 @@ export function head(options) {
   options = Object.assign(defaultOptions, options);
 
   return (<Helmet
-    title={(options.title === '') ? '行灯職人への道' : `${options.title} - 行灯職人への道}` }
+    title={(options.title === '') ? '行灯職人への道' : `${options.title} - 行灯職人への道` }
     meta={[
       { name: 'description', content: options.description }
     ]}
