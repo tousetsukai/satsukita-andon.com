@@ -1,7 +1,7 @@
 import wrap from './wrap';
 import OrdInt from './OrdInt';
 
-const festivals = {
+export default {
   list(/* sortType = DESC */) {
     return wrap([{
       times: new OrdInt(60),
@@ -14,5 +14,3 @@ const festivals = {
     }]);
   }
 };
-
-export default festivals;
