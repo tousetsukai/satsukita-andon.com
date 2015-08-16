@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import serialize from 'serialize-javascript';
-import sleep from 'sleep';
 
 export default class Html extends Component {
   static propTypes = {
@@ -9,9 +8,7 @@ export default class Html extends Component {
   }
 
   render() {
-    sleep.sleep(1);
     const { store, component } = this.props;
-    console.log(store.getState());
     return (
       <html>
         <head>

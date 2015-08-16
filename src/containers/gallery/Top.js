@@ -17,7 +17,6 @@ export default class Top extends Component {
   }
 
   componentWillMount() {
-    console.log('conponentWiillllCmo');
     actions.loadFestivals(DESC)(this.props.dispatch);
   }
 
