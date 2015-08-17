@@ -7,13 +7,14 @@ export default class OrdInt {
     this._num = n;
   }
 
+  static regexp = /^(\d+)(th|st|nd|rd)$/;
+
   /**
    * @param {string} str
    * @return {OrdInt}
    */
   static parse(str) {
-    const regexp = /(\d+)(th|st|nd|rd)/;
-    const match = regexp.exec(str);
+    const match = OrdInt.regexp.exec(str);
     const ordint = new OrdInt(+match[1]);
     if (ordint.toString() === str) {
       return ordint;

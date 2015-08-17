@@ -9,19 +9,43 @@ import GalleryTimes from './containers/gallery/Times';
 import Error404 from './containers/errors/Error404';
 import OrdInt from './api-mock/OrdInt';
 
-function validTimesStr(nextState, transition) {
-  try {
-    OrdInt.parse(nextState.params.timesStr);
-  } catch (error) {
-    transition.to('/notfound');
-  }
+function composeValidators(...validators) {
+  return (nextState, location) => {
+    validators.forEach((validate) => validate(nextState, location));
+  };
+}
+
+function ordIntType(paramname) {
+  return (nextState, transition) => {
+    if (!OrdInt.regexp.test(nextState.params[paramname])) {
+      transition.to('/notfound');
+    }
+  };
+}
+
+function naturalType(paramname) {
+  return (nextState, transition) => {
+    const r = /^([0-9]|[1-9][0-9]+)$/;
+    if (!r.test(nextState.params[paramname])) {
+      transition.to('/notfound');
+    }
+  };
+}
+
+function intType(paramname) {
+  return (nextState, transition) => {
+    const r = /^-?([0-9]|[1-9][0-9]+)$/;
+    if (!r.test(nextState.params[paramname])) {
+      transition.to('/notfound');
+    }
+  };
 }
 
 export const routes = (
   <Route component={App}>
     <Route path='/' component={Home} />
     <Route path='gallery' component={GalleryTop} />
-    <Route path='gallery/:timesStr' component={GalleryTimes} onEnter={validTimesStr} />
+    <Route path='gallery/:timesStr' component={GalleryTimes} onEnter={ordIntType('timesStr')} />
     <Route path='*' component={Error404} />
   </Route>
 );
