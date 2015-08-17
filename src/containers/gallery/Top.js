@@ -26,10 +26,10 @@ export default class Top extends Component {
 
   render() {
     const { festivals } = this.props;
-    const renderedFestivals = festivals.map(fes => {
+    const renderedFestivals = festivals.map((fes, i) => {
       const url = `/gallery/${fes.times}`;
       return (
-        <li key={fes.times.raw()}>
+        <li key={i}>
           <Link to={url}>
             <img src={fes.imageUrl} />
             <p>{fes.times.toString()} {fes.theme}</p>
