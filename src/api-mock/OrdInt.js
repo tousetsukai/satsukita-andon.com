@@ -40,9 +40,16 @@ export default class OrdInt {
   }
 
   /**
+   * @return {string}
+   */
+  toJSON() {
+    return this.toString();
+  }
+
+  /**
    * @return {number}
    */
-  raw() {
+  get raw() {
     return this._num;
   }
 }
