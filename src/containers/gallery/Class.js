@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/gallery';
 import { head } from '../utils';
@@ -7,12 +8,15 @@ import OrdInt from '../../api-mock/OrdInt';
 const select = state => ({
   classData: state.gallery.classData
 });
+const bind = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+});
 
-@connect(select)
+@connect(select, bind)
 export default class Class extends Component {
   static propTypes = {
     classData: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
+    actions: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -23,7 +27,7 @@ export default class Class extends Component {
   }
 
   componentWillMount() {
-    actions.loadClassData(this._times, this._grade, this._clazz)(this.props.dispatch);
+    this.props.actions.loadClassData(this._times, this._grade, this._clazz);
   }
 
   render() {

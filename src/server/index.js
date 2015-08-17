@@ -2,7 +2,8 @@ import express from 'express';
 import React from 'react';
 import Location from 'react-router/lib/Location';
 import { Router } from 'react-router';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
 import html from './html.js';
@@ -15,8 +16,9 @@ app.use('/assets', express.static('assets'));
 
 app.use((req, res) => {
   const location = new Location(req.path, req.query);
-  console.log(`location: ${req.path}`);
-  const store = createStore(reducer);
+  console.log(`location: ${req.path}`); // eslint-disable-line no-console
+  const finalCreateStore = applyMiddleware(thunk)(createStore);
+  const store = finalCreateStore(reducer);
   Router.run(routes, location, (error, initialState, transition) => {
     if (error) {
       res.send(error.toString());
