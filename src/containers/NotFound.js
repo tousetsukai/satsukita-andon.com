@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { head } from '../utils';
+import { head } from './utils';
 
-export default class Error404 extends Component {
+export default class NotFound extends Component {
   render() {
     return (
       <div>
