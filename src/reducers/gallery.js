@@ -1,8 +1,9 @@
-import { SET_FESTIVALS, SET_CLASSES } from '../constants/ActionTypes';
+import { SET_FESTIVALS, SET_CLASSES, SET_CLASS_DATA } from '../constants/ActionTypes';
 
 const initialState = {
   festivals: [],
-  classes: []
+  classes: [],
+  classData: {}
 };
 
 export function gallery(state = initialState, action) {
@@ -16,6 +17,11 @@ export function gallery(state = initialState, action) {
     return {
       ...state,
       classes: action.classes
+    };
+  case SET_CLASS_DATA:
+    return {
+      ...state,
+      classData: action.classData
     };
   default:
     return state;

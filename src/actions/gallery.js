@@ -1,4 +1,4 @@
-import { SET_FESTIVALS, SET_CLASSES } from '../constants/ActionTypes';
+import { SET_FESTIVALS, SET_CLASSES, SET_CLASS_DATA } from '../constants/ActionTypes';
 import client from '../api-mock';
 
 export function loadFestivals(sortType) {
@@ -18,6 +18,17 @@ export function loadClassesOf(times) {
       dispatch({
         type: SET_CLASSES,
         classes
+      });
+    });
+  };
+}
+
+export function loadClassData(times, grade, clazz) {
+  return dispatch => {
+    client.classes.getClassData(times, grade, clazz).then(classData => {
+      dispatch({
+        type: SET_CLASS_DATA,
+        classData
       });
     });
   };

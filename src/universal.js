@@ -6,6 +6,7 @@ import App from './containers/App';
 import Home from './containers/Home';
 import GalleryTop from './containers/gallery/Top';
 import GalleryTimes from './containers/gallery/Times';
+import GalleryClass from './containers/gallery/Class';
 import Error404 from './containers/errors/Error404';
 import OrdInt from './api-mock/OrdInt';
 
@@ -46,6 +47,7 @@ export const routes = (
     <Route path='/' component={Home} />
     <Route path='gallery' component={GalleryTop} />
     <Route path='gallery/:timesStr' component={GalleryTimes} onEnter={ordIntType('timesStr')} />
+    <Route path='gallery/:timesStr/:grade/:clazz' component={GalleryClass} onEnter={composeValidators(ordIntType('timesStr'), naturalType('grade'), intType('clazz'))} />
     <Route path='*' component={Error404} />
   </Route>
 );
