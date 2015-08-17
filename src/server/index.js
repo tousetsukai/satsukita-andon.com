@@ -3,9 +3,9 @@ import React from 'react';
 import Location from 'react-router/lib/Location';
 import { Router } from 'react-router';
 import { createStore } from 'redux';
-import Html from './containers/Html';
-import makeRoot, { routes } from './universal';
-import reducer from './reducers';
+import html from './html.js';
+import makeRoot, { routes } from '../universal';
+import reducer from '../reducers';
 
 const app = express();
 
@@ -20,9 +20,7 @@ app.use((req, res) => {
     } else if (transition.isCancelled && transition.redirectInfo) {
       res.redirect(transition.redirectInfo.pathname);
     } else {
-      res.send(
-        '<!doctype html>\n' +
-        React.renderToString(<Html store={store} component={makeRoot(store, initialState)} />));
+      res.send(html(store, makeRoot(store, initialState)));
     }
   });
 });
