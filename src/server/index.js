@@ -32,4 +32,6 @@ app.use((req, res) => {
   });
 });
 
-app.listen(5815);
+app.listen(5815, () => {
+  console.log('App listening at http://localhost:5815'); // eslint-disable-line no-console
+});
