@@ -2,10 +2,9 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 
-import App from './containers';
 import reducer from './reducers';
+import createApp from './isomorphic';
 
 const app = express();
 const port = 3000;
@@ -22,6 +21,8 @@ const renderFullPage = (html, state) => {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(state)};
         </script>
+        <script src="/static/vendor.bundle.js"></script>
+        <script src="/static/bundle.js"></script>
       </body>
     </html>
   `;
@@ -29,11 +30,7 @@ const renderFullPage = (html, state) => {
 
 app.use((req, res) => {
   const store = createStore(reducer);
-  const html = renderToString(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  const html = renderToString(createApp(store));
   const initialState = store.getState();
   res.send(renderFullPage(html, initialState));
 });
