@@ -2,6 +2,7 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
+import Helmet from 'react-helmet';
 
 import reducer from './reducers';
 import createApp from './isomorphic';
@@ -9,12 +10,13 @@ import createApp from './isomorphic';
 const app = express();
 const port = 3000;
 
-const renderFullPage = (html, state) => {
+const renderFullPage = (head, html, state) => {
   return `
     <!doctype html>
     <html>
       <head>
-        <title>Redux Universal Example</title>
+        ${head.title.toString()}
+        ${head.meta.toString()}
       </head>
       <body>
         <div id="app">${html}</div>
@@ -28,11 +30,13 @@ const renderFullPage = (html, state) => {
   `;
 };
 
+app.use('/static', express.static('static'));
 app.use((req, res) => {
   const store = createStore(reducer);
   const html = renderToString(createApp(store));
   const initialState = store.getState();
-  res.send(renderFullPage(html, initialState));
+  const head = Helmet.rewind();
+  res.send(renderFullPage(head, html, initialState));
 });
 
 

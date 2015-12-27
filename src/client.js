@@ -1,6 +1,8 @@
 import { render } from 'react-dom';
+import { createStore } from 'redux';
 
 import reducer from './reducers';
+import createApp from './isomorphic';
 
 const initialState = window.__INITIAL_STATE__;
 
