@@ -17,6 +17,7 @@ const renderFullPage = (head, html, state) => {
       <head>
         ${head.title.toString()}
         ${head.meta.toString()}
+        <link rel="shortcut icon" href="/static/favicon.ico">
       </head>
       <body>
         <div id="app">${html}</div>
