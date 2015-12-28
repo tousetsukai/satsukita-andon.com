@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import Helmet from 'react-helmet';
 
 import reducer from './reducers';
-import createApp from './isomorphic';
+import createApp from './universal';
 
 const app = express();
 const port = 3000;
