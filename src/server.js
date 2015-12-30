@@ -32,16 +32,24 @@ const renderFullPage = (head, html, state) => {
 app.use('/static', express.static('static'));
 app.use((req, res) => {
   match({ routes, location: req.url }, (err, redirect, renderProps) => {
-    const store = configureStore();
-    const params = renderProps.params;
-    const promises = renderProps.components.filter(c => c.fetchData).map(c => c.fetchData({ params, store }));
-    Promise.all(promises).then(() => {
-      const app = createServerApp(store, renderProps);
-      const html = renderToString(app);
-      const initialState = store.getState();
-      const head = Helmet.rewind();
-      res.send(renderFullPage(head, html, initialState));
-    });
+    if (err) {
+      res.status(500).send(err.message);
+    } else if (redirect) {
+      res.redirect(302, redirect.pathname + redirect.search);
+    } else if (!renderProps) {
+      res.status(404).send('Not found');
+    } else {
+      const store = configureStore();
+      const params = renderProps.params;
+      const promises = renderProps.components.filter(c => c.fetchData).map(c => c.fetchData({ params, store }));
+      Promise.all(promises).then(() => {
+        const app = createServerApp(store, renderProps);
+        const html = renderToString(app);
+        const initialState = store.getState();
+        const head = Helmet.rewind();
+        res.send(renderFullPage(head, html, initialState));
+      });
+    }
   });
 });
 
