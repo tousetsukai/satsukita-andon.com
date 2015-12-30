@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import { gallery } from './gallery';
 import { home } from './home';
+import { gallery } from './gallery';
+import { times } from './times';
 import { routeReducer } from 'redux-simple-router';
 
 export default combineReducers({
-  home: home,
-  gallery: gallery,
+  home,
+  gallery,
+  times,
   routing: routeReducer
 });

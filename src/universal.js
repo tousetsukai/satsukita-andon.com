@@ -11,6 +11,7 @@ export const routes = (
   <Route path="/" component={C.App}>
     <IndexRoute component={C.Home}/>
     <Route path="gallery" component={C.Gallery}/>
+    <Route path="gallery/:times" component={C.Times}/>
     <Route path="about" component={C.About}/>
     <Route path="*" component={C.NotFound}/>
   </Route>
