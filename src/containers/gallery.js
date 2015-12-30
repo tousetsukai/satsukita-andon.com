@@ -5,21 +5,18 @@ import Helmet from 'react-helmet';
 
 import api from '../api';
 
-const getFestivals = (dispatch) => {
-  return api.getFestivals
-    .then(res => {
-      return dispatch({ type: 'set_festivals', festivals: res.data.items });
-    });
-};
+const getFestivals = (dispatch) => api.getFestivals()
+  .then(res => dispatch({ type: 'set_festivals', festivals: res.data.items }));
 
 class Gallery extends Component {
-  static fetchData({ store }) {
-    return store.dispatch(getFestivals);
+
+  static fetchData({ dispatch }) {
+    return dispatch(getFestivals);
   }
 
   componentWillMount() {
     if (this.props.festivals.length === 0) {
-      this.props.getFestivals();
+      Gallery.fetchData({ dispatch: this.props.dispatch });
     }
   }
 
@@ -47,8 +44,5 @@ class Gallery extends Component {
 export default connect(
   state => ({
     festivals: state.gallery.festivals
-  }),
-  dispatch => ({
-    getFestivals: () => dispatch(getFestivals)
   })
 )(Gallery);

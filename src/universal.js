@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, RoutingContext } from 'react-router';
+import { Router, Route, RoutingContext, IndexRoute } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -9,6 +9,7 @@ import reducer from './reducers';
 
 export const routes = (
   <Route path="/" component={C.App}>
+    <IndexRoute component={C.Home}/>
     <Route path="gallery" component={C.Gallery}/>
     <Route path="about" component={C.About}/>
   </Route>

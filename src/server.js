@@ -41,7 +41,7 @@ app.use((req, res) => {
     } else {
       const store = configureStore();
       const params = renderProps.params;
-      const promises = renderProps.components.filter(c => c.fetchData).map(c => c.fetchData({ params, store }));
+      const promises = renderProps.components.filter(c => c.fetchData).map(c => c.fetchData({ params, dispatch: store.dispatch }));
       Promise.all(promises).then(() => {
         const app = createServerApp(store, renderProps);
         const html = renderToString(app);

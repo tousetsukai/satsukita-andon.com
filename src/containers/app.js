@@ -15,7 +15,6 @@ export default class App extends Component {
             <li><Link to="/gallery">Gallery</Link></li>
           </ul>
         </nav>
-        <p>Hello, World!</p>
         {this.props.children}
       </div>
     );
