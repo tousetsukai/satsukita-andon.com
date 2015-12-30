@@ -2,6 +2,7 @@ import express from 'express';
 import { match } from 'react-router';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
+import serialize from 'serialize-javascript';
 
 import { createServerApp, routes, configureStore } from './universal';
 
@@ -20,7 +21,7 @@ const renderFullPage = (head, html, state) => {
       <body>
         <div id="app">${html}</div>
         <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(state)};
+          window.__INITIAL_STATE__ = ${serialize(state)};
         </script>
         <script src="/static/vendor.bundle.js"></script>
         <script src="/static/bundle.js"></script>

@@ -14,13 +14,15 @@ class Home extends Component {
   }
 
   render() {
+    const { topNews } = this.props;
     return (
       <div>
         <Helmet
           title="行灯職人への道"
           titleTemplate="%s"
         />
-        <p>News</p>
+        <h3>News</h3>
+        <p dangerouslySetInnerHTML={{__html: topNews.body}}></p>
       </div>
     );
   }
