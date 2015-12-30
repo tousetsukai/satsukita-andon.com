@@ -12,6 +12,7 @@ export const routes = (
     <IndexRoute component={C.Home}/>
     <Route path="gallery" component={C.Gallery}/>
     <Route path="about" component={C.About}/>
+    <Route path="*" component={C.NotFound}/>
   </Route>
 );
 
