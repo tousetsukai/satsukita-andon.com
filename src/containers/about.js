@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-export default class App extends Component {
+class About extends Component {
   static fetchData({ params, store }) {
-    return Promise.resolve(0);
+    return Promise.resolve('aobut');
   }
 
   render() {
     return (
       <div>
         <Helmet
-          titleTemplate="%s - 行灯職人への道"
+          title="About"
         />
-        <p>Hello, World!</p>
-        {this.props.children}
+        <p>このサイトは。。。</p>
       </div>
     );
   }
 }
+
+export default About;

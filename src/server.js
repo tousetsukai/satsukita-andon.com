@@ -1,11 +1,11 @@
 import express from 'express';
 import React from 'react';
+import { match } from 'react-router';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import Helmet from 'react-helmet';
 
-import reducer from './reducers';
-import createApp from './universal';
+import { createServerApp, routes, configureStore } from './universal';
 
 const app = express();
 const port = 3000;
@@ -33,14 +33,19 @@ const renderFullPage = (head, html, state) => {
 
 app.use('/static', express.static('static'));
 app.use((req, res) => {
-  const store = createStore(reducer);
-  const html = renderToString(createApp(store));
-  const initialState = store.getState();
-  const head = Helmet.rewind();
-  res.send(renderFullPage(head, html, initialState));
+  match({ routes, location: req.url }, (err, redirect, renderProps) => {
+    const store = configureStore();
+    const params = renderProps.params;
+    const promises = renderProps.components.filter(c => c.fetchData).map(c => c.fetchData({ params, store }));
+    Promise.all(promises).then(results => {
+      const app = createServerApp(store, renderProps);
+      const html = renderToString(app);
+      const initialState = store.getState();
+      const head = Helmet.rewind();
+      res.send(renderFullPage(head, html, initialState));
+    });
+  });
 });
-
-
 
 const server = app.listen(port, () => {
   const host = server.address().address;

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/satsukita-andon/andon-frontend#readme",
   "dependencies": {
+    "axios": "^0.8.1",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
@@ -29,7 +30,9 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-helmet": "^2.2.0",
-    "react-redux": "^4.0.5"
+    "react-redux": "^4.0.5",
+    "react-router": "^1.0.3",
+    "redux-thunk": "^1.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",

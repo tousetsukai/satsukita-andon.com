@@ -1,11 +1,13 @@
 import { render } from 'react-dom';
 import { createStore } from 'redux';
+import { createHistory } from 'history';
 
-import reducer from './reducers';
-import createApp from './universal';
+import { createClientApp, configureStore } from './universal';
 
 const initialState = window.__INITIAL_STATE__;
 
-const store = createStore(reducer, initialState);
+const store = configureStore(initialState);
+const history = createHistory();
+const app = createClientApp(store, history);
 
-render(createApp(store), document.getElementById('app'));
+render(app, document.getElementById('app'));
