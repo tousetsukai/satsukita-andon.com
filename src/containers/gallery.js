@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import axios from 'axios';
+
+import api from '../api';
 
 const getFestivals = (dispatch) => {
-  return axios.get('http://localhost:6039/dev/festivals')
+  return api.getFestivals
     .then(res => {
       return dispatch({ type: 'set_festivals', festivals: res.data.items });
     });
@@ -13,6 +15,12 @@ const getFestivals = (dispatch) => {
 class Gallery extends Component {
   static fetchData({ store }) {
     return store.dispatch(getFestivals);
+  }
+
+  componentWillMount() {
+    if (this.props.festivals.length === 0) {
+      this.props.getFestivals();
+    }
   }
 
   render() {
@@ -24,7 +32,11 @@ class Gallery extends Component {
         />
         {festivals.map((fes) => (
           <div key={fes.times}>
-            <h1>{fes.times_ord} {fes.theme}</h1>
+            <h1>
+              <Link to={`/gallery/${fes.times_ord}`}>
+                {fes.times_ord} {fes.theme}
+              </Link>
+            </h1>
           </div>
         ))}
       </div>
