@@ -6,12 +6,12 @@ import axios from 'axios';
 const getFestivals = (dispatch) => {
   return axios.get('http://localhost:6039/dev/festivals')
     .then(res => {
-      return dispatch({ type: 'set_festivals', festivals: res.data.items })
+      return dispatch({ type: 'set_festivals', festivals: res.data.items });
     });
 };
 
 class Gallery extends Component {
-  static fetchData({ params, store }) {
+  static fetchData({ store }) {
     return store.dispatch(getFestivals);
   }
 
@@ -39,4 +39,4 @@ export default connect(
   dispatch => ({
     getFestivals: () => dispatch(getFestivals)
   })
-)(Gallery)
+)(Gallery);

@@ -1,5 +1,4 @@
 import { render } from 'react-dom';
-import { createStore } from 'redux';
 import { createHistory } from 'history';
 
 import { createClientApp, configureStore } from './universal';

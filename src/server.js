@@ -1,8 +1,6 @@
 import express from 'express';
-import React from 'react';
 import { match } from 'react-router';
 import { renderToString } from 'react-dom/server';
-import { createStore } from 'redux';
 import Helmet from 'react-helmet';
 
 import { createServerApp, routes, configureStore } from './universal';
@@ -37,7 +35,7 @@ app.use((req, res) => {
     const store = configureStore();
     const params = renderProps.params;
     const promises = renderProps.components.filter(c => c.fetchData).map(c => c.fetchData({ params, store }));
-    Promise.all(promises).then(results => {
+    Promise.all(promises).then(() => {
       const app = createServerApp(store, renderProps);
       const html = renderToString(app);
       const initialState = store.getState();
@@ -47,9 +45,4 @@ app.use((req, res) => {
   });
 });
 
-const server = app.listen(port, () => {
-  const host = server.address().address;
-  const port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
-});
+app.listen(port);
