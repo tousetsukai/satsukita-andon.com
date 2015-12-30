@@ -7,5 +7,6 @@ const api = axios.create({
 export default {
   getFestivals: () => api.get('/festivals'),
   getTopNews: () => api.get('/contents/news'),
-  getClasses: (params) => api.get('/classes', { params })
+  getClasses: (params) => api.get('/classes', { params }),
+  getClass: (classId) => api.get(`/classes/${classId}`)
 };
