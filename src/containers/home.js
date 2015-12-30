@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import api from '../api';
 
@@ -11,6 +12,12 @@ class Home extends Component {
 
   static fetchData({ dispatch }) {
     return dispatch(getTopNews);
+  }
+
+  componentWillMount() {
+    if (_.isEmpty(this.props.topNews)) {
+      Home.fetchData({ dispatch: this.props.dispatch });
+    }
   }
 
   render() {

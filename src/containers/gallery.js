@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import _ from 'lodash';
 
 import api from '../api';
 
@@ -15,7 +16,7 @@ class Gallery extends Component {
   }
 
   componentWillMount() {
-    if (this.props.festivals.length === 0) {
+    if (_.isEmpty(this.props.festivals)) {
       Gallery.fetchData({ dispatch: this.props.dispatch });
     }
   }
