@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/webpack/bin/webpack.js --verbose --config webpack.config.js",
     "watch": "./node_modules/webpack/bin/webpack.js --verbose --watch --config webpack.config.js",
-    "lint": "./node_modules/eslint/bin/eslint.js src",
+    "lint": "./node_modules/eslint-watch/bin/esw -w src",
     "start": "node run-server.js"
   },
   "repository": {
@@ -40,6 +40,7 @@
     "babel-loader": "^6.2.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.13.1",
+    "eslint-watch": "^2.1.4",
     "webpack": "^1.12.9"
   }
 }
