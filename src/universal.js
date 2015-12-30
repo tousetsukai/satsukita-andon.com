@@ -4,15 +4,13 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import App from './containers';
-import Gallery from './containers/gallery';
-import About from './containers/about';
+import * as C from './containers';
 import reducer from './reducers';
 
 export const routes = (
-  <Route path="/" component={App}>
-    <Route path="gallery" component={Gallery}/>
-    <Route path="about" component={About}/>
+  <Route path="/" component={C.App}>
+    <Route path="gallery" component={C.Gallery}/>
+    <Route path="about" component={C.About}/>
   </Route>
 );
 
