@@ -53,6 +53,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.13.1",
     "eslint-watch": "^2.1.4",
+    "font-awesome": "^4.5.0",
     "fs-extra": "^0.26.3",
     "webpack": "^1.12.9"
   }
