@@ -7,6 +7,8 @@ build
 -----
 
 ```
+npm install
+npm run static
 npm run build
 ```
 
