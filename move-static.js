@@ -13,9 +13,10 @@ var copyLibs = function () {
   });
 };
 
-var libDirStats = fs.statSync('./static/lib')
-if (libDirStats.isDirectory()) {
-  copyLibs();
-} else {
-  fs.mkdir('./static/lib', copyLibs);
-}
+fs.stat('./static/lib', function(err, stats) {
+  if (err) {
+    fs.mkdir('./static/lib', copyLibs);
+  } else {
+    copyLibs();
+  }
+});
