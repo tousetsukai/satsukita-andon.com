@@ -17,6 +17,8 @@ const renderFullPage = (head, html, state) => {
         ${head.title.toString()}
         ${head.meta.toString()}
         <link rel="shortcut icon" href="/static/favicon.ico">
+        <link rel="stylesheet" href="/static/css/reset.css" type="text/css">
+        <link rel="stylesheet" href="/static/css/global.css" type="text/css">
       </head>
       <body>
         <div id="app">${html}</div>
