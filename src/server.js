@@ -21,6 +21,7 @@ const renderFullPage = (head, html, state) => {
         <link rel="shortcut icon" href="/static/favicon.ico">
         <link rel="stylesheet" href="/static/css/reset.css" type="text/css">
         <link rel="stylesheet" href="/static/css/global.css" type="text/css">
+        <link rel="stylesheet" href="/static/lib/font-awesome/css/font-awesome.min.css" type="text/css">
       </head>
       <body>
         <div id="app">${html}</div>

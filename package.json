@@ -8,7 +8,8 @@
     "build": "./node_modules/webpack/bin/webpack.js --verbose --config webpack.config.js",
     "watch": "./node_modules/webpack/bin/webpack.js --verbose --watch --config webpack.config.js",
     "lint": "./node_modules/eslint-watch/bin/esw -w src",
-    "start": "node run-server.js"
+    "start": "node run-server.js",
+    "static": "node move-static.js"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.13.1",
     "eslint-watch": "^2.1.4",
+    "fs-extra": "^0.26.3",
     "webpack": "^1.12.9"
   }
 }
