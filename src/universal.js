@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, RoutingContext, IndexRoute } from 'react-router';
+import { Router, Route, RouterContext, IndexRoute } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -41,6 +41,6 @@ export const createClientApp = (store, history) => {
   return withReduxProvider(store, <Router history={history}>{routes}</Router>);
 };
 
-export const createServerApp = (store, context) => {
-  return withReduxProvider(store, <RoutingContext {...context}/>);
+export const createServerApp = (store, props) => {
+  return withReduxProvider(store, <RouterContext {...props}/>);
 };
