@@ -9,4 +9,9 @@ export default {
   getTopNews: () => api.get('/contents/news'),
   getClasses: (params) => api.get('/classes', { params }),
   getClass: (classId) => api.get(`/classes/${classId}`),
+  getUser: (token) => api.get('/auth/me', {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  }),
 };

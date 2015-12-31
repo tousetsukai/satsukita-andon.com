@@ -1,4 +1,5 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import { match } from 'react-router';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
@@ -7,6 +8,7 @@ import serialize from 'serialize-javascript';
 import { createServerApp, routes, configureStore } from './universal';
 
 const app = express();
+app.use(cookieParser());
 const port = 3000;
 
 const renderFullPage = (head, html, state) => {
@@ -44,7 +46,18 @@ app.use((req, res) => {
     } else {
       const store = configureStore();
       const params = renderProps.params;
-      const promises = renderProps.components.filter(c => c.fetchData).map(c => c.fetchData({ params, dispatch: store.dispatch }));
+      const token = req.cookies.token;
+      const fetchParams = { token, params, dispatch: store.dispatch };
+      const promises = renderProps.components
+        .map(c => {
+          if (c.fetchData) { // no higher-order component, and react-redux
+            return c.fetchData(fetchParams);
+          } else if (c.wrapped && c.wrapped.fetchData) { // react-jss
+            return c.wrapped.fetchData(fetchParams);
+          } else {
+            return Promise.resolve(0);
+          }
+        });
       Promise.all(promises).then(() => {
         const app = createServerApp(store, renderProps);
         const html = renderToString(app);

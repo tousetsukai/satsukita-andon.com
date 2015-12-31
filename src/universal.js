@@ -3,6 +3,7 @@ import { Router, Route, RoutingContext, IndexRoute } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import createLogger from 'redux-logger';
 
 import * as C from './containers';
 import reducer from './reducers';
@@ -18,9 +19,13 @@ export const routes = (
   </Route>
 );
 
+const logger = createLogger({
+  logger: console,
+});
 export const configureStore = (initialState) => {
   return applyMiddleware(
-    thunk
+    thunk,
+    logger
   )(createStore)(reducer, initialState);
 };
 

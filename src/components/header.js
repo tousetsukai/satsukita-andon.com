@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 import useSheet from '../jss';
+import UserDropdown from './user-dropdown';
 
 export const headerHeight = 50;
 const logoMargin = 3;
@@ -47,7 +48,8 @@ const sheet = {
 
 class Header extends Component {
   render() {
-    const { classes } = this.props.sheet;
+    const { sheet, user } = this.props;
+    const { classes } = sheet;
     return (
       <header className={classes.header}>
         <nav className={classes.nav}>
@@ -61,6 +63,7 @@ class Header extends Component {
             </li>
             <li><Link className={classes.menu} to="/gallery">Gallery</Link></li>
             <li><Link className={classes.menu} to="/howto">How to</Link></li>
+            <li><UserDropdown user={user}/></li>
           </ul>
         </nav>
       </header>

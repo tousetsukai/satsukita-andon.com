@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 import useSheet from '../jss';
+import api from '../api';
 import Header, { headerHeight } from '../components/header';
 
 const sheet = {
@@ -15,15 +17,24 @@ const sheet = {
   },
 };
 
+const getUser = (token) => (dispatch) => api.getUser(token)
+  .then(res => dispatch({ type: 'app:user:set', user: res.data }));
+
 class App extends Component {
+
+  static fetchData({ token, dispatch }) {
+    return dispatch(getUser(token));
+  }
+
   render() {
-    const { classes } = this.props.sheet;
+    const { sheet, user } = this.props;
+    const { classes } = sheet;
     return (
       <div>
         <Helmet
           titleTemplate="%s - 行灯職人への道"
         />
-        <Header/>
+        <Header user={user}/>
         <div className={classes.container}>
           {this.props.children}
         </div>
@@ -34,4 +45,8 @@ class App extends Component {
   }
 }
 
-export default useSheet(App, sheet);
+export default connect(
+  state => ({
+    user: state.app.user,
+  })
+)(useSheet(App, sheet));

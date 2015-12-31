@@ -26,6 +26,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.3.13",
+    "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
     "jss": "^3.2.0",
     "jss-nested": "^1.0.1",
@@ -37,6 +38,7 @@
     "react-jss": "^2.0.1",
     "react-redux": "^4.0.5",
     "react-router": "^1.0.3",
+    "redux-logger": "^2.3.1",
     "redux-simple-router": "^1.0.2",
     "redux-thunk": "^1.0.2",
     "serialize-javascript": "^1.1.2"
