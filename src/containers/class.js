@@ -41,6 +41,6 @@ class Class extends Component {
 
 export default connect(
   state => ({
-    clazz: state.clazz.clazz
+    clazz: state.clazz.clazz,
   })
 )(Class);

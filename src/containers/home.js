@@ -37,6 +37,6 @@ class Home extends Component {
 
 export default connect(
   state => ({
-    topNews: state.home.topNews
+    topNews: state.home.topNews,
   })
 )(Home);

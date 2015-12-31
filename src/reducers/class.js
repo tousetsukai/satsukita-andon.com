@@ -1,5 +1,5 @@
 const initialState = {
-  clazz: {}
+  clazz: {},
 };
 
 export function clazz(state = initialState, action) {
@@ -7,7 +7,7 @@ export function clazz(state = initialState, action) {
   case 'class:set':
     return {
       ...state,
-      clazz: action.clazz
+      clazz: action.clazz,
     };
   default:
     return state;

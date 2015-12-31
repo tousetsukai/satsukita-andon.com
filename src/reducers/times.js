@@ -1,5 +1,5 @@
 const initialState = {
-  classes: []
+  classes: [],
 };
 
 export function times(state = initialState, action) {
@@ -7,7 +7,7 @@ export function times(state = initialState, action) {
   case 'times:set':
     return {
       ...state,
-      classes: action.classes
+      classes: action.classes,
     };
   default:
     return state;

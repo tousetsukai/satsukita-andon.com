@@ -10,5 +10,5 @@ export default combineReducers({
   gallery,
   times,
   clazz,
-  routing: routeReducer
+  routing: routeReducer,
 });

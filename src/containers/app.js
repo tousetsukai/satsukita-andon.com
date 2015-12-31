@@ -18,18 +18,18 @@ const sheet = {
     left: 0,
     'box-shadow': '0 0 10px 3px rgba(0, 0, 0, 1)',
     '&:hover': {
-      'background-color': 'rgba(0, 0, 0, 0.9)'
-    }
+      'background-color': 'rgba(0, 0, 0, 0.9)',
+    },
   },
   nav: {
     margin: 'auto',
     '& ul': {
-      display: 'flex'
-    }
+      display: 'flex',
+    },
   },
   logo: {
     margin: `${logoMargin}px 0 ${logoMargin}px`,
-    height: `${headerHeight - logoMargin * 2}px`
+    height: `${headerHeight - logoMargin * 2}px`,
   },
   menu: {
     'font-size': `${headerHeight / 3}px`,
@@ -49,9 +49,9 @@ const sheet = {
       width: '1024px',
     },
     container: {
-      width: '1024px'
-    }
-  }
+      width: '1024px',
+    },
+  },
 };
 
 class App extends Component {

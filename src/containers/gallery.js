@@ -44,6 +44,6 @@ class Gallery extends Component {
 
 export default connect(
   state => ({
-    festivals: state.gallery.festivals
+    festivals: state.gallery.festivals,
   })
 )(Gallery);

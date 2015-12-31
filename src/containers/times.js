@@ -45,6 +45,6 @@ class Times extends Component {
 
 export default connect(
   state => ({
-    classes: state.times.classes
+    classes: state.times.classes,
   })
 )(Times);

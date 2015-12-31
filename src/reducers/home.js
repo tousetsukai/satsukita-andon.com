@@ -1,5 +1,5 @@
 const initialState = {
-  topNews: {}
+  topNews: {},
 };
 
 export function home(state = initialState, action) {
@@ -7,7 +7,7 @@ export function home(state = initialState, action) {
   case 'set_top_news':
     return {
       ...state,
-      topNews: action.topNews
+      topNews: action.topNews,
     };
   default:
     return state;

@@ -1,5 +1,5 @@
 const initialState = {
-  festivals: []
+  festivals: [],
 };
 
 export function gallery(state = initialState, action) {
@@ -7,7 +7,7 @@ export function gallery(state = initialState, action) {
   case 'set_festivals':
     return {
       ...state,
-      festivals: action.festivals
+      festivals: action.festivals,
     };
   default:
     return state;

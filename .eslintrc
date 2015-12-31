@@ -18,6 +18,9 @@ rules:
     -
       vars: all
       args: after-used
+  comma-dangle:
+    - 2
+    - always-multiline
   react/jsx-uses-vars: 1
   react/jsx-uses-react: 1
   react/jsx-no-undef: 1
