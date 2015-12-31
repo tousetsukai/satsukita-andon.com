@@ -23,7 +23,11 @@ const getUser = (token) => (dispatch) => api.getUser(token)
 class App extends Component {
 
   static fetchData({ token, dispatch }) {
-    return dispatch(getUser(token));
+    if (token) {
+      return dispatch(getUser(token));
+    } else {
+      return Promise.resolve();
+    }
   }
 
   render() {
