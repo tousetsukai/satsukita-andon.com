@@ -45,7 +45,7 @@ const sheet = {
     color: color.text,
     'text-decoration': 'none',
     'margin-left': 30,
-    '&:hover': {
+    '&:hover, &:focus': {
       'text-decoration': 'none',
       color: color.theme,
     },
@@ -64,7 +64,7 @@ const sheet = {
     'border-radius': 5,
     padding: '6px 12px',
     transition: '0.1s linear',
-    '&:hover': {
+    '&:hover, &:focus': {
       'text-decoration': 'none',
       'border-color': color.green,
       'color': color.green,
