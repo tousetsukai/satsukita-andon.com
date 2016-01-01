@@ -53,7 +53,6 @@ class Signin extends Component {
   }
 
   submitIfEnter = (ev) => {
-    console.log(ev.key);
     if (ev.key === 'Enter') {
       this.onSubmit();
     }
