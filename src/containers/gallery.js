@@ -5,6 +5,22 @@ import Helmet from 'react-helmet';
 import _ from 'lodash';
 
 import api from '../api';
+import FestivalThumbnail from '../components/festival-thumbnail';
+import useSheet from '../jss';
+
+const sheet = {
+  thumbnails: {
+    display: 'flex',
+    'flex-flow': 'wrap',
+    'align-items': 'center',
+    '& li': {
+      margin: 0,
+      padding: 0,
+      'list-style-type': 'none',
+      width: 1024 / 4,
+    },
+  },
+};
 
 const getFestivals = (dispatch) => api.getFestivals()
   .then(res => dispatch({ type: 'set_festivals', festivals: res.data.items }));
@@ -22,28 +38,29 @@ class Gallery extends Component {
   }
 
   render() {
-    const { festivals } = this.props;
+    const { sheet, festivals } = this.props;
+    const { classes } = sheet;
     return (
       <div>
         <Helmet
           title="Gallery"
         />
-        {festivals.map((fes) => (
-          <div key={fes.times}>
-            <h1>
+        <ul className={classes.thumbnails}>
+          {festivals.map((fes) =>
+            <li key={fes.times}>
               <Link to={`/gallery/${fes.times_ord}`}>
-                {fes.times_ord} {fes.theme}
+                <FestivalThumbnail festival={fes}/>
               </Link>
-            </h1>
-          </div>
-        ))}
+            </li>)
+          }
+        </ul>
       </div>
     );
   }
 }
 
-export default connect(
+export default useSheet(connect(
   state => ({
     festivals: state.gallery.festivals,
   })
-)(Gallery);
+)(Gallery), sheet);
