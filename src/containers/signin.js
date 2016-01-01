@@ -52,6 +52,13 @@ class Signin extends Component {
     });
   }
 
+  submitIfEnter = (ev) => {
+    console.log(ev.key);
+    if (ev.key === 'Enter') {
+      this.onSubmit();
+    }
+  }
+
   onSubmit = () => {
     this.props.dispatch(getToken(this.state.login, this.state.password));
   }
@@ -64,10 +71,16 @@ class Signin extends Component {
         />
         <Form>
           <FormField label="ユーザー名" htmlFor="basic-form-input-login">
-            <FormInput autofocus type="text" name="basic-form-input-login" onChange={this.onLoginChange}/>
+            <FormInput autofocus type="text"
+                       name="basic-form-input-login"
+                       onChange={this.onLoginChange}
+                       onKeyPress={this.submitIfEnter}/>
           </FormField>
           <FormField label="パスワード" htmlFor="basic-form-input-password">
-            <FormInput type="password" name="basic-form-input-password" onChange={this.onPasswordChange}/>
+            <FormInput type="password"
+                       name="basic-form-input-password"
+                       onChange={this.onPasswordChange}
+                       onKeyPress={this.submitIfEnter}/>
           </FormField>
           <button className={this.props.sheet.classes.submit} type="button" onClick={this.onSubmit}>ログイン</button>
         </Form>
