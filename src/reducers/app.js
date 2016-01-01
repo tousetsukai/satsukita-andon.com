@@ -1,3 +1,5 @@
+import { UPDATE_PATH } from 'redux-simple-router';
+
 const initialState = {
   user: {},
   error: {},
@@ -18,6 +20,7 @@ export function app(state = initialState, action) {
       showingError: true,
     };
   case 'app:error:hide':
+  case UPDATE_PATH:
     return {
       ...state,
       error: {},

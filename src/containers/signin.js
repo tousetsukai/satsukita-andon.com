@@ -7,21 +7,12 @@ import Cookies from 'js-cookie';
 import useSheet from '../jss';
 import * as color from '../jss/color';
 import api from '../api';
+import { showError } from '../actions/app';
 
 const sheet = {
   '.FormLabel': {
     color: color.text,
   },
-};
-
-const showError = (code, message) => (dispatch) => {
-  return new Promise(resolve => {
-    dispatch({ type: 'app:error:show', error: { code, message } });
-    setTimeout(() => {
-      dispatch({ type: 'app:error:hide' });
-      resolve();
-    }, 3000);
-  });
 };
 
 const getToken = (login, password) => (dispatch) => api.getToken(login, password)
