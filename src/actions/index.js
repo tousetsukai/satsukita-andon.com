@@ -16,6 +16,10 @@ export const showError = (code, message, millis) => (dispatch) => {
   });
 };
 
+export const getTopNews = (dispatch) => api.getTopNews()
+  .then(res => dispatch({ type: 'top-news:set', topNews: res.data }))
+  .catch(res => showError(res.data.code, 'トップニュースを取得できませんでした。')(dispatch));
+
 export const getFestivals = (dispatch) => api.getFestivals()
   .then(res => dispatch({ type: 'festivals:set', festivals: res.data.items }))
   .catch(res => showError(res.data.code, '情報を取得できませんでした。', 3000)(dispatch));
@@ -55,6 +59,6 @@ export const signin = (login, password) => (dispatch) => api.getToken(login, pas
     if (res.status === 400) {
       return showError(res.data.code, 'ユーザー名またはパスワードが間違っています。')(dispatch);
     } else {
-      return showError(res.data.code, 'ログインできませんでした。')(dispatch);
+      return showError(res.data.code, '何かがおかしいです。')(dispatch);
     }
   });

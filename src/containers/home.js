@@ -3,10 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import api from '../api';
-
-const getTopNews = (dispatch) => api.getTopNews()
-  .then(res => dispatch({ type: 'set_top_news', topNews: res.data }));
+import { getTopNews } from '../actions';
 
 class Home extends Component {
 
