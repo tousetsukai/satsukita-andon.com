@@ -4,15 +4,12 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import api from '../api';
-
-const getClasses = (times) => (dispatch) => api.getClasses({ times, limit: 50 })
-  .then(res => dispatch({ type: 'times:set', classes: res.data.items }));
+import { getTimesClasses } from '../actions';
 
 class Times extends Component {
 
   static fetchData({ params, dispatch }) {
-    return dispatch(getClasses(params.times));
+    return dispatch(getTimesClasses(params.times));
   }
 
   componentWillMount() {

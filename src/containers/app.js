@@ -4,8 +4,8 @@ import Helmet from 'react-helmet';
 import { Alert } from 'elemental';
 
 import useSheet from '../jss';
-import api from '../api';
 import Header, { headerHeight } from '../components/header';
+import { me } from '../actions';
 
 const sheet = {
   container: {
@@ -18,14 +18,11 @@ const sheet = {
   },
 };
 
-const getUser = (token) => (dispatch) => api.getUser(token)
-  .then(res => dispatch({ type: 'app:user:set', user: res.data }));
-
 class App extends Component {
 
   static fetchData({ token, dispatch }) {
     if (token) {
-      return dispatch(getUser(token));
+      return dispatch(me(token));
     } else {
       return Promise.resolve();
     }

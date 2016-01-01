@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import api from '../api';
+import { getFestivals } from '../actions';
 import FestivalThumbnail from '../components/festival-thumbnail';
 import useSheet from '../jss';
 
@@ -21,9 +21,6 @@ const sheet = {
     },
   },
 };
-
-const getFestivals = (dispatch) => api.getFestivals()
-  .then(res => dispatch({ type: 'set_festivals', festivals: res.data.items }));
 
 class Gallery extends Component {
 

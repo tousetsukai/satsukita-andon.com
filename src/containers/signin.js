@@ -2,34 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Form, FormField, FormInput } from 'elemental';
-import Cookies from 'js-cookie';
 
 import useSheet from '../jss';
 import color from '../jss/color';
 import { ghostButton } from '../jss/util';
-import api from '../api';
-import { showError } from '../actions/app';
+import { signin } from '../actions';
 
 const sheet = {
   submit: {
     ...ghostButton(color.link, color.text),
   },
 };
-
-const getToken = (login, password) => (dispatch) => api.getToken(login, password)
-  .then(res => {
-    const token = res.data.token;
-    Cookies.set('token', token);
-    return token;
-  }).then(token => {
-    return api.getUser(token);
-  }).then(res => {
-    return dispatch({ type: 'app:user:set', user: res.data });
-  }).catch(res => {
-    if (res.status === 400) {
-      return showError(res.data.code, 'ユーザー名またはパスワードが間違っています。')(dispatch);
-    }
-  });
 
 class Signin extends Component {
 
@@ -59,7 +42,7 @@ class Signin extends Component {
   }
 
   onSubmit = () => {
-    this.props.dispatch(getToken(this.state.login, this.state.password));
+    this.props.dispatch(signin(this.state.login, this.state.password));
   }
 
   render() {

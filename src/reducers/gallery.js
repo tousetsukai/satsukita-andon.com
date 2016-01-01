@@ -4,7 +4,7 @@ const initialState = {
 
 export function gallery(state = initialState, action) {
   switch (action.type) {
-  case 'set_festivals':
+  case 'festivals:set':
     return {
       ...state,
       festivals: action.festivals,

@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import api from '../api';
-
-const getClass = (classId) => (dispatch) => api.getClass(classId)
-  .then(res => dispatch({ type: 'class:set', clazz: res.data }));
+import { getClass } from '../actions';
 
 class Class extends Component {
 
