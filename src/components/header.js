@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import useSheet from '../jss';
 import color from '../jss/color';
+import { ghostButton } from '../jss/util';
 import UserDropdown from './user-dropdown';
 
 export const headerHeight = 50;
@@ -56,19 +57,9 @@ const sheet = {
     height: headerHeight,
   },
   button: {
+    ...ghostButton(color.text, color.green),
     'font-size': headerHeight / 3.4,
-    color: color.text,
-    'text-decoration': 'none',
     'margin-left': 20,
-    border: '1px solid white',
-    'border-radius': 5,
-    padding: '6px 12px',
-    transition: '0.1s linear',
-    '&:hover, &:focus': {
-      'text-decoration': 'none',
-      'border-color': color.green,
-      'color': color.green,
-    },
   },
   search: {
     'margin-right': 30,
