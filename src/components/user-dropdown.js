@@ -25,6 +25,7 @@ class UserDropdown extends Component {
   static contextTypes = {
     router: React.PropTypes.object,
     store: React.PropTypes.object,
+    user: React.PropTypes.object,
   }
 
   logout = () => {
@@ -45,8 +46,9 @@ class UserDropdown extends Component {
   }
 
   render() {
-    const { sheet, user } = this.props;
+    const { sheet } = this.props;
     const { classes } = sheet;
+    const user = this.context.user;
     const icon = (
       <div className={classes.wrapper}>
         <Icon className={classes.icon} user={user}/>

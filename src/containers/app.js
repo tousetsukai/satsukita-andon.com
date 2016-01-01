@@ -30,15 +30,25 @@ class App extends Component {
     }
   }
 
+  static childContextTypes = {
+    user: React.PropTypes.object,
+  }
+
+  getChildContext = () => {
+    return {
+      user: this.props.user,
+    };
+  }
+
   render() {
-    const { sheet, user } = this.props;
+    const { sheet } = this.props;
     const { classes } = sheet;
     return (
       <div>
         <Helmet
           titleTemplate="%s - 行灯職人への道"
         />
-        <Header user={user} />
+        <Header/>
         <div className={classes.container}>
           {this.props.children}
         </div>

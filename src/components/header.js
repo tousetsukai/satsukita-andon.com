@@ -72,9 +72,14 @@ const sheet = {
 
 class Header extends Component {
 
+  static contextTypes = {
+    user: React.PropTypes.object,
+  }
+
   signupOrUser() {
-    const { sheet, user } = this.props;
+    const { sheet } = this.props;
     const { classes } = sheet;
+    const user = this.context.user;
 
     if (_.isEmpty(user)) {
       return [
@@ -82,7 +87,7 @@ class Header extends Component {
         <Link key={1} className={classes.button} to="/signin">ログイン</Link>,
       ];
     } else {
-      return <UserDropdown user={user}/>;
+      return <UserDropdown/>;
     }
   }
 
