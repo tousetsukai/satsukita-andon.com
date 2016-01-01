@@ -38,7 +38,7 @@ class App extends Component {
         <Helmet
           titleTemplate="%s - 行灯職人への道"
         />
-        <Header user={user}/>
+        <Header user={user} />
         <div className={classes.container}>
           {this.props.children}
         </div>

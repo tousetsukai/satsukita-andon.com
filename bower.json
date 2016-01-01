@@ -1,0 +1,24 @@
+{
+  "name": "andon-frontend",
+  "description": "The frontend of satsukita-andon.com",
+  "main": "dist/main.js",
+  "authors": [
+    "Shohei Yasutake"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/satsukita-andon/andon-frontend",
+  "moduleType": [
+    "es6"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "elemental": "elemental-dist#~0.5.3"
+  }
+}

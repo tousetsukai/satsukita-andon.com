@@ -1,15 +1,24 @@
-var libs = [
+var nodes = [
   'font-awesome'
+];
+var bowers = [
+  'elemental'
 ];
 
 var fs = require('fs-extra');
 
 var copyLibs = function () {
-  libs.forEach(function(lib) {
-    fs.copy('./node_modules/' + lib, './static/lib/' + lib, function (err) {
+  var copy = function (dir, lib) {
+    fs.copy(dir + lib, './static/lib/' + lib, function (err) {
       if (err) return console.error(err);
       console.log(lib + ' success!');
     });
+  }
+  nodes.forEach(function (lib) {
+    copy('./node_modules/', lib);
+  });
+  bowers.forEach(function (lib) {
+    copy('./bower_components/', lib);
   });
 };
 

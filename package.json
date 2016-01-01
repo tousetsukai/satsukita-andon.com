@@ -28,6 +28,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.3.13",
     "cookie-parser": "^1.4.0",
+    "elemental": "^0.5.11",
     "express": "^4.13.3",
     "jss": "^3.2.0",
     "jss-nested": "^1.0.1",

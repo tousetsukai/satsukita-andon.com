@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Dropdown } from 'elemental';
 
 import useSheet from '../jss';
 import Icon, { size as iconSize } from './icon';
@@ -11,6 +12,7 @@ const sheet = {
     display: 'flex',
     'align-items': 'center',
     height: iconSize,
+    cursor: 'pointer',
   },
   name: {
     'font-size': fontSize,
@@ -19,10 +21,33 @@ const sheet = {
 };
 
 class UserDropdown extends Component {
+
+  static contextTypes = {
+    router: React.PropTypes.object,
+    store: React.PropTypes.object,
+  }
+
+  logout = () => {
+    return this.context.store.dispatch((dispatch) => {
+      return dispatch({ type: 'app:user:set', user: {} });
+    });
+  }
+
+  onSelect = (v) => {
+    switch (v.type) {
+    case 'link':
+      return this.context.router.push(v.url);
+    case 'logout':
+      return this.logout();
+    default:
+      return console.error(`${v.type} is not defined`); // eslint-disable-line no-console
+    }
+  }
+
   render() {
     const { sheet, user } = this.props;
     const { classes } = sheet;
-    return (
+    const icon = (
       <div className={classes.wrapper}>
         <Icon className={classes.icon} user={user}/>
         <p className={classes.name}>
@@ -31,6 +56,11 @@ class UserDropdown extends Component {
         </p>
       </div>
     );
+    const items = [
+      { label: 'プロフィール', value: { type: 'link', url: `/users/${user.login}` } },
+      { label: 'ログアウト', value: { type: 'logout' } },
+    ];
+    return <Dropdown items={items} onSelect={this.onSelect}>{icon}</Dropdown>;
   }
 }
 
