@@ -16,6 +16,10 @@ const sheet = {
 
 class Signin extends Component {
 
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired,
+  }
+
   state = {
     login: '',
     password: '',
@@ -42,7 +46,13 @@ class Signin extends Component {
   }
 
   onSubmit = () => {
-    this.props.dispatch(signin(this.state.login, this.state.password));
+    const { router } = this.context;
+    this.props.dispatch(signin(this.state.login, this.state.password))
+      .then(ok => {
+        if (ok) {
+          router.push('/settings');
+        }
+      });
   }
 
   render() {
