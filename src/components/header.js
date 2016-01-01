@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 
 import useSheet from '../jss';
-import * as color from '../jss/color';
+import color from '../jss/color';
 import UserDropdown from './user-dropdown';
 
 export const headerHeight = 50;

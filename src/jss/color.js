@@ -1,4 +1,6 @@
-export const theme = '#ff7700';
-export const green = '#7fff00';
-export const link = '#00d8ff';
-export const text = '#eeeeee';
+export default {
+  theme: '#ff7700',
+  green: '#7fff00',
+  link: '#00d8ff',
+  text: '#eeeeee',
+};

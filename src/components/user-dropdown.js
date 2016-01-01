@@ -3,7 +3,7 @@ import { Dropdown } from 'elemental';
 import Cookies from 'js-cookie';
 
 import useSheet from '../jss';
-import * as color from '../jss/color';
+import color from '../jss/color';
 import Icon, { size as iconSize } from './icon';
 
 export const height = iconSize;
