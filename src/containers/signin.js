@@ -1,15 +1,43 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Button, Form, FormField, FormInput } from 'elemental';
+import Cookies from 'js-cookie';
 
 import useSheet from '../jss';
 import * as color from '../jss/color';
+import api from '../api';
 
 const sheet = {
   '.FormLabel': {
     color: color.text,
   },
 };
+
+const showError = (code, message) => (dispatch) => {
+  return new Promise(resolve => {
+    dispatch({ type: 'app:error:show', error: { code, message } });
+    setTimeout(() => {
+      dispatch({ type: 'app:error:hide' });
+      resolve();
+    }, 3000);
+  });
+};
+
+const getToken = (login, password) => (dispatch) => api.getToken(login, password)
+  .then(res => {
+    const token = res.data.token;
+    Cookies.set('token', token);
+    return token;
+  }).then(token => {
+    return api.getUser(token);
+  }).then(res => {
+    return dispatch({ type: 'app:user:set', user: res.data });
+  }).catch(res => {
+    if (res.status === 400) {
+      return showError(res.data.code, 'ユーザー名またはパスワードが間違っています。')(dispatch);
+    }
+  });
 
 class Signin extends Component {
 
@@ -33,7 +61,7 @@ class Signin extends Component {
   }
 
   onSubmit = () => {
-    console.log(this.state.login, this.state.password);
+    this.props.dispatch(getToken(this.state.login, this.state.password));
   }
 
   render() {
@@ -56,4 +84,4 @@ class Signin extends Component {
   }
 }
 
-export default useSheet(Signin, sheet);
+export default useSheet(connect()(Signin), sheet);

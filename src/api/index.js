@@ -14,4 +14,8 @@ export default {
       'Authorization': `Bearer ${token}`,
     },
   }),
+  getToken: (login, password) => api.post('/auth/token', {
+    login,
+    password,
+  }),
 };

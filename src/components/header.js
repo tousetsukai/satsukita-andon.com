@@ -18,7 +18,7 @@ const sheet = {
     position: 'fixed',
     top: 0,
     left: 0,
-    'box-shadow': '0 0 10px 3px rgba(0, 0, 0, 1)',
+    'box-shadow': '0 0 3px 3px rgba(0, 0, 0, 1)',
     '&:hover': {
       'background-color': 'rgba(0, 0, 0, 0.9)',
     },
