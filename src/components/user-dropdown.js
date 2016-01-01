@@ -60,9 +60,11 @@ class UserDropdown extends Component {
     );
     const items = [
       { label: 'プロフィール', value: { type: 'link', url: `/users/${user.login}` } },
+      { type: 'divider' },
+      { label: '設定', value: { type: 'link', url: '/settings' } },
       { label: 'ログアウト', value: { type: 'logout' } },
     ];
-    return <Dropdown items={items} onSelect={this.onSelect}>{icon}</Dropdown>;
+    return <Dropdown items={items} onSelect={this.onSelect} alignRight={true}>{icon}</Dropdown>;
   }
 }
 
