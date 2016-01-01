@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Button, Form, FormField, FormInput } from 'elemental';
+import { Form, FormField, FormInput } from 'elemental';
 import Cookies from 'js-cookie';
 
 import useSheet from '../jss';
-import * as color from '../jss/color';
+import color from '../jss/color';
+import { ghostButton } from '../jss/util';
 import api from '../api';
 import { showError } from '../actions/app';
 
 const sheet = {
-  '.FormLabel': {
-    color: color.text,
+  submit: {
+    ...ghostButton(color.link, color.text),
   },
 };
 
@@ -68,7 +69,7 @@ class Signin extends Component {
           <FormField label="パスワード" htmlFor="basic-form-input-password">
             <FormInput type="password" name="basic-form-input-password" onChange={this.onPasswordChange}/>
           </FormField>
-          <Button type="hollow-primary" onClick={this.onSubmit}>ログイン</Button>
+          <button className={this.props.sheet.classes.submit} type="button" onClick={this.onSubmit}>ログイン</button>
         </Form>
       </div>
     );
