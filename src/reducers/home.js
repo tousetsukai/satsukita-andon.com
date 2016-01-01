@@ -4,7 +4,7 @@ const initialState = {
 
 export function home(state = initialState, action) {
   switch (action.type) {
-  case 'set_top_news':
+  case 'top-news:set':
     return {
       ...state,
       topNews: action.topNews,
