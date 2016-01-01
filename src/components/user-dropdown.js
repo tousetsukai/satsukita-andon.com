@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Dropdown } from 'elemental';
+import Cookies from 'js-cookie';
 
 import useSheet from '../jss';
 import * as color from '../jss/color';
@@ -35,7 +36,9 @@ class UserDropdown extends Component {
 
   logout = () => {
     return this.context.store.dispatch((dispatch) => {
-      return dispatch({ type: 'app:user:set', user: {} });
+      dispatch({ type: 'app:user:set', user: {} });
+      Cookies.remove('token');
+      this.context.router.push('/signin');
     });
   }
 
