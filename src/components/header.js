@@ -17,7 +17,7 @@ const sheet = {
     position: 'fixed',
     top: 0,
     left: 0,
-    'box-shadow': '0 0 10px 3px rgba(10, 10, 10, 1)',
+    'box-shadow': '0 0 10px 3px rgba(0, 0, 0, 1)',
     '&:hover': {
       'background-color': 'rgba(0, 0, 0, 0.9)',
     },
@@ -31,6 +31,10 @@ const sheet = {
     display: 'flex',
     'align-items': 'center',
     height: headerHeight,
+    '& h1': { // to reset elemental.css
+      'font-size': 0,
+      margin: 0,
+    }
   },
   logo: {
     height: headerHeight - logoMargin * 2,
