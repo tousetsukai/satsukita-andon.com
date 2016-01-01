@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Dropdown } from 'elemental';
 
 import useSheet from '../jss';
+import * as color from '../jss/color';
 import Icon, { size as iconSize } from './icon';
 
 export const height = iconSize;
@@ -17,6 +18,10 @@ const sheet = {
   name: {
     'font-size': fontSize,
     'margin-left': 10,
+    color: color.text,
+    '&:hover': {
+      color: color.theme,
+    },
   },
 };
 

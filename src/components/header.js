@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 
 import useSheet from '../jss';
+import * as color from '../jss/color';
 import UserDropdown from './user-dropdown';
 
 export const headerHeight = 50;
@@ -34,16 +35,20 @@ const sheet = {
     '& h1': { // to reset elemental.css
       'font-size': 0,
       margin: 0,
-    }
+    },
   },
   logo: {
     height: headerHeight - logoMargin * 2,
   },
   menu: {
     'font-size': headerHeight / 3,
-    color: '#eeeeee',
+    color: color.text,
     'text-decoration': 'none',
     'margin-left': 30,
+    '&:hover': {
+      'text-decoration': 'none',
+      color: color.theme,
+    },
   },
   right: {
     display: 'flex',
@@ -52,7 +57,7 @@ const sheet = {
   },
   button: {
     'font-size': headerHeight / 3.4,
-    color: '#eeeeee',
+    color: color.text,
     'text-decoration': 'none',
     'margin-left': 20,
     border: '1px solid white',
@@ -60,8 +65,9 @@ const sheet = {
     padding: '6px 12px',
     transition: '0.1s linear',
     '&:hover': {
-      'border-color': '#7fff00',
-      'color': '#7fff00',
+      'text-decoration': 'none',
+      'border-color': color.green,
+      'color': color.green,
     },
   },
   search: {

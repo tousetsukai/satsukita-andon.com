@@ -31,6 +31,7 @@
     "elemental": "^0.5.11",
     "express": "^4.13.3",
     "jss": "^3.2.0",
+    "jss-extend": "^1.1.0",
     "jss-nested": "^1.0.1",
     "jss-px": "^1.0.0",
     "jss-vendor-prefixer": "^1.0.1",
