@@ -12,7 +12,7 @@ export const loading = (action) => (dispatch) => {
 };
 
 /**
- * All actions have type: ? -> (dispatch: Action -> Promise[?]) -> Promise[Boolean]
+ * All actions have type: ? -> (dispatch: Action -> Action) -> Promise[Boolean]
  */
 
 export const showError = (code, message, millis) => (dispatch) => {

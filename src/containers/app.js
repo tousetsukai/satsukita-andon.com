@@ -5,6 +5,7 @@ import { Alert } from 'elemental';
 
 import useSheet from '../jss';
 import Header, { headerHeight } from '../components/header';
+import Loading from '../components/loading';
 import { me } from '../actions';
 
 const sheet = {
@@ -52,7 +53,8 @@ class App extends Component {
         <Header/>
         <div className={classes.container}>
           {this.props.showingError && <Alert type="danger">{this.props.error.message}</Alert>}
-          {this.props.loading ? <img className={classes.center} src='/static/img/loading.gif'/> : this.props.children}
+          {this.props.loading && <Loading/>}
+          {this.props.children}
         </div>
         <footer className={classes.footer}>
         </footer>
