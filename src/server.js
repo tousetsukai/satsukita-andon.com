@@ -9,7 +9,7 @@ import { createServerApp, routes, configureStore } from './universal';
 
 const app = express();
 app.use(cookieParser());
-const port = 3001;
+const port = 5927;
 
 const renderFullPage = (head, html, state) => {
   return `
