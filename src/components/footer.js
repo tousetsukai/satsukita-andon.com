@@ -6,7 +6,6 @@ import color from '../jss/color';
 import size from '../jss/size';
 
 const fontSize = 12;
-const linksWidth = 260;
 
 const sheet = {
   footer: {

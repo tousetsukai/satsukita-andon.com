@@ -1,5 +1,6 @@
 import React, { PropTypes as T } from 'react';
 import ImageLoader from 'react-imageloader';
+import classnames from 'classnames';
 
 import useSheet from '../jss';
 import { center } from '../jss/util';
@@ -11,11 +12,8 @@ const sheet = {
   thumbnail: {
     position: 'relative',
     transition: '0.2s linear',
-    'background-color': 'black',
-    opacity: 0.7,
     '&:hover': {
       'box-shadow': '0 0 20px 3px black',
-      opacity: 1,
       'z-index': '10',
     },
   },
@@ -57,6 +55,13 @@ const sheet = {
     'font-weight': 'lighter',
     'text-shadow': '0 0 3px black',
   },
+  imgNormal: {
+    transition: '0.2s linear',
+    '-webkit-filter': 'blur(2px)',
+  },
+  imgHover: {
+    '-webkit-filter': 'blur(0px)',
+  },
 };
 
 class FestivalThumbnail extends React.Component {
@@ -75,12 +80,24 @@ class FestivalThumbnail extends React.Component {
     }),
   }
 
+  state = {
+    hover: false,
+  }
+
+  onMouseEnter = () => {
+    this.setState({ hover: true });
+  }
+
+  onMouseLeave = () => {
+    this.setState({ hover: false });
+  }
+
   render() {
     const { sheet, festival } = this.props;
     const { classes } = sheet;
     const thumbnail = festival.thumbnail_url || '/static/img/no-icon.svg';
     const wrap = (props, children) => (
-      <div {...props}>
+      <div {...props} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
         {children}
         <p className={classes.times}>{festival.times_ord}</p>
         <p className={classes.theme}>{festival.theme}</p>
@@ -94,6 +111,10 @@ class FestivalThumbnail extends React.Component {
                    imgProps={{
                      width: size.contentsWidth / 4,
                      height: size.contentsWidth / 4 * (3 / 4),
+                     className: classnames({
+                       [classes.imgNormal]: true,
+                       [classes.imgHover]: this.state.hover,
+                     }),
                    }}
                    preloader={() => <img className={classes.center} src="/static/img/loading.gif"/>}>
         oops!

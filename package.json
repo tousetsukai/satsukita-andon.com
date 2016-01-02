@@ -27,6 +27,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.3.13",
+    "classnames": "^2.2.1",
     "cookie-parser": "^1.4.0",
     "elemental": "^0.5.11",
     "express": "^4.13.3",
