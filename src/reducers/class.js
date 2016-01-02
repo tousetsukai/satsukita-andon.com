@@ -9,6 +9,11 @@ export function clazz(state = initialState, action) {
       ...state,
       clazz: action.clazz,
     };
+  case 'class:clear':
+    return {
+      ...state,
+      clazz: {},
+    };
   default:
     return state;
   }

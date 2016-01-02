@@ -47,11 +47,8 @@ class App extends Component {
     const { sheet } = this.props;
     const { classes } = sheet;
     const progress = () => {
-      if (this.props.loading) {
-        return <ProgressBar autoIncrement={true} percent={0}/>;
-      } else {
-        return <ProgressBar autoIncrement={true} percent={100}/>;
-      }
+      const p = this.props.loading ? 0 : 100;
+      return <ProgressBar autoIncrement={true} percent={p} intervalTime={100}/>;
     };
     return (
       <div>

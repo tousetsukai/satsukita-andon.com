@@ -51,6 +51,11 @@ export const getClass = (classId) => (dispatch) => api.getClass(classId)
     }
   });
 
+export const clearClass = (dispatch) => {
+  dispatch({ type: 'class:clear' });
+  return Promise.resolve(true);
+};
+
 export const getTimesClasses = (times) => (dispatch) => api.getClasses({ times, limit: 50 })
   .then(res => {
     dispatch({ type: 'times:set', classes: res.data.items });

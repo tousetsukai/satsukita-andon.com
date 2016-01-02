@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import { loading, getClass } from '../actions';
+import { loading, getClass, clearClass } from '../actions';
 
 class Class extends Component {
 
@@ -16,23 +16,30 @@ class Class extends Component {
     if (_.isEmpty(clazz) ||
         !(`${clazz.times_ord}${clazz.grade}-${clazz.class}` ===
           `${params.times}${params.clazz}`)) {
+      dispatch(clearClass);
       Class.fetchData({ params, dispatch });
     }
   }
 
+  renderClass = (clazz) => {
+    const headerImage = clazz.header_image_url || '/static/img/no-icon.svg';
+    return (
+      <div>
+        <h1>{`${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`}</h1>
+        <img src={headerImage}/>
+        <p>{JSON.stringify(clazz)}</p>
+      </div>
+    );
+  }
+
   render() {
     const { clazz } = this.props;
-    const headerImage = clazz.header_image_url || '/static/img/no-icon.svg';
     return (
       <div>
         <Helmet
           title={`${clazz.times_ord}${clazz.grade}-${clazz.class}`}
         />
-        <div>
-          <h1>{`${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`}</h1>
-          <img src={headerImage}/>
-          <p>{JSON.stringify(clazz)}</p>
-        </div>
+        {_.isEmpty(clazz) || this.renderClass(clazz)}
       </div>
     );
   }
