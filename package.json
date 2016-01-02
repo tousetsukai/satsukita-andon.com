@@ -43,6 +43,7 @@
     "react-helmet": "^2.2.0",
     "react-imageloader": "^2.1.0",
     "react-jss": "^2.0.1",
+    "react-progress-bar-plus": "^0.2.3",
     "react-redux": "^4.0.5",
     "react-router": "^2.0.0-rc4",
     "redux": "^3.0.5",

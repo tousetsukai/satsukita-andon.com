@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Alert } from 'elemental';
+import ProgressBar from 'react-progress-bar-plus';
 
 import useSheet from '../jss';
 import Header, { headerHeight } from '../components/header';
-import Loading from '../components/loading';
+// import Loading from '../components/loading';
 import { me } from '../actions';
 
 const sheet = {
@@ -45,15 +46,22 @@ class App extends Component {
   render() {
     const { sheet } = this.props;
     const { classes } = sheet;
+    const progress = () => {
+      if (this.props.loading) {
+        return <ProgressBar autoIncrement={true} percent={0}/>;
+      } else {
+        return <ProgressBar autoIncrement={true} percent={100}/>;
+      }
+    };
     return (
       <div>
         <Helmet
           titleTemplate="%s - 行灯職人への道"
         />
+        {progress()}
         <Header/>
         <div className={classes.container}>
           {this.props.showingError && <Alert type="danger">{this.props.error.message}</Alert>}
-          {this.props.loading && <Loading/>}
           {this.props.children}
         </div>
         <footer className={classes.footer}>
