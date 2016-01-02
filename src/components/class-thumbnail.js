@@ -1,9 +1,12 @@
 import React, { PropTypes as T } from 'react';
 import { Link } from 'react-router';
+import ImageLoader from 'react-imageloader';
 
 import useSheet from '../jss';
+import { center } from '../jss/util';
 
 const sheet = {
+  ...center,
   thumbnail: {
   },
 };
@@ -32,9 +35,12 @@ class ClassThumbnail extends React.Component {
     const gradeClass = `${clazz.grade}-${clazz['class']}`;
     return (
       <Link to={`/gallery/${clazz.times_ord}/${gradeClass}`}>
-        <img className={classes.thumbnail}
-             width={1024 / 4}
-             src={thumbnail}/>
+        <ImageLoader className={classes.thumbnail}
+                     src={thumbnail}
+                     imgProps={{width: 1024 / 4, height: 1024 / 4 * (3 / 4)}}
+                     preloader={() => <img className={classes.center} src="/static/img/loading.gif"/>}>
+          oops!
+        </ImageLoader>
         <p>{`${gradeClass} ${clazz.title}`}</p>
       </Link>
     );

@@ -1,8 +1,11 @@
 import React, { PropTypes as T } from 'react';
+import ImageLoader from 'react-imageloader';
 
 import useSheet from '../jss';
+import { center } from '../jss/util';
 
 const sheet = {
+  ...center,
   thumbnail: {
   },
 };
@@ -28,9 +31,12 @@ class FestivalThumbnail extends React.Component {
     const { classes } = sheet;
     const thumbnail = festival.thumbnail_url || '/static/img/no-icon.svg';
     return (
-      <img className={classes.thumbnail}
-           width={1024 / 4}
-           src={thumbnail}/>
+      <ImageLoader className={classes.thumbnail}
+                   src={thumbnail}
+                   imgProps={{width: 1024 / 4, height: 1024 / 4 * (3 / 4)}}
+                   preloader={() => <img className={classes.center} src="/static/img/loading.gif"/>}>
+        oops!
+      </ImageLoader>
     );
   }
 }

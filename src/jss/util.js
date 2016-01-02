@@ -13,3 +13,8 @@ export const ghostButton = (color, hover) => ({
     'color': hover,
   },
 });
+
+export const center = ({
+  display: 'block',
+  margin: 'auto',
+});
