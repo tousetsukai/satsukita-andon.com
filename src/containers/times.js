@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import { loading, getTimesClasses } from '../actions';
+import { loading, getTimesClasses, clearTimesClasses } from '../actions';
 import useSheet from '../jss';
 import ClassThumbnail from '../components/class-thumbnail';
 
@@ -30,6 +30,7 @@ class Times extends Component {
   componentWillMount() {
     const { params, dispatch, classes } = this.props;
     if (_.isEmpty(classes) || classes[0].times_ord !== params.times) {
+      dispatch(clearTimesClasses);
       Times.fetchData({ params, dispatch });
     }
   }

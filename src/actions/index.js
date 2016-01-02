@@ -64,6 +64,11 @@ export const getTimesClasses = (times) => (dispatch) => api.getClasses({ times, 
     }
   });
 
+export const clearTimesClasses = (dispatch) => {
+  dispatch({ type: 'times:clear' });
+  return Promise.resolve(true);
+};
+
 export const me = (token) => (dispatch) => api.getUser(token)
   .then(res => {
     dispatch({ type: 'app:user:set', user: res.data });

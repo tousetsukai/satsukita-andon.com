@@ -9,6 +9,11 @@ export function times(state = initialState, action) {
       ...state,
       classes: action.classes,
     };
+  case 'times:clear':
+    return {
+      ...state,
+      classes: [],
+    };
   default:
     return state;
   }
