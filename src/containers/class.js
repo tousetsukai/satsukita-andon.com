@@ -22,6 +22,7 @@ class Class extends Component {
 
   render() {
     const { clazz } = this.props;
+    const headerImage = clazz.header_image_url || '/static/img/no-icon.svg';
     return (
       <div>
         <Helmet
@@ -29,6 +30,7 @@ class Class extends Component {
         />
         <div>
           <h1>{`${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`}</h1>
+          <img src={headerImage}/>
           <p>{JSON.stringify(clazz)}</p>
         </div>
       </div>
