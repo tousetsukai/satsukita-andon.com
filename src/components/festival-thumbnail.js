@@ -45,7 +45,7 @@ const sheet = {
   roman: {
     color: color.text,
     position: 'absolute',
-    top: 130,
+    top: 125,
     bottom: 0,
     left: 0,
     right: 0,

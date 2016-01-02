@@ -61,7 +61,7 @@ const sheet = {
   button: {
     ...ghostButton(color.green, color.text),
     'font-size': size.headerHeight / 3.4,
-    'margin-left': 20,
+    'margin-left': 14,
   },
   search: {
     'margin-right': 30,
