@@ -57,7 +57,7 @@ const sheet = {
     height: headerHeight,
   },
   button: {
-    ...ghostButton(color.text, color.green),
+    ...ghostButton(color.green, color.text),
     'font-size': headerHeight / 3.4,
     'margin-left': 20,
   },
@@ -113,7 +113,6 @@ class Header extends Component {
             </ul>
           </nav>
           <div className={classes.right}>
-            <div className={classes.search}><p>けんさくぼっくす</p></div>
             {this.signupOrUser()}
           </div>
         </div>
