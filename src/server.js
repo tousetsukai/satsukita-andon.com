@@ -19,6 +19,7 @@ const renderFullPage = (head, html, state) => {
         ${head.title.toString()}
         ${head.meta.toString()}
         <link rel="shortcut icon" href="/static/favicon.ico">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=0.5,user-scalable=yes,initial-scale=1.0">
         <link rel="stylesheet" href="/static/css/reset.css" type="text/css">
         <link rel="stylesheet" href="/static/lib/font-awesome/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" href="/static/lib/elemental/elemental.css" type="text/css">
