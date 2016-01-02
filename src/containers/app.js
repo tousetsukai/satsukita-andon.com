@@ -11,9 +11,7 @@ import Footer from '../components/footer';
 import { me } from '../actions';
 
 const sheet = {
-  body: { // for footer: http://www.webantena.net/css/fixed-footer-with-css/
-    'min-height': '100%',
-    position: 'relative',
+  body: {
     'padding-bottom': 100,
   },
   container: {
