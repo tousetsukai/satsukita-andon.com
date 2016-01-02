@@ -26,11 +26,10 @@ const sheet = {
     'align-items': 'center',
   },
   links: {
-    width: linksWidth,
     display: 'flex',
-    'justify-content': 'space-between',
     '& li': {
       'list-style-type': 'none',
+      'margin-right': 12,
     },
   },
   link: {
