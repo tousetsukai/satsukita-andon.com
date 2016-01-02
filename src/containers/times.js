@@ -13,6 +13,7 @@ const sheet = {
     display: 'flex',
     'flex-flow': 'wrap',
     'align-items': 'center',
+    'justify-content': 'space-around',
     '& li': {
       margin: 0,
       padding: 0,
