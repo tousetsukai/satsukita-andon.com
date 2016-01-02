@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import { getTimesClasses } from '../actions';
+import { loading, getTimesClasses } from '../actions';
 import useSheet from '../jss';
 import ClassThumbnail from '../components/class-thumbnail';
 
@@ -24,7 +24,7 @@ const sheet = {
 class Times extends Component {
 
   static fetchData({ params, dispatch }) {
-    return dispatch(getTimesClasses(params.times));
+    return dispatch(loading(getTimesClasses(params.times)));
   }
 
   componentWillMount() {

@@ -11,6 +11,9 @@ const sheet = {
   container: {
     margin: `${headerHeight + 10}px auto 0`,
   },
+  center: {
+    margin: 'auto',
+  },
   '@media (min-width: 1024px)': {
     container: {
       width: '1024px',
@@ -49,7 +52,7 @@ class App extends Component {
         <Header/>
         <div className={classes.container}>
           {this.props.showingError && <Alert type="danger">{this.props.error.message}</Alert>}
-          {this.props.children}
+          {this.props.loading ? <img className={classes.center} src='/static/img/loading.gif'/> : this.props.children}
         </div>
         <footer className={classes.footer}>
         </footer>
@@ -63,5 +66,6 @@ export default connect(
     user: state.app.user,
     error: state.app.error,
     showingError: state.app.showingError,
+    loading: state.app.loading,
   })
 )(useSheet(App, sheet));

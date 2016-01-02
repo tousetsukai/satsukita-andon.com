@@ -2,6 +2,15 @@ import Cookies from 'js-cookie';
 
 import api from '../api';
 
+// loading: (Dispatch -> Promise[?]) => Dispatch => Promise[?]
+export const loading = (action) => (dispatch) => {
+  dispatch({ type: 'app:loading:show' });
+  action(dispatch).then(res => {
+    dispatch({ type: 'app:loading:hide' });
+    return res;
+  });
+};
+
 /**
  * All actions have type: ? -> (dispatch: Action -> Promise[?]) -> Promise[Boolean]
  */

@@ -4,6 +4,7 @@ const initialState = {
   user: {},
   error: {},
   showingError: false,
+  loading: false,
 };
 
 export function app(state = initialState, action) {
@@ -13,6 +14,16 @@ export function app(state = initialState, action) {
       ...state,
       user: action.user,
     };
+  case 'app:loading:show':
+    return {
+      ...state,
+      loading: true,
+    };
+  case 'app:loading:hide':
+    return {
+      ...state,
+      loading: false,
+    };
   case 'app:error:show':
     return {
       ...state,
@@ -20,11 +31,17 @@ export function app(state = initialState, action) {
       showingError: true,
     };
   case 'app:error:hide':
+    return {
+      ...state,
+      error: {},
+      showingError: false,
+    };
   case UPDATE_PATH:
     return {
       ...state,
       error: {},
       showingError: false,
+      loading: false,
     };
   default:
     return state;

@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import { getClass } from '../actions';
+import { loading, getClass } from '../actions';
 
 class Class extends Component {
 
   static fetchData({ params, dispatch }) {
-    return dispatch(getClass(`${params.times}${params.clazz}`));
+    return dispatch(loading(getClass(`${params.times}${params.clazz}`)));
   }
 
   componentWillMount() {

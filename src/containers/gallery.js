@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import { getFestivals } from '../actions';
+import { loading, getFestivals } from '../actions';
 import FestivalThumbnail from '../components/festival-thumbnail';
 import useSheet from '../jss';
 
@@ -25,7 +25,7 @@ const sheet = {
 class Gallery extends Component {
 
   static fetchData({ dispatch }) {
-    return dispatch(getFestivals);
+    return dispatch(loading(getFestivals));
   }
 
   componentWillMount() {
