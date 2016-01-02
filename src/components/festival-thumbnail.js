@@ -6,8 +6,17 @@ import { center } from '../jss/util';
 import size from '../jss/size';
 
 const sheet = {
-  ...center,
+  center,
   thumbnail: {
+    transition: '0.2s linear',
+    'background-color': 'black',
+    opacity: 0.7,
+    '&:hover': {
+      'box-shadow': '0 0 20px 3px black',
+      position: 'relative',
+      'z-index': '10',
+      opacity: 1,
+    },
   },
 };
 
@@ -33,6 +42,7 @@ class FestivalThumbnail extends React.Component {
     const thumbnail = festival.thumbnail_url || '/static/img/no-icon.svg';
     return (
       <ImageLoader className={classes.thumbnail}
+                   wrapper={React.DOM.div}
                    src={thumbnail}
                    imgProps={{
                      width: size.contentsWidth / 4,
