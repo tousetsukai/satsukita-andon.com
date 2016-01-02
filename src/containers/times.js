@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
 import { getTimesClasses } from '../actions';
+import useSheet from '../jss';
+import ClassThumbnail from '../components/class-thumbnail';
+
+const sheet = {
+  classes: {
+    display: 'flex',
+    'flex-flow': 'wrap',
+    'align-items': 'center',
+    '& li': {
+      margin: 0,
+      padding: 0,
+      'list-style-type': 'none',
+      width: 1024 / 4,
+    },
+  },
+};
 
 class Times extends Component {
 
@@ -20,28 +35,26 @@ class Times extends Component {
   }
 
   render() {
-    const { params, classes } = this.props;
+    const { params, sheet, classes } = this.props;
+    const classNames = sheet.classes;
     return (
       <div>
         <Helmet
           title={`Gallery ${params.times}`}
         />
-        {classes.map((c) => (
-          <div key={c.id}>
-            <h1>
-              <Link to={`/gallery/${params.times}/${c.grade}-${c['class']}`}>
-                {`${c.times_ord}${c.grade}-${c['class']} ${c.title}`}
-              </Link>
-            </h1>
-          </div>
-        ))}
+        <ul className={classNames.classes}>
+          {classes.map((c) => (
+             <li key={c.id}><ClassThumbnail clazz={c}/></li>
+           ))
+          }
+        </ul>
       </div>
     );
   }
 }
 
-export default connect(
+export default useSheet(connect(
   state => ({
     classes: state.times.classes,
   })
-)(Times);
+)(Times), sheet);
