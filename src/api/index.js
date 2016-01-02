@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5927/dev/',
+  baseURL: 'https://api.satsukita-andon.com/dev/',
 });
 
 export default {
