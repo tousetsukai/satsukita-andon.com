@@ -26,7 +26,7 @@ const sheet = {
     left: 0,
     margin: 'auto',
     'text-align': 'center',
-    'font-size': 20,
+    'font-size': 16,
     'background-color': 'rgba(0, 0, 0, 0.5)',
     padding: '3px',
   },
