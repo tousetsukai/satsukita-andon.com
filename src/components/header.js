@@ -4,17 +4,17 @@ import _ from 'lodash';
 
 import useSheet from '../jss';
 import color from '../jss/color';
+import size from '../jss/size';
 import { ghostButton } from '../jss/util';
 import UserDropdown from './user-dropdown';
 
-export const headerHeight = 50;
 const logoMargin = 3;
 
 const sheet = {
   header: {
     'background-color': 'rgba(0, 0, 0, 0.6)',
     transition: '0.1s linear',
-    height: headerHeight,
+    height: size.headerHeight,
     width: '100%',
     position: 'fixed',
     top: 0,
@@ -26,23 +26,24 @@ const sheet = {
   },
   wrapper: {
     margin: 'auto',
+    padding: '0 8px',
     display: 'flex',
     'justify-content': 'space-between',
   },
   navUl: {
     display: 'flex',
     'align-items': 'center',
-    height: headerHeight,
+    height: size.headerHeight,
     '& h1': { // to reset elemental.css
       'font-size': 0,
       margin: 0,
     },
   },
   logo: {
-    height: headerHeight - logoMargin * 2,
+    height: size.headerHeight - logoMargin * 2,
   },
   menu: {
-    'font-size': headerHeight / 3,
+    'font-size': size.headerHeight / 3,
     color: color.text,
     'text-decoration': 'none',
     'margin-left': 30,
@@ -54,11 +55,11 @@ const sheet = {
   right: {
     display: 'flex',
     'align-items': 'center',
-    height: headerHeight,
+    height: size.headerHeight,
   },
   button: {
     ...ghostButton(color.green, color.text),
-    'font-size': headerHeight / 3.4,
+    'font-size': size.headerHeight / 3.4,
     'margin-left': 20,
   },
   search: {

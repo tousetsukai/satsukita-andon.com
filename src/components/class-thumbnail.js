@@ -4,6 +4,7 @@ import ImageLoader from 'react-imageloader';
 
 import useSheet from '../jss';
 import { center } from '../jss/util';
+import size from '../jss/size';
 
 const sheet = {
   ...center,
@@ -37,7 +38,7 @@ class ClassThumbnail extends React.Component {
       <Link to={`/gallery/${clazz.times_ord}/${gradeClass}`}>
         <ImageLoader className={classes.thumbnail}
                      src={thumbnail}
-                     imgProps={{width: 1024 / 4, height: 1024 / 4 * (3 / 4)}}
+                     imgProps={{width: size.contentsWidth / 4, height: size.contentsWidth / 4 * (3 / 4)}}
                      preloader={() => <img className={classes.center} src="/static/img/loading.gif"/>}>
           oops!
         </ImageLoader>

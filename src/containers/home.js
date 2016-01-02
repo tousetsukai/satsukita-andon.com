@@ -5,12 +5,13 @@ import _ from 'lodash';
 
 import { getTopNews } from '../actions';
 import useSheet from '../jss';
+import size from '../jss/size';
 
 const sheet = {
   // ref: http://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-inside-div
   logoWrapper: {
     width: '100%',
-    height: 400,
+    height: size.homeLogoHeight,
     'text-align': 'center',
   },
   logoHelper: {

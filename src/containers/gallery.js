@@ -7,6 +7,7 @@ import _ from 'lodash';
 import { loading, getFestivals } from '../actions';
 import FestivalThumbnail from '../components/festival-thumbnail';
 import useSheet from '../jss';
+import size from '../jss/size';
 
 const sheet = {
   thumbnails: {
@@ -17,7 +18,7 @@ const sheet = {
       margin: 0,
       padding: 0,
       'list-style-type': 'none',
-      width: 1024 / 4,
+      width: size.contentsWidth / 4,
     },
   },
 };

@@ -5,20 +5,27 @@ import { Alert } from 'elemental';
 import ProgressBar from 'react-progress-bar-plus';
 
 import useSheet from '../jss';
-import Header, { headerHeight } from '../components/header';
-// import Loading from '../components/loading';
+import Header from '../components/header';
+import size from '../jss/size';
+import Footer from '../components/footer';
 import { me } from '../actions';
 
 const sheet = {
+  body: { // for footer: http://www.webantena.net/css/fixed-footer-with-css/
+    'min-height': '100%',
+    position: 'relative',
+    'padding-bottom': 100,
+  },
   container: {
-    margin: `${headerHeight + 10}px auto 0`,
+    margin: `${size.headerHeight + 10}px auto 0`,
+    padding: `0 ${size.padding}px`,
   },
   center: {
     margin: 'auto',
   },
-  '@media (min-width: 1024px)': {
+  [`@media (min-width: ${size.pcWidth}px)`]: {
     container: {
-      width: '1024px',
+      width: size.pcWidth,
     },
   },
 };
@@ -51,7 +58,7 @@ class App extends Component {
       return <ProgressBar autoIncrement={true} percent={p} intervalTime={100}/>;
     };
     return (
-      <div>
+      <div className={classes.body}>
         <Helmet
           titleTemplate="%s - 行灯職人への道"
         />
@@ -61,8 +68,7 @@ class App extends Component {
           {this.props.showingError && <Alert type="danger">{this.props.error.message}</Alert>}
           {this.props.children}
         </div>
-        <footer className={classes.footer}>
-        </footer>
+        <Footer/>
       </div>
     );
   }

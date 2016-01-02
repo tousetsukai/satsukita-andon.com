@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { loading, getTimesClasses, clearTimesClasses } from '../actions';
 import useSheet from '../jss';
+import size from '../jss/size';
 import ClassThumbnail from '../components/class-thumbnail';
 
 const sheet = {
@@ -16,7 +17,7 @@ const sheet = {
       margin: 0,
       padding: 0,
       'list-style-type': 'none',
-      width: 1024 / 4,
+      width: size.contentsWidth / 4,
     },
   },
 };
