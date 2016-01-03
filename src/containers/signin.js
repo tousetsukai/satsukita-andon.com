@@ -6,7 +6,7 @@ import { Form, FormField, FormInput } from 'elemental';
 import useSheet from '../jss';
 import color from '../jss/color';
 import { ghostButton } from '../jss/util';
-import { signin } from '../actions';
+import { loading, signin } from '../actions';
 
 const sheet = {
   submit: {
@@ -47,7 +47,7 @@ class Signin extends Component {
 
   onSubmit = () => {
     const { router } = this.context;
-    this.props.dispatch(signin(this.state.login, this.state.password))
+    this.props.dispatch(loading(signin(this.state.login, this.state.password)))
       .then(ok => {
         if (ok) {
           router.push('/settings');
