@@ -6,6 +6,8 @@ import _ from 'lodash';
 import { loading, getClass, clearClass } from '../actions';
 import ClassHeader from '../components/class-header';
 import ClassTabs from '../components/class-tabs';
+import ClassBasic from './class-basic';
+import ClassReviews from './class-reviews';
 
 class Class extends Component {
 
@@ -23,6 +25,17 @@ class Class extends Component {
     }
   }
 
+  renderContent = (focus) => {
+    switch (focus) {
+    case '#basic':
+      return <ClassBasic/>;
+    case '#reviews':
+      return <ClassReviews/>;
+    default:
+      return <ClassBasic/>;
+    }
+  }
+
   renderClass = (clazz) => {
     const { location } = this.props;
     const focus = location.hash || '#basic';
@@ -30,7 +43,7 @@ class Class extends Component {
       <div>
         <ClassHeader clazz={clazz}/>
         <ClassTabs focus={focus}/>
-        {this.props.children}
+        {this.renderContent(focus)}
       </div>
     );
   }

@@ -11,6 +11,7 @@ export default {
   getTopNews: () => api.get('/contents/news'),
   getClasses: (params) => api.get('/classes', { params }),
   getClass: (classId) => api.get(`/classes/${classId}`),
+  getReviews: (classId) => api.get(`/classes/${classId}/reviews`),
   getArticles: (params) => api.get('/articles', { params }),
   getArticle: (id) => api.get(`/articles/${id}`),
   getUser: (token) => api.get('/auth/me', {
