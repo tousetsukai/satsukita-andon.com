@@ -40,7 +40,7 @@ class Class extends Component {
     return (
       <div>
         <Helmet
-          title={`${clazz.times_ord}${clazz.grade}-${clazz.class}`}
+          title={`${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`}
         />
         {_.isEmpty(clazz) || this.renderClass(clazz)}
       </div>
