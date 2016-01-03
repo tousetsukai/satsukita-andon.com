@@ -76,9 +76,20 @@ export const clearTimesClasses = (dispatch) => {
 
 export const getArticles = (params) => (dispatch) => api.getArticles(params)
   .then(res => {
-    dispatch({ type: 'articles:set', articles: res.data.items });
+    dispatch({ type: 'howto:articles:set', articles: res.data.items });
     return true;
   }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+
+export const getArticle = (id) => (dispatch) => api.getArticle(id)
+  .then(res => {
+    dispatch({ type: 'howto:article:set', article: res.data });
+    return true;
+  }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+
+export const clearArticle = (dispatch) => {
+  dispatch({ type: 'howto:article:clear' });
+  return Promise.resolve(true);
+};
 
 export const me = (token) => (dispatch) => api.getUser(token)
   .then(res => {

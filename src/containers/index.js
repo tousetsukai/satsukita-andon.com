@@ -5,5 +5,6 @@ export Gallery from './gallery';
 export Times from './times';
 export Class from './class';
 export Howto from './howto';
+export Article from './article';
 export NotFound from './notfound';
 export Signin from './signin';
