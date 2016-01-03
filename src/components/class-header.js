@@ -55,7 +55,7 @@ const sheet = {
     border: '2px solid',
     'border-radius': '10px',
     'margin-top': '-6px',
-    padding: '4px 16px',
+    padding: '4px 18px',
     'margin-right': '20px',
   },
 };
