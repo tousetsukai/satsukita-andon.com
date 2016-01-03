@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { getTopNews } from '../actions';
+import { loading, getFixedContent } from '../actions';
 import useSheet from '../jss';
 import size from '../jss/size';
 
@@ -27,7 +27,7 @@ const sheet = {
 class Home extends Component {
 
   static fetchData({ dispatch }) {
-    return dispatch(getTopNews);
+    return dispatch(loading(getFixedContent('news')));
   }
 
   componentWillMount() {
@@ -58,6 +58,6 @@ class Home extends Component {
 
 export default useSheet(connect(
   state => ({
-    topNews: state.home.topNews,
+    topNews: state.contents.news,
   })
 )(Home), sheet);

@@ -27,13 +27,6 @@ export const showError = (code, message, millis) => (dispatch) => {
   });
 };
 
-export const getTopNews = (dispatch) => api.getTopNews()
-  .then(res => {
-    dispatch({ type: 'top-news:set', topNews: res.data });
-    return true;
-  })
-  .catch(res => showError(res.data.code, 'トップニュースを取得できませんでした。')(dispatch));
-
 export const getFixedContent = (type) => (dispatch) => api.getFixedContent(type)
   .then(res => {
     dispatch({ type: `contents:${type}:set`, content: res.data });
