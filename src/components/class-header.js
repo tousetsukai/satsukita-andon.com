@@ -25,7 +25,7 @@ const sheet = {
   },
   headerImage: {
     // ref: http://deerest.co/2015/10/22/css3-img-center-trimming/
-    position: 'relative',
+    position: 'absolute',
     top: '50%',
     left: '50%',
     width: '100%',
