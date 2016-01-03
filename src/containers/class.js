@@ -6,9 +6,6 @@ import _ from 'lodash';
 import { loading, getClass, clearClass } from '../actions';
 import ClassHeader from '../components/class-header';
 import ClassTabs from '../components/class-tabs';
-import ClassBasic from './class-basic';
-import ClassReviews from './class-reviews';
-import ClassImages from './class-images';
 
 class Class extends Component {
 
@@ -26,27 +23,14 @@ class Class extends Component {
     }
   }
 
-  renderContent = (tab) => {
-    switch (tab) {
-    case 'basic':
-      return <ClassBasic/>;
-    case 'reviews':
-      return <ClassReviews/>;
-    case 'images':
-      return <ClassImages/>;
-    default:
-      return <ClassBasic/>;
-    }
-  }
-
   renderClass = (clazz) => {
     const { location } = this.props;
-    const tab = location.query.tab || 'basic';
+    const tab = location.pathname.substring(`/gallery/${clazz.times_ord}/${clazz.grade}-${clazz['class']}/`.length) || 'basic';
     return (
       <div>
         <ClassHeader clazz={clazz}/>
         <ClassTabs tab={tab} clazz={clazz}/>
-        {this.renderContent(tab)}
+        {this.props.children}
       </div>
     );
   }

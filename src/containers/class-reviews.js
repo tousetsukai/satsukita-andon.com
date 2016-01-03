@@ -1,7 +1,8 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
-import { loading, getReviews } from '../actions';
+import { loading, getReviews, clearReviews } from '../actions';
 import useSheet from '../jss';
 
 const sheet = {
@@ -9,10 +10,21 @@ const sheet = {
 
 class ClassReviews extends Component {
 
-  componentWillMount = () => {
-    const { dispatch, clazz } = this.props;
-    const classId = `${clazz.times_ord}${clazz.grade}-${clazz['class']}`;
+  static fetchData = ({ params, dispatch }) => {
+    const classId = `${params.times}${params.clazz}`;
     return dispatch(loading(getReviews(classId)));
+  }
+
+  componentWillMount = () => {
+    const { dispatch, reviews, clazz } = this.props;
+    const params = {
+      times: clazz.times_ord,
+      clazz: `${clazz.grade}-${clazz['class']}`,
+    };
+    if (_.isEmpty(reviews) || reviews[0].class_id !== clazz.id) {
+      dispatch(clearReviews);
+      ClassReviews.fetchData({ params, dispatch });
+    }
   }
 
   static propTypes = {

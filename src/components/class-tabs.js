@@ -60,7 +60,7 @@ class ClassTabs extends React.Component {
       return (
         <li key={tab}
             className={classnames({ [classes.tab]: true, [classes.activeTab]: isActive })}>
-          <Link to={{ pathname: path, query: { tab: tab } }}
+          <Link to={{ pathname: path + '/' + tab }}
                 className={classnames({ [classes.text]: true, [classes.activeText]: isActive })}>
             {label}
           </Link>
