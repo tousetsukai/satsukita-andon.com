@@ -5,6 +5,7 @@ import _ from 'lodash';
 import Remarkable from 'remarkable';
 
 import { loading, getFixedContent } from '../actions';
+import { meta } from '../util/helmet';
 
 class About extends Component {
 
@@ -25,8 +26,8 @@ class About extends Component {
     });
     return (
       <div>
-        <Helmet
-          title="About"
+        <Helmet title="About"
+                meta={meta('About', '行灯職人への道について')}
         />
         <article dangerouslySetInnerHTML={{__html: md.render(this.props.about.body)}}></article>
       </div>

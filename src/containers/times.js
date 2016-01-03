@@ -7,6 +7,7 @@ import { loading, getTimesClasses, clearTimesClasses } from '../actions';
 import useSheet from '../jss';
 import size from '../jss/size';
 import ClassThumbnail from '../components/class-thumbnail';
+import { meta } from '../util/helmet';
 
 const sheet = {
   classes: {
@@ -40,10 +41,17 @@ class Times extends Component {
   render() {
     const { params, sheet, classes } = this.props;
     const classNames = sheet.classes;
+    const randomClass = () => {
+      if (_.isEmpty(classes)) {
+        return {};
+      } else {
+        return classes[_.random(0, classes.length - 1)];
+      }
+    };
     return (
       <div>
-        <Helmet
-          title={`Gallery ${params.times}`}
+        <Helmet title={`Gallery ${params.times}`}
+                meta={meta(`Gallery ${params.times}`, `${params.times}行灯ギャラリー`, randomClass().thumbnail_url)}
         />
         <ul className={classNames.classes}>
           {classes.map((c) => (

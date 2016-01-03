@@ -6,6 +6,7 @@ import _ from 'lodash';
 import { loading, getClass, clearClass } from '../actions';
 import ClassHeader from '../components/class-header';
 import ClassTabs from '../components/class-tabs';
+import { meta } from '../util/helmet';
 
 class Class extends Component {
 
@@ -37,10 +38,12 @@ class Class extends Component {
 
   render() {
     const { clazz } = this.props;
+    const classTitle = `${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`;
     return (
       <div>
         <Helmet
-          title={`${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`}
+          title={classTitle}
+          meta={meta(classTitle, clazz.description || `${classTitle} の写真や記録など`, clazz.header_image_url)}
         />
         {_.isEmpty(clazz) || this.renderClass(clazz)}
       </div>

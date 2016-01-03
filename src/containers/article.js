@@ -6,6 +6,7 @@ import Remarkable from 'remarkable';
 
 import { loading, getArticle, clearArticle } from '../actions';
 import useSheet from '../jss';
+import { meta } from '../util/helmet';
 
 const sheet = {
 };
@@ -32,8 +33,8 @@ class Article extends Component {
     });
     return (
       <div>
-        <Helmet
-          title={`${article.title} - Howto`}
+        <Helmet title={`${article.title} - Howto`}
+                meta={meta(article.title, `${article.body.substring(0, 180)}...`)}
         />
         <article dangerouslySetInnerHTML={{__html: md.render(article.body)}}/>
       </div>

@@ -8,6 +8,7 @@ import { loading, getFestivals } from '../actions';
 import FestivalThumbnail from '../components/festival-thumbnail';
 import useSheet from '../jss';
 import size from '../jss/size';
+import { meta } from '../util/helmet';
 
 const sheet = {
   thumbnails: {
@@ -39,10 +40,17 @@ class Gallery extends Component {
   render() {
     const { sheet, festivals } = this.props;
     const { classes } = sheet;
+    const randomFestival = () => {
+      if (_.isEmpty(festivals)) {
+        return {};
+      } else {
+        return festivals[_.random(0, festivals.length - 1)];
+      }
+    };
     return (
       <div>
-        <Helmet
-          title="Gallery"
+        <Helmet title="Gallery"
+                meta={meta('Gallery', '行灯ギャラリー', randomFestival().thumbnail_url)}
         />
         <ul className={classes.thumbnails}>
           {festivals.map((fes) =>

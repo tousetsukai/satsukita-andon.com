@@ -9,6 +9,7 @@ import Header from '../components/header';
 import size from '../jss/size';
 import Footer from '../components/footer';
 import { me } from '../actions';
+import { meta } from '../util/helmet';
 
 const sheet = {
   body: {
@@ -59,6 +60,7 @@ class App extends Component {
       <div className={classes.body}>
         <Helmet
           titleTemplate="%s - 行灯職人への道"
+          meta={meta()}
         />
         {progress()}
         <Header/>
