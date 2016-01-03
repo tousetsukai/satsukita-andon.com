@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import classnames from 'classnames';
 
 import useSheet from '../jss';
@@ -40,26 +41,29 @@ const sheet = {
 class ClassTabs extends React.Component {
 
   static propTypes = {
-    focus: React.PropTypes.string.isRequired,
+    tab: React.PropTypes.string.isRequired,
   }
 
   render() {
-    const { sheet, focus } = this.props;
+    const { sheet, clazz } = this.props;
+    const path = `/gallery/${clazz.times_ord}/${clazz.grade}-${clazz['class']}`;
+    const tabName = this.props.tab;
     const { classes } = sheet;
     const tabs = [
-      { id: '#basic', label: '基本情報' },
-      { id: '#reviews', label: '講評' },
-      { id: '#resources', label: '記事・資料' },
-      { id: '#images', label: '写真' },
-      { id: '#videos', label: '動画' },
-    ].map(({ id, label }) => {
-      const isActive = focus === id;
+      { tab: 'basic', label: '基本情報' },
+      { tab: 'reviews', label: '講評' },
+      { tab: 'resources', label: '記事・資料' },
+      { tab: 'images', label: '写真' },
+      { tab: 'videos', label: '動画' },
+    ].map(({ tab, label }) => {
+      const isActive = tabName === tab;
       return (
-        <li key={id}
+        <li key={tab}
             className={classnames({ [classes.tab]: true, [classes.activeTab]: isActive })}>
-          <a href={id} className={classnames({ [classes.text]: true, [classes.activeText]: isActive })}>
+          <Link to={{ pathname: path, query: { tab: tab } }}
+                className={classnames({ [classes.text]: true, [classes.activeText]: isActive })}>
             {label}
-          </a>
+          </Link>
         </li>
       );
     });

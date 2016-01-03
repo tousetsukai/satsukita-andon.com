@@ -26,13 +26,13 @@ class Class extends Component {
     }
   }
 
-  renderContent = (focus) => {
-    switch (focus) {
-    case '#basic':
+  renderContent = (tab) => {
+    switch (tab) {
+    case 'basic':
       return <ClassBasic/>;
-    case '#reviews':
+    case 'reviews':
       return <ClassReviews/>;
-    case '#images':
+    case 'images':
       return <ClassImages/>;
     default:
       return <ClassBasic/>;
@@ -41,12 +41,12 @@ class Class extends Component {
 
   renderClass = (clazz) => {
     const { location } = this.props;
-    const focus = location.hash || '#basic';
+    const tab = location.query.tab || 'basic';
     return (
       <div>
         <ClassHeader clazz={clazz}/>
-        <ClassTabs focus={focus}/>
-        {this.renderContent(focus)}
+        <ClassTabs tab={tab} clazz={clazz}/>
+        {this.renderContent(tab)}
       </div>
     );
   }
