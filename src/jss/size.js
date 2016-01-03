@@ -8,4 +8,5 @@ export default {
   pcWidth,
   homeLogoHeight: 400,
   contentsWidth: pcWidth - padding * 2,
+  classHeaderHeight: 260,
 };

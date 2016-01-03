@@ -4,8 +4,7 @@ import Helmet from 'react-helmet';
 import _ from 'lodash';
 
 import { loading, getClass, clearClass } from '../actions';
-
-import size from '../jss/size';
+import ClassHeader from '../components/class-header';
 
 class Class extends Component {
 
@@ -24,11 +23,9 @@ class Class extends Component {
   }
 
   renderClass = (clazz) => {
-    const headerImage = clazz.header_image_url || '/static/img/no-icon.svg';
     return (
       <div>
-        <img src={headerImage} width={size.contentsWidth}/>
-        <h1>{`${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`}</h1>
+        <ClassHeader clazz={clazz}/>
         <p>{JSON.stringify(clazz)}</p>
       </div>
     );
