@@ -1,6 +1,7 @@
 const initialState = {
   clazz: {},
   reviews: [],
+  images: [],
 };
 
 export function clazz(state = initialState, action) {
@@ -24,6 +25,16 @@ export function clazz(state = initialState, action) {
     return {
       ...state,
       reviews: [],
+    };
+  case 'class:images:set':
+    return {
+      ...state,
+      images: action.images,
+    };
+  case 'class:images:clear':
+    return {
+      ...state,
+      images: [],
     };
   default:
     return state;

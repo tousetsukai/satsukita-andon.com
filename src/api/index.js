@@ -12,6 +12,7 @@ export default {
   getClasses: (params) => api.get('/classes', { params }),
   getClass: (classId) => api.get(`/classes/${classId}`),
   getReviews: (classId) => api.get(`/classes/${classId}/reviews`),
+  getImages: (classId) => api.get(`/classes/${classId}/images`),
   getArticles: (params) => api.get('/articles', { params }),
   getArticle: (id) => api.get(`/articles/${id}`),
   getUser: (token) => api.get('/auth/me', {

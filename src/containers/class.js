@@ -8,6 +8,7 @@ import ClassHeader from '../components/class-header';
 import ClassTabs from '../components/class-tabs';
 import ClassBasic from './class-basic';
 import ClassReviews from './class-reviews';
+import ClassImages from './class-images';
 
 class Class extends Component {
 
@@ -31,6 +32,8 @@ class Class extends Component {
       return <ClassBasic/>;
     case '#reviews':
       return <ClassReviews/>;
+    case '#images':
+      return <ClassImages/>;
     default:
       return <ClassBasic/>;
     }

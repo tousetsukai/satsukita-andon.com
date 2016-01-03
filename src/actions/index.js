@@ -67,6 +67,17 @@ export const clearReviews = (dispatch) => {
   return Promise.resolve(true);
 };
 
+export const getImages = (classId) => (dispatch) => api.getImages(classId)
+  .then(res => dispatch({ type: 'class:images:set', images: res.data.items }))
+  .catch(res => {
+    return showError(res.data.code, '講評を取得できませんでした。')(dispatch);
+  });
+
+export const clearImages = (dispatch) => {
+  dispatch({ type: 'class:images:clear' });
+  return Promise.resolve(true);
+};
+
 export const getTimesClasses = (times) => (dispatch) => api.getClasses({ times, limit: 50 })
   .then(res => {
     dispatch({ type: 'times:set', classes: res.data.items });
