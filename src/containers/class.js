@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { loading, getClass, clearClass } from '../actions';
 import ClassHeader from '../components/class-header';
+import ClassTabs from '../components/class-tabs';
 
 class Class extends Component {
 
@@ -23,9 +24,12 @@ class Class extends Component {
   }
 
   renderClass = (clazz) => {
+    const { location } = this.props;
+    const focus = location.hash || '#basic';
     return (
       <div>
         <ClassHeader clazz={clazz}/>
+        <ClassTabs focus={focus}/>
         <p>{JSON.stringify(clazz)}</p>
       </div>
     );
