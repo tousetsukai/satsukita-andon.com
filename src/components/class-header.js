@@ -20,7 +20,7 @@ const sheet = {
     width: '100%',
     bottom: 0,
     left: 0,
-    padding: '40px 10px 10px',
+    padding: '40px 20px 10px',
     'background': 'linear-gradient(top, transparent 0%, black 100%)',
   },
   headerImage: {
@@ -56,7 +56,7 @@ const sheet = {
     'border-radius': '10px',
     'margin-top': '-6px',
     padding: '4px 18px',
-    'margin-right': '20px',
+    'margin-left': '20px',
   },
 };
 
