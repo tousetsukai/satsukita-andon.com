@@ -30,7 +30,7 @@ class Class extends Component {
       <div>
         <ClassHeader clazz={clazz}/>
         <ClassTabs focus={focus}/>
-        <p>{JSON.stringify(clazz)}</p>
+        {this.props.children}
       </div>
     );
   }
