@@ -24,21 +24,39 @@ const sheet = {
     'background': 'linear-gradient(top, transparent 0%, black 100%)',
   },
   headerImage: {
+    // ref: http://deerest.co/2015/10/22/css3-img-center-trimming/
     position: 'relative',
     top: '50%',
     left: '50%',
     width: '100%',
     height: 'auto',
-    transform: 'translate(-50%, -50%)', // a little bit up
+    transform: 'translate(-50%, -50%)',
     'z-index': '-1',
   },
   id: {
     color: color.text,
     'font-size': 20,
   },
+  titlePrize: {
+    display: 'flex',
+    'justify-content': 'space-between',
+  },
   title: {
     color: color.text,
     'font-size': 40,
+  },
+  prizes: {
+    'font-size': 40,
+    '& li': {
+      'list-style-type': 'none',
+    },
+  },
+  prize: {
+    border: '2px solid',
+    'border-radius': '10px',
+    'margin-top': '-6px',
+    padding: '4px 16px',
+    'margin-right': '20px',
   },
 };
 
@@ -65,7 +83,19 @@ class ClassHeader extends React.Component {
         {children}
         <div className={classes.titleWrapper}>
           <p className={classes.id}>{classIdJa}</p>
-          <p className={classes.title}>{clazz.title}</p>
+          <div className={classes.titlePrize}>
+            <p className={classes.title}>{clazz.title}</p>
+            <ul className={classes.prizes}>
+              {clazz.prizes.map((prize) => (
+                 <li key={prize.code}>
+                   <p style={{color: `#${prize.color}`, borderColor: `#${prize.color}`}}
+                      className={classes.prize}>
+                     {prize.label}
+                   </p>
+                 </li>
+               ))}
+            </ul>
+          </div>
         </div>
       </div>
     );
