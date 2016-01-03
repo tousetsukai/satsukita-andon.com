@@ -1,11 +1,35 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import ImageLoader from 'react-imageloader';
 
 import { loading, getImages, clearImages } from '../actions';
 import useSheet from '../jss';
+import size from '../jss/size';
 
 const sheet = {
+  images: {
+    display: 'flex',
+    'flex-flow': 'wrap',
+    'justify-content': 'space-around',
+    '& li': {
+      'list-style-type': 'none',
+    },
+  },
+  imageWrapper: {
+    position: 'relative',
+    overflow: 'hidden',
+    width: size.contentsWidth / 4,
+    height: size.contentsWidth / 4 * (3 / 4),
+  },
+  image: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    'max-width': '100%',
+    'max-height': '100%',
+    transform: 'translate(-50%, -50%)',
+  },
 };
 
 class ClassImages extends Component {
@@ -32,13 +56,20 @@ class ClassImages extends Component {
   }
 
   render() {
-    const { images } = this.props;
+    const { sheet, images } = this.props;
+    const { classes } = sheet;
     return (
-      <ul>
+      <ul className={classes.images}>
         {images.map((image) => (
            <li key={image.id}>
              <a href={image.fullsizeUrl}>
-               <img src={image.thumbnailUrl}/>
+               <ImageLoader className={classes.imageWrapper}
+                            wrapper={React.DOM.div}
+                            src={image.thumbnailUrl}
+                            imgProps={{className: classes.image}}
+                            preloader={() => <img src="/static/img/loading.gif"/>}>
+                 画像を読み込めませんでした
+               </ImageLoader>
              </a>
            </li>
          ))}
