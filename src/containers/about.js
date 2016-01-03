@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import Remarkable from 'remarkable';
 
 import { loading, getFixedContent } from '../actions';
 
@@ -18,12 +19,16 @@ class About extends Component {
   }
 
   render() {
+    const md = new Remarkable({
+      html: true,
+      linkify: true,
+    });
     return (
       <div>
         <Helmet
           title="About"
         />
-        <p>{this.props.about.body}</p>
+        <article dangerouslySetInnerHTML={{__html: md.render(this.props.about.body)}}></article>
       </div>
     );
   }

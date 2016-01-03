@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import Remarkable from 'remarkable';
 
 import { loading, getFixedContent } from '../actions';
 import useSheet from '../jss';
@@ -39,6 +40,10 @@ class Home extends Component {
   render() {
     const { sheet, topNews } = this.props;
     const { classes } = sheet;
+    const md = new Remarkable({
+      html: true,
+      linkify: true,
+    });
     return (
       <div>
         <Helmet
@@ -50,7 +55,7 @@ class Home extends Component {
           <img className={classes.logo} src="/static/img/logo.png"/>
         </div>
         <h3>News</h3>
-        <p dangerouslySetInnerHTML={{__html: topNews.body}}></p>
+        <article dangerouslySetInnerHTML={{__html: md.render(topNews.body)}}></article>
       </div>
     );
   }
