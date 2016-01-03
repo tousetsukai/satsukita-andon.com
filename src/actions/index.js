@@ -34,6 +34,13 @@ export const getTopNews = (dispatch) => api.getTopNews()
   })
   .catch(res => showError(res.data.code, 'トップニュースを取得できませんでした。')(dispatch));
 
+export const getFixedContent = (type) => (dispatch) => api.getFixedContent(type)
+  .then(res => {
+    dispatch({ type: `contents:${type}:set`, content: res.data });
+    return true;
+  })
+  .catch(res => showError(res.data.code, '内容を取得できませんでした。')(dispatch));
+
 export const getFestivals = (dispatch) => api.getFestivals()
   .then(res => {
     dispatch({ type: 'festivals:set', festivals: res.data.items });

@@ -6,6 +6,7 @@ const api = axios.create({
 });
 
 export default {
+  getFixedContent: (type) => api.get(`/contents/${type}`),
   getFestivals: () => api.get('/festivals'),
   getTopNews: () => api.get('/contents/news'),
   getClasses: (params) => api.get('/classes', { params }),

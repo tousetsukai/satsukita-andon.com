@@ -5,6 +5,8 @@ import _ from 'lodash';
 
 import { loading, getClass, clearClass } from '../actions';
 
+import size from '../jss/size';
+
 class Class extends Component {
 
   static fetchData({ params, dispatch }) {
@@ -25,8 +27,8 @@ class Class extends Component {
     const headerImage = clazz.header_image_url || '/static/img/no-icon.svg';
     return (
       <div>
+        <img src={headerImage} width={size.contentsWidth}/>
         <h1>{`${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`}</h1>
-        <img src={headerImage}/>
         <p>{JSON.stringify(clazz)}</p>
       </div>
     );
