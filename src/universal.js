@@ -14,6 +14,7 @@ export const routes = (
     <Route path="gallery" component={C.Gallery}/>
     <Route path="gallery/:times" component={C.Times}/>
     <Route path="gallery/:times/:clazz" component={C.Class}/>
+    <Route path="howto" component={C.Howto}/>
     <Route path="about" component={C.About}/>
     <Route path="signin" component={C.Signin}/>
     <Route path="*" component={C.NotFound}/>

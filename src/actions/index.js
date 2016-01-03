@@ -74,6 +74,12 @@ export const clearTimesClasses = (dispatch) => {
   return Promise.resolve(true);
 };
 
+export const getArticles = (params) => (dispatch) => api.getArticles(params)
+  .then(res => {
+    dispatch({ type: 'articles:set', articles: res.data.items });
+    return true;
+  }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+
 export const me = (token) => (dispatch) => api.getUser(token)
   .then(res => {
     dispatch({ type: 'app:user:set', user: res.data });
