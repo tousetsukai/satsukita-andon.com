@@ -13,6 +13,7 @@ const sheet = {
     height: size.classHeaderHeight,
     overflow: 'hidden',
     position: 'relative',
+    'box-shadow': '0 0 50px 10px black inset',
   },
   titleWrapper: {
     position: 'absolute',
@@ -23,12 +24,13 @@ const sheet = {
     'background': 'linear-gradient(top, transparent 0%, black 100%)',
   },
   headerImage: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    margin: 'auto',
+    position: 'relative',
+    top: '50%',
+    left: '50%',
+    width: '100%',
+    height: 'auto',
+    transform: 'translate(-50%, -50%)', // a little bit up
+    'z-index': '-1',
   },
   id: {
     color: color.text,
@@ -71,7 +73,7 @@ class ClassHeader extends React.Component {
       <ImageLoader className={classes.header}
                    wrapper={wrap}
                    src={headerImage}
-                   imgProps={{className: classes.headerImage, width: size.contentsWidth}}
+                   imgProps={{className: classes.headerImage}}
                    preloader={() => <img className={classes.center} src="/static/img/loading.gif"/>}>
         oops!
       </ImageLoader>
