@@ -1,6 +1,7 @@
 var nodes = [
   'font-awesome',
-  'react-progress-bar-plus'
+  'react-progress-bar-plus',
+  'normalize.css'
 ];
 var bowers = [
   'elemental'
