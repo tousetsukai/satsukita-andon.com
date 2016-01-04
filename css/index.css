@@ -1,2 +1,3 @@
 @import "./global";
+@import "./containers/index";
 @import "./components/index";

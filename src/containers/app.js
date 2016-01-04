@@ -4,30 +4,10 @@ import Helmet from 'react-helmet';
 import { Alert } from 'elemental';
 import ProgressBar from 'react-progress-bar-plus';
 
-import useSheet from '../jss';
 import Header from '../components/header';
-import size from '../jss/size';
 import Footer from '../components/footer';
 import { me } from '../actions';
 import { meta } from '../util/helmet';
-
-const sheet = {
-  body: {
-    'padding-bottom': 100,
-  },
-  container: {
-    margin: `${size.headerHeight + 10}px auto 0`,
-    padding: `0 ${size.padding}px`,
-  },
-  center: {
-    margin: 'auto',
-  },
-  [`@media (min-width: ${size.pcWidth}px)`]: {
-    container: {
-      width: size.pcWidth,
-    },
-  },
-};
 
 class App extends Component {
 
@@ -50,21 +30,19 @@ class App extends Component {
   }
 
   render() {
-    const { sheet } = this.props;
-    const { classes } = sheet;
     const progress = () => {
       const p = this.props.loading ? 0 : 100;
       return <ProgressBar autoIncrement={true} percent={p} intervalTime={100}/>;
     };
     return (
-      <div className={classes.body}>
+      <div className="app-wrapper">
         <Helmet
           titleTemplate="%s - 行灯職人への道"
           meta={meta()}
         />
         {progress()}
         <Header/>
-        <div className={classes.container}>
+        <div className="container">
           {this.props.showingError && <Alert type="danger">{this.props.error.message}</Alert>}
           {this.props.children}
         </div>
@@ -81,4 +59,4 @@ export default connect(
     showingError: state.app.showingError,
     loading: state.app.loading,
   })
-)(useSheet(App, sheet));
+)(App);
