@@ -3,8 +3,6 @@ var webpack = require('webpack');
 var packagedef = require('./package.json');
 
 module.exports = {
-  progress: true,
-  color: true,
   devtool: 'source-map',
   entry: {
     app: './src/client.js',
@@ -27,7 +25,9 @@ module.exports = {
     }]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+    }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
   ]
 };
