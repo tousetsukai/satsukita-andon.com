@@ -1,0 +1,68 @@
+@import "../color";
+@import "../size";
+@import "../util/ghost-button";
+@import "../util/reset";
+
+$logoMargin: 3px;
+
+.header {
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: 0.1s linear;
+  height: $headerHeight;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 1);
+  z-index: 10000;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  .header-wrapper {
+    margin: auto;
+    padding: 0 8px;
+    display: flex;
+    justify-content: space-between;
+    .header-left {
+      @mixin no-margin;
+      display: flex;
+      align-items: center;
+      height: $headerHeight;
+      li {
+        list-style-type: none;
+        h1 { /* to reset elemental.css */
+          font-size: 0;
+          margin: 0;
+          .logo {
+            height: calc($headerHeight - $logoMargin * 2);
+          }
+        }
+        .menu-link {
+          font-size: calc($headerHeight / 3);
+          color: $text;
+          text-decoration: none;
+          margin-left: 30px;
+          &:hover, &:focus {
+            text-decoration: none;
+            color: $theme;
+          }
+        }
+      }
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      height: $headerHeight;
+      .menu-button {
+        @mixin ghost-button $green, $text;
+        font-size: calc($headerHeight / 3.4);
+        margin-left: 14px;
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    .header-wrapper {
+      width: 1024px;
+    }
+  }
+}
