@@ -1,0 +1,44 @@
+@import "../size";
+@import "../color";
+
+$fontSize: 12px;
+
+.footer {
+  height: $footerHeight;
+  width: 100%;
+  background-color: #06060a;
+  position: absolute;
+  bottom: 0;
+  color: $gray;
+  font-size: $fontSize;
+  .footer-wrapper {
+    margin: auto;
+    height: $footerHeight;
+    padding: 0 $padding 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .footer-left {
+      padding: 0;
+      display: flex;
+      li {
+        list-style-type: none;
+        margin-right: 12px;
+        .footer-link {
+          text-decoration: none;
+          color: $gray;
+          &:hover,
+          &:focus {
+            text-decoration: none;
+            color: $theme;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: $pcWidth) {
+    .footer-wrapper {
+      width: $pcWidth;
+    }
+  }
+}
