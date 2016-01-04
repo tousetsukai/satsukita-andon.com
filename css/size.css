@@ -1,0 +1,7 @@
+$pcWidth: 1024px;
+$padding: 8px;
+$headerHeight: 50px;
+$footerHeight: 70px;
+$homeLogoHeight: 400px;
+$contentsWidth: calc($pcWidth - $padding * 2);
+$classHeaderHeight: 260px;
