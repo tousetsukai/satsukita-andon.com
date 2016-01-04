@@ -27,7 +27,7 @@ const renderFullPage = (head, html, state) => {
         <link rel="stylesheet" href="/static/lib/font-awesome/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" href="/static/lib/elemental/elemental.css" type="text/css">
         <link rel="stylesheet" href="/static/lib/react-progress-bar-plus/dist/progress-bar.css" type="text/css">
-        <link rel="stylesheet" href="/static/css/global.css" type="text/css">
+        <link rel="stylesheet" href="/static/bundle.css" type="text/css">
       </head>
       <body>
         <div id="app">${html}</div>

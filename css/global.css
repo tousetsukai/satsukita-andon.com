@@ -1,7 +1,7 @@
 /* http://coliss.com/articles/build-websites/operation/css/css-simple-sticky-footer-by-melissa.html */
 html {
-    min-height: 100%;
-    position: relative;
+  min-height: 100%;
+  position: relative;
 }
 
 body {
