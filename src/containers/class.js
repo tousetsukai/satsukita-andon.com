@@ -40,7 +40,7 @@ class Class extends Component {
     const { clazz } = this.props;
     const classTitle = `${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`;
     return (
-      <div className="padding-container">
+      <div>
         <Helmet
           title={classTitle}
           meta={meta(classTitle, clazz.description || `${classTitle} の写真や記録など`, clazz.header_image_url)}

@@ -21,7 +21,8 @@ class Header extends Component {
         </div>
       );
     } else {
-      return <UserDropdown/>;
+      return <div className="header-loggedin"><UserDropdown/></div>;
+
     }
   }
 

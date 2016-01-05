@@ -3,10 +3,6 @@
 .class-thumbnail {
   position: relative;
   transition: 0.2s linear;
-  &:hover {
-    box-shadow: 0 0 20px 3px black;
-    z-index: 10;
-  }
   .class-image {
     width: 100%;
   }
