@@ -9,7 +9,6 @@
   .class-tab {
     list-style-type: none;
     display: block;
-    width: 120%;
   }
   .class-tab-active {
     border-bottom: 3px solid;
@@ -21,10 +20,15 @@
     color: $text;
     width: 100%;
     text-align: center;
-    font-size: 16px;
     &:hover, &:focus {
       color: $theme;
       text-decoration: none;
+    }
+    @media (max-width: 499px) {
+      font-size: 14px;
+    }
+    @media (min-width: 500px) {
+      font-size: 16px;
     }
   }
   .class-text-active {
