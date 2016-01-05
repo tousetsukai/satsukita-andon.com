@@ -9,7 +9,7 @@
   .class-tab {
     list-style-type: none;
     display: block;
-    width: 120px;
+    width: 120%;
   }
   .class-tab-active {
     border-bottom: 3px solid;
@@ -22,7 +22,7 @@
     width: 100%;
     text-align: center;
     font-size: 16px;
-    &:hover, &:focus: {
+    &:hover, &:focus {
       color: $theme;
       text-decoration: none;
     }

@@ -1,11 +1,6 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 
-import useSheet from '../jss';
-
-const sheet = {
-};
-
 class ClassBasic extends Component {
 
   static propTypes = {
@@ -32,16 +27,14 @@ class ClassBasic extends Component {
           <dd>{clazz.title}</dd>
           <dt>紹介文</dt>
           <dd>{clazz.description}</dd>
-          <dt>debug</dt>
-          <dd>{JSON.stringify(clazz)}</dd>
         </dl>
       </div>
     );
   }
 }
 
-export default useSheet(connect(
+export default connect(
   state => ({
     clazz: state.clazz.clazz,
   })
-)(ClassBasic), sheet);
+)(ClassBasic);
