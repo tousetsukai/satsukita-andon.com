@@ -50,7 +50,7 @@
     "redux-thunk": "^1.0.2",
     "remarkable": "^1.6.1",
     "serialize-javascript": "^1.1.2"
-84;0;0c  },
+  },
   "devDependencies": {
     "autoprefixer": "^6.2.3",
     "babel-core": "^6.3.26",
