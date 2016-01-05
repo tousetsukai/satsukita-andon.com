@@ -2,7 +2,7 @@
 @import "../color";
 
 .class-header {
-  width: $contentsWidth;
+  width: 100%;
   height: $classHeaderHeight;
   overflow: hidden;
   position: relative;
