@@ -6,6 +6,7 @@ import Remarkable from 'remarkable';
 
 import { loading, getArticle, clearArticle } from '../actions';
 import { meta } from '../util/helmet';
+import f from '../util/f';
 
 class Article extends Component {
 
@@ -30,7 +31,7 @@ class Article extends Component {
     return (
       <div>
         <Helmet title={`${article.title} - Howto`}
-                meta={meta(article.title, `${article.body.substring(0, 180)}...`)}
+                meta={meta(article.title, `${f.map(article.body, (b) => b.substring(0, 180))}...`)}
         />
         <article dangerouslySetInnerHTML={{__html: md.render(article.body)}}/>
       </div>
