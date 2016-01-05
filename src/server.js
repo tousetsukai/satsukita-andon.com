@@ -20,7 +20,7 @@ const renderFullPage = (head, html, state) => {
         ${head.title.toString()}
         ${head.meta.toString()}
         <link rel="shortcut icon" href="/static/favicon.ico">
-        <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=0.5,user-scalable=yes,initial-scale=1.0">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@andon_bot">
         <link rel="stylesheet" href="/static/lib/normalize.css/normalize.css" type="text/css">
