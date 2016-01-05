@@ -42,7 +42,7 @@ class ClassImages extends Component {
   }
 
   handleScroll = (ev) => {
-    if (window.innerHeight + ev.srcElement.body.scrollTop >= document.body.offsetHeight) {
+    if (window.innerHeight + ev.srcElement.body.scrollTop >= document.body.offsetHeight - 100) { // 100 is about footer size
       const { clazz, dispatch, count, allCount } = this.props;
       if (!this.props.loading && count < allCount) {
         const classId = `${clazz.times_ord}${clazz.grade}-${clazz['class']}`;

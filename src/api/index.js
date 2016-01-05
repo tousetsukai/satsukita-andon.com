@@ -15,7 +15,7 @@ export default {
   getImages: (classId, offset) => api.get(`/classes/${classId}/images`, {
     params: {
       offset: offset,
-      limit: 36,
+      limit: 24,
     },
   }),
   getArticles: (params) => api.get('/articles', { params }),
