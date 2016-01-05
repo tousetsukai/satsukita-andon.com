@@ -15,30 +15,35 @@ $fontSize: 12px;
     margin: auto;
     height: $footerHeight;
     padding: 0 $padding 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @media (max-width: 599px) {
+      width: 100%;
+      text-align: center;
+      padding-top: 2px;
+    }
+    @media (min-width: 600px) and (max-width: 1023px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    @media (min-width: 1024px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1024px;
+    }
+
     .footer-left {
       padding: 0;
-      display: flex;
-      li {
-        list-style-type: none;
-        margin-right: 12px;
-        .footer-link {
+      .footer-link {
+        text-decoration: none;
+        color: $gray;
+        &:hover,
+        &:focus {
           text-decoration: none;
-          color: $gray;
-          &:hover,
-          &:focus {
-            text-decoration: none;
-            color: $theme;
-          }
+          color: $theme;
         }
       }
-    }
-  }
-  @media (min-width: $pcWidth) {
-    .footer-wrapper {
-      width: $pcWidth;
     }
   }
 }

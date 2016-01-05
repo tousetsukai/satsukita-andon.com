@@ -12,3 +12,7 @@ body {
 .react-progress-bar-spinner {
   display: none;
 }
+
+.space {
+  white-space: pre;
+}
