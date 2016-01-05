@@ -1,0 +1,25 @@
+.class-images {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  li {
+    list-style-type: none;
+    padding: 2px;
+    @media (max-width: 599px) {
+      width: 50%;
+    }
+    @media (min-width: 600px) and (max-width: 1023px) {
+      width: 33.3%;
+    }
+    @media (min-width: 1024px) {
+      width: 25%;
+    }
+    .class-image-wrapper {
+      .class-image {
+        width: 100%;
+      }
+    }
+  }
+}

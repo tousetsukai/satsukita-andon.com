@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { loading, getReviews, clearReviews } from '../actions';
-import useSheet from '../jss';
-
-const sheet = {
-};
 
 class ClassReviews extends Component {
 
@@ -45,9 +41,9 @@ class ClassReviews extends Component {
   }
 }
 
-export default useSheet(connect(
+export default connect(
   state => ({
     clazz: state.clazz.clazz,
     reviews: state.clazz.reviews,
   })
-)(ClassReviews), sheet);
+)(ClassReviews);
