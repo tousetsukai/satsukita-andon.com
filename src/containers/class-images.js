@@ -2,6 +2,7 @@ import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ImageLoader from 'react-imageloader';
+import classnames from 'classnames';
 
 import { loading, getImages, clearImages } from '../actions';
 
@@ -41,7 +42,7 @@ class ClassImages extends Component {
   }
 
   handleScroll = (ev) => {
-    if (window.innerHeight + ev.srcElement.body.scrollTop >= document.body.offsetHeight * 0.9) {
+    if (window.innerHeight + ev.srcElement.body.scrollTop >= document.body.offsetHeight) {
       const { clazz, dispatch, count, allCount } = this.props;
       if (!this.props.loading && count < allCount) {
         const classId = `${clazz.times_ord}${clazz.grade}-${clazz['class']}`;
@@ -60,19 +61,27 @@ class ClassImages extends Component {
       );
     };
     return (
-      <ul className="class-images">
-        {images.map((image) => (
-           <li key={image.id}>
-             <ImageLoader className="class-image-wrapper"
-                          wrapper={wrap(image)}
-                          src={image.thumbnailUrl}
-                          imgProps={{className: 'class-image'}}
-                          preloader={() => <img src="/static/img/loading.gif"/>}>
-               画像を読み込めませんでした
-             </ImageLoader>
-           </li>
-         ))}
-      </ul>
+      <div>
+        <ul className="class-images">
+          {images.map((image) => (
+             <li key={image.id}>
+               <ImageLoader className="class-image-wrapper"
+                            wrapper={wrap(image)}
+                            src={image.thumbnailUrl}
+                            imgProps={{className: 'class-image'}}
+                            preloader={() => <img src="/static/img/loading.gif"/>}>
+                 画像を読み込めませんでした
+               </ImageLoader>
+             </li>
+           ))}
+        </ul>
+        <p className={classnames({
+          'class-image-not-loading': !this.props.loading,
+          'class-image-loading': this.props.loading,
+        })}>
+          loading...
+        </p>
+      </div>
     );
   }
 }
