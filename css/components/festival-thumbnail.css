@@ -3,6 +3,7 @@
 .festival-thumbnail {
   position: relative;
   transition: 0.2s linear;
+  width: 100%;
   &:hover {
     box-shadow: 0 0 20px 3px black;
     z-index: 10;
@@ -10,45 +11,69 @@
   .times {
     color: $text;
     position: absolute;
-    top: 35px;
+    top: 15%;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
     text-align: center;
-    font-size: 24px;
     font-weight: lighter;
     text-shadow: 0 0 3px black;
+    @media (max-width: 599px) {
+      font-size: 4.2vw;
+    }
+    @media (min-width: 600px) and (max-width: 1023px) {
+      font-size: 2.7vw;
+    }
+    @media (min-width: 1024px) {
+      font-size: 24px;
+    }
   }
   .theme {
     color: $text;
     position: absolute;
-    top: 60px;
+    top: 30%;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
     text-align: center;
-    font-size: 54px;
     text-shadow: 0 0 7px black;
+    @media (max-width: 599px) {
+      font-size: 10vw;
+    }
+    @media (min-width: 600px) and (max-width: 1023px) {
+      font-size: 7vw;
+    }
+    @media (min-width: 1024px) {
+      font-size: 54px;
+    }
   }
   .roman {
     color: $text;
     position: absolute;
-    top: 125px;
+    top: 67%;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
     text-align: center;
-    font-size: 24px;
     font-weight: lighter;
     text-shadow: 0 0 3px black;
+    @media (max-width: 599px) {
+      font-size: 4.2vw;
+    }
+    @media (min-width: 600px) and (max-width: 1023px) {
+      font-size: 2.7vw;
+    }
+    @media (min-width: 1024px) {
+      font-size: 24px;
+    }
   }
   .image-normal {
     transition: 0.2s linear;
     width: 100%;
-    height: calc($contentsWidth / 4 * (3 / 4));
+    height: auto;
     filter: blur(2px);
     object-fit: cover;
   }
