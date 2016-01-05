@@ -14,10 +14,12 @@ class Header extends Component {
     const user = this.context.user;
 
     if (_.isEmpty(user)) {
-      return [
-        <Link key={0} className="menu-button" to="/signup">新規登録</Link>,
-        <Link key={1} className="menu-button" to="/signin">ログイン</Link>,
-      ];
+      return (
+        <div className="header-not-loggedin">
+          <Link className="menu-button signup" to="/signup">新規登録</Link>
+          <Link className="menu-button signin" to="/signin">ログイン</Link>
+        </div>
+      );
     } else {
       return <UserDropdown/>;
     }

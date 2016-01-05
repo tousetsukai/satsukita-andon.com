@@ -3,8 +3,6 @@
 @import "../util/ghost-button";
 @import "../util/reset";
 
-$logoMargin: 3px;
-
 .header {
   background-color: rgba(0, 0, 0, 0.6);
   transition: 0.1s linear;
@@ -75,19 +73,29 @@ $logoMargin: 3px;
         }
       }
     }
+
     .header-right {
-      display: flex;
-      align-items: center;
       height: 100%;
-      .menu-button {
-        @mixin ghost-button $green, $text;
+      .header-not-loggedin {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        .menu-button {
+          @mixin ghost-button $green, $text;
+        }
         @media (max-width: 499px) {
-          font-size: 13px;
-          margin-left: 10px;
+          .menu-button {
+            font-size: 13px;
+          }
+          .signup {
+            display: none;
+          }
         }
         @media (min-width: 500px) {
-          font-size: 16px;
-          margin-left: 14px;
+          .menu-button {
+            font-size: 16px;
+            margin-left: 14px;
+          }
         }
       }
     }
