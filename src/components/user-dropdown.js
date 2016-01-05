@@ -2,29 +2,7 @@ import React, { Component } from 'react';
 import { Dropdown } from 'elemental';
 import Cookies from 'js-cookie';
 
-import useSheet from '../jss';
-import color from '../jss/color';
-import Icon, { size as iconSize } from './icon';
-
-export const height = iconSize;
-export const fontSize = 14;
-
-const sheet = {
-  wrapper: {
-    display: 'flex',
-    'align-items': 'center',
-    height: iconSize,
-    cursor: 'pointer',
-  },
-  name: {
-    'font-size': fontSize,
-    'margin-left': 10,
-    color: color.text,
-    '&:hover': {
-      color: color.theme,
-    },
-  },
-};
+import Icon from './icon';
 
 class UserDropdown extends Component {
 
@@ -54,13 +32,11 @@ class UserDropdown extends Component {
   }
 
   render() {
-    const { sheet } = this.props;
-    const { classes } = sheet;
     const user = this.context.user;
     const icon = (
-      <div className={classes.wrapper}>
-        <Icon className={classes.icon} user={user}/>
-        <p className={classes.name}>
+      <div className="user-dropdown">
+        <Icon user={user}/>
+        <p className="name">
           {user.name}
           &nbsp;<i className="fa fa-caret-down"></i>
         </p>
@@ -76,4 +52,4 @@ class UserDropdown extends Component {
   }
 }
 
-export default useSheet(UserDropdown, sheet);
+export default UserDropdown;

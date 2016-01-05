@@ -3,16 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Form, FormField, FormInput } from 'elemental';
 
-import useSheet from '../jss';
-import color from '../jss/color';
-import { ghostButton } from '../jss/util';
 import { loading, signin } from '../actions';
-
-const sheet = {
-  submit: {
-    ...ghostButton(color.link, color.text),
-  },
-};
 
 class Signin extends Component {
 
@@ -74,11 +65,11 @@ class Signin extends Component {
                        onChange={this.onPasswordChange}
                        onKeyPress={this.submitIfEnter}/>
           </FormField>
-          <button className={this.props.sheet.classes.submit} type="button" onClick={this.onSubmit}>ログイン</button>
+          <button className="submit-button" type="button" onClick={this.onSubmit}>ログイン</button>
         </Form>
       </div>
     );
   }
 }
 
-export default useSheet(connect()(Signin), sheet);
+export default connect()(Signin);

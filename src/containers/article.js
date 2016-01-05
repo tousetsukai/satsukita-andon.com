@@ -5,11 +5,7 @@ import _ from 'lodash';
 import Remarkable from 'remarkable';
 
 import { loading, getArticle, clearArticle } from '../actions';
-import useSheet from '../jss';
 import { meta } from '../util/helmet';
-
-const sheet = {
-};
 
 class Article extends Component {
 
@@ -42,8 +38,8 @@ class Article extends Component {
   }
 }
 
-export default useSheet(connect(
+export default connect(
   state => ({
     article: state.howto.article,
   })
-)(Article), sheet);
+)(Article);

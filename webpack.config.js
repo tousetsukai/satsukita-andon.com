@@ -10,7 +10,8 @@ module.exports = {
       Object.keys(packagedef.dependencies),
       'express', 'cookie-parser',
       'babel-preset-es2015', 'babel-preset-react', 'babel-preset-stage-0',
-      'babel-register'
+      'babel-register',
+      'font-awesome', 'normalize.css'
     )
   },
   output: {

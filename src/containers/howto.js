@@ -5,10 +5,6 @@ import Helmet from 'react-helmet';
 import _ from 'lodash';
 
 import { loading, getArticles } from '../actions';
-import useSheet from '../jss';
-
-const sheet = {
-};
 
 class Howto extends Component {
 
@@ -43,8 +39,8 @@ class Howto extends Component {
   }
 }
 
-export default useSheet(connect(
+export default connect(
   state => ({
     articles: state.howto.articles,
   })
-)(Howto), sheet);
+)(Howto);

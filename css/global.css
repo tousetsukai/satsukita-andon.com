@@ -1,4 +1,5 @@
 @import "./color";
+@import "./util/ghost-button";
 
 /* http://coliss.com/articles/build-websites/operation/css/css-simple-sticky-footer-by-melissa.html */
 html {
@@ -21,4 +22,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: #888888;
+}
+
+.submit-button {
+  @mixin ghost-button $link, white;
 }

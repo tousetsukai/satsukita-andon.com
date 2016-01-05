@@ -1,17 +1,5 @@
 import React, { Component } from 'react';
 
-import useSheet from '../jss';
-
-export const size = 36;
-
-const sheet = {
-  icon: {
-    width: size,
-    height: size,
-    'border-radius': size / 2,
-  },
-};
-
 class Icon extends Component {
 
   static propTypes = {
@@ -25,13 +13,12 @@ class Icon extends Component {
   }
 
   render() {
-    const { sheet, user } = this.props;
-    const { classes } = sheet;
+    const { user } = this.props;
     const icon = user.icon_url ? user.icon_url : '/static/img/no-icon.svg';
     return (
-      <img className={classes.icon} src={icon} alt={user.name}/>
+      <img className="icon" src={icon} alt={user.name}/>
     );
   }
 }
 
-export default useSheet(Icon, sheet);
+export default Icon;
