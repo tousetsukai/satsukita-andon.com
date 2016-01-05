@@ -3,13 +3,20 @@
 .app-wrapper {
   padding-bottom: 100px;
   .container {
-    margin: calc($headerHeight + 10) auto 0;
     padding: 0;
-    @media (max-width: calc($pcWidth - 1)) {
+    /* for header height */
+    @media (max-width: 499px) {
+      margin: 40px auto 0;
+    }
+    @media (min-width: 500px) {
+      margin: 50px auto 0;
+    }
+    /* for width */
+    @media (max-width: 1023px) {
       width: 100%;
     }
-    @media (min-width: $pcWidth) {
-      width: $pcWidth;
+    @media (min-width: 1024px) {
+      width: 1024px;
     }
     .padding-container {
       padding: 0 $padding;

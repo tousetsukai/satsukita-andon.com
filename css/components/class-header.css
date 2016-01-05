@@ -3,7 +3,7 @@
 
 .class-header {
   width: 100%;
-  height: $classHeaderHeight;
+  min-height: $classHeaderHeight;
   overflow: hidden;
   position: relative;
   box-shadow: 0 0 50px 10px black inset;
@@ -18,14 +18,24 @@
     background: linear-gradient(180deg, transparent 0%, black 100%);
     .id {
       color: $text;
-      font-size: 20px;
       margin-top: 0;
       margin-bottom: 5px;
+      @media (max-width: 1023px) {
+        font-size: calc(12px + 0.9vw);
+      }
+      @media (min-width: 1024px) {
+        font-size: 20px;
+      }
     }
     .title-prize {
       display: flex;
       justify-content: space-between;
-      font-size: 40px;
+      @media (max-width: 1023px) {
+        font-size: calc(22px + 2.1vw);
+      }
+      @media (min-width: 1024px) {
+        font-size: 42px;
+      }
       .title {
         color: $text;
         margin: 0;
