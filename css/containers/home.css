@@ -1,8 +1,16 @@
 /* ref: http://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-inside-div */
 .home-logo-wrapper {
   width: 100%;
-  height: 400px;
   text-align: center;
+  @media (max-width: 499px) {
+    height: 180px;
+  }
+  @media (min-width: 500px) and (max-width: 699px) {
+    height: 280px;
+  }
+  @media (min-width: 700px) {
+    height: 400px;
+  }
 }
 .home-logo-helper {
   display: inline-block;
@@ -10,5 +18,6 @@
   vertical-align: middle;
 }
 .home-logo {
+  max-width: 80%;
   vertical-align: middle;
 }

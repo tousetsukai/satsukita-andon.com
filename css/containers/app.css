@@ -11,5 +11,8 @@
     @media (min-width: $pcWidth) {
       width: $pcWidth;
     }
+    .padding-container {
+      padding: 0 $padding;
+    }
   }
 }

@@ -25,7 +25,7 @@ class Home extends Component {
       linkify: true,
     });
     return (
-      <div>
+      <div className="padding-container">
         <Helmet
           title="行灯職人への道"
           titleTemplate="%s"
