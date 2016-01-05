@@ -1,3 +1,5 @@
+@import "./color";
+
 /* http://coliss.com/articles/build-websites/operation/css/css-simple-sticky-footer-by-melissa.html */
 html {
   min-height: 100%;
@@ -15,4 +17,8 @@ body {
 
 .space {
   white-space: pre;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #888888;
 }
