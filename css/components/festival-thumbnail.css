@@ -1,5 +1,36 @@
 @import "../color";
 
+@define-mixin fes-text $top, $small, $medium, $large {
+  color: $text;
+  position: absolute;
+  top: $top;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  @media (max-width: 599px) {
+    font-size: $small;
+  }
+  @media (min-width: 600px) and (max-width: 1023px) {
+    font-size: $medium;
+  }
+  @media (min-width: 1024px) {
+    font-size: $large;
+  }
+}
+
+@define-mixin fes-theme-text {
+  @mixin fes-text 30%, 10vw, 7vw, 54px;
+  text-shadow: 0 0 7px black;
+}
+
+@define-mixin fes-small-text $top {
+  @mixin fes-text $top, 4.2vw, 2.7vw, 24px;
+  font-weight: lighter;
+  text-shadow: 0 0 3px black;
+}
+
 .festival-thumbnail {
   position: relative;
   transition: 0.2s linear;
@@ -9,66 +40,13 @@
     z-index: 10;
   }
   .times {
-    color: $text;
-    position: absolute;
-    top: 15%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
-    font-weight: lighter;
-    text-shadow: 0 0 3px black;
-    @media (max-width: 599px) {
-      font-size: 4.2vw;
-    }
-    @media (min-width: 600px) and (max-width: 1023px) {
-      font-size: 2.7vw;
-    }
-    @media (min-width: 1024px) {
-      font-size: 24px;
-    }
+    @mixin fes-small-text 15%;
   }
   .theme {
-    color: $text;
-    position: absolute;
-    top: 30%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
-    text-shadow: 0 0 7px black;
-    @media (max-width: 599px) {
-      font-size: 10vw;
-    }
-    @media (min-width: 600px) and (max-width: 1023px) {
-      font-size: 7vw;
-    }
-    @media (min-width: 1024px) {
-      font-size: 54px;
-    }
+    @mixin fes-theme-text;
   }
   .roman {
-    color: $text;
-    position: absolute;
-    top: 67%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
-    font-weight: lighter;
-    text-shadow: 0 0 3px black;
-    @media (max-width: 599px) {
-      font-size: 4.2vw;
-    }
-    @media (min-width: 600px) and (max-width: 1023px) {
-      font-size: 2.7vw;
-    }
-    @media (min-width: 1024px) {
-      font-size: 24px;
-    }
+    @mixin fes-small-text 67%;
   }
   .image-normal {
     transition: 0.2s linear;
