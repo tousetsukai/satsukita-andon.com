@@ -6,24 +6,7 @@ import _ from 'lodash';
 
 import { loading, getFestivals } from '../actions';
 import FestivalThumbnail from '../components/festival-thumbnail';
-import useSheet from '../jss';
-import size from '../jss/size';
 import { meta } from '../util/helmet';
-
-const sheet = {
-  thumbnails: {
-    display: 'flex',
-    'flex-flow': 'wrap',
-    'align-items': 'center',
-    'justify-content': 'space-around',
-    '& li': {
-      margin: 0,
-      padding: 0,
-      'list-style-type': 'none',
-      width: size.contentsWidth / 4,
-    },
-  },
-};
 
 class Gallery extends Component {
 
@@ -38,8 +21,7 @@ class Gallery extends Component {
   }
 
   render() {
-    const { sheet, festivals } = this.props;
-    const { classes } = sheet;
+    const { festivals } = this.props;
     const randomFestival = () => {
       if (_.isEmpty(festivals)) {
         return {};
@@ -52,7 +34,7 @@ class Gallery extends Component {
         <Helmet title="Gallery"
                 meta={meta('Gallery', '行灯ギャラリー', randomFestival().thumbnail_url)}
         />
-        <ul className={classes.thumbnails}>
+        <ul className="festival-thumbnails">
           {festivals.map((fes) =>
             <li key={fes.times}>
               <Link to={`/gallery/${fes.times_ord}`}>
@@ -66,8 +48,8 @@ class Gallery extends Component {
   }
 }
 
-export default useSheet(connect(
+export default connect(
   state => ({
     festivals: state.gallery.festivals,
   })
-)(Gallery), sheet);
+)(Gallery);

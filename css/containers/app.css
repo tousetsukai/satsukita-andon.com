@@ -5,9 +5,10 @@
   .container {
     margin: calc($headerHeight + 10) auto 0;
     padding: 0 $padding;
-  }
-  @media (min-width: $pcWidth) {
-    .container {
+    @media (max-width: $pcWidth) {
+      width: 100%;
+    }
+    @media (min-width: $pcWidth) {
       width: $pcWidth;
     }
   }

@@ -1,0 +1,23 @@
+.festival-thumbnails {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    @media (max-width: 480px) {
+      width: 50%;
+    }
+    @media (min-width: 481px, max-width: 1023px) {
+      width: 33.3%;
+    }
+    @media (min-width: 1024px) {
+      width: 25%;
+    }
+  }
+}

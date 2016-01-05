@@ -5,3 +5,20 @@ $footerHeight: 70px;
 $homeLogoHeight: 400px;
 $contentsWidth: calc($pcWidth - $padding * 2);
 $classHeaderHeight: 260px;
+
+@define-mixin aspect-ratio $width, $height, $content {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: calc(($height / $width) * 100%);
+  }
+  > $content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

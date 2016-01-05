@@ -1,0 +1,58 @@
+@import "../color";
+
+.festival-thumbnail {
+  position: relative;
+  transition: 0.2s linear;
+  &:hover {
+    box-shadow: 0 0 20px 3px black;
+    z-index: 10;
+  }
+  .times {
+    color: $text;
+    position: absolute;
+    top: 35px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: lighter;
+    text-shadow: 0 0 3px black;
+  }
+  .theme {
+    color: $text;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 54px;
+    text-shadow: 0 0 7px black;
+  }
+  .roman {
+    color: $text;
+    position: absolute;
+    top: 125px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: lighter;
+    text-shadow: 0 0 3px black;
+  }
+  .image-normal {
+    transition: 0.2s linear;
+    width: 100%;
+    height: calc($contentsWidth / 4 * (3 / 4));
+    filter: blur(2px);
+    object-fit: cover;
+  }
+  .image-hover {
+    filter: blur(0px);
+  }
+}
