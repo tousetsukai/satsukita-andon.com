@@ -4,25 +4,8 @@ import Helmet from 'react-helmet';
 import _ from 'lodash';
 
 import { loading, getTimesClasses, clearTimesClasses } from '../actions';
-import useSheet from '../jss';
-import size from '../jss/size';
 import ClassThumbnail from '../components/class-thumbnail';
 import { meta } from '../util/helmet';
-
-const sheet = {
-  classes: {
-    display: 'flex',
-    'flex-flow': 'wrap',
-    'align-items': 'center',
-    'justify-content': 'space-around',
-    '& li': {
-      margin: 0,
-      padding: 0,
-      'list-style-type': 'none',
-      width: size.contentsWidth / 4,
-    },
-  },
-};
 
 class Times extends Component {
 
@@ -39,8 +22,7 @@ class Times extends Component {
   }
 
   render() {
-    const { params, sheet, classes } = this.props;
-    const classNames = sheet.classes;
+    const { params, classes } = this.props;
     const randomClass = () => {
       if (_.isEmpty(classes)) {
         return {};
@@ -53,7 +35,7 @@ class Times extends Component {
         <Helmet title={`Gallery ${params.times}`}
                 meta={meta(`Gallery ${params.times}`, `${params.times}行灯ギャラリー`, randomClass().thumbnail_url)}
         />
-        <ul className={classNames.classes}>
+        <ul className="times-classes">
           {classes.map((c) => (
              <li key={c.id}><ClassThumbnail clazz={c}/></li>
            ))
@@ -64,8 +46,8 @@ class Times extends Component {
   }
 }
 
-export default useSheet(connect(
+export default connect(
   state => ({
     classes: state.times.classes,
   })
-)(Times), sheet);
+)(Times);
