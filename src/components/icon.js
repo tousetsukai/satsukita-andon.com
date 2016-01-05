@@ -9,7 +9,6 @@ class Icon extends Component {
       name: React.PropTypes.string.isRequired,
       icon_url: React.PropTypes.string,
     }).isRequired,
-    sheet: React.PropTypes.object.isRequired,
   }
 
   render() {

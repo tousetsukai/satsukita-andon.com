@@ -11,11 +11,6 @@ class FestivalThumbnail extends React.Component {
       theme: T.string.isRequired,
       theme_roman: T.string.isRequired,
     }),
-    sheet: T.shape({
-      classes: T.shape({
-        thumbnail: T.string,
-      }),
-    }),
   }
 
   state = {
