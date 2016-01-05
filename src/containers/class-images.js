@@ -2,7 +2,6 @@ import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ImageLoader from 'react-imageloader';
-import Lightbox from 'react-images';
 import classnames from 'classnames';
 
 import { loading, getImages, clearImages } from '../actions';
@@ -90,10 +89,27 @@ class ClassImages extends Component {
         </a>
       );
     };
-    const lightboxImages = images.map(image => ({
-      src: image.fullsize_url,
-      caption: `taken by ${image.user.login}`,
-    }));
+    // workaround for server-side react-images
+    // this will be removed by next release of react-images
+    const lightbox = () => {
+      if (typeof document === 'undefined') {
+        return undefined;
+      } else {
+        const lightboxImages = images.map(image => ({
+          src: image.fullsize_url,
+          caption: `taken by ${image.user.login}`,
+        }));
+        const Lightbox = require('react-images');
+        return <Lightbox currentImage={this.state.currentImage}
+                         images={lightboxImages}
+                         isOpen={this.state.lightboxIsOpen}
+                         onClickPrev={this.gotoPrev}
+                         onClickNext={this.gotoNext}
+                         onClose={this.closeLightbox}
+                         height={1500}
+                         width={2000}/>;
+      }
+    };
     return (
       <div>
         <ul className="class-images">
@@ -109,14 +125,7 @@ class ClassImages extends Component {
              </li>
            ))}
         </ul>
-        <Lightbox currentImage={this.state.currentImage}
-                  images={lightboxImages}
-                  isOpen={this.state.lightboxIsOpen}
-                  onClickPrev={this.gotoPrev}
-                  onClickNext={this.gotoNext}
-                  onClose={this.closeLightbox}
-                  height={1500}
-                  width={2000}/>
+        {lightbox()}
         <p className={classnames({
           'class-image-not-loading': !this.props.loading,
           'class-image-loading': this.props.loading,
