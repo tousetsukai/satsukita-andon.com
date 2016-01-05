@@ -35,10 +35,6 @@
   position: relative;
   transition: 0.2s linear;
   width: 100%;
-  &:hover {
-    box-shadow: 0 0 20px 3px black;
-    z-index: 10;
-  }
   .times {
     @mixin fes-small-text 15%;
   }
@@ -52,10 +48,10 @@
     transition: 0.2s linear;
     width: 100%;
     height: auto;
-    filter: blur(2px);
+    filter: brightness(0.5);
     object-fit: cover;
   }
   .image-hover {
-    filter: blur(0px);
+    filter: brightness(1.0);
   }
 }
