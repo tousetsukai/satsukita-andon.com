@@ -2,6 +2,8 @@ const initialState = {
   clazz: {},
   reviews: [],
   images: [],
+  imageCount: 0,
+  allImageCount: 0,
 };
 
 export function clazz(state = initialState, action) {
@@ -26,15 +28,19 @@ export function clazz(state = initialState, action) {
       ...state,
       reviews: [],
     };
-  case 'class:images:set':
+  case 'class:images:append':
     return {
       ...state,
-      images: action.images,
+      images: state.images.concat(action.imageItems.items),
+      imageCount: state.imageCount + action.imageItems.count,
+      allImageCount: action.imageItems.all_count,
     };
   case 'class:images:clear':
     return {
       ...state,
       images: [],
+      imageCount: 0,
+      allImageCount: 0,
     };
   default:
     return state;

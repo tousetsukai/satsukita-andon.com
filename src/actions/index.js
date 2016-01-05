@@ -67,8 +67,8 @@ export const clearReviews = (dispatch) => {
   return Promise.resolve(true);
 };
 
-export const getImages = (classId) => (dispatch) => api.getImages(classId)
-  .then(res => dispatch({ type: 'class:images:set', images: res.data.items }))
+export const getImages = (classId, offset = 0) => (dispatch) => api.getImages(classId, offset)
+  .then(res => dispatch({ type: 'class:images:append', imageItems: res.data }))
   .catch(res => {
     return showError(res.data.code, '講評を取得できませんでした。')(dispatch);
   });
