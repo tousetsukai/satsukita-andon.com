@@ -8,13 +8,18 @@ $logoMargin: 3px;
 .header {
   background-color: rgba(0, 0, 0, 0.6);
   transition: 0.1s linear;
-  height: $headerHeight;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 1);
   z-index: 10000;
+  @media (max-width: 499px) {
+    height: 40px;
+  }
+  @media (min-width: 500px) {
+    height: 50px;
+  }
   &:hover {
     background-color: rgba(0, 0, 0, 0.9);
   }
@@ -23,28 +28,49 @@ $logoMargin: 3px;
     padding: 0 8px;
     display: flex;
     justify-content: space-between;
+    height: 100%;
+    @media (max-width: 1023px) {
+      width: 100%;
+    }
+    @media (min-width: 1024px) {
+      width: 1024px;
+    }
+    nav {
+      height: 100%;
+    }
     .header-left {
       @mixin no-margin;
       display: flex;
       align-items: center;
-      height: $headerHeight;
+      height: 100%;
       li {
         list-style-type: none;
         h1 { /* to reset elemental.css */
           font-size: 0;
           margin: 0;
           .logo {
-            height: calc($headerHeight - $logoMargin * 2);
+            @media (max-width: 499px) {
+              height: 30px;
+            }
+            @media (min-width: 500px) {
+              height: 40px;
+            }
           }
         }
         .menu-link {
-          font-size: calc($headerHeight / 3);
           color: $text;
           text-decoration: none;
-          margin-left: 30px;
           &:hover, &:focus {
             text-decoration: none;
             color: $theme;
+          }
+          @media (max-width: 499px) {
+            font-size: 15px;
+            margin-left: 16px;
+          }
+          @media (min-width: 500px) {
+            font-size: 17px;
+            margin-left: 27px;
           }
         }
       }
@@ -52,17 +78,18 @@ $logoMargin: 3px;
     .header-right {
       display: flex;
       align-items: center;
-      height: $headerHeight;
+      height: 100%;
       .menu-button {
         @mixin ghost-button $green, $text;
-        font-size: calc($headerHeight / 3.4);
-        margin-left: 14px;
+        @media (max-width: 499px) {
+          font-size: 13px;
+          margin-left: 10px;
+        }
+        @media (min-width: 500px) {
+          font-size: 16px;
+          margin-left: 14px;
+        }
       }
-    }
-  }
-  @media (min-width: 1024px) {
-    .header-wrapper {
-      width: 1024px;
     }
   }
 }
