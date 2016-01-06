@@ -27,7 +27,7 @@ class Class extends Component {
 
   renderClass = (clazz) => {
     const { location } = this.props;
-    const tab = location.pathname.substring(`/gallery/${classutil.classIdWithSlash(clazz)}/`.length) || 'basic';
+    const tab = location.pathname.substring(`/gallery/${classutil.classIdWithSlash(clazz)}/`.length) || 'images';
     return (
       <div>
         <ClassHeader clazz={clazz}/>
