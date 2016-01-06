@@ -28,9 +28,6 @@ const renderFullPage = (head, html, state) => {
         <link rel="stylesheet" href="/static/lib/elemental/elemental.css" type="text/css">
         <link rel="stylesheet" href="/static/lib/react-progress-bar-plus/dist/progress-bar.css" type="text/css">
         <link rel="stylesheet" href="/static/bundle.css" type="text/css">
-      </head>
-      <body>
-        <div id="app">${html}</div>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -41,6 +38,9 @@ const renderFullPage = (head, html, state) => {
           ga('send', 'pageview');
 
         </script>
+      </head>
+      <body>
+        <div id="app">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${serialize(state)};
         </script>
