@@ -45,14 +45,18 @@ class ClassImages extends Component {
     }
   }
 
+  getMoreImages = () => {
+    const { clazz, dispatch, count, allCount } = this.props;
+    if (!this.props.loading && count < allCount) {
+      const classId = `${clazz.times_ord}${clazz.grade}-${clazz['class']}`;
+      dispatch(loading(getImages(classId, count)));
+    }
+  }
+
   // load by scroll position
   handleScroll = (ev) => {
     if (window.innerHeight + ev.srcElement.body.scrollTop >= document.body.offsetHeight - 100) { // 100 is about footer size
-      const { clazz, dispatch, count, allCount } = this.props;
-      if (!this.props.loading && count < allCount) {
-        const classId = `${clazz.times_ord}${clazz.grade}-${clazz['class']}`;
-        dispatch(loading(getImages(classId, count)));
-      }
+      this.getMoreImages();
     }
   }
 
@@ -76,9 +80,13 @@ class ClassImages extends Component {
     });
   }
   gotoNext = () => {
+    const nextImage = this.state.currentImage + 1;
     this.setState({
-      currentImage: this.state.currentImage + 1,
+      currentImage: nextImage,
     });
+    if (nextImage + 1 === this.props.count) { // next image is the last image
+      this.getMoreImages();
+    }
   }
   renderLightbox = () => {
     // this is workaround for server-side react-images
