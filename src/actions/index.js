@@ -70,7 +70,7 @@ export const clearReviews = (dispatch) => {
 export const getImages = (classId, offset = 0) => (dispatch) => api.getImages(classId, offset)
   .then(res => dispatch({ type: 'class:images:append', imageItems: res.data }))
   .catch(res => {
-    return showError(res.data.code, '講評を取得できませんでした。')(dispatch);
+    return showError(res.data.code, '画像情報を取得できませんでした。')(dispatch);
   });
 
 export const clearImages = (dispatch) => {
