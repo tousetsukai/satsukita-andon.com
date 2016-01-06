@@ -8,6 +8,8 @@ import ClassHeader from '../components/class-header';
 import ClassTabs from '../components/class-tabs';
 import { meta } from '../util/helmet';
 
+import * as classutil from '../util/class';
+
 class Class extends Component {
 
   static fetchData({ params, dispatch }) {
@@ -17,8 +19,7 @@ class Class extends Component {
   componentWillMount() {
     const { params, dispatch, clazz } = this.props;
     if (_.isEmpty(clazz) ||
-        !(`${clazz.times_ord}${clazz.grade}-${clazz.class}` ===
-          `${params.times}${params.clazz}`)) {
+        !(classutil.classId(clazz) === `${params.times}${params.clazz}`)) {
       dispatch(clearClass);
       Class.fetchData({ params, dispatch });
     }
@@ -26,7 +27,7 @@ class Class extends Component {
 
   renderClass = (clazz) => {
     const { location } = this.props;
-    const tab = location.pathname.substring(`/gallery/${clazz.times_ord}/${clazz.grade}-${clazz['class']}/`.length) || 'basic';
+    const tab = location.pathname.substring(`/gallery/${classutil.classIdWithSlash(clazz)}/`.length) || 'basic';
     return (
       <div>
         <ClassHeader clazz={clazz}/>
@@ -38,7 +39,7 @@ class Class extends Component {
 
   render() {
     const { clazz } = this.props;
-    const classTitle = `${clazz.times_ord}${clazz.grade}-${clazz.class} ${clazz.title}`;
+    const classTitle = `${classutil.classNameJa(clazz)} ${clazz.title}`;
     return (
       <div>
         <Helmet

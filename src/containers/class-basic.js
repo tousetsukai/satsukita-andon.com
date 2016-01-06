@@ -1,6 +1,8 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 
+import * as classutil from '../util/class';
+
 class ClassBasic extends Component {
 
   static propTypes = {
@@ -20,7 +22,7 @@ class ClassBasic extends Component {
       <div>
         <dl>
           <dt>クラス</dt>
-          <dd>{clazz.times_ord + ' ' + clazz.grade + '年' + clazz['class'] + '組'}</dd>
+          <dd>{classutil.classNameJa(clazz)}</dd>
           <dt>よみがな</dt>
           <dd>{clazz.title_kana}</dd>
           <dt>タイトル</dt>

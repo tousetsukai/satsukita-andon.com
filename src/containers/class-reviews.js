@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { loading, getReviews, clearReviews } from '../actions';
+import classutil from '../util/class';
 
 class ClassReviews extends Component {
 
@@ -15,7 +16,7 @@ class ClassReviews extends Component {
     const { dispatch, reviews, clazz } = this.props;
     const params = {
       times: clazz.times_ord,
-      clazz: `${clazz.grade}-${clazz['class']}`,
+      clazz: classutil.classIdWithoutTimes(clazz),
     };
     if (_.isEmpty(reviews) || reviews[0].class_id !== clazz.id) {
       dispatch(clearReviews);

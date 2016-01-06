@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import classnames from 'classnames';
 
+import * as classutil from '../util/class';
+
 class ClassTabs extends React.Component {
 
   static propTypes = {
@@ -10,7 +12,7 @@ class ClassTabs extends React.Component {
 
   render() {
     const { clazz } = this.props;
-    const path = `/gallery/${clazz.times_ord}/${clazz.grade}-${clazz['class']}`;
+    const path = `/gallery/${classutil.classIdWithSlash(clazz)}`;
     const tabName = this.props.tab;
     const tabs = [
       { tab: 'basic', label: '基本情報' },

@@ -2,6 +2,8 @@ import React, { PropTypes as T } from 'react';
 import { Link } from 'react-router';
 import ImageLoader from 'react-imageloader';
 
+import * as classutil from '../util/class';
+
 class ClassThumbnail extends React.Component {
 
   static propTypes = {
@@ -17,8 +19,7 @@ class ClassThumbnail extends React.Component {
   render() {
     const { clazz } = this.props;
     const thumbnail = clazz.thumbnail_url || '/static/img/no-icon.svg';
-    const gradeClass = `${clazz.grade}-${clazz['class']}`;
-    const gradeClassJa = `${clazz.grade}年${clazz['class']}組`;
+    const gradeClassJa = classutil.classNameWithoutTimesJa(clazz);
     const wrap = (props, children) => (
       <div {...props}>
         {children}
@@ -26,13 +27,13 @@ class ClassThumbnail extends React.Component {
       </div>
     );
     return (
-      <Link to={`/gallery/${clazz.times_ord}/${gradeClass}`}>
+      <Link to={`/gallery/${classutil.classIdWithSlash(clazz)}`}>
         <ImageLoader className="class-thumbnail"
                      wrapper={wrap}
                      src={thumbnail}
                      imgProps={{className: 'class-image'}}
                      preloader={() => <img src="/static/img/loading.gif"/>}>
-          oops!
+          画像を読み込めませんでした
         </ImageLoader>
       </Link>
     );

@@ -1,6 +1,8 @@
 import React, { PropTypes as T } from 'react';
 import ImageLoader from 'react-imageloader';
 
+import * as classutil from '../util/class';
+
 class ClassHeader extends React.Component {
 
   static propTypes = {
@@ -17,12 +19,12 @@ class ClassHeader extends React.Component {
   render() {
     const { clazz } = this.props;
     const headerImage = clazz.header_image_url || '/static/img/no-icon.svg';
-    const classIdJa = `${clazz.times_ord} ${clazz.grade}年${clazz['class']}組`;
+    const classNameJa = classutil.classNameJa(clazz);
     const wrap = (props, children) => (
       <div {...props}>
         {children}
         <div className="title-wrapper">
-          <p className="id">{classIdJa}</p>
+          <p className="id">{classNameJa}</p>
           <div className="title-prize">
             <p className="title">{clazz.title}</p>
             <ul className="prizes">
@@ -44,7 +46,7 @@ class ClassHeader extends React.Component {
                    src={headerImage}
                    imgProps={{className: 'header-image'}}
                    preloader={() => <img src="/static/img/loading.gif"/>}>
-        oops!
+        画像を読み込めませんでした
       </ImageLoader>
     );
   }

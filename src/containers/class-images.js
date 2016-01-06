@@ -6,11 +6,12 @@ import classnames from 'classnames';
 import Lightbox from 'react-images';
 
 import { loading, getImages, clearImages } from '../actions';
+import * as classutil from '../util/class';
 
 class ClassImages extends Component {
 
   static fetchData = ({ params, dispatch }) => {
-    const classId = `${params.times}${params.clazz}`;
+    const classId = params.times + params.clazz;
     return dispatch(loading(getImages(classId)));
   }
 
@@ -27,7 +28,7 @@ class ClassImages extends Component {
     const { dispatch, images, clazz } = this.props;
     const params = {
       times: clazz.times_ord,
-      clazz: `${clazz.grade}-${clazz['class']}`,
+      clazz: classutil.classIdWithoutTimes(clazz),
     };
     if (_.isEmpty(images) || images[0].class_id !== clazz.id) {
       dispatch(clearImages);
@@ -48,7 +49,7 @@ class ClassImages extends Component {
   getMoreImages = () => {
     const { clazz, dispatch, count, allCount } = this.props;
     if (!this.props.loading && count < allCount) {
-      const classId = `${clazz.times_ord}${clazz.grade}-${clazz['class']}`;
+      const classId = classutil.classId(clazz);
       dispatch(loading(getImages(classId, count)));
     }
   }
