@@ -26,13 +26,15 @@ class ClassImages extends Component {
 
   componentWillMount = () => {
     const { dispatch, images, clazz } = this.props;
-    const params = {
-      times: clazz.times_ord,
-      clazz: classutil.classIdWithoutTimes(clazz),
-    };
-    if (_.isEmpty(images) || images[0].class_id !== clazz.id) {
-      dispatch(clearImages);
-      ClassImages.fetchData({ params, dispatch });
+    if (!_.isEmpty(clazz)) {
+      const params = {
+        times: clazz.times_ord,
+        clazz: classutil.classIdWithoutTimes(clazz),
+      };
+      if (_.isEmpty(images) || images[0].class_id !== clazz.id) {
+        dispatch(clearImages);
+        ClassImages.fetchData({ params, dispatch });
+      }
     }
   }
   componentDidMount = () => {
@@ -48,7 +50,7 @@ class ClassImages extends Component {
 
   getMoreImages = () => {
     const { clazz, dispatch, count, allCount } = this.props;
-    if (!this.props.loading && count < allCount) {
+    if (!_.isEmpty(clazz) && !this.props.loading && count < allCount) {
       const classId = classutil.classId(clazz);
       dispatch(loading(getImages(classId, count)));
     }
