@@ -101,7 +101,7 @@ class ClassImages extends Component {
                   width={2000}
                   showImageCount={true}
                   showCloseButton={true}
-                  showCaption={true}/>
+                  backdropClosesModal={true}/>
       );
     }
   }
