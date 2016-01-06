@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import ImageLoader from 'react-imageloader';
 import classnames from 'classnames';
+import Lightbox from 'react-images';
 
 import { loading, getImages, clearImages } from '../actions';
 
@@ -79,6 +80,31 @@ class ClassImages extends Component {
       currentImage: this.state.currentImage + 1,
     });
   }
+  renderLightbox = () => {
+    // this is workaround for server-side react-images
+    if (typeof document === 'undefined') {
+      return undefined;
+    } else {
+      const { images } = this.props;
+      const lightboxImages = images.map(image => ({
+        src: image.fullsize_url,
+        caption: `taken by ${image.user.login}`,
+      }));
+      return (
+        <Lightbox currentImage={this.state.currentImage}
+                  images={lightboxImages}
+                  isOpen={this.state.lightboxIsOpen}
+                  onClickPrev={this.gotoPrev}
+                  onClickNext={this.gotoNext}
+                  onClose={this.closeLightbox}
+                  height={1500}
+                  width={2000}
+                  showImageCount={true}
+                  showCloseButton={true}
+                  showCaption={true}/>
+      );
+    }
+  }
 
   render() {
     const { images } = this.props;
@@ -88,27 +114,6 @@ class ClassImages extends Component {
           {children}
         </a>
       );
-    };
-    // workaround for server-side react-images
-    // this will be removed by next release of react-images
-    const lightbox = () => {
-      if (typeof document === 'undefined') {
-        return undefined;
-      } else {
-        const lightboxImages = images.map(image => ({
-          src: image.fullsize_url,
-          caption: `taken by ${image.user.login}`,
-        }));
-        const Lightbox = require('react-images');
-        return <Lightbox currentImage={this.state.currentImage}
-                         images={lightboxImages}
-                         isOpen={this.state.lightboxIsOpen}
-                         onClickPrev={this.gotoPrev}
-                         onClickNext={this.gotoNext}
-                         onClose={this.closeLightbox}
-                         height={1500}
-                         width={2000}/>;
-      }
     };
     return (
       <div>
@@ -125,7 +130,7 @@ class ClassImages extends Component {
              </li>
            ))}
         </ul>
-        {lightbox()}
+        {this.renderLightbox()}
         <p className={classnames({
           'class-image-not-loading': !this.props.loading,
           'class-image-loading': this.props.loading,
