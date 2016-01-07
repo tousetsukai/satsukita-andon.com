@@ -24,18 +24,19 @@ class ClassImages extends Component {
     currentImage: 0,
   }
 
-  componentWillMount = () => {
-    const { dispatch, clazz, of } = this.props;
-    if (!_.isEmpty(clazz)) {
-      const params = {
-        times: clazz.times_ord,
-        clazz: classutil.classIdWithoutTimes(clazz),
-      };
-      if (of !== (params.times + params.clazz)) {
-        dispatch(clearImages);
-        ClassImages.fetchData({ params, dispatch });
+  fetchData = (props) => {
+    const { dispatch, clazz, of } = props;
+    if (_.isEmpty(clazz)) {
+      dispatch(clearImages);
+    } else {
+      const classId = classutil.classId(clazz);
+      if (of !== classId) {
+        return dispatch(loading(getImages(classId)));
       }
     }
+  }
+  componentWillMount = () => {
+    this.fetchData(this.props);
   }
   componentDidMount = () => {
     if (window) {
@@ -45,6 +46,16 @@ class ClassImages extends Component {
   componentWillUnmount = () => {
     if (window) {
       window.removeEventListener('scroll', this.handleScroll);
+    }
+  }
+  componentWillUpdate = (nextProps) => {
+    // empty => non empty, non empty => empty, non empty => another class
+    if (_.isEmpty(this.props.clazz)) {
+      !_.isEmpty(nextProps.clazz) && this.fetchData(nextProps);
+    } else {
+      const cond = _.isEmpty(nextProps.clazz) ||
+                   classutil.classId(this.props.clazz) !== classutil.classId(nextProps.clazz);
+      cond && this.fetchData(nextProps);
     }
   }
 
@@ -136,7 +147,7 @@ class ClassImages extends Component {
                             src={image.thumbnail_url}
                             imgProps={{className: 'class-image'}}
                             preloader={() => <img src="/static/img/loading.gif"/>}>
-                 画像を読み込めませんでした
+                 {'画像を読み込めませんでした'}
                </ImageLoader>
              </li>
            ))}
