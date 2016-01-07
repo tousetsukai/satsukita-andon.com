@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import _ from 'lodash';
 
 import api from '../api';
 
@@ -9,6 +10,11 @@ export const loading = (action) => (dispatch) => {
     dispatch({ type: 'app:loading:hide' });
     return res;
   });
+};
+
+export const all = (actions) => (dispatch) => {
+  return Promise.all(actions.map(action => action(dispatch)))
+    .then(results => _.every(results));
 };
 
 /**

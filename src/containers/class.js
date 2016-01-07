@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import { loading, getClass, clearClass } from '../actions';
+import { loading, getFestivals, getTimesClasses, getClass, clearClass, all }from '../actions';
 import ClassHeader from '../components/class-header';
 import ClassTabs from '../components/class-tabs';
 import NavBar from '../components/nav-bar';
@@ -14,15 +14,39 @@ import * as classutil from '../util/class';
 class Class extends Component {
 
   static fetchData({ params, dispatch }) {
-    return dispatch(loading(getClass(`${params.times}${params.clazz}`)));
+    return dispatch(loading(all([
+      getFestivals,
+      getTimesClasses(params.times),
+      getClass(`${params.times}${params.clazz}`),
+    ])));
+  }
+
+  fetchData = (props) => {
+    const { params, dispatch, festivals, classes, clazz } = props;
+    const actions = [];
+    if (_.isEmpty(festivals)) {
+      actions.push(getFestivals);
+    }
+    if (_.isEmpty(classes) || classes[0].times_ord !== params.times) {
+      actions.push(getTimesClasses(params.times));
+    }
+    const classId = `${params.times}${params.clazz}`;
+    if (_.isEmpty(clazz) || classutil.classId(clazz) !== classId) {
+      actions.push(getClass(classId));
+      dispatch(clearClass);
+    }
+    return dispatch(loading(all(actions)));
   }
 
   componentWillMount() {
-    const { params, dispatch, clazz } = this.props;
-    if (_.isEmpty(clazz) ||
-        !(classutil.classId(clazz) === `${params.times}${params.clazz}`)) {
-      dispatch(clearClass);
-      Class.fetchData({ params, dispatch });
+    this.fetchData(this.props);
+  }
+
+  componentWillUpdate(nextProps) {
+    // when url changed
+    if (nextProps.params.times !== this.props.params.times ||
+        nextProps.params.clazz !== this.props.params.clazz) {
+      this.fetchData(nextProps);
     }
   }
 
