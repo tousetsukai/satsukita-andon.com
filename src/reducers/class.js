@@ -1,6 +1,9 @@
 const initialState = {
   clazz: {},
   reviews: [],
+  reviewsOf: '',
+  reviewCount: 0,
+  allReviewCount: 0,
   images: [],
   imageCount: 0,
   allImageCount: 0,
@@ -21,12 +24,18 @@ export function clazz(state = initialState, action) {
   case 'class:reviews:set':
     return {
       ...state,
-      reviews: action.reviews,
+      reviews: state.reviews.concat(action.reviewItems.items),
+      reviewsOf: action.reviewsOf,
+      reviewCount: state.reviewCount + action.reviewItems.count,
+      allReviewCount: action.reviewItems.all_count,
     };
   case 'class:reviews:clear':
     return {
       ...state,
       reviews: [],
+      reviewsOf: '',
+      reviewCount: 0,
+      allReviewCount: 0,
     };
   case 'class:images:append':
     return {

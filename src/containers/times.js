@@ -35,7 +35,6 @@ class Times extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.log(this.props.params, nextProps);
     if (nextProps.params.times !== this.props.params.times) {
       this.fetchData(nextProps);
     }

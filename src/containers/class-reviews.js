@@ -16,14 +16,16 @@ class ClassReviews extends Component {
   }
 
   componentWillMount = () => {
-    const { dispatch, reviews, clazz } = this.props;
-    const params = {
-      times: clazz.times_ord,
-      clazz: classutil.classIdWithoutTimes(clazz),
-    };
-    if (_.isEmpty(reviews) || reviews[0].class_id !== clazz.id) {
-      dispatch(clearReviews);
-      ClassReviews.fetchData({ params, dispatch });
+    const { dispatch, reviewsOf, clazz } = this.props;
+    if (!_.isEmpty(clazz)) {
+      const params = {
+        times: clazz.times_ord,
+        clazz: classutil.classIdWithoutTimes(clazz),
+      };
+      if (reviewsOf !== (params.times + params.clazz)) {
+        dispatch(clearReviews);
+        ClassReviews.fetchData({ params, dispatch });
+      }
     }
   }
 
@@ -58,5 +60,8 @@ export default connect(
   state => ({
     clazz: state.clazz.clazz,
     reviews: state.clazz.reviews,
+    reviewsOf: state.clazz.reviewsOf,
+    reviewCount: state.clazz.reviewCount,
+    allReviewCount: state.clazz.allReviewCount,
   })
 )(ClassReviews);

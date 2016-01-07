@@ -63,7 +63,10 @@ export const clearClass = (dispatch) => {
 };
 
 export const getReviews = (classId) => (dispatch) => api.getReviews(classId)
-  .then(res => dispatch({ type: 'class:reviews:set', reviews: res.data.items }))
+  .then(res => {
+    dispatch({ type: 'class:reviews:set', reviewItems: res.data, reviewsOf: classId });
+    return true;
+  })
   .catch(res => {
     return showError(res.data.code, '講評を取得できませんでした。')(dispatch);
   });
