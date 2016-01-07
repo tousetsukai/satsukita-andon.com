@@ -47,7 +47,7 @@ $itemWidth: 70px;
     .nav-bar-item-active {
       border-bottom: 2px solid $theme;
       .nav-bar-item-link {
-        color: $theme;
+        color: $theme !important;
       }
     }
   }
