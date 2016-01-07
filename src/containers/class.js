@@ -67,8 +67,8 @@ class Class extends Component {
   }
 
   renderFestivalNavBar = () => {
-    const { clazz, festivals } = this.props;
-    const times = clazz.times_ord;
+    const { params, festivals } = this.props;
+    const times = params.times;
     const items = festivals.map(fes => ({
       id: fes.times_ord,
       label: fes.times_ord,
@@ -78,8 +78,8 @@ class Class extends Component {
   }
 
   renderTimesNavBar = () => {
-    const { clazz, classes } = this.props;
-    const classId = classutil.classIdWithoutTimes(clazz);
+    const { params, classes } = this.props;
+    const classId = params.clazz;
     const items = classes.map(c => ({
       id: classutil.classIdWithoutTimes(c),
       label: classutil.classNameWithoutTimes(c),
