@@ -27,7 +27,11 @@ class Times extends Component {
       dispatch(clearTimesClasses);
       actions.push(getTimesClasses(params.times));
     }
-    dispatch(loading(all(actions)));
+    if (!_.isEmpty(actions)) {
+      return dispatch(loading(all(actions)));
+    } else {
+      return Promise.resolve(true);
+    }
   }
 
   componentWillMount() {

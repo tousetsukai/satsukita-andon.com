@@ -35,7 +35,11 @@ class Class extends Component {
       actions.push(getClass(classId));
       dispatch(clearClass);
     }
-    return dispatch(loading(all(actions)));
+    if (!_.isEmpty(actions)) {
+      return dispatch(loading(all(actions)));
+    } else {
+      return Promise.resolve(true);
+    }
   }
 
   componentWillMount() {
