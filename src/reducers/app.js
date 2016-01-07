@@ -9,6 +9,8 @@ const initialState = {
   loading: false,
 };
 
+let loadingCount = 0;
+
 export function app(state = initialState, action) {
   switch (action.type) {
   case 'app:user:set':
@@ -17,14 +19,16 @@ export function app(state = initialState, action) {
       user: action.user,
     };
   case 'app:loading:show':
+    loadingCount++;
     return {
       ...state,
       loading: true,
     };
   case 'app:loading:hide':
+    loadingCount = (loadingCount == 0) ? 0 : loadingCount - 1;
     return {
       ...state,
-      loading: false,
+      loading: loadingCount > 0,
     };
   case 'app:error:show':
     return {
