@@ -25,13 +25,13 @@ class ClassImages extends Component {
   }
 
   componentWillMount = () => {
-    const { dispatch, images, clazz } = this.props;
+    const { dispatch, clazz, of } = this.props;
     if (!_.isEmpty(clazz)) {
       const params = {
         times: clazz.times_ord,
         clazz: classutil.classIdWithoutTimes(clazz),
       };
-      if (_.isEmpty(images) || images[0].class_id !== clazz.id) {
+      if (of !== (params.times + params.clazz)) {
         dispatch(clearImages);
         ClassImages.fetchData({ params, dispatch });
       }
@@ -157,6 +157,7 @@ export default connect(
   state => ({
     clazz: state.clazz.clazz,
     images: state.clazz.images,
+    of: state.clazz.imagesOf,
     count: state.clazz.imageCount,
     allCount: state.clazz.allImageCount,
     loading: state.app.loading,

@@ -5,6 +5,7 @@ const initialState = {
   reviewCount: 0,
   allReviewCount: 0,
   images: [],
+  imagesOf: '',
   imageCount: 0,
   allImageCount: 0,
 };
@@ -41,6 +42,7 @@ export function clazz(state = initialState, action) {
     return {
       ...state,
       images: state.images.concat(action.imageItems.items),
+      imagesOf: action.imagesOf,
       imageCount: state.imageCount + action.imageItems.count,
       allImageCount: action.imageItems.all_count,
     };
@@ -48,6 +50,7 @@ export function clazz(state = initialState, action) {
     return {
       ...state,
       images: [],
+      imagesOf: '',
       imageCount: 0,
       allImageCount: 0,
     };

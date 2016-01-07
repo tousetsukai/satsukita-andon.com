@@ -77,7 +77,7 @@ export const clearReviews = (dispatch) => {
 };
 
 export const getImages = (classId, offset = 0) => (dispatch) => api.getImages(classId, offset)
-  .then(res => dispatch({ type: 'class:images:append', imageItems: res.data }))
+  .then(res => dispatch({ type: 'class:images:append', imageItems: res.data, imagesOf: classId }))
   .catch(res => {
     return showError(res.data.code, '画像情報を取得できませんでした。')(dispatch);
   });
@@ -89,7 +89,7 @@ export const clearImages = (dispatch) => {
 
 export const getTimesClasses = (times) => (dispatch) => api.getClasses({ times, limit: 50 })
   .then(res => {
-    dispatch({ type: 'times:set', classes: res.data.items });
+    dispatch({ type: 'times:set', classes: res.data.items, classesOf: times });
     return true;
   })
   .catch(res => {

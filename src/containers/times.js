@@ -18,12 +18,12 @@ class Times extends Component {
   }
 
   fetchData = (props) => {
-    const { dispatch, params, festivals, classes } = props;
+    const { dispatch, params, festivals, classesOf } = props;
     const actions = [];
     if (_.isEmpty(festivals)) {
       actions.push(getFestivals);
     }
-    if (_.isEmpty(classes) || classes[0].times_ord !== params.times) {
+    if (classesOf !== params.times) {
       dispatch(clearTimesClasses);
       actions.push(getTimesClasses(params.times));
     }
@@ -83,7 +83,8 @@ class Times extends Component {
 
 export default connect(
   state => ({
-    classes: state.times.classes,
     festivals: state.gallery.festivals,
+    classes: state.times.classes,
+    classesOf: state.times.classesOf,
   })
 )(Times);

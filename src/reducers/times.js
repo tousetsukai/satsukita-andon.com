@@ -1,5 +1,6 @@
 const initialState = {
   classes: [],
+  classesOf: '',
 };
 
 export function times(state = initialState, action) {
@@ -8,11 +9,13 @@ export function times(state = initialState, action) {
     return {
       ...state,
       classes: action.classes,
+      classesOf: action.classesOf,
     };
   case 'times:clear':
     return {
       ...state,
       classes: [],
+      classesOf: '',
     };
   default:
     return state;
