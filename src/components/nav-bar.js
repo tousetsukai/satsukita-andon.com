@@ -4,11 +4,11 @@ import classnames from 'classnames';
 
 export default class NavBar extends React.Component {
   static propTypes = {
-    items: T.shape({
+    items: T.arrayOf(T.shape({
       link: T.string.isRequired,
       label: T.string.isRequired,
       id: T.string.isRequired,
-    }).isRequired,
+    })).isRequired,
   }
 
   render() {
