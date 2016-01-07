@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { loading, getReviews, clearReviews } from '../actions';
-import classutil from '../util/class';
+import * as classutil from '../util/class';
 
 class ClassReviews extends Component {
 
