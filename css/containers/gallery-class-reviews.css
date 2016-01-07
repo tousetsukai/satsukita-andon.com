@@ -1,0 +1,77 @@
+@import "../util/icon";
+@import "../color";
+
+.class-reviews {
+  margin: 0;
+  li.class-review {
+    list-style-type: none;
+    width: 100%;
+    @media (max-width: 699px) {
+      margin-top: 50px;
+      .class-review-left {
+        width: 100%;
+        .icon {
+          @mixin icon 50px;
+        }
+        a {
+          display: block;
+          width: fit-content;
+          margin: auto;
+          text-align: center;
+          font-size: 18px;
+          color: $text;
+          &:hover,
+          &:active,
+          &:focus {
+            color: $theme;
+            text-decoration: none;
+          }
+          p {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .class-review-right {
+        .class-review-title {
+          margin: 10px 0 28px;
+          padding: 0;
+          font-size: 20px;
+        }
+        .class-review-body {
+        }
+      }
+    }
+    @media (min-width: 700px) {
+      margin: 30px;
+      display: flex;
+      .class-review-left {
+        min-width: 200px;
+        .icon {
+          @mixin icon 50px;
+        }
+        a {
+          display: block;
+          width: fit-content;
+          margin: 28px auto;
+          text-align: center;
+          font-size: 18px;
+          color: $text;
+          &:hover,
+          &:active,
+          &:focus {
+            color: $theme;
+            text-decoration: none;
+          }
+        }
+      }
+      .class-review-right {
+        .class-review-title {
+          margin: 28px 0;
+          font-size: 20px;
+        }
+        .class-review-body {
+        }
+      }
+    }
+  }
+}

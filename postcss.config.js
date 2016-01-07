@@ -10,4 +10,7 @@ module.exports = {
     'postcss-nested',
     'postcss-focus',
   ],
+  'postcss-import': {
+    glob: true,
+  },
 };

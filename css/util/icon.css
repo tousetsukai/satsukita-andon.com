@@ -1,0 +1,5 @@
+@define-mixin icon $size {
+  width: $size;
+  height: $size;
+  border-radius: calc($size / 2);
+}

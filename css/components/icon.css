@@ -1,5 +1,5 @@
+@import "../util/icon";
+
 .icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 18px;
+  @mixin icon 36px;
 }
