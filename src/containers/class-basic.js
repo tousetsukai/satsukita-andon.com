@@ -6,14 +6,7 @@ import * as classutil from '../util/class';
 class ClassBasic extends Component {
 
   static propTypes = {
-    clazz: T.shape({
-      times_ord: T.string.isRequired,
-      grade: T.number.isRequired,
-      ['class']: T.number.isRequired,
-      title: T.string.isRequired,
-      title_kana: T.string,
-      description: T.string,
-    }).isRequired,
+    clazz: T.object.isRequired, // empty object or class object
   }
 
   render() {

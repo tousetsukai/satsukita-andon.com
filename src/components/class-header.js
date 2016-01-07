@@ -2,18 +2,12 @@ import React, { PropTypes as T } from 'react';
 import ImageLoader from 'react-imageloader';
 
 import * as classutil from '../util/class';
+import f from '../util/f';
 
 class ClassHeader extends React.Component {
 
   static propTypes = {
-    clazz: T.shape({
-      header_image_url: T.string,
-      times_ord: T.string.isRequired,
-      grade: T.number.isRequired,
-      ['class']: T.number.isRequired,
-      title: T.string.isRequired,
-      prizes: T.arrayOf(T.object).isRequired,
-    }),
+    clazz: T.object.isRequired, // empty object or class object
   }
 
   render() {
@@ -28,13 +22,13 @@ class ClassHeader extends React.Component {
           <div className="title-prize">
             <p className="title">{clazz.title}</p>
             <ul className="prizes">
-              {clazz.prizes.map((prize) => (
+              {f.map(clazz.prizes, prizes => prizes.map((prize) => (
                  <li key={prize.code}
                      style={{color: `#${prize.color}`, borderColor: `#${prize.color}`}}
                      className="prize">
                    {prize.label}
                  </li>
-               ))}
+               )))}
             </ul>
           </div>
         </div>

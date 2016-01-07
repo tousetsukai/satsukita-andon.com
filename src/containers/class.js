@@ -54,8 +54,8 @@ class Class extends Component {
     }
   }
 
-  renderClass = (clazz) => {
-    const { location } = this.props;
+  renderClass = () => {
+    const { location, clazz } = this.props;
     const tab = location.pathname.substring(`/gallery/${classutil.classIdWithSlash(clazz)}/`.length) || 'images';
     return (
       <div>
@@ -98,7 +98,7 @@ class Class extends Component {
         />
         {this.renderFestivalNavBar()}
         {this.renderTimesNavBar()}
-        {_.isEmpty(clazz) || this.renderClass(clazz)}
+        {this.renderClass()}
       </div>
     );
   }
