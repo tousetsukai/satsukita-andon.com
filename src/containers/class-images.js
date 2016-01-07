@@ -94,7 +94,7 @@ class ClassImages extends Component {
   renderLightbox = () => {
     // this is workaround for server-side react-images
     if (typeof document === 'undefined') {
-      return undefined;
+      return <noscript/>;
     } else {
       const { images } = this.props;
       const lightboxImages = images.map(image => ({
