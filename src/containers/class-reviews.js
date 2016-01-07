@@ -10,27 +10,40 @@ import BreakableParagraph from '../components/breakable-paragraph';
 
 class ClassReviews extends Component {
 
+  static propTypes = {
+    reviews: T.arrayOf(T.object),
+  }
+
   static fetchData = ({ params, dispatch }) => {
     const classId = `${params.times}${params.clazz}`;
     return dispatch(loading(getReviews(classId)));
   }
 
-  componentWillMount = () => {
-    const { dispatch, reviewsOf, clazz } = this.props;
-    if (!_.isEmpty(clazz)) {
-      const params = {
-        times: clazz.times_ord,
-        clazz: classutil.classIdWithoutTimes(clazz),
-      };
-      if (reviewsOf !== (params.times + params.clazz)) {
-        dispatch(clearReviews);
-        ClassReviews.fetchData({ params, dispatch });
+  fetchData = (props) => {
+    const { dispatch, reviewsOf, clazz } = props;
+    if (_.isEmpty(clazz)) {
+      return dispatch(clearReviews);
+    } else {
+      const classId = classutil.classId(clazz);
+      if (reviewsOf !== classId) {
+        return dispatch(loading(getReviews(classId)));
       }
     }
   }
 
-  static propTypes = {
-    reviews: T.arrayOf(T.object),
+  componentWillMount = () => {
+    this.fetchData(this.props);
+  }
+
+  componentWillUpdate = (nextProps) => {
+    // empty => non empty, non empty => empty, non empty => another class
+    if (_.isEmpty(this.props.clazz)) {
+      !_.isEmpty(nextProps.clazz) && this.fetchData(nextProps);
+    } else {
+      const cond = _.isEmpty(nextProps.clazz) ||
+                   classutil.classId(this.props.clazz) !== classutil.classId(nextProps.clazz);
+      cond && this.fetchData(nextProps);
+    }
   }
 
   render() {
