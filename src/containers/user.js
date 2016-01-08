@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import classnames from 'classnames';
 
 import { loading, getUser, clearUser } from '../actions';
 import Icon from '../components/icon';
-import { classIdWithSlash } from '../util/class';
+import { classIdWithSlash, classNameJa } from '../util/class';
 
 class User extends React.Component {
   static fetchData = ({ params, dispatch }) => {
@@ -26,11 +27,21 @@ class User extends React.Component {
       this.fetchData(nextProps);
     }
   }
-  renderClass = (clazz) => {
+  renderClass = (clazz, chief) => {
     return (
-      <div style={{width: '300px'}}>
+      <div className="user-profile-class">
         <Link to={'/gallery/' + classIdWithSlash(clazz)}>
-          <img src={clazz.thumbnail_url}/>
+          <img className="class-image" src={clazz.thumbnail_url}/>
+          <div className="class-info">
+            <p className="class-id">{classNameJa(clazz)}</p>
+            <p className="class-title">{clazz.title}</p>
+            <p className="class-prizes">
+              {clazz.prizes.map(prize => (
+                 <span key={prize.code} style={{color: '#' + prize.color}}>{prize.label}</span>
+               ))}
+            </p>
+            {chief && <p className="class-chief">○ 責任者</p>}
+          </div>
         </Link>
       </div>
     );
@@ -38,16 +49,24 @@ class User extends React.Component {
   render() {
     const { user } = this.props;
     return (
-      <div>
-        <div>
+      <div className="user-profile">
+        <div className="user-profile-header">
           <Icon user={user}/>
-          <p>{user.name} @{user.login}</p>
+          <p className="user-profile-name">
+            {user.name}
+          </p>
+          <p className="user-profile-sub">
+            <span className="user-profile-times">{user.times}期</span>
+            {user.admin && <span className="user-profile-admin"> 管理人</span>}
+          </p>
         </div>
-        <p>{user.biography}</p>
-        <p>{user.times}期</p>
-        {user.class_first && this.renderClass(user.class_first)}
-        {user.class_second && this.renderClass(user.class_second)}
-        {user.class_third && this.renderClass(user.class_third)}
+        <p className="user-profile-biography">{user.biography}</p>
+        <h2>- 制作 -</h2>
+        <div className="user-profile-classes">
+          {user.class_first && this.renderClass(user.class_first, user.chief_first)}
+          {user.class_second && this.renderClass(user.class_second, user.chief_second)}
+          {user.class_third && this.renderClass(user.class_third, user.chief_third)}
+        </div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 class Icon extends Component {
 
@@ -13,7 +14,8 @@ class Icon extends Component {
     const { user } = this.props;
     const icon = user.icon_url ? user.icon_url : '/static/img/no-icon.svg';
     return (
-      <img className="icon" src={icon} alt={user.name}/>
+      <img className={classnames({'icon': true, 'icon-admin': user.admin})}
+           src={icon} alt={user.name}/>
     );
   }
 }

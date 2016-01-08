@@ -1,5 +1,9 @@
-@define-mixin icon $size {
+@import "../color";
+
+@define-mixin icon $size, $border-width: 2px {
   width: $size;
   height: $size;
-  border-radius: calc($size / 2);
+  border-radius: 50%;
+  border: $border-width solid;
+  border-color: $text;
 }

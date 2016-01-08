@@ -3,3 +3,7 @@
 .icon {
   @mixin icon 36px;
 }
+
+.icon-admin {
+  border-color: #ddddff !important;
+}
