@@ -1,19 +1,29 @@
 $full: rgba(255, 255, 255, 0.8);
 $half: rgba(255, 255, 255, 0.4);
 
+$size: 1.8em;
+
 /* http://projects.lukehaas.me/css-loaders/ */
 .loader:before,
 .loader:after,
 .loader {
   border-radius: 50%;
-  width: 1.8em;
-  height: 1.8em;
+  width: $size;
+  height: $size;
   animation-fill-mode: both;
   animation: load7 1.0s infinite ease-in-out;
 }
 .loader {
   font-size: 10px;
-  margin: 70px auto 85px;
+  @media (max-width: 599px) {
+    margin: calc(18.75vw - $size) auto;
+  }
+  @media (min-width: 600px) and (max-width: 1023px) {
+    margin: calc(12.5vw - $size) auto;
+  }
+  @media (min-width: 1024px) {
+    margin: calc(96px - $size) auto;
+  }
   position: relative;
   text-indent: -9999em;
   transform: translateZ(0);
