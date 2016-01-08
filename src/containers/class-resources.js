@@ -1,12 +1,9 @@
-import React, { Component, PropTypes as T } from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { loading, all, getClassResources, getClassArticles, clearClassResources, clearClassArticles } from '../actions';
 import * as classutil from '../util/class';
-import Icon from '../components/icon';
-import BreakableParagraph from '../components/breakable-paragraph';
 
 class ClassResources extends Component {
 
@@ -24,7 +21,7 @@ class ClassResources extends Component {
       return dispatch(all([clearClassResources, clearClassArticles]));
     } else {
       const classId = classutil.classId(clazz);
-      if (resourcesOf !== classId) {
+      if (resourcesOf !== classId || articlesOf !== classId) {
         dispatch(clearClassResources);
         return dispatch(loading(all([
           getClassResources(classId),
