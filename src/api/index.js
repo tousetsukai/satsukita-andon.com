@@ -22,7 +22,7 @@ export default {
   }),
   getArticles: (params) => api.get('/articles', { params }),
   getArticle: (id) => api.get(`/articles/${id}`),
-  getUser: (token) => api.get('/auth/me', {
+  getMe: (token) => api.get('/auth/me', {
     headers: {
       'Authorization': `Bearer ${token}`,
     },
@@ -31,4 +31,5 @@ export default {
     login,
     password,
   }),
+  getUser: (login) => api.get(`/users/${login}`),
 };

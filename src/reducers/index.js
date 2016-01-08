@@ -6,6 +6,7 @@ import { gallery } from './gallery';
 import { times } from './times';
 import { clazz } from './class';
 import { howto } from './howto';
+import { users } from './users';
 import { routeReducer } from 'redux-simple-router';
 
 export default combineReducers({
@@ -16,5 +17,6 @@ export default combineReducers({
   times,
   clazz,
   howto,
+  users,
   routing: routeReducer,
 });

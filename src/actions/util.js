@@ -18,7 +18,7 @@ export const all = (actions) => (dispatch) => {
  * All actions have type: ? -> (dispatch: Action -> Action) -> Promise[Boolean]
  */
 
-export const showError = (code, message, millis) => (dispatch) => {
+export const showError = (code = 'unexpected', message = '情報を取得できませんでした。', millis = 0) => (dispatch) => {
   return new Promise(resolve => {
     dispatch({ type: 'app:error:show', error: { code, message } });
     resolve(false);

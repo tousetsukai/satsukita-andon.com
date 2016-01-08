@@ -4,9 +4,7 @@ class Icon extends Component {
 
   static propTypes = {
     user: React.PropTypes.shape({
-      id: React.PropTypes.number.isRequired,
-      login: React.PropTypes.string.isRequired,
-      name: React.PropTypes.string.isRequired,
+      name: React.PropTypes.string,
       icon_url: React.PropTypes.string,
     }).isRequired,
   }

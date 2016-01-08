@@ -53,3 +53,14 @@ export const clearArticle = (dispatch) => {
   dispatch({ type: 'howto:article:clear' });
   return Promise.resolve(true);
 };
+
+export const getUser = (login) => (dispatch) => api.getUser(login)
+  .then(res => {
+    dispatch({ type: 'users:user:set', user: res.data });
+    return true;
+  }).catch(res => showError(res.data.code)(dispatch));
+
+export const clearUser = (dispatch) => {
+  dispatch({ type: 'users:user:clear' });
+  return Promise.resolve(true);
+};

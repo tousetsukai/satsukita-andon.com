@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import api from '../api';
 import { showError } from './util';
 
-export const me = (token) => (dispatch) => api.getUser(token)
+export const me = (token) => (dispatch) => api.getMe(token)
   .then(res => {
     dispatch({ type: 'app:user:set', user: res.data });
     return true;
