@@ -29,7 +29,7 @@ class Article extends Component {
       linkify: true,
     });
     return (
-      <div>
+      <div className="container padding-container">
         <Helmet title={`${article.title} - Howto`}
                 meta={meta(article.title, `${f.map(article.body, (b) => b.substring(0, 180))}...`)}
         />

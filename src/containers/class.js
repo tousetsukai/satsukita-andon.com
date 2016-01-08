@@ -91,7 +91,7 @@ class Class extends Component {
     const { clazz } = this.props;
     const classTitle = `${classutil.classNameJa(clazz)} ${clazz.title}`;
     return (
-      <div>
+      <div className="container">
         <Helmet
           title={classTitle}
           meta={meta(classTitle, clazz.description || `${classTitle} の写真や記録など`, clazz.header_image_url)}

@@ -25,7 +25,7 @@ class About extends Component {
       linkify: true,
     });
     return (
-      <div className="padding-container">
+      <div className="container padding-container">
         <Helmet title="About"
                 meta={meta('About', '行灯職人への道について')}
         />

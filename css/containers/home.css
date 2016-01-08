@@ -1,23 +1,37 @@
-/* ref: http://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-inside-div */
-.home-logo-wrapper {
+.home-jumbotron {
   width: 100%;
-  text-align: center;
-  @media (max-width: 499px) {
-    height: 180px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;             /* to hide white blur */
+  .background-image {
+    background-image: url("https://static.satsukita-andon.com/files/gallery/fullsize/60th/3/9/09071320.jpg");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    filter: blur(10px);
+    z-index: 4;
   }
-  @media (min-width: 500px) and (max-width: 699px) {
-    height: 280px;
+  .background-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: linear-gradient(30deg, rgba(0, 0, 50, 0.9), rgba(50, 0, 0, 0.9));
   }
-  @media (min-width: 700px) {
-    height: 400px;
+  .jumbotron-logo {
+    position: absolute;
+    max-width: 80%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 10;
   }
-}
-.home-logo-helper {
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-}
-.home-logo {
-  max-width: 80%;
-  vertical-align: middle;
 }

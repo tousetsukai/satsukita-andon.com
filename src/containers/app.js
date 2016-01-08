@@ -42,7 +42,7 @@ class App extends Component {
         />
         {progress()}
         <Header/>
-        <div className="container">
+        <div>
           {this.props.showingError && <Alert type="danger">{this.props.error.message}</Alert>}
           {this.props.children}
         </div>

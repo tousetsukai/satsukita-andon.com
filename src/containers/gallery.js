@@ -30,7 +30,7 @@ class Gallery extends Component {
       }
     };
     return (
-      <div>
+      <div className="container">
         <Helmet title="Gallery"
                 meta={meta('Gallery', '行灯ギャラリー', randomFestival().thumbnail_url)}
         />

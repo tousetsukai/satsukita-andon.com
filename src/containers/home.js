@@ -12,10 +12,31 @@ class Home extends Component {
     return dispatch(loading(getFixedContent('news')));
   }
 
+  state = {
+    inJumbotron: true,
+  }
+
   componentWillMount() {
     if (_.isEmpty(this.props.topNews)) {
       Home.fetchData({ dispatch: this.props.dispatch });
     }
+  }
+
+  componentDidMount() {
+    if (window) {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+  }
+
+  componentWillUnmount() {
+    if (window) {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
+  }
+
+  handleScroll = (ev) => {
+    const inJumbotron = ev.target.scrollingElement.scrollTop < window.innerHeight;
+    this.setState({ inJumbotron });
   }
 
   render() {
@@ -25,17 +46,23 @@ class Home extends Component {
       linkify: true,
     });
     return (
-      <div className="padding-container">
+      <div onScroll={this.handleScroll}>
         <Helmet
           title="行灯職人への道"
           titleTemplate="%s"
         />
-        <div className="home-logo-wrapper">
-          <span className="home-logo-helper"/>
-          <img className="home-logo" src="/static/img/logo.png"/>
+        {this.state.inJumbotron && (<style>
+          {`.header { background-color: transparent !important; box-shadow: none !important; }`}
+        </style>)}
+        <div className="home-jumbotron">
+          <div className="background-image"/>
+          <div className="background-gradient"/>
+          <img className="jumbotron-logo" src="/static/img/logo.png"/>
         </div>
-        <h3>News</h3>
-        <article dangerouslySetInnerHTML={{__html: md.render(topNews.body)}}></article>
+        <div className="container padding-container">
+          <h3>News</h3>
+          <article dangerouslySetInnerHTML={{__html: md.render(topNews.body)}}></article>
+        </div>
       </div>
     );
   }

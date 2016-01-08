@@ -65,7 +65,7 @@ class Times extends Component {
       }
     };
     return (
-      <div>
+      <div className="container">
         <Helmet title={`Gallery ${params.times}`}
                 meta={meta(`Gallery ${params.times}`, `${params.times}行灯ギャラリー`, randomClass().thumbnail_url)}
         />

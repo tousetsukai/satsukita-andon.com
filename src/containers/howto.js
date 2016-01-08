@@ -21,7 +21,7 @@ class Howto extends Component {
   render() {
     const { articles } = this.props;
     return (
-      <div>
+      <div className="container padding-container">
         <Helmet
           title="Howto"
         />

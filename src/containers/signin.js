@@ -48,7 +48,7 @@ class Signin extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container padding-container">
         <Helmet
           title="ログイン"
         />
