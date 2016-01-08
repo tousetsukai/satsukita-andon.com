@@ -31,6 +31,7 @@ class ClassImages extends Component {
     } else {
       const classId = classutil.classId(clazz);
       if (of !== classId) {
+        dispatch(clearImages);
         return dispatch(loading(getImages(classId)));
       }
     }

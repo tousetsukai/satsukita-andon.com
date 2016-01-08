@@ -26,6 +26,7 @@ class ClassReviews extends Component {
     } else {
       const classId = classutil.classId(clazz);
       if (reviewsOf !== classId) {
+        dispatch(clearReviews);
         return dispatch(loading(getReviews(classId)));
       }
     }
