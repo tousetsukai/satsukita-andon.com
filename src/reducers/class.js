@@ -4,6 +4,14 @@ const initialState = {
   reviewsOf: '',
   reviewCount: 0,
   allReviewCount: 0,
+  articles: [],
+  articlesOf: '',
+  articleCount: 0,
+  allArticleCount: 0,
+  resources: [],
+  resourcesOf: '',
+  resourceCount: 0,
+  allResourceCount: 0,
   images: [],
   imagesOf: '',
   imageCount: 0,
@@ -25,10 +33,10 @@ export function clazz(state = initialState, action) {
   case 'class:reviews:set':
     return {
       ...state,
-      reviews: state.reviews.concat(action.reviewItems.items),
-      reviewsOf: action.reviewsOf,
-      reviewCount: state.reviewCount + action.reviewItems.count,
-      allReviewCount: action.reviewItems.all_count,
+      reviews: state.reviews.concat(action.items.items),
+      reviewsOf: action.of,
+      reviewCount: state.reviewCount + action.items.count,
+      allReviewCount: action.items.all_count,
     };
   case 'class:reviews:clear':
     return {
@@ -38,13 +46,45 @@ export function clazz(state = initialState, action) {
       reviewCount: 0,
       allReviewCount: 0,
     };
+  case 'class:articles:set':
+    return {
+      ...state,
+      articles: state.articles.concat(action.items.items),
+      articlesOf: action.of,
+      articleCount: state.articleCount + action.items.count,
+      allArticleCount: action.items.all_count,
+    };
+  case 'class:articles:clear':
+    return {
+      ...state,
+      articles: [],
+      articlesOf: '',
+      articleCount: 0,
+      allArticleCount: 0,
+    };
+  case 'class:resources:set':
+    return {
+      ...state,
+      resources: state.resources.concat(action.items.items),
+      resourcesOf: action.of,
+      resourceCount: state.resourceCount + action.items.count,
+      allResourceCount: action.items.all_count,
+    };
+  case 'class:resources:clear':
+    return {
+      ...state,
+      resources: [],
+      resourcesOf: '',
+      resourceCount: 0,
+      allResourceCount: 0,
+    };
   case 'class:images:append':
     return {
       ...state,
-      images: state.images.concat(action.imageItems.items),
-      imagesOf: action.imagesOf,
-      imageCount: state.imageCount + action.imageItems.count,
-      allImageCount: action.imageItems.all_count,
+      images: state.images.concat(action.items.items),
+      imagesOf: action.of,
+      imageCount: state.imageCount + action.items.count,
+      allImageCount: action.items.all_count,
     };
   case 'class:images:clear':
     return {

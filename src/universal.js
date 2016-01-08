@@ -17,6 +17,7 @@ export const routes = (
       <IndexRoute component={C.ClassImages}/>
       <Route path="basic" component={C.ClassBasic}/>
       <Route path="reviews" component={C.ClassReviews}/>
+      <Route path="resources" component={C.ClassResources}/>
       <Route path="images" component={C.ClassImages}/>
       <Route path="*" component={C.NotFound}/>
     </Route>
