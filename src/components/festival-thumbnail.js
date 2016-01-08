@@ -2,6 +2,8 @@ import React, { PropTypes as T } from 'react';
 import ImageLoader from 'react-imageloader';
 import classnames from 'classnames';
 
+import Loader from './loader';
+
 class FestivalThumbnail extends React.Component {
 
   static propTypes = {
@@ -46,7 +48,7 @@ class FestivalThumbnail extends React.Component {
                        'image-hover': this.state.hover,
                      }),
                    }}
-                   preloader={() => <img src="/static/img/loading.gif"/>}>
+                   preloader={() => <Loader/>}>
         画像を読み込めませんでした
       </ImageLoader>
     );

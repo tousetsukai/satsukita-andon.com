@@ -3,6 +3,7 @@ import ImageLoader from 'react-imageloader';
 
 import * as classutil from '../util/class';
 import f from '../util/f';
+import Loader from './loader';
 
 class ClassHeader extends React.Component {
 
@@ -39,7 +40,7 @@ class ClassHeader extends React.Component {
                    wrapper={wrap}
                    src={headerImage}
                    imgProps={{className: 'header-image'}}
-                   preloader={() => <img src="/static/img/loading.gif"/>}>
+                   preloader={() => <Loader/>}>
         画像を読み込めませんでした
       </ImageLoader>
     );

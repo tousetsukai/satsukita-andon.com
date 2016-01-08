@@ -7,6 +7,7 @@ import Lightbox from 'react-images';
 
 import { loading, getImages, clearImages } from '../actions';
 import * as classutil from '../util/class';
+import Loader from '../components/loader';
 
 class ClassImages extends Component {
 
@@ -147,7 +148,7 @@ class ClassImages extends Component {
                             wrapper={wrap(i)}
                             src={image.thumbnail_url}
                             imgProps={{className: 'class-image'}}
-                            preloader={() => <img src="/static/img/loading.gif"/>}>
+                            preloader={() => <Loader/>}>
                  {'画像を読み込めませんでした'}
                </ImageLoader>
              </li>
