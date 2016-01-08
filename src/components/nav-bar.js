@@ -88,11 +88,11 @@ export default class NavBar extends React.Component {
     };
     return (
       <div className="nav-bar">
-        <div className="nav-bar-arrow" onClick={this.handleArrow(-200)}>
+        <div className="nav-bar-arrow" onClick={this.handleArrow(-160)}>
           <i className="fa fa-caret-left fa-2x"/>
         </div>
         <NavBarItems {...opts}/>
-        <div className="nav-bar-arrow" onClick={this.handleArrow(200)}>
+        <div className="nav-bar-arrow" onClick={this.handleArrow(160)}>
           <i className="fa fa-caret-right fa-2x"/>
         </div>
       </div>
