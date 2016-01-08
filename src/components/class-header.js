@@ -13,7 +13,7 @@ class ClassHeader extends React.Component {
 
   render() {
     const { clazz } = this.props;
-    const headerImage = clazz.header_image_url || '/static/img/no-icon.svg';
+    const headerImage = clazz.header_image_url || '/static/img/transparent.svg';
     const classNameJa = classutil.classNameJa(clazz);
     const wrap = (props, children) => (
       <div {...props}>
