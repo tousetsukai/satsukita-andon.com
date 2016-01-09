@@ -1,0 +1,24 @@
+/* polyfill for object-fit */
+/* !NOTICE! apply src/util/object-fit to the image you want to fit, when the image has loaded */
+
+@define-mixin object-fit-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+@define-mixin object-fit-item {
+  position: absolute;
+  width: auto;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.object-fit-horizontal {
+  max-width: 100%;
+}
+
+.object-fit-vertical {
+  max-height: 100%;
+}

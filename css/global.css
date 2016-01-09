@@ -1,5 +1,6 @@
 @import "./color";
 @import "./util/ghost-button";
+@import "./util/object-fit";
 
 /* http://coliss.com/articles/build-websites/operation/css/css-simple-sticky-footer-by-melissa.html */
 html {

@@ -1,10 +1,13 @@
 @import "../color";
+@import "../util/object-fit";
 
 .class-thumbnail {
+  width: 100%;
+  height: 100%;
   position: relative;
-  transition: 0.2s linear;
+  @mixin object-fit-wrapper;
   .class-image {
-    width: 100%;
+    @mixin object-fit-item;
   }
   .class-title {
     color: $text;

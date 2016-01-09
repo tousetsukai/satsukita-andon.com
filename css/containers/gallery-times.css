@@ -9,13 +9,16 @@
     padding: 0;
     list-style-type: none;
     @media (max-width: 599px) {
-      width: 50%;
+      width: 50vw;
+      height: 37.5vw;
     }
     @media (min-width: 600px) and (max-width: 1023px) {
       width: 33.3%;
+      height: 25vw;
     }
     @media (min-width: 1024px) {
-      width: 25%;
+      width: 256px;
+      height: 192px;
     }
   }
 }

@@ -1,13 +1,12 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import ImageLoader from 'react-imageloader';
 import classnames from 'classnames';
 import Lightbox from 'react-images';
 
 import { loading, getImages, clearImages } from '../actions';
 import * as classutil from '../util/class';
-import Loader from '../components/loader';
+import ImageLoader from '../components/image-loader';
 
 class ClassImages extends Component {
 
@@ -148,8 +147,8 @@ class ClassImages extends Component {
                             wrapper={wrap(i)}
                             src={image.thumbnail_url}
                             imgProps={{className: 'class-image'}}
-                            preloader={() => <Loader/>}>
-                 {'画像を読み込めませんでした'}
+                            cover={true}>
+                 画像を読み込めませんでした
                </ImageLoader>
              </li>
            ))}

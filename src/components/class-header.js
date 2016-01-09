@@ -1,9 +1,8 @@
 import React, { PropTypes as T } from 'react';
-import ImageLoader from 'react-imageloader';
 
 import * as classutil from '../util/class';
 import f from '../util/f';
-import Loader from './loader';
+import ImageLoader from './image-loader';
 
 class ClassHeader extends React.Component {
 
@@ -39,8 +38,7 @@ class ClassHeader extends React.Component {
       <ImageLoader className="class-header"
                    wrapper={wrap}
                    src={headerImage}
-                   imgProps={{className: 'header-image'}}
-                   preloader={() => <Loader/>}>
+                   imgProps={{className: 'header-image'}}>
         画像を読み込めませんでした
       </ImageLoader>
     );

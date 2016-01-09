@@ -1,8 +1,6 @@
 import React, { PropTypes as T } from 'react';
-import ImageLoader from 'react-imageloader';
-import classnames from 'classnames';
 
-import Loader from './loader';
+import ImageLoader from './image-loader';
 
 class FestivalThumbnail extends React.Component {
 
@@ -33,7 +31,7 @@ class FestivalThumbnail extends React.Component {
                    wrapper={wrap}
                    src={thumbnail}
                    imgProps={{ className: 'image' }}
-                   preloader={() => <Loader/>}>
+                   cover={true}>
         画像を読み込めませんでした
       </ImageLoader>
     );

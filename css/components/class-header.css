@@ -1,9 +1,9 @@
-@import "../size";
 @import "../color";
+@import "../util/object-fit";
 
 .class-header {
   width: 100%;
-  min-height: $classHeaderHeight;
+  height: 260px;                /* the reason why not min-height is that vertical-align (flex column) does not work */
   overflow: hidden;
   position: relative;
   box-shadow: 0 0 50px 10px black inset;
@@ -56,13 +56,9 @@
     }
   }
   .header-image {
-    /* ref: http://deerest.co/2015/10/22/css3-img-center-trimming/ */
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    @mixin object-fit-item;
     width: 100%;
     height: auto;
-    transform: translate(-50%, -50%);
     z-index: -1;
   }
 }

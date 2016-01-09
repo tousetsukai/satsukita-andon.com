@@ -1,9 +1,8 @@
 import React, { PropTypes as T } from 'react';
 import { Link } from 'react-router';
-import ImageLoader from 'react-imageloader';
 
 import * as classutil from '../util/class';
-import Loader from './loader';
+import ImageLoader from './image-loader';
 
 class ClassThumbnail extends React.Component {
 
@@ -33,7 +32,7 @@ class ClassThumbnail extends React.Component {
                      wrapper={wrap}
                      src={thumbnail}
                      imgProps={{className: 'class-image'}}
-                     preloader={() => <Loader/>}>
+                     cover={true}>
           画像を読み込めませんでした
         </ImageLoader>
       </Link>
