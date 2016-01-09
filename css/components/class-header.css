@@ -45,10 +45,13 @@
         .prize {
           list-style-type: none;
           margin-left: 20px;
+          display: flex;
+          align-items: center;
           .prize-icon {
             fill: currentColor;
-            width: calc(24px + 1.2vw);
-            height: calc(24px + 1.2vw);
+            width: calc(38px + 1.7vw);
+            min-width: calc(38px + 1.7vw);
+            height: calc(38px + 1.7vw);
           }
         }
       }
