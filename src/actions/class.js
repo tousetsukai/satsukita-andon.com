@@ -8,7 +8,7 @@ export const getClass = (classId) => (dispatch) => api.getClass(classId)
     if (res.status === 404) {
       return showError(res.data.code, 'クラスが見つかりませんでした。')(dispatch);
     } else {
-      return showError(res.data.code, '情報を取得できませんでした。')(dispatch);
+      return showError(res.data.code)(dispatch);
     }
   });
 
@@ -23,7 +23,7 @@ export const getReviews = (classId) => (dispatch) => api.getReviews(classId)
     return true;
   })
   .catch(res => {
-    return showError(res.data.code, '講評を取得できませんでした。')(dispatch);
+    return showError(res.data.code)(dispatch);
   });
 
 export const clearReviews = (dispatch) => {
@@ -37,7 +37,7 @@ export const getClassArticles = (classId) => (dispatch) => api.getClassArticles(
     return true;
   })
   .catch(res => {
-    return showError(res.data.code, '講評を取得できませんでした。')(dispatch);
+    return showError(res.data.code)(dispatch);
   });
 
 export const clearClassArticles = (dispatch) => {
@@ -51,7 +51,7 @@ export const getClassResources = (classId) => (dispatch) => api.getClassResource
     return true;
   })
   .catch(res => {
-    return showError(res.data.code, '講評を取得できませんでした。')(dispatch);
+    return showError(res.data.code)(dispatch);
   });
 
 export const clearClassResources = (dispatch) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Alert } from 'elemental';
+import NotificationSystem from 'react-notification-system';
 import ProgressBar from 'react-progress-bar-plus';
 
 import Header from '../components/header';
@@ -29,6 +29,24 @@ class App extends Component {
     };
   }
 
+  showError = (message) => {
+    this.refs.notification.addNotification({
+      message: message,
+      level: 'error',
+    });
+  }
+
+  componentDidMount = () => {
+    if (this.props.showingError) {
+      this.showError(this.props.error.message);
+    }
+  }
+  componentDidUpdate = (prevProps) => {
+    if (!prevProps.showingError && this.props.showingError) {
+      this.showError(this.props.error.message);
+    }
+  }
+
   render() {
     const progress = () => {
       const p = this.props.loading ? 0 : 100;
@@ -42,10 +60,27 @@ class App extends Component {
         />
         {progress()}
         <Header/>
-        <div>
-          {this.props.showingError && <Alert type="danger">{this.props.error.message}</Alert>}
-          {this.props.children}
-        </div>
+        <NotificationSystem ref="notification" style={{
+          NotificationItem: {
+            error: {
+              borderTop: 'none',
+              borderLeft: '2px solid red',
+              backgroundColor: 'rgba(0, 20, 20, 1)',
+              color: 'rgb(240, 240, 240)',
+              boxShadow: 'none',
+              WebkitBoxShadow: 'none',
+              MozBoxShadow: 'none',
+            },
+          },
+          Dismiss: {
+            error: {
+              backgroundColor: '#666666',
+              color: '#222222',
+            }
+          },
+        }}/>
+
+        {this.props.children}
         <Footer/>
       </div>
     );
