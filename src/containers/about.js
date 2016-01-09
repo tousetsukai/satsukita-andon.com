@@ -11,13 +11,13 @@ class About extends Component {
 
   static fetchData = ({ dispatch }) => {
     return dispatch(loading(getFixedContent('about')));
-  }
+  };
 
   componentWillMount = () => {
     if (_.isEmpty(this.props.about)) {
       return About.fetchData({ dispatch: this.props.dispatch });
     }
-  }
+  };
 
   render() {
     const md = new Remarkable({

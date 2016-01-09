@@ -12,11 +12,11 @@ export default class ImageLoader extends React.Component {
     wrapper: T.func,
     src: T.string.isRequired,
     imgProps: T.object,
-  }
+  };
 
   state = {
     fit: undefined,
-  }
+  };
 
   render() {
     const p = this.props;

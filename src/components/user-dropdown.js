@@ -10,7 +10,7 @@ class UserDropdown extends Component {
     router: React.PropTypes.object,
     store: React.PropTypes.object,
     user: React.PropTypes.object,
-  }
+  };
 
   logout = () => {
     return this.context.store.dispatch((dispatch) => {
@@ -18,7 +18,7 @@ class UserDropdown extends Component {
       Cookies.remove('token');
       this.context.router.push('/signin');
     });
-  }
+  };
 
   onSelect = (v) => {
     switch (v.type) {
@@ -29,7 +29,7 @@ class UserDropdown extends Component {
     default:
       return console.error(`${v.type} is not defined`); // eslint-disable-line no-console
     }
-  }
+  };
 
   render() {
     const user = this.context.user;

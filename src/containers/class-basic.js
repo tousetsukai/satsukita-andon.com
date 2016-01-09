@@ -7,7 +7,7 @@ class ClassBasic extends Component {
 
   static propTypes = {
     clazz: T.object.isRequired, // empty object or class object
-  }
+  };
 
   render() {
     const { clazz } = this.props;

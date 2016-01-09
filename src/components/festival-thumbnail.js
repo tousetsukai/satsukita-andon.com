@@ -11,7 +11,7 @@ class FestivalThumbnail extends React.Component {
       theme: T.string.isRequired,
       theme_roman: T.string.isRequired,
     }),
-  }
+  };
 
   render() {
     const { festival } = this.props;

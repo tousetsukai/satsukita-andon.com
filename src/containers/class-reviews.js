@@ -12,12 +12,12 @@ class ClassReviews extends Component {
 
   static propTypes = {
     reviews: T.arrayOf(T.object),
-  }
+  };
 
   static fetchData = ({ params, dispatch }) => {
     const classId = `${params.times}${params.clazz}`;
     return dispatch(loading(getReviews(classId)));
-  }
+  };
 
   fetchData = (props) => {
     const { dispatch, reviewsOf, clazz } = props;
@@ -30,11 +30,11 @@ class ClassReviews extends Component {
         return dispatch(loading(getReviews(classId)));
       }
     }
-  }
+  };
 
   componentWillMount = () => {
     this.fetchData(this.props);
-  }
+  };
 
   componentWillUpdate = (nextProps) => {
     // empty => non empty, non empty => empty, non empty => another class
@@ -45,7 +45,7 @@ class ClassReviews extends Component {
                    classutil.classId(this.props.clazz) !== classutil.classId(nextProps.clazz);
       cond && this.fetchData(nextProps);
     }
-  }
+  };
 
   render() {
     const { reviews } = this.props;

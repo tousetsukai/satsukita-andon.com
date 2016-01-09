@@ -13,7 +13,7 @@ class ClassResources extends Component {
       getClassArticles(classId),
       getClassResources(classId),
     ])));
-  }
+  };
 
   fetchData = (props) => {
     const { dispatch, articlesOf, resourcesOf, clazz } = props;
@@ -29,11 +29,11 @@ class ClassResources extends Component {
         ])));
       }
     }
-  }
+  };
 
   componentWillMount = () => {
     this.fetchData(this.props);
-  }
+  };
 
   componentWillUpdate = (nextProps) => {
     // empty => non empty, non empty => empty, non empty => another class
@@ -44,7 +44,7 @@ class ClassResources extends Component {
                    classutil.classId(this.props.clazz) !== classutil.classId(nextProps.clazz);
       cond && this.fetchData(nextProps);
     }
-  }
+  };
 
   render() {
     const { resources, articles } = this.props;

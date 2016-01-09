@@ -13,7 +13,7 @@ class NavBarItems extends React.Component {
     activeId: T.string.isRequired,
     defaultScrollPosition: T.number.isRequired,
     scrollMillis: T.number.isRequired,
-  }
+  };
 
   // do not use componentWillMount because server does not have DOM
   componentDidMount() {
@@ -56,14 +56,14 @@ export default class NavBar extends React.Component {
       id: T.string.isRequired,
     })).isRequired,
     activeId: T.string.isRequired,
-  }
+  };
   state = {
     scrollPosition: 0,
-  }
+  };
   activePosition = (props) => {
     const i = props.items.findIndex((item) => item.id === props.activeId);
     return i >= 0 ? i * 70 : 0;
-  }
+  };
   componentWillMount() {
     const pos = this.activePosition(this.props);
     this.setState({ scrollPosition: pos });
@@ -76,7 +76,7 @@ export default class NavBar extends React.Component {
   }
   handleArrow = (num) => () => {
     this.refs.navBarItems.scrollPlus(num);
-  }
+  };
   render() {
     const { items, activeId } = this.props;
     const opts = {

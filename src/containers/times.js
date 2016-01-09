@@ -32,7 +32,7 @@ class Times extends Component {
     } else {
       return Promise.resolve(true);
     }
-  }
+  };
 
   componentWillMount() {
     this.fetchData(this.props);
@@ -53,7 +53,7 @@ class Times extends Component {
       link: `/gallery/${fes.times_ord}`,
     }));
     return <NavBar activeId={times} items={items}/>;
-  }
+  };
 
   render() {
     const { params, classes } = this.props;

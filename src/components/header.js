@@ -8,7 +8,7 @@ class Header extends Component {
 
   static contextTypes = {
     user: React.PropTypes.object,
-  }
+  };
 
   signupOrUser() {
     const user = this.context.user;

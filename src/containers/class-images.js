@@ -13,16 +13,16 @@ class ClassImages extends Component {
   static fetchData = ({ params, dispatch }) => {
     const classId = params.times + params.clazz;
     return dispatch(loading(getImages(classId)));
-  }
+  };
 
   static propTypes = {
     images: T.arrayOf(T.object),
-  }
+  };
 
   state = {
     lightboxIsOpen: false,
     currentImage: 0,
-  }
+  };
 
   fetchData = (props) => {
     const { dispatch, clazz, of } = props;
@@ -35,20 +35,20 @@ class ClassImages extends Component {
         return dispatch(loading(getImages(classId)));
       }
     }
-  }
+  };
   componentWillMount = () => {
     this.fetchData(this.props);
-  }
+  };
   componentDidMount = () => {
     if (window) {
       window.addEventListener('scroll', this.handleScroll);
     }
-  }
+  };
   componentWillUnmount = () => {
     if (window) {
       window.removeEventListener('scroll', this.handleScroll);
     }
-  }
+  };
   componentWillUpdate = (nextProps) => {
     // empty => non empty, non empty => empty, non empty => another class
     if (_.isEmpty(this.props.clazz)) {
@@ -58,7 +58,7 @@ class ClassImages extends Component {
                    classutil.classId(this.props.clazz) !== classutil.classId(nextProps.clazz);
       cond && this.fetchData(nextProps);
     }
-  }
+  };
 
   getMoreImages = () => {
     const { clazz, dispatch, count, allCount } = this.props;
@@ -66,14 +66,14 @@ class ClassImages extends Component {
       const classId = classutil.classId(clazz);
       dispatch(loading(getImages(classId, count)));
     }
-  }
+  };
 
   // load by scroll position
   handleScroll = (ev) => {
     if (window.innerHeight + ev.srcElement.body.scrollTop >= document.body.offsetHeight - 100) { // 100 is about footer size
       this.getMoreImages();
     }
-  }
+  };
 
   // lightbox methods
   openLightbox = (index) => (event) => {
@@ -82,18 +82,18 @@ class ClassImages extends Component {
       currentImage: index,
       lightboxIsOpen: true,
     });
-  }
+  };
   closeLightbox = () => {
     this.setState({
       currentImage: 0,
       lightboxIsOpen: false,
     });
-  }
+  };
   gotoPrev = () => {
     this.setState({
       currentImage: this.state.currentImage - 1,
     });
-  }
+  };
   gotoNext = () => {
     const nextImage = this.state.currentImage + 1;
     this.setState({
@@ -102,7 +102,7 @@ class ClassImages extends Component {
     if (nextImage + 1 === this.props.count) { // next image is the last image
       this.getMoreImages();
     }
-  }
+  };
   renderLightbox = () => {
     // this is workaround for server-side react-images
     if (typeof document === 'undefined') {
@@ -127,7 +127,7 @@ class ClassImages extends Component {
                   backdropClosesModal={true}/>
       );
     }
-  }
+  };
 
   render() {
     const { images } = this.props;

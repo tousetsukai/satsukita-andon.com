@@ -8,7 +8,7 @@ class ClassTabs extends React.Component {
 
   static propTypes = {
     tab: React.PropTypes.string.isRequired,
-  }
+  };
 
   render() {
     const { clazz } = this.props;

@@ -13,7 +13,7 @@
     bottom: 0;
     left: 0;
     padding: 40px 20px 10px;
-    background: linear-gradient(180deg, transparent 0%, black 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.65) 50%, black 100%);
     .id {
       color: $text;
       margin-top: 0;
@@ -44,10 +44,6 @@
         padding: 0;
         .prize {
           list-style-type: none;
-          border: 2px solid;
-          border-radius: 10px;
-          margin-top: -6px;
-          padding: 4px 18px;
           margin-left: 20px;
         }
       }

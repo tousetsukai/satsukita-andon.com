@@ -14,7 +14,7 @@ class Home extends Component {
 
   state = {
     inJumbotron: true,
-  }
+  };
 
   componentWillMount() {
     if (_.isEmpty(this.props.topNews)) {
@@ -37,7 +37,7 @@ class Home extends Component {
   handleScroll = (ev) => {
     const inJumbotron = ev.target.scrollingElement.scrollTop < window.innerHeight;
     this.setState({ inJumbotron });
-  }
+  };
 
   render() {
     const { topNews } = this.props;

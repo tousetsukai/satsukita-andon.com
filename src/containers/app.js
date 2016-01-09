@@ -21,31 +21,32 @@ class App extends Component {
 
   static childContextTypes = {
     user: React.PropTypes.object,
-  }
+  };
 
   getChildContext = () => {
     return {
       user: this.props.user,
     };
-  }
+  };
 
   showError = (message) => {
     this.refs.notification.addNotification({
       message: message,
       level: 'error',
     });
-  }
+  };
 
   componentDidMount = () => {
     if (this.props.showingError) {
       this.showError(this.props.error.message);
     }
-  }
+  };
+
   componentDidUpdate = (prevProps) => {
     if (!prevProps.showingError && this.props.showingError) {
       this.showError(this.props.error.message);
     }
-  }
+  };
 
   render() {
     const progress = () => {

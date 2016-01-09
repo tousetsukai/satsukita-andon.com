@@ -8,7 +8,7 @@ class Icon extends Component {
       name: React.PropTypes.string,
       icon_url: React.PropTypes.string,
     }).isRequired,
-  }
+  };
 
   render() {
     const { user } = this.props;

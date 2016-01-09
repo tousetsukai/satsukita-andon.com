@@ -40,7 +40,7 @@ class Class extends Component {
     } else {
       return Promise.resolve(true);
     }
-  }
+  };
 
   componentWillMount() {
     this.fetchData(this.props);
@@ -64,7 +64,7 @@ class Class extends Component {
         {this.props.children}
       </div>
     );
-  }
+  };
 
   renderFestivalNavBar = () => {
     const { params, festivals } = this.props;
@@ -75,7 +75,7 @@ class Class extends Component {
       link: `/gallery/${fes.times_ord}`,
     }));
     return <NavBar activeId={times} items={items}/>;
-  }
+  };
 
   renderTimesNavBar = () => {
     const { params, classes } = this.props;
@@ -86,7 +86,7 @@ class Class extends Component {
       link: `/gallery/${classutil.classIdWithSlash(c)}`,
     }));
     return <NavBar activeId={classId} items={items}/>;
-  }
+  };
   render() {
     const { clazz } = this.props;
     const classTitle = `${classutil.classNameJa(clazz)} ${clazz.title}`;

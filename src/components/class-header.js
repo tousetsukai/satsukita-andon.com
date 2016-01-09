@@ -8,7 +8,7 @@ class ClassHeader extends React.Component {
 
   static propTypes = {
     clazz: T.object.isRequired, // empty object or class object
-  }
+  };
 
   render() {
     const { clazz } = this.props;
@@ -24,7 +24,7 @@ class ClassHeader extends React.Component {
             <ul className="prizes">
               {f.map(clazz.prizes, prizes => prizes.map((prize) => (
                  <li key={prize.code}
-                     style={{color: `#${prize.color}`, borderColor: `#${prize.color}`}}
+                     style={{color: `#${prize.color}`}}
                      className="prize">
                    {prize.label}
                  </li>

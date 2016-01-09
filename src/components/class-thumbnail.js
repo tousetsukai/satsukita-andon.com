@@ -14,7 +14,7 @@ class ClassThumbnail extends React.Component {
       ['class']: T.number.isRequired,
       title: T.string.isRequired,
     }),
-  }
+  };
 
   render() {
     const { clazz } = this.props;

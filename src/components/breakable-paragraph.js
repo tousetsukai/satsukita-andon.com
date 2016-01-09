@@ -3,7 +3,7 @@ import React from 'react';
 export default class BreakableParagraph extends React.Component {
   static propTypes = {
     text: React.PropTypes.string.isRequired,
-  }
+  };
   render() {
     const { text, ...props } = this.props;
     const html = [].concat.apply([], text.split(/\r\n|\n/).map((t, i) => {

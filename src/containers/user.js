@@ -11,14 +11,14 @@ import { classIdWithSlash, classNameJa } from '../util/class';
 class User extends React.Component {
   static fetchData = ({ params, dispatch }) => {
     return dispatch(loading(getUser(params.login)));
-  }
+  };
   fetchData = (props) => {
     const { dispatch, params, user } = props;
     if (_.isEmpty(user) || user.login !== params.login) {
       dispatch(clearUser);
       User.fetchData(props);
     }
-  }
+  };
   componentWillMount() {
     this.fetchData(this.props);
   }
@@ -45,7 +45,7 @@ class User extends React.Component {
         </Link>
       </div>
     );
-  }
+  };
   render() {
     const { user } = this.props;
     return (

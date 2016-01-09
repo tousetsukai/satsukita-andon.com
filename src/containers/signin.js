@@ -9,32 +9,32 @@ class Signin extends Component {
 
   static contextTypes = {
     router: React.PropTypes.object.isRequired,
-  }
+  };
 
   state = {
     login: '',
     password: '',
-  }
+  };
 
   onLoginChange = (ev) => {
     this.setState({
       ...this.state,
       login: ev.target.value,
     });
-  }
+  };
 
   onPasswordChange = (ev) => {
     this.setState({
       ...this.state,
       password: ev.target.value,
     });
-  }
+  };
 
   submitIfEnter = (ev) => {
     if (ev.key === 'Enter') {
       this.onSubmit();
     }
-  }
+  };
 
   onSubmit = () => {
     const { router } = this.context;
@@ -44,7 +44,7 @@ class Signin extends Component {
           router.push('/settings');
         }
       });
-  }
+  };
 
   render() {
     return (
