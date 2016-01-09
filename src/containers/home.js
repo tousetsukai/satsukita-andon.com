@@ -52,7 +52,7 @@ class Home extends Component {
           titleTemplate="%s"
         />
         {this.state.inJumbotron && (<style>
-          {`.header { background-color: transparent !important; box-shadow: none !important; }`}
+          {`.header { background: none !important; box-shadow: none !important; }`}
         </style>)}
         <div className="home-jumbotron">
           <div className="background-image"/>
