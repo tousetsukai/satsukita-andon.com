@@ -15,22 +15,22 @@ $fontSize: 12px;
     margin: auto;
     height: $footerHeight;
     padding: 0 $padding 0;
-    @media (max-width: 599px) {
+    @media (max-width: calc($col2-width - 1)) {
       width: 100%;
       text-align: center;
       padding-top: 2px;
     }
-    @media (min-width: 600px) and (max-width: 1023px) {
+    @media (min-width: $col2-width) and (max-width: calc($fixed-width - 1px)) {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
     }
-    @media (min-width: 1024px) {
+    @media (min-width: $fixed-width) {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 1024px;
+      width: $fixed-width;
     }
 
     .footer-left {

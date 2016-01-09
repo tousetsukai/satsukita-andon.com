@@ -1,4 +1,5 @@
 @import "../color";
+@import "../size";
 
 .user-dropdown {
   display: flex;
@@ -9,7 +10,7 @@
     font-size: 14px;
     margin-left: 10px;
     color: $text;
-    @media (max-width: 499px) {
+    @mixin smartphone {
       display: none;
     }
     &:hover, &:focus {

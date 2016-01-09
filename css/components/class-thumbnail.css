@@ -1,4 +1,6 @@
 @import "../color";
+@import "../size";
+@import "../util/gallery";
 @import "../util/object-fit";
 
 .class-thumbnail {
@@ -19,15 +21,7 @@
     margin: auto;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 3px;
-    @media (max-width: 599px) {
-      font-size: 4vw;
-    }
-    @media (min-width: 600px) and (max-width: 1023px) {
-      font-size: 2.5vw;
-    }
-    @media (min-width: 1024px) {
-      font-size: 16px;
-    }
+    padding: 6px;
+    @mixin gallery-font-size 0.065;
   }
 }

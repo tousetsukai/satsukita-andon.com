@@ -5,18 +5,18 @@
   .container {
     padding: 0;
     /* for header height */
-    @media (max-width: 499px) {
+    @mixin smartphone {
       margin: 45px auto 0;
     }
-    @media (min-width: 500px) {
+    @mixin not-smartphone {
       margin: 55px auto 0;
     }
     /* for width */
-    @media (max-width: 1023px) {
+    @mixin fluid {
       width: 100%;
     }
-    @media (min-width: 1024px) {
-      width: 1024px;
+    @mixin fixed {
+      width: 1280px;
     }
     .padding-container {
       padding: 0 $padding;

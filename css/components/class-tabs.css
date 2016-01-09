@@ -1,4 +1,5 @@
 @import "../color";
+@import "../size";
 
 .class-tabs {
   display: flex;
@@ -20,15 +21,21 @@
     color: $text;
     width: 100%;
     text-align: center;
-    &:hover, &:focus {
+    &:hover,
+    &:focus,
+    &:active {
       color: $theme;
       text-decoration: none;
     }
-    @media (max-width: 499px) {
+
+    @mixin smartphone {
       font-size: 14px;
     }
-    @media (min-width: 500px) {
+    @mixin tablet {
       font-size: 16px;
+    }
+    @mixin laptop {
+      font-size: 19px;
     }
   }
   .class-text-active {

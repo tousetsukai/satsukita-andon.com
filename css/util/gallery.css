@@ -1,0 +1,34 @@
+@import "../size";
+
+@define-mixin gallery-size {
+  @mixin col2 {
+    width: calc(100vw / 2);
+    height: calc(100vw / 2 * (3 / 4));
+  }
+  @mixin col3 {
+    width: calc(100vw / 3);
+    height: calc(100vw / 3 * (3 / 4));
+  }
+  @mixin col4 {
+    width: calc(100vw / 4);
+    height: calc(100vw / 4 * (3 / 4));
+  }
+  @mixin fixed {
+    width: calc($fixed-width / 4);
+    height: calc($fixed-width / 4 * (3 / 4));
+  }
+}
+@define-mixin gallery-font-size $weight {
+  @mixin col2 {
+    font-size: calc(100vw / 2 * $weight);
+  }
+  @mixin col3 {
+    font-size: calc(100vw / 3 * $weight);
+  }
+  @mixin col4 {
+    font-size: calc(100vw / 4 * $weight);
+  }
+  @mixin fixed {
+    font-size: calc($fixed-width / 4 * $weight);
+  }
+}

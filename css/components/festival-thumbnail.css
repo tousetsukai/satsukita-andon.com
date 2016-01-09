@@ -1,30 +1,12 @@
 @import "../color";
+@import "../util/gallery";
 @import "../util/object-fit";
 
-@define-mixin fes-text $top, $small, $medium, $large {
+@define-mixin fes-text $weight {
   color: $text;
   margin: 0 auto;
   text-align: center;
-  @media (max-width: 599px) {
-    font-size: $small;
-  }
-  @media (min-width: 600px) and (max-width: 1023px) {
-    font-size: $medium;
-  }
-  @media (min-width: 1024px) {
-    font-size: $large;
-  }
-}
-
-@define-mixin fes-theme-text {
-  @mixin fes-text 30%, 10vw, 7vw, 54px;
-  text-shadow: 0 0 7px black;
-}
-
-@define-mixin fes-small-text $top {
-  @mixin fes-text $top, 4.2vw, 2.7vw, 24px;
-  font-weight: lighter;
-  text-shadow: 0 0 3px black;
+  @mixin gallery-font-size $weight;
 }
 
 .festival-thumbnail {
@@ -49,18 +31,19 @@
     justify-content: space-around;
     position: absolute;
     top: 0;
-    height: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     padding: 10% 0;
-    .times {
-      @mixin fes-small-text 15%;
+    .times,
+    .roman {
+      @mixin fes-text 0.1;
+      font-weight: lighter;
+      text-shadow: 0 0 3px black;
     }
     .theme {
-      @mixin fes-theme-text;
-    }
-    .roman {
-      @mixin fes-small-text 67%;
+      @mixin fes-text 0.2;
+      text-shadow: 0 0 7px black;
     }
   }
 }

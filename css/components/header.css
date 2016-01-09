@@ -11,10 +11,10 @@
   left: 0;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 1);
   z-index: 100;                 /* react-image uses 999-1001 */
-  @media (max-width: 499px) {
+  @mixin smartphone {
     height: 40px;
   }
-  @media (min-width: 500px) {
+  @mixin not-smartphone {
     height: 50px;
   }
   &:hover {
@@ -26,11 +26,11 @@
     display: flex;
     justify-content: space-between;
     height: 100%;
-    @media (max-width: 1023px) {
+    @mixin fluid {
       width: 100%;
     }
-    @media (min-width: 1024px) {
-      width: 1024px;
+    @mixin fixed {
+      width: $fixed-width;
     }
     nav {
       height: 100%;
@@ -46,10 +46,10 @@
           font-size: 0;
           margin: 0;
           .logo {
-            @media (max-width: 499px) {
+            @mixin smartphone {
               height: 30px;
             }
-            @media (min-width: 500px) {
+            @mixin not-smartphone {
               height: 40px;
             }
           }
@@ -61,11 +61,11 @@
             text-decoration: none;
             color: $theme;
           }
-          @media (max-width: 499px) {
+          @mixin smartphone {
             font-size: 15px;
             margin-left: 16px;
           }
-          @media (min-width: 500px) {
+          @mixin not-smartphone {
             font-size: 17px;
             margin-left: 27px;
           }
@@ -82,7 +82,7 @@
         .menu-button {
           @mixin ghost-button $green, $text;
         }
-        @media (max-width: 499px) {
+        @mixin smartphone {
           .menu-button {
             font-size: 13px;
           }
@@ -90,7 +90,7 @@
             display: none;
           }
         }
-        @media (min-width: 500px) {
+        @mixin not-smartphone {
           .menu-button {
             font-size: 16px;
             margin-left: 14px;

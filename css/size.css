@@ -1,3 +1,10 @@
+$col2-width: 600px;
+$col3-width: 960px;
+$fixed-width: 1280px;
+
+$smartphone-max-width: 500px;
+$tablet-max-width: 900px;
+
 $pcWidth: 1024px;
 $padding: 8px;
 $headerHeight: 50px;
@@ -5,6 +12,63 @@ $footerHeight: 70px;
 $homeLogoHeight: 400px;
 $contentsWidth: calc($pcWidth - $padding * 2);
 $classHeaderHeight: 260px;
+
+@define-mixin smartphone {
+  @media (max-width: $smartphone-max-width) {
+    @mixin-content;
+  }
+}
+@define-mixin not-smartphone {
+  @media (min-width: calc($smartphone-max-width + 1)) {
+    @mixin-content;
+  }
+}
+@define-mixin tablet {
+  @media (min-width: calc($smartphone-max-width + 1)) and (max-width: $tablet-max-width) {
+    @mixin-content;
+  }
+}
+@define-mixin laptop {
+  @media (min-width: calc($tablet-max-width + 1)) {
+    @mixin-content;
+  }
+}
+@define-mixin not-laptop {
+  @media (max-width: $tablet-max-width) {
+    @mixin-content;
+  }
+}
+@define-mixin laptop-not-fixed {
+  @media (min-width: calc($tablet-max-width + 1)) and (max-width: calc($fixed-width - 1)) {
+    @mixin-content;
+  }
+}
+
+@define-mixin col2 {
+  @media (max-width: calc($col2-width - 1)) {
+    @mixin-content;
+  }
+}
+@define-mixin col3 {
+  @media (min-width: $col2-width) and (max-width: calc($col3-width - 1)) {
+    @mixin-content;
+  }
+}
+@define-mixin col4 {
+  @media (min-width: $col3-width) and (max-width: calc($fixed-width - 1)) {
+    @mixin-content;
+  }
+}
+@define-mixin fluid {
+  @media (max-width: $fixed-width) {
+    @mixin-content;
+  }
+}
+@define-mixin fixed {
+  @media (min-width: calc($fixed-width - 1)) {
+    @mixin-content;
+  }
+}
 
 @define-mixin aspect-ratio $width, $height, $content {
   position: relative;

@@ -8,8 +8,6 @@
   position: relative;
   box-shadow: 0 0 50px 10px black inset;
   .title-wrapper {
-    /* display: table-cell; */
-    /* vertical-align: bottom; */
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -20,21 +18,21 @@
       color: $text;
       margin-top: 0;
       margin-bottom: 5px;
-      @media (max-width: 1023px) {
-        font-size: calc(12px + 0.9vw);
+      @mixin fluid {
+        font-size: calc(16px + 0.8vw);
       }
-      @media (min-width: 1024px) {
-        font-size: 20px;
+      @mixin fixed {
+        font-size: calc($fixed-width * 0.0205);
       }
     }
     .title-prize {
       display: flex;
       justify-content: space-between;
-      @media (max-width: 1023px) {
+      @mixin fluid {
         font-size: calc(22px + 2.1vw);
       }
-      @media (min-width: 1024px) {
-        font-size: 42px;
+      @mixin fixed {
+        font-size: calc($fixed-width * 0.038);
       }
       .title {
         color: $text;

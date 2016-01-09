@@ -1,17 +1,46 @@
 @import "../util/icon";
+@import "../color";
+@import "../size";
 
-@define-mixin info $small, $medium, $large, $xlarge {
-  @media (max-width: 499px) {
-    font-size: $small;
+@define-mixin info $weight {
+  @mixin smartphone {
+    font-size: calc(100vw * $weight);
   }
-  @media (min-width: 500px) and (max-width: 799px) {
-    font-size: $medium;
+  @mixin tablet {
+    font-size: calc(100vw / 2 * $weight);
   }
-  @media (min-width: 800px) and (max-width: 1023px) {
-    font-size: $large;
+  @mixin laptop-not-fixed {
+    font-size: calc(100vw / 3 * $weight);
   }
-  @media (min-width: 1024px) {
-    font-size: $xlarge;
+  @mixin fixed {
+    font-size: calc($fixed-width / 3 * $weight);
+  }
+}
+
+@define-mixin profile-class $weight {
+  @mixin smartphone {
+    width: 100vw;
+    .class-info {
+      padding: calc(100vw * $weight) 0;
+    }
+  }
+  @mixin tablet {
+    width: 50vw;
+    .class-info {
+      padding: calc(50vw * $weight) 0;
+    }
+  }
+  @mixin laptop-not-fixed {
+    width: 33.33vw;
+    .class-info {
+      padding: calc(33.33vw * $weight) 0;
+    }
+  }
+  @mixin fixed {
+    width: calc($fixed-width / 3);
+    .class-info {
+      padding: calc($fixed-width / 3 * $weight) 0;
+    }
   }
 }
 
@@ -57,30 +86,7 @@
     justify-content: space-around;
     .user-profile-class {
       position: relative;
-      @media (max-width: 499px) {
-        width: 100vw;
-        .class-info {
-          padding: 9vw 0;
-        }
-      }
-      @media (min-width: 500px) and (max-width: 799px) {
-        width: 50vw;
-        .class-info {
-          padding: 5vw 0;
-        }
-      }
-      @media (min-width: 800px) and (max-width: 1023px) {
-        width: 33.3vw;
-        .class-info {
-          padding: 2.6vw 0;
-        }
-      }
-      @media (min-width: 1024px) {
-        width: calc(1024px / 3);
-        .class-info {
-          padding: 24px 0;
-        }
-      }
+      @mixin profile-class 0.1;
       .class-image {
         width: 100%;
       }
@@ -112,16 +118,16 @@
           }
         }
         .class-id {
-          @mixin info 6vw, 3vw, 2.3vw, 24px;
+          @mixin info 0.06;
         }
         .class-title {
-          @mixin info 8vw, 4vw, 3vw, 30px;
+          @mixin info 0.09;
         }
         .class-prizes {
-          @mixin info 5vw, 3vw, 2.3vw, 24px;
+          @mixin info 0.05;
         }
         .class-chief {
-          @mixin info 4vw, 2.5vw, 2vw, 20px;
+          @mixin info 0.04;
         }
       }
     }

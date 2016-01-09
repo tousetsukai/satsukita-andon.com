@@ -1,4 +1,5 @@
 @import "../util/icon";
+@import "../size";
 @import "../color";
 
 .class-reviews {
@@ -6,7 +7,7 @@
   li.class-review {
     list-style-type: none;
     width: 100%;
-    @media (max-width: 699px) {
+    @mixin not-laptop {
       margin-top: 50px;
       .class-review-left {
         width: 100%;
@@ -41,7 +42,7 @@
         }
       }
     }
-    @media (min-width: 700px) {
+    @mixin laptop {
       margin-top: 30px;
       display: flex;
       .class-review-left {

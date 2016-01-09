@@ -13,4 +13,7 @@ module.exports = {
   'postcss-import': {
     glob: true,
   },
+  'postcss-calc': {
+    mediaQueries: true,
+  },
 };
