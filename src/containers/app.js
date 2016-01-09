@@ -77,7 +77,7 @@ class App extends Component {
             error: {
               backgroundColor: '#666666',
               color: '#222222',
-            }
+            },
           },
         }}/>
 

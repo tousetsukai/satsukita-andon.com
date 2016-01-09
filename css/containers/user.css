@@ -125,6 +125,12 @@
         }
         .class-prizes {
           @mixin info 0.05;
+          .prize-icon {
+            vertical-align: -25%;
+            width: calc(1em + 10px);
+            min-width: calc(1em + 10px);
+            height: calc(1em + 10px);
+          }
         }
         .class-chief {
           @mixin info 0.04;

@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import classnames from 'classnames';
 
 import { loading, getUser, clearUser } from '../actions';
 import Icon from '../components/icon';
 import { classIdWithSlash, classNameJa } from '../util/class';
+import * as prizeutil from '../util/prize';
 
 class User extends React.Component {
   static fetchData = ({ params, dispatch }) => {
@@ -37,7 +37,10 @@ class User extends React.Component {
             <p className="class-title">{clazz.title}</p>
             <p className="class-prizes">
               {clazz.prizes.map(prize => (
-                 <span key={prize.code} style={{color: '#' + prize.color}}>{prize.label}</span>
+                 <span key={prize.code} style={{color: '#' + prize.color}}>
+                   {prizeutil.icon(prize)}
+                   {prize.label}
+                 </span>
                ))}
             </p>
             {chief && <p className="class-chief">○ 責任者</p>}
