@@ -2,12 +2,7 @@
 
 @define-mixin fes-text $top, $small, $medium, $large {
   color: $text;
-  position: absolute;
-  top: $top;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
   @media (max-width: 599px) {
     font-size: $small;
@@ -35,23 +30,42 @@
   position: relative;
   transition: 0.2s linear;
   width: 100%;
-  .times {
-    @mixin fes-small-text 15%;
-  }
-  .theme {
-    @mixin fes-theme-text;
-  }
-  .roman {
-    @mixin fes-small-text 67%;
-  }
-  .image-normal {
+  height: 100%;
+  overflow: hidden;
+  display: inline-block;
+  .image {
     transition: 0.2s linear;
-    width: 100%;
-    height: auto;
+    min-width: 100%;            /* suppose 4:3 (or flatter) ratio */
+    max-height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     filter: brightness(0.5);
-    object-fit: cover;
   }
-  .image-hover {
-    filter: brightness(1.0);
+  &:hover {
+    .image {
+      filter: brightness(1.0);
+    }
+  }
+  .themes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    height: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10% 0;
+    .times {
+      @mixin fes-small-text 15%;
+    }
+    .theme {
+      @mixin fes-theme-text;
+    }
+    .roman {
+      @mixin fes-small-text 67%;
+    }
   }
 }

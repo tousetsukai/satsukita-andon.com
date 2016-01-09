@@ -15,39 +15,24 @@ class FestivalThumbnail extends React.Component {
     }),
   }
 
-  state = {
-    hover: false,
-  }
-
-  onMouseEnter = () => {
-    this.setState({ hover: true });
-  }
-
-  onMouseLeave = () => {
-    this.setState({ hover: false });
-  }
-
   render() {
     const { festival } = this.props;
     const thumbnail = festival.thumbnail_url || '/static/img/no-icon.svg';
     const wrap = (props, children) => (
-      <div {...props} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+      <div {...props}>
         {children}
-        <p className="times">{festival.times_ord}</p>
-        <p className="theme">{festival.theme}</p>
-        <p className="roman">{festival.theme_roman}</p>
+        <div className="themes">
+          <p className="times">{festival.times_ord}</p>
+          <p className="theme">{festival.theme}</p>
+          <p className="roman">{festival.theme_roman}</p>
+        </div>
       </div>
     );
     return (
       <ImageLoader className="festival-thumbnail"
                    wrapper={wrap}
                    src={thumbnail}
-                   imgProps={{
-                     className: classnames({
-                       'image-normal': true,
-                       'image-hover': this.state.hover,
-                     }),
-                   }}
+                   imgProps={{ className: 'image' }}
                    preloader={() => <Loader/>}>
         画像を読み込めませんでした
       </ImageLoader>

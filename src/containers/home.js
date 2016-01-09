@@ -46,7 +46,7 @@ class Home extends Component {
       linkify: true,
     });
     return (
-      <div onScroll={this.handleScroll}>
+      <div>
         <Helmet
           title="行灯職人への道"
           titleTemplate="%s"
