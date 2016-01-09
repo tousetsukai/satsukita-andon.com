@@ -12,7 +12,7 @@ class Footer extends Component {
             <span className="space">    |    </span>
             <Link className="footer-link" to="/contact">お問い合わせ・質問</Link>
           </p>
-          <p>copyright &copy; 2002-2016 行灯職人への道</p>
+          <p><Link className="footer-link" to="/license">copyright &copy; 2002-2016 行灯職人への道</Link></p>
         </div>
       </footer>
     );

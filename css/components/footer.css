@@ -36,14 +36,15 @@ $footer-height: 70px;
 
     .footer-left {
       padding: 0;
-      .footer-link {
+    }
+
+    .footer-link {
+      text-decoration: none;
+      color: $gray;
+      &:hover,
+      &:focus {
         text-decoration: none;
-        color: $gray;
-        &:hover,
-        &:focus {
-          text-decoration: none;
-          color: $theme;
-        }
+        color: $theme;
       }
     }
   }

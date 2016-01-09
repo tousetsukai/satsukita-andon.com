@@ -13,3 +13,4 @@ export Article from './article';
 export User from './user';
 export NotFound from './notfound';
 export Signin from './signin';
+export License from './license';
