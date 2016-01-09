@@ -32,3 +32,25 @@
     font-size: calc($fixed-width / 4 * $weight);
   }
 }
+@define-mixin gallery-icon-size $weight {
+  @mixin col2 {
+    width: calc(50vw * $weight);
+    min-width: calc(50vw * $weight);
+    height: calc(50vw * $weight);
+  }
+  @mixin col3 {
+    width: calc(33.33vw * $weight);
+    min-width: calc(33.33vw * $weight);
+    height: calc(33.33vw * $weight);
+  }
+  @mixin col4 {
+    width: calc(25vw * $weight);
+    min-width: calc(25vw * $weight);
+    height: calc(25vw * $weight);
+  }
+  @mixin fixed {
+    width: calc($fixed-width / 4 * $weight);
+    min-width: calc($fixed-width / 4 * $weight);
+    height: calc($fixed-width / 4 * $weight);
+  }
+}

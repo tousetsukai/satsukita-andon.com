@@ -14,14 +14,18 @@
   .class-title {
     color: $text;
     position: absolute;
-    display: inline-block;
     width: 100%;
     bottom: 0;
     left: 0;
     margin: auto;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 6px;
     @mixin gallery-font-size 0.065;
+    .prize-icon {
+      margin-left: 8px;
+      vertical-align: -20%;
+      @mixin gallery-icon-size 0.08;
+    }
   }
 }

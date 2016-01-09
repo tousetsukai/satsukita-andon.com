@@ -2,22 +2,13 @@ import React, { PropTypes as T } from 'react';
 
 import * as classutil from '../util/class';
 import f from '../util/f';
+import * as prizeutil from '../util/prize';
 import ImageLoader from './image-loader';
 
 class ClassHeader extends React.Component {
 
   static propTypes = {
     clazz: T.object.isRequired, // empty object or class object
-  };
-
-  prizeIcon = (prize) => {
-    if (prize.index >= 100) { // grand
-      return 'first';
-    } else if (prize.index >= 40) { // gold, silver, bronze
-      return 'second';
-    } else {
-      return 'third';
-    }
   };
 
   render() {
@@ -36,9 +27,7 @@ class ClassHeader extends React.Component {
                  <li key={prize.code}
                      style={{color: `#${prize.color}`}}
                      className="prize">
-                   <svg className="prize-icon" style={{color: '#' + prize.color}}>
-                     <use xlinkHref={'/static/img/prizes.svg#' + this.prizeIcon(prize)}/>
-                   </svg>
+                   {prizeutil.icon(prize)}
                    {prize.label}
                  </li>
                )))}

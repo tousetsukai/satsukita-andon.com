@@ -2,6 +2,7 @@ import React, { PropTypes as T } from 'react';
 import { Link } from 'react-router';
 
 import * as classutil from '../util/class';
+import * as prizeutil from '../util/prize';
 import ImageLoader from './image-loader';
 
 class ClassThumbnail extends React.Component {
@@ -23,7 +24,11 @@ class ClassThumbnail extends React.Component {
     const wrap = (props, children) => (
       <div {...props}>
         {children}
-        <p className="class-title">{gradeClassJa + ' ' + clazz.title}</p>
+        <p className="class-title">
+          {gradeClassJa}
+          {clazz.title}
+          {clazz.prizes.map((prize) => (prizeutil.icon(prize)))}
+        </p>
       </div>
     );
     return (
