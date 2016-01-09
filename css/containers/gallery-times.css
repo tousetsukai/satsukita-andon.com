@@ -1,15 +1,27 @@
 @import "../util/gallery";
+@import "../size";
 
-.times-classes {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-flow: wrap;
-  align-items: center;
-  li {
+.times-classes-wrapper {
+  margin: 0 0 50px;
+  .grade {
+    margin: 30px 10px 30px;
+    @mixin not-laptop {
+      text-align: center;
+    }
+    font-size: 30px;
+    color: #ddd;
+  }
+  .times-classes {
+    display: flex;
     margin: 0;
     padding: 0;
-    list-style-type: none;
-    @mixin gallery-size;
+    flex-flow: wrap;
+    align-items: center;
+    li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      @mixin gallery-size;
+    }
   }
 }

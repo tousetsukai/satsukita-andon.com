@@ -44,6 +44,20 @@ class Times extends Component {
     }
   }
 
+  renderTimes = (grade, classes) => {
+    return (
+      <section className="times-classes-wrapper">
+        <h1 className="grade">{grade}年生の行灯</h1>
+        <ul className="times-classes">
+          {classes.map((c) => (
+             <li key={c.id}><ClassThumbnail clazz={c}/></li>
+           ))
+          }
+        </ul>
+      </section>
+    );
+  };
+
   renderFestivalNavBar = () => {
     const { params, festivals } = this.props;
     const times = params.times;
@@ -64,18 +78,18 @@ class Times extends Component {
         return classes[_.random(0, classes.length - 1)];
       }
     };
+    const first = classes.filter((c) => c.grade === 1);
+    const second = classes.filter((c) => c.grade === 2);
+    const third = classes.filter((c) => c.grade === 3);
     return (
       <div className="container">
         <Helmet title={`Gallery ${params.times}`}
                 meta={meta(`Gallery ${params.times}`, `${params.times}行灯ギャラリー`, randomClass().thumbnail_url)}
         />
         {this.renderFestivalNavBar()}
-        <ul className="times-classes">
-          {classes.map((c) => (
-             <li key={c.id}><ClassThumbnail clazz={c}/></li>
-           ))
-          }
-        </ul>
+        {!_.isEmpty(third) && this.renderTimes(3, third)}
+        {!_.isEmpty(second) && this.renderTimes(2, second)}
+        {!_.isEmpty(first) && this.renderTimes(1, first)}
       </div>
     );
   }
