@@ -10,6 +10,16 @@ class ClassHeader extends React.Component {
     clazz: T.object.isRequired, // empty object or class object
   };
 
+  prizeIcon = (prize) => {
+    if (prize.index >= 100) { // grand
+      return 'first';
+    } else if (prize.index >= 40) { // gold, silver, bronze
+      return 'second';
+    } else {
+      return 'third';
+    }
+  };
+
   render() {
     const { clazz } = this.props;
     const headerImage = clazz.header_image_url || '/static/img/transparent.svg';
@@ -26,6 +36,9 @@ class ClassHeader extends React.Component {
                  <li key={prize.code}
                      style={{color: `#${prize.color}`}}
                      className="prize">
+                   <svg className="prize-icon" style={{color: '#' + prize.color}}>
+                     <use xlinkHref={'/static/img/prizes.svg#' + this.prizeIcon(prize)}/>
+                   </svg>
                    {prize.label}
                  </li>
                )))}

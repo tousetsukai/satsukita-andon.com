@@ -45,6 +45,11 @@
         .prize {
           list-style-type: none;
           margin-left: 20px;
+          .prize-icon {
+            fill: currentColor;
+            width: calc(24px + 1.2vw);
+            height: calc(24px + 1.2vw);
+          }
         }
       }
     }
