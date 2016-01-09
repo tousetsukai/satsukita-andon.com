@@ -1,19 +1,20 @@
 @import "../size";
 @import "../color";
 
-$fontSize: 12px;
+$font-size: 12px;
+$footer-height: 70px;
 
 .footer {
-  height: $footerHeight;
+  height: $footer-height;
   width: 100%;
   background-color: #06060a;
   position: absolute;
   bottom: 0;
   color: $gray;
-  font-size: $fontSize;
+  font-size: $font-size;
   .footer-wrapper {
     margin: auto;
-    height: $footerHeight;
+    height: 100%;
     padding: 0 $padding 0;
     @media (max-width: calc($col2-width - 1)) {
       width: 100%;

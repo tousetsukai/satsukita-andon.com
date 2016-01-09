@@ -16,7 +16,7 @@
       width: 100%;
     }
     @mixin fixed {
-      width: 1280px;
+      width: $fixed-width;
     }
     .padding-container {
       padding: 0 $padding;

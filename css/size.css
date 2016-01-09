@@ -1,17 +1,11 @@
 $col2-width: 600px;
-$col3-width: 960px;
-$fixed-width: 1280px;
+$col3-width: 900px;
+$fixed-width: 1180px;
 
 $smartphone-max-width: 500px;
 $tablet-max-width: 900px;
 
-$pcWidth: 1024px;
 $padding: 8px;
-$headerHeight: 50px;
-$footerHeight: 70px;
-$homeLogoHeight: 400px;
-$contentsWidth: calc($pcWidth - $padding * 2);
-$classHeaderHeight: 260px;
 
 @define-mixin smartphone {
   @media (max-width: $smartphone-max-width) {
@@ -67,22 +61,5 @@ $classHeaderHeight: 260px;
 @define-mixin fixed {
   @media (min-width: calc($fixed-width - 1)) {
     @mixin-content;
-  }
-}
-
-@define-mixin aspect-ratio $width, $height, $content {
-  position: relative;
-  &:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: calc(($height / $width) * 100%);
-  }
-  > $content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
   }
 }
