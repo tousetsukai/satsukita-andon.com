@@ -1,7 +1,7 @@
 $full: rgba(255, 255, 255, 0.8);
 $half: rgba(255, 255, 255, 0.4);
 
-$size: 1.8em;
+$size: 1.2em;
 
 .loader-wrapper {
   display: flex;
@@ -24,7 +24,7 @@ $size: 1.8em;
 .loader {
   font-size: 10px;
   position: relative;
-  text-indent: -9999em;
+  top: -$size;
   transform: translateZ(0);
   animation-delay: -0.16s;
 }
