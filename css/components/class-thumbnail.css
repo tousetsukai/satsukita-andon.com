@@ -22,6 +22,9 @@
     background-color: rgba(0, 0, 0, 0.7);
     padding: 6px;
     @mixin gallery-font-size 0.065;
+    span:first-child {
+      margin-right: 8px;
+    }
     .prize-icon {
       margin-left: 8px;
       vertical-align: -20%;
