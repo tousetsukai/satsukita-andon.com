@@ -28,7 +28,15 @@ class NavBarItems extends React.Component {
 
   scrollPlus(num) {
     const node = findDOMNode(this);
-    this.scrollTo(node.scrollLeft + num);
+    const ini = node.scrollLeft;
+    let count = 0;
+    const id = setInterval(() => {
+      node.scrollLeft = ini + num * Math.sin(Math.PI / 2 * count);
+      count += 0.1;
+      if (count > 1) {
+        clearInterval(id);
+      }
+    }, 30);
   }
 
   render() {
