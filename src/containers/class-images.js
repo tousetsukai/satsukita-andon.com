@@ -49,14 +49,14 @@ class ClassImages extends Component {
       window.removeEventListener('scroll', this.handleScroll);
     }
   };
-  componentWillUpdate = (nextProps) => {
+  componentDidUpdate = (prevProps) => { // using componentWillUpdate, findComponentRoot error caused
     // empty => non empty, non empty => empty, non empty => another class
-    if (_.isEmpty(this.props.clazz)) {
-      !_.isEmpty(nextProps.clazz) && this.fetchData(nextProps);
+    if (_.isEmpty(prevProps.clazz)) {
+      !_.isEmpty(this.props.clazz) && this.fetchData(this.props);
     } else {
-      const cond = _.isEmpty(nextProps.clazz) ||
-                   classutil.classId(this.props.clazz) !== classutil.classId(nextProps.clazz);
-      cond && this.fetchData(nextProps);
+      const cond = _.isEmpty(this.props.clazz) ||
+                   classutil.classId(prevProps.clazz) !== classutil.classId(this.props.clazz);
+      cond && this.fetchData(this.props);
     }
   };
 
