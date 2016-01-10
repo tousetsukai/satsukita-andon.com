@@ -59,8 +59,9 @@
   }
   .header-image {
     @mixin object-fit-item;
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
     z-index: -1;
   }
 }
