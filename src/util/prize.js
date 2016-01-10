@@ -11,7 +11,7 @@ export const iconId = (prize) => {
 };
 
 export const icon = (prize) => (
-  <svg className="prize-icon" style={{color: '#' + prize.color, fill: 'currentColor'}}>
+  <svg key={prize.code} className="prize-icon" style={{color: '#' + prize.color, fill: 'currentColor'}}>
     <use xlinkHref={'/static/img/prizes.svg#' + iconId(prize)}/>
   </svg>
 );
