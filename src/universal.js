@@ -34,10 +34,11 @@ export const routes = (
 const logger = createLogger({
   logger: console,
 });
-export const configureStore = (initialState) => {
+export const configureStore = (initialState, ...middlewares) => {
   return applyMiddleware(
     thunk,
-    logger
+    logger,
+    ...middlewares
   )(createStore)(reducer, initialState);
 };
 
