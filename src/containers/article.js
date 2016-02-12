@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
-import Remarkable from 'remarkable';
 
 import { loading, getArticle, clearArticle } from '../actions';
+import Markdown from '../components/markdown';
 import { meta } from '../util/helmet';
 import f from '../util/f';
 
@@ -22,18 +22,21 @@ class Article extends Component {
     }
   }
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.params.id !== this.props.params.id) {
+      nextProps.dispatch(clearArticle);
+      Article.fetchData({ ...nextProps });
+    }
+  }
+
   render() {
     const { article } = this.props;
-    const md = new Remarkable({
-      html: true,
-      linkify: true,
-    });
     return (
       <div className="container padding-container">
         <Helmet title={`${article.title} - Howto`}
                 meta={meta(article.title, `${f.map(article.body, (b) => b.substring(0, 180))}...`)}
         />
-        <article dangerouslySetInnerHTML={{__html: md.render(article.body)}}/>
+        {article.body && <Markdown md={article.body}/>}
       </div>
     );
   }

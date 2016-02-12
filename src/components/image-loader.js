@@ -31,7 +31,8 @@ export default class ImageLoader extends React.Component {
                   src={p.src}
                   imgProps={imgProps}
                   onLoad={onLoad}
-                  preloader={() => <Loader/>}>
+                  preloader={() => <Loader/>}
+                  {...p.underlying}>
         {this.props.children}
       </Underlying>
     );

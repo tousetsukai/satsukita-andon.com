@@ -23,12 +23,20 @@ module.exports = {
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader'
+    }, {
+      test: /\.json$/,
+      loader: 'json-loader',
     }]
   },
   plugins: [
-    /* new webpack.optimize.UglifyJsPlugin({
-       compress: { warnings: false },
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+    }),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+    /* new webpack.DefinePlugin({
+       "process.env": {
+       NODE_ENV: JSON.stringify("production"),
+       },
        }), */
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
   ]
 };
