@@ -44,6 +44,20 @@ class Img extends React.Component {
 
 // is invalid ?
 
+const toplevel = (elems) => {
+  if (!Array.isArray(elems)) {
+    return false;
+  } else {
+    return elems.some((e) => {
+      if (['html', 'head', 'body'].indexOf(e.type) >= 0) {
+        return true;
+      } else {
+        return e.props && e.props.children && toplevel(e.props.children);
+      }
+    });
+  }
+};
+
 const blockInP = (elems) => {
   const go = (inP, children) => {
     if (!Array.isArray(children)) {
@@ -74,8 +88,8 @@ const blockInP = (elems) => {
 
 const isInvalid = (elems) => {
   try {
-    const a = blockInP(elems);
-    return a;
+    const res = blockInP(elems) || toplevel(elems);
+    return res;
   } catch (e) {
     console.log(e);
     return true;
