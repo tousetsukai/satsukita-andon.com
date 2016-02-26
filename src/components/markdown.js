@@ -42,10 +42,55 @@ class Img extends React.Component {
   }
 }
 
+// is invalid ?
+
+const blockInP = (elems) => {
+  const go = (inP, children) => {
+    if (!Array.isArray(children)) {
+      return false;
+    } else {
+      return children.some((e) => {
+        const next = (nextInP) => {
+          return e.props && e.props.children && go(nextInP, e.props.children);
+        };
+        if (inP) {
+          if (['p', 'div'].indexOf(e.type) >= 0) {
+            return true;
+          } else {
+            return next(true);
+          }
+        } else {
+          if (e.type === 'p') {
+            return next(true);
+          } else {
+            return next(false);
+          }
+        }
+      });
+    }
+  };
+  return go(false, elems);
+};
+
+const isInvalid = (elems) => {
+  try {
+    const a = blockInP(elems);
+    return a;
+  } catch (e) {
+    console.log(e);
+    return true;
+  }
+};
+
 export default class Markdown extends React.Component {
 
   static propTypes = {
     md: React.PropTypes.string.isRequired,
+    debug: React.PropTypes.bool,
+  };
+
+  static defaultProps = {
+    debug: false,
   };
 
   state = {
@@ -193,17 +238,17 @@ export default class Markdown extends React.Component {
   };
 
   render() {
-    try {
-      const htmlStr = marked(this.props.md);
-      const { elems, images } = this.build(htmlStr);
+    const htmlStr = marked(this.props.md);
+    const { elems, images } = this.build(htmlStr);
+    if (this.props.debug && isInvalid(elems)) {
+      return (<div className="markdown">HTML部分に不正があります</div>);
+    } else {
       return (
         <div className="markdown">
           {this.renderLightbox(images)}
           {elems}
         </div>
       );
-    } catch (e) {
-      return <div>error: {e}</div>;
     }
   }
 }
