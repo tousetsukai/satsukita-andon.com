@@ -189,7 +189,7 @@ export default class Markdown extends React.Component {
       const isImageList = cs.every((li) => (
         li.type === 'li' && [li.props.children].every((a) => ( // why not array?
           a.type === 'a' && a.props.children.every((img) => (
-            img.type && img.type.name === 'Img'
+            img.props && img.props.src // if `img` variable has src property, we regard it as a img object
           ))
         ))
       ));
@@ -255,7 +255,7 @@ export default class Markdown extends React.Component {
     const htmlStr = marked(this.props.md);
     const { elems, images } = this.build(htmlStr);
     if (this.props.debug && isInvalid(elems)) {
-      return (<div className="markdown">HTML部分に不正があります</div>);
+      return (<div className="markdown">HTML部分が正しくありません。修正してください。</div>);
     } else {
       return (
         <div className="markdown">
