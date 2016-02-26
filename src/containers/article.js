@@ -36,7 +36,7 @@ class Article extends Component {
         <Helmet title={`${article.title} - Howto`}
                 meta={meta(article.title, `${f.map(article.body, (b) => b.substring(0, 180))}...`)}
         />
-        {article.body && <Markdown md={article.body}/>}
+        {article.body && <Markdown md={article.body} debug={true}/>}
       </div>
     );
   }
