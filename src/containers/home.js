@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import Remarkable from 'remarkable';
 
+import Markdown from '../components/markdown';
 import { loading, getFixedContent } from '../actions';
 
 class Home extends Component {
@@ -41,10 +41,6 @@ class Home extends Component {
 
   render() {
     const { topNews } = this.props;
-    const md = new Remarkable({
-      html: true,
-      linkify: true,
-    });
     return (
       <div>
         <Helmet
@@ -61,7 +57,7 @@ class Home extends Component {
         </div>
         <div className="container padding-container">
           <h3>News</h3>
-          <article dangerouslySetInnerHTML={{__html: md.render(topNews.body)}}></article>
+          <Markdown md={topNews.body}/>
         </div>
       </div>
     );
