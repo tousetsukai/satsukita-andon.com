@@ -7,25 +7,25 @@ import Markdown from '../components/markdown';
 import { loading, getFixedContent } from '../actions';
 import { meta } from '../util/helmet';
 
-class About extends Component {
+class Contact extends Component {
 
   static fetchData = ({ dispatch }) => {
-    return dispatch(loading(getFixedContent('about')));
+    return dispatch(loading(getFixedContent('contact')));
   };
 
   componentWillMount = () => {
-    if (_.isEmpty(this.props.about)) {
-      return About.fetchData({ dispatch: this.props.dispatch });
+    if (_.isEmpty(this.props.contact)) {
+      return Contact.fetchData({ dispatch: this.props.dispatch });
     }
   };
 
   render() {
     return (
       <div className="container padding-container">
-        <Helmet title="About"
-                meta={meta('About', '行灯職人への道について')}
+        <Helmet title="Contact"
+                meta={meta('Contact', 'お問い合わせ・質問')}
         />
-        {this.props.about.body && <Markdown md={this.props.about.body}/>}
+        {this.props.contact.body && <Markdown md={this.props.contact.body}/>}
       </div>
     );
   }
@@ -33,6 +33,6 @@ class About extends Component {
 
 export default connect(
   state => ({
-    about: state.contents.about,
+    contact: state.contents.contact,
   })
-)(About);
+)(Contact);

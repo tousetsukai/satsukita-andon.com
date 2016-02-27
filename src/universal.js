@@ -26,6 +26,7 @@ export const routes = (
     <Route path="signin" component={C.Signin}/>
     <Route path="users/:login" component={C.User}/>
     <Route path="about" component={C.About}/>
+    <Route path="contact" component={C.Contact}/>
     <Route path="license" component={C.License}/>
     <Route path="*" component={C.NotFound}/>
   </Route>

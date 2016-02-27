@@ -1,6 +1,7 @@
 export App from './app';
 export Home from './home';
 export About from './about';
+export Contact from './contact';
 export Gallery from './gallery';
 export Times from './times';
 export Class from './class';
