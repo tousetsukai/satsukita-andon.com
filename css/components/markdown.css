@@ -2,7 +2,118 @@
 @import "../util/gallery";
 
 .markdown {
-  .image-list {
+
+  h1 {
+    color: white;
+    font-size: 2em;
+    border-bottom: 1px solid #999;
+    line-height: 2.2em;
+    margin: 36px auto 28px;
+  }
+  h2 {
+    color: white;
+    font-size: 1.6em;
+    border-bottom: 1px dashed #666;
+    line-height: 1.8em;
+    margin: 26px auto 20px;
+  }
+  h3 {
+    color: white;
+    border: none;
+    border-left: 5px solid rgba(255, 255, 255, 0.2);
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    margin: 18px auto 12px;
+  }
+  h4 {
+    font-size: 1.1em;
+  }
+  h5 {
+    font-size: 1em;
+  }
+
+  p {
+    margin: 20px 0;
+    line-height: 1.7em;
+  }
+
+  ul:not(.image-list), ol {
+    margin: 20px;
+    padding: 0;
+    li {
+      margin-left: 20px;
+      margin-top: 4px;
+    }
+    ul, ol {
+      margin: 2px 20px 10px;
+    }
+  }
+  ul {
+    li {
+      list-style-type: disc;
+    }
+  }
+  ul ul, ol ul {
+    li {
+      list-style-type: circle;
+    }
+  }
+  ol ol ul, ol ul ul, ul ol ul, ul ul ul {
+    li {
+      list-style-type: square;
+    }
+  }
+  ol {
+    li {
+      list-style-type: decimal;
+    }
+  }
+
+  code {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 1.1em;
+    line-height: 1.5em;
+  }
+
+  pre {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: none;
+  }
+
+  .table {
+    $tableColor: rgba(180, 180, 180, 0.5);
+    border-color: $tableColor;
+    th {
+      text-align: center;
+      border-color: $tableColor;
+    }
+    td {
+      border-color: $tableColor;
+    }
+    tbody>tr:nth-child(even)>td,
+    tbody>tr:nth-child(even)>th {
+      background-color: rgba(180, 180, 180, 0.1);
+    }
+    tbody>tr:nth-child(odd)>td,
+    tbody>tr:nth-child(odd)>th {
+      background-color: transparent;
+    }
+  }
+
+  dl {
+    dt {
+      margin: 12px 0 6px;
+    }
+    dd {
+      margin-left: 30px;
+    }
+  }
+
+  ul.image-list {
     display: flex;
     flex-flow: wrap;
     justify-content: flex-start;
@@ -12,22 +123,15 @@
       list-style-type: none;
       padding: 2px;
       @mixin gallery-size;
-      p {
+      a {
+        @mixin object-fit-wrapper;
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
         display: block;
-        a {
-          @mixin object-fit-wrapper;
-          width: 100%;
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          display: block;
-          img {
-            @mixin object-fit-item;
-          }
+        img {
+          @mixin object-fit-item;
         }
       }
     }
