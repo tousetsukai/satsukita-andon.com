@@ -4,7 +4,7 @@
 @import "../util/reset";
 
 .header {
-  background: linear-gradient(30deg, rgba(0, 0, 50, 0.8), rgba(50, 0, 0, 0.8));
+  background-color: rgba(0, 0, 0, 0.75);
   width: 100%;
   position: fixed;
   top: 0;
@@ -18,7 +18,7 @@
     height: 50px;
   }
   &:hover {
-    background: linear-gradient(30deg, rgba(0, 0, 50, 0.9), rgba(50, 0, 0, 0.9));
+    background-color: rgba(0, 0, 0, 0.95);
   }
   .header-wrapper {
     margin: auto;

@@ -22,7 +22,7 @@
     top: 0;
     left: 0;
     z-index: 5;
-    background: linear-gradient(30deg, rgba(0, 0, 50, 0.9), rgba(50, 0, 0, 0.9));
+    background-color: rgba(0, 0, 0, 0.7);
   }
   .jumbotron-logo {
     position: absolute;
