@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
+import DateString from '../components/date-string';
+import Icon from '../components/icon';
 import { loading, getArticles } from '../actions';
 
 class Howto extends Component {
@@ -31,6 +33,14 @@ class Howto extends Component {
               <Link to={`/howto/articles/${article.id}`}>
                 {article.title}
               </Link>
+              <Link to={`/users/${article.owner.login}`}>
+                <Icon user={article.owner}/>
+              </Link>
+              <Link to={`/users/${article.editor.login}`}>
+                <Icon user={article.editor}/>
+              </Link>
+              <DateString date={article.created_at}/>
+              <DateString date={article.updated_at}/>
             </li>)
           }
         </ul>
