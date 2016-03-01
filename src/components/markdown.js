@@ -99,7 +99,7 @@ const isInvalid = (elems) => {
 export default class Markdown extends React.Component {
 
   static propTypes = {
-    md: React.PropTypes.string.isRequired,
+    md: React.PropTypes.string,
     debug: React.PropTypes.bool,
   };
 
@@ -243,6 +243,8 @@ export default class Markdown extends React.Component {
         }
         childrenStack.push(parentChildren);
       },
+    }, {
+      decodeEntities: true,
     });
     parser.parseComplete(htmlStr);
     return {
@@ -252,17 +254,21 @@ export default class Markdown extends React.Component {
   };
 
   render() {
-    const htmlStr = marked(this.props.md);
-    const { elems, images } = this.build(htmlStr);
-    if (this.props.debug && isInvalid(elems)) {
-      return (<div className="markdown">HTML部分が正しくありません。修正してください。</div>);
+    if (this.props.md) {
+      const htmlStr = marked(this.props.md);
+      const { elems, images } = this.build(htmlStr);
+      if (this.props.debug && isInvalid(elems)) {
+        return (<div className="markdown">HTML部分が正しくありません。修正してください。</div>);
+      } else {
+        return (
+          <div className="markdown">
+            {this.renderLightbox(images)}
+            {elems}
+          </div>
+        );
+      }
     } else {
-      return (
-        <div className="markdown">
-          {this.renderLightbox(images)}
-          {elems}
-        </div>
-      );
+      return <div className="markdown"/>;
     }
   }
 }

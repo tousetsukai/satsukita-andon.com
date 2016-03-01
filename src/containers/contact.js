@@ -25,7 +25,7 @@ class Contact extends Component {
         <Helmet title="Contact"
                 meta={meta('Contact', 'お問い合わせ・質問')}
         />
-        {this.props.contact.body && <Markdown md={this.props.contact.body}/>}
+        <Markdown md={this.props.contact.body}/>
       </div>
     );
   }

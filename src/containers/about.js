@@ -25,7 +25,7 @@ class About extends Component {
         <Helmet title="About"
                 meta={meta('About', '行灯職人への道について')}
         />
-        {this.props.about.body && <Markdown md={this.props.about.body}/>}
+        <Markdown md={this.props.about.body}/>
       </div>
     );
   }
