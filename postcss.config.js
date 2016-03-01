@@ -6,8 +6,9 @@ module.exports = {
     'postcss-mixins', // 'postcss-mixins' should be before 'postcss-nested' and 'postcss-simple-vars'
     'autoprefixer',
     'postcss-simple-vars',
-    'postcss-calc',
+    'postcss-for-var',    // 'postcss-for' should be after 'postcss-simple-vars' and 'postcss-nested', before 'postcss-calc'
     'postcss-nested',
+    'postcss-calc',
     'postcss-focus',
   ],
   'postcss-import': {

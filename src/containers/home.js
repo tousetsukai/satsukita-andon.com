@@ -12,6 +12,13 @@ class Home extends Component {
     return dispatch(loading(getFixedContent('news')));
   }
 
+  static defaultProps = {
+    // jumbotron background images
+    backgroundImages: _.shuffle([1,2,3,4,5,6,7,8,9,10]).map(i =>
+      `https://static.satsukita-andon.com/files/jumbotron/${i}.jpg`
+    ),
+  };
+
   state = {
     inJumbotron: true,
   };
@@ -40,7 +47,7 @@ class Home extends Component {
   };
 
   render() {
-    const { topNews } = this.props;
+    const { topNews, backgroundImages } = this.props;
     return (
       <div>
         <Helmet
@@ -51,9 +58,13 @@ class Home extends Component {
           {`.header { background: none !important; box-shadow: none !important; }`}
         </style>)}
         <div className="home-jumbotron">
-          <div className="background-image"/>
+          <ul className="background-images">
+            {backgroundImages.map((url, i) =>
+              <li key={i} style={{ backgroundImage: `url("${url}")` }}/>)}
+          </ul>
           <div className="background-gradient"/>
           <img className="jumbotron-logo" src="/static/img/logo.png"/>
+          <p className="jumbotron-down"><i className="fa fa-angle-down"></i></p>
         </div>
         <div className="container padding-container">
           <h3>News</h3>
