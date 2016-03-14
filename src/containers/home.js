@@ -4,20 +4,13 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import Markdown from '../components/markdown';
-import { loading, getFixedContent } from '../actions';
+import { loading, all, getFixedContent, getRandomImages } from '../actions';
 
 class Home extends Component {
 
   static fetchData({ dispatch }) {
-    return dispatch(loading(getFixedContent('news')));
+    return dispatch(loading(all([getFixedContent('news'), getRandomImages(20)])));
   }
-
-  static defaultProps = {
-    // jumbotron background images
-    backgroundImages: _.shuffle([1,2,3,4,5,6,7,8,9,10]).map(i =>
-      `https://static.satsukita-andon.com/files/jumbotron/${i}.jpg`
-    ),
-  };
 
   state = {
     inJumbotron: true,
@@ -47,7 +40,7 @@ class Home extends Component {
   };
 
   render() {
-    const { topNews, backgroundImages } = this.props;
+    const { topNews, jumbotronImages } = this.props;
     return (
       <div>
         <Helmet
@@ -59,7 +52,7 @@ class Home extends Component {
         </style>)}
         <div className="home-jumbotron">
           <ul className="background-images">
-            {backgroundImages.map((url, i) =>
+            {jumbotronImages.map((url, i) =>
               <li key={i} style={{ backgroundImage: `url("${url}")` }}/>)}
           </ul>
           <div className="background-gradient"/>
@@ -78,5 +71,6 @@ class Home extends Component {
 export default connect(
   state => ({
     topNews: state.contents.news,
+    jumbotronImages: state.home.jumbotronImages,
   })
 )(Home);

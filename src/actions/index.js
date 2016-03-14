@@ -5,6 +5,13 @@ export * from './util';
 export * from './class';
 export * from './auth';
 
+export const getRandomImages = (n) => (dispatch) => api.getRandomImages(n)
+  .then(res => {
+    dispatch({ type: 'home:jumbotron-images:set', images: res.data });
+    return true;
+  })
+  .catch(res => showError(res.data.code, '内容を取得できませんでした。')(dispatch));
+
 export const getFixedContent = (type) => (dispatch) => api.getFixedContent(type)
   .then(res => {
     dispatch({ type: `contents:${type}:set`, content: res.data });

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://api.satsukita-andon.com/dev/',
-  /* baseURL: 'http://localhost:6039/dev/', */
+  /* baseURL: 'http://localhost:5815/dev/', */
 });
 
 export default {
@@ -18,6 +18,11 @@ export default {
     params: {
       offset: offset,
       limit: 24,
+    },
+  }),
+  getRandomImages: (n) => api.get('/others/random-images', {
+    params: {
+      n: n,
     },
   }),
   getArticles: (params) => api.get('/articles', { params }),
