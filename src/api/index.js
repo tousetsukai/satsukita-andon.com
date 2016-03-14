@@ -14,6 +14,7 @@ export default {
   getReviews: (classId) => api.get(`/classes/${classId}/reviews`),
   getClassArticles: (classId) => api.get(`/classes/${classId}/articles`),
   getClassResources: (classId) => api.get(`/classes/${classId}/resources`),
+  getClassResource: (id) => api.get(`/class-resources/${id}`),
   getImages: (classId, offset) => api.get(`/classes/${classId}/images`, {
     params: {
       offset: offset,

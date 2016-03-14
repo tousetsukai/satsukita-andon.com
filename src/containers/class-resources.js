@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import _ from 'lodash';
 
 import { loading, all, getClassResources, getClassArticles, clearClassResources, clearClassArticles } from '../actions';
@@ -47,14 +48,15 @@ class ClassResources extends Component {
   };
 
   render() {
-    const { resources, articles } = this.props;
+    const { clazz, resources, articles } = this.props;
+    const classId = classutil.classIdWithSlash(clazz);
     return (
       <div>
         <ul>
           {articles.map(a => <li key={a.id}>{a.title}</li>)}
         </ul>
         <ul>
-          {resources.map(r => <li key={r.id}>{r.title}</li>)}
+          {resources.map(r => <li key={r.id}><Link to={`/gallery/${classId}/resources/${r.id}`}>{r.title}</Link></li>)}
         </ul>
       </div>
     );

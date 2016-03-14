@@ -59,6 +59,20 @@ export const clearClassResources = (dispatch) => {
   return Promise.resolve(true);
 };
 
+export const getClassResource = (id) => (dispatch) => api.getClassResource(id)
+  .then(res => {
+    dispatch({ type: 'class:resource:set', resource: res.data });
+    return true;
+  })
+  .catch(res => {
+    return showError(res.data.code)(dispatch);
+  });
+
+export const clearClassResource = (dispatch) => {
+  dispatch({ type: 'class:resource:clear' });
+  return Promise.resolve(true);
+};
+
 export const getImages = (classId, offset = 0) => (dispatch) => api.getImages(classId, offset)
   .then(res => dispatch({ type: 'class:images:append', items: res.data, of: classId }))
   .catch(res => {

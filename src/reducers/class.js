@@ -11,6 +11,7 @@ const initialState = {
   resources: [],
   resourcesOf: '',
   resourceCount: 0,
+  resource: {},
   allResourceCount: 0,
   images: [],
   imagesOf: '',
@@ -77,6 +78,16 @@ export function clazz(state = initialState, action) {
       resourcesOf: '',
       resourceCount: 0,
       allResourceCount: 0,
+    };
+  case 'class:resource:set':
+    return {
+      ...state,
+      resource: action.resource,
+    };
+  case 'class:resource:clear':
+    return {
+      ...state,
+      resource: {},
     };
   case 'class:images:append':
     return {

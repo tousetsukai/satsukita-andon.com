@@ -18,6 +18,7 @@ export const routes = (
       <Route path="basic" component={C.ClassBasic}/>
       <Route path="reviews" component={C.ClassReviews}/>
       <Route path="resources" component={C.ClassResources}/>
+      <Route path="resources/:id" component={C.ClassResource}/>
       <Route path="images" component={C.ClassImages}/>
       <Route path="*" component={C.NotFound}/>
     </Route>
