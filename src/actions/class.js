@@ -45,6 +45,20 @@ export const clearClassArticles = (dispatch) => {
   return Promise.resolve(true);
 };
 
+export const getClassArticle = (id) => (dispatch) => api.getClassArticle(id)
+  .then(res => {
+    dispatch({ type: 'class:article:set', article: res.data });
+    return true;
+  })
+  .catch(res => {
+    return showError(res.data.code)(dispatch);
+  });
+
+export const clearClassArticle = (dispatch) => {
+  dispatch({ type: 'class:article:clear' });
+  return Promise.resolve(true);
+};
+
 export const getClassResources = (classId) => (dispatch) => api.getClassResources(classId)
   .then(res => {
     dispatch({ type: 'class:resources:set', items: res.data, of: classId });

@@ -53,7 +53,7 @@ class ClassResources extends Component {
     return (
       <div>
         <ul>
-          {articles.map(a => <li key={a.id}>{a.title}</li>)}
+          {articles.map(a => <li key={a.id}><Link to={`/gallery/${classId}/articles/${a.id}`}>{a.title}</Link></li>)}
         </ul>
         <ul>
           {resources.map(r => <li key={r.id}><Link to={`/gallery/${classId}/resources/${r.id}`}>{r.title}</Link></li>)}

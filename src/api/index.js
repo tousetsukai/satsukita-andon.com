@@ -13,6 +13,7 @@ export default {
   getClass: (classId) => api.get(`/classes/${classId}`),
   getReviews: (classId) => api.get(`/classes/${classId}/reviews`),
   getClassArticles: (classId) => api.get(`/classes/${classId}/articles`),
+  getClassArticle: (id) => api.get(`/class-articles/${id}`),
   getClassResources: (classId) => api.get(`/classes/${classId}/resources`),
   getClassResource: (id) => api.get(`/class-resources/${id}`),
   getImages: (classId, offset) => api.get(`/classes/${classId}/images`, {

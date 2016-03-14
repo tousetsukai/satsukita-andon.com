@@ -7,6 +7,7 @@ const initialState = {
   articles: [],
   articlesOf: '',
   articleCount: 0,
+  article: {},
   allArticleCount: 0,
   resources: [],
   resourcesOf: '',
@@ -62,6 +63,16 @@ export function clazz(state = initialState, action) {
       articlesOf: '',
       articleCount: 0,
       allArticleCount: 0,
+    };
+  case 'class:article:set':
+    return {
+      ...state,
+      article: action.article,
+    };
+  case 'class:article:clear':
+    return {
+      ...state,
+      article: {},
     };
   case 'class:resources:set':
     return {
