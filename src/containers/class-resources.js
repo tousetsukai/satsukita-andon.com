@@ -23,7 +23,7 @@ class ClassResources extends Component {
     } else {
       const classId = classutil.classId(clazz);
       if (resourcesOf !== classId || articlesOf !== classId) {
-        dispatch(clearClassResources);
+        dispatch(all([clearClassArticles, clearClassResources]));
         return dispatch(loading(all([
           getClassResources(classId),
           getClassArticles(classId),
@@ -52,9 +52,11 @@ class ClassResources extends Component {
     const classId = classutil.classIdWithSlash(clazz);
     return (
       <div>
+        <h2>記事</h2>
         <ul>
           {articles.map(a => <li key={a.id}><Link to={`/gallery/${classId}/articles/${a.id}`}>{a.title}</Link></li>)}
         </ul>
+        <h2>資料</h2>
         <ul>
           {resources.map(r => <li key={r.id}><Link to={`/gallery/${classId}/resources/${r.id}`}>{r.title}</Link></li>)}
         </ul>
