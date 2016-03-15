@@ -39,6 +39,7 @@ export const routes = (
     <Route path="signin" component={C.Signin}/>
     <Route path="dashboard" component={D.Container} onEnter={undefined}>
       <IndexRoute component={D.Home}/>
+      <Route path="articles" component={D.Articles}/>
       <Route path="*" component={C.NotFound}/>
     </Route>
     {/* Not Found */}
