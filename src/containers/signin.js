@@ -41,7 +41,7 @@ class Signin extends Component {
     this.props.dispatch(loading(signin(this.state.login, this.state.password)))
       .then(ok => {
         if (ok) {
-          router.push('/settings');
+          router.push('/dashboard/home');
         }
       });
   };

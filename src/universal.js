@@ -6,11 +6,14 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 import * as C from './containers';
+import * as D from './containers/dashboard';
 import reducer from './reducers';
 
 export const routes = (
   <Route path="/" component={C.App}>
+    {/* Home */}
     <IndexRoute component={C.Home}/>
+    {/* Gallery */}
     <Route path="gallery" component={C.Gallery}/>
     <Route path="gallery/:times" component={C.Times}/>
     <Route path="gallery/:times/:clazz" component={C.Class}>
@@ -23,13 +26,19 @@ export const routes = (
       <Route path="images" component={C.ClassImages}/>
       <Route path="*" component={C.NotFound}/>
     </Route>
+    {/* Howto */}
     <Route path="howto" component={C.Howto}/>
     <Route path="howto/articles/:id" component={C.Article}/>
-    <Route path="signin" component={C.Signin}/>
+    {/* User page */}
     <Route path="users/:login" component={C.User}/>
+    {/* Static pages */}
     <Route path="about" component={C.About}/>
     <Route path="contact" component={C.Contact}/>
     <Route path="license" component={C.License}/>
+    {/* Dashboard */}
+    <Route path="signin" component={C.Signin}/>
+    <Route path="dashboard/home" component={D.Home}/>
+    {/* Not Found */}
     <Route path="*" component={C.NotFound}/>
   </Route>
 );
