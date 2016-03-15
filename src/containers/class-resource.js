@@ -19,14 +19,23 @@ class ClassResource extends React.Component {
   }
 
   render() {
-    const { resource } = this.props;
-    return (
-      <div>
-        <h1>{resource.title}</h1>
-        <p>{resource.description}</p>
-        <a href={resource.url}>ダウンロード</a>
-      </div>
-    );
+    const { resource, clazz } = this.props;
+    if (_.isEmpty(resource) || _.isEmpty(clazz)) {
+      // not fetched yet
+      return <p>loading...</p>;
+    } else if (resource.class.id === clazz.id) {
+      // normal case
+      return (
+        <div>
+          <h1>{resource.title}</h1>
+          <p>{resource.description}</p>
+          <a href={resource.url}>ダウンロード</a>
+        </div>
+      );
+    } else {
+      // invalid resource
+      return <p>資料が見つかりません</p>;
+    }
   }
 }
 

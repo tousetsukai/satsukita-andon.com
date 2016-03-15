@@ -20,13 +20,22 @@ class ClassArticle extends React.Component {
   }
 
   render() {
-    const { article } = this.props;
-    return (
-      <div>
-        <h1>{article.title}</h1>
-        {article.body && <Markdown md={article.body}/>}
-      </div>
-    );
+    const { article, clazz } = this.props;
+    if (_.isEmpty(article) || _.isEmpty(clazz)) {
+      // not fetched yet
+      return <p>loading...</p>;
+    } else if (article.class.id === clazz.id) {
+      // normal case
+      return (
+        <div>
+          <h1>{article.title}</h1>
+          <Markdown md={article.body}/>
+        </div>
+      );
+    } else {
+      // invalid article
+      return <p>記事が見つかりません</p>;
+    }
   }
 }
 
