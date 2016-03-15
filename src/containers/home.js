@@ -14,6 +14,7 @@ class Home extends Component {
 
   static defaultProps = {
     // jumbotron background images
+    // FIXME: this makes difference in server and client side rendering
     backgroundImages: _.shuffle([1,2,3,4,5,6,7,8,9,10]).map(i =>
       `https://static.satsukita-andon.com/files/jumbotron/${i}.jpg`
     ),
