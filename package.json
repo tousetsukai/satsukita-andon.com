@@ -33,6 +33,7 @@
     "cookie-parser": "^1.4.1",
     "elemental": "^0.5.11",
     "express": "^4.13.3",
+    "history": "^2.0.1",
     "htmlparser2": "^3.9.0",
     "js-cookie": "^2.1.0",
     "lodash": "^4.0.0",
@@ -48,11 +49,12 @@
     "react-progress-bar-plus": "^0.2.3",
     "react-redux": "^4.0.6",
     "react-router": "^2.0.0-rc5",
+    "react-router-redux": "^4.0.0",
     "redux": "^3.0.5",
     "redux-logger": "^2.3.2",
-    "redux-simple-router": "^2.0.3",
     "redux-thunk": "^1.0.3",
     "remarkable": "^1.6.1",
+    "scroll-behavior": "^0.3.3",
     "serialize-javascript": "^1.1.2"
   },
   "devDependencies": {

@@ -7,7 +7,7 @@ import { times } from './times';
 import { clazz } from './class';
 import { howto } from './howto';
 import { users } from './users';
-import { routeReducer } from 'redux-simple-router';
+import { routerReducer } from 'react-router-redux';
 
 export default combineReducers({
   app,
@@ -18,5 +18,5 @@ export default combineReducers({
   clazz,
   howto,
   users,
-  routing: routeReducer,
+  routing: routerReducer,
 });

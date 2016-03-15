@@ -1,14 +1,21 @@
 import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
-import { syncHistory } from 'redux-simple-router';
+import { useRouterHistory } from 'react-router';
+import { createHistory } from 'history';
+import useScroll from 'scroll-behavior/lib/useStandardScroll';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 import { createClientApp, configureStore } from './universal';
+import ga from './util/ga';
 
 const initialState = window.__INITIAL_STATE__;
 
-const reduxRouterMiddleware = syncHistory(browserHistory);
-const store = configureStore(initialState, reduxRouterMiddleware);
+const store = configureStore(initialState);
+const history = useRouterHistory(useScroll(createHistory))({ queryKey: false });
+const synced = syncHistoryWithStore(history, store);
 
-const app = createClientApp(store, browserHistory);
+// Google Analytics
+synced.listen(l => ga(l.pathname));
+
+const app = createClientApp(store, synced);
 
 render(app, document.getElementById('app'));

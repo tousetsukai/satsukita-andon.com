@@ -1,7 +1,3 @@
-import { UPDATE_PATH } from 'redux-simple-router';
-
-import ga from '../util/ga';
-
 const initialState = {
   user: {},
   error: {},
@@ -41,14 +37,6 @@ export function app(state = initialState, action) {
       ...state,
       error: {},
       showingError: false,
-    };
-  case UPDATE_PATH:
-    ga(action.payload.path);
-    return {
-      ...state,
-      error: {},
-      showingError: false,
-      loading: false,
     };
   default:
     return state;
