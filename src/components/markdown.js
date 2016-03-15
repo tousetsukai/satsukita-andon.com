@@ -255,7 +255,9 @@ export default class Markdown extends React.Component {
 
   render() {
     if (this.props.md) {
-      const htmlStr = marked(this.props.md);
+      const htmlStr = marked(this.props.md, {
+        breaks: true,
+      });
       const { elems, images } = this.build(htmlStr);
       if (this.props.debug && isInvalid(elems)) {
         return (<div className="markdown">HTML部分が正しくありません。修正してください。</div>);
