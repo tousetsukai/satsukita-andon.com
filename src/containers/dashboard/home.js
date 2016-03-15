@@ -6,8 +6,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container padding-container">
-        <p>dashboard</p>
+      <div>
+        <p>行灯職人への道 管理画面</p>
       </div>
     );
   }
