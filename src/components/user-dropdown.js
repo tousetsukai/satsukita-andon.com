@@ -16,7 +16,6 @@ class UserDropdown extends Component {
     return this.context.store.dispatch((dispatch) => {
       dispatch({ type: 'app:user:set', user: {} });
       Cookies.remove('token');
-      this.context.router.push('/signin');
     });
   };
 
