@@ -20,6 +20,11 @@ class Container extends Component {
         <div className="container padding-container">
           <ul>
             <li>ここに各種管理項目へのリンク</li>
+            <li><Link to="/dashboard/articles">記事一覧</Link></li>
+            <li><Link to="/dashboard/resources">資料一覧</Link></li>
+            <li><Link to="/dashboard/classes">クラス一覧</Link></li>
+            <li>--</li>
+            <li><Link to="/dashboard/settings">アカウント設定</Link></li>
           </ul>
           {this.props.children}
         </div>
