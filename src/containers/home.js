@@ -12,15 +12,8 @@ class Home extends Component {
     return dispatch(loading(getFixedContent('news')));
   }
 
-  static defaultProps = {
-    // jumbotron background images
-    // FIXME: this makes difference in server and client side rendering
-    backgroundImages: _.shuffle([1,2,3,4,5,6,7,8,9,10]).map(i =>
-      `https://static.satsukita-andon.com/files/jumbotron/${i}.jpg`
-    ),
-  };
-
   state = {
+    backgroundImages: [], // jumbotron background images
     inJumbotron: true,
   };
 
@@ -34,6 +27,11 @@ class Home extends Component {
     if (window) {
       window.addEventListener('scroll', this.handleScroll);
     }
+    this.setState({
+      backgroundImages: _.shuffle([1,2,3,4,5,6,7,8,9,10]).map(i =>
+        `https://static.satsukita-andon.com/files/jumbotron/${i}.jpg`
+      ).slice(0, 5),
+    });
   }
 
   componentWillUnmount() {
@@ -44,11 +42,14 @@ class Home extends Component {
 
   handleScroll = (ev) => {
     const inJumbotron = ev.target.scrollingElement.scrollTop < window.innerHeight;
-    this.setState({ inJumbotron });
+    if (inJumbotron !== this.state.inJumbotron) {
+      this.setState({ inJumbotron });
+    }
   };
 
   render() {
-    const { topNews, backgroundImages } = this.props;
+    const { topNews } = this.props;
+    const { backgroundImages } = this.state;
     return (
       <div>
         <Helmet
