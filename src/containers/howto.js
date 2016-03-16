@@ -14,6 +14,10 @@ class Howto extends Component {
     return dispatch(loading(getArticles({ offset: 0, limit: 15, orderby: 'updated_at DESC'})));
   }
 
+  state = {
+    fetchingArticles: false,
+  };
+
   componentWillMount() {
     if (_.isEmpty(this.props.articles)) {
       Howto.fetchData({ dispatch: this.props.dispatch });
@@ -23,16 +27,31 @@ class Howto extends Component {
   fetchMoreArticles = () => {
     const { dispatch, articleCount, allArticleCount } = this.props;
     if (!this.props.loading && articleCount < allArticleCount) {
+      this.setState({
+        fetchingArticles: true,
+      });
       return dispatch(loading(getArticles({
         offset: articleCount,
         limit: 30,
         orderby: 'updated_at DESC',
-      })));
+      }))).then(() => {
+        this.setState({
+          fetchingArticles: false,
+        });
+      });
     }
   };
 
   render() {
     const { articles, articleCount, allArticleCount } = this.props;
+    let loadArticle = '';
+    if (articleCount === allArticleCount) {
+      loadArticle = '';
+    } else if (this.state.fetchingArticles) {
+      loadArticle = <p className="more-load">loading...</p>;
+    } else {
+      loadArticle = <p className="more-load" onClick={this.fetchMoreArticles}>さらに読み込む</p>;
+    }
     return (
       <div className="howto container padding-container">
         <Helmet
@@ -72,7 +91,7 @@ class Howto extends Component {
             }
           </tbody>
         </table>
-        {articleCount < allArticleCount && <p className="more-load" onClick={this.fetchMoreArticles}>さらに読み込む</p>}
+        {loadArticle}
       </div>
     );
   }
