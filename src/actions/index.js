@@ -39,7 +39,7 @@ export const clearTimesClasses = (dispatch) => {
 
 export const getArticles = (params) => (dispatch) => api.getArticles(params)
   .then(res => {
-    dispatch({ type: 'howto:articles:set', articles: res.data.items });
+    dispatch({ type: 'howto:articles:append', items: res.data });
     return true;
   }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
 

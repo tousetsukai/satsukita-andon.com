@@ -1,9 +1,10 @@
 @import "../util/icon";
+@import "../color";
 
 .icon {
   @mixin icon 36px;
 }
 
 .icon-admin {
-  border-color: #ddddff !important;
+  box-shadow: 0 0 4px 1.5px $theme;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 export default class DateString extends React.Component {
   static propTypes = {
@@ -6,7 +7,7 @@ export default class DateString extends React.Component {
   };
   render() {
     const { date, ...others } = this.props;
-    const d = new Date(date);
-    return <span {...others}>{d.toLocaleString()}</span>;
+    const m = moment(date);
+    return <span {...others}>{m.format('YYYY/MM/DD HH:mm')}</span>;
   }
 }

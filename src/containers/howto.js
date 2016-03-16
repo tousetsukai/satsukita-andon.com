@@ -11,7 +11,7 @@ import { loading, getArticles } from '../actions';
 class Howto extends Component {
 
   static fetchData({ dispatch }) {
-    return dispatch(loading(getArticles({})));
+    return dispatch(loading(getArticles({ offset: 0, limit: 15, orderby: 'updated_at DESC'})));
   }
 
   componentWillMount() {
@@ -20,30 +20,59 @@ class Howto extends Component {
     }
   }
 
+  fetchMoreArticles = () => {
+    const { dispatch, articleCount, allArticleCount } = this.props;
+    if (!this.props.loading && articleCount < allArticleCount) {
+      return dispatch(loading(getArticles({
+        offset: articleCount,
+        limit: 30,
+        orderby: 'updated_at DESC',
+      })));
+    }
+  };
+
   render() {
-    const { articles } = this.props;
+    const { articles, articleCount, allArticleCount } = this.props;
     return (
-      <div className="container padding-container">
+      <div className="howto container padding-container">
         <Helmet
           title="Howto"
         />
-        <ul>
-          {articles.map((article) =>
-            <li key={article.id}>
-              <Link to={`/howto/articles/${article.id}`}>
-                {article.title}
-              </Link>
-              <Link to={`/users/${article.owner.login}`}>
-                <Icon user={article.owner}/>
-              </Link>
-              <Link to={`/users/${article.editor.login}`}>
-                <Icon user={article.editor}/>
-              </Link>
-              <DateString date={article.created_at}/>
-              <DateString date={article.updated_at}/>
-            </li>)
-          }
-        </ul>
+        <h2>記事</h2>
+        <table className="howto-table">
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>作成</th>
+              <th>更新</th>
+            </tr>
+          </thead>
+          <tbody>
+            {articles.map((article) =>
+              <tr key={article.id}>
+                <td>
+                  <Link className="title" to={`/howto/articles/${article.id}`}>
+                    {article.title}
+                  </Link>
+                  {article.tags && article.tags.map((t, i) => <div key={i} className="class-tag">{t}</div>)}
+                </td>
+                <td>
+                  <Link to={`/users/${article.owner.login}`}>
+                    <Icon user={article.owner}/>
+                  </Link>
+                  <DateString className="date" date={article.created_at}/>
+                </td>
+                <td>
+                  <Link to={`/users/${article.editor.login}`}>
+                    <Icon user={article.editor}/>
+                  </Link>
+                  <DateString className="date" date={article.updated_at}/>
+                </td>
+              </tr>)
+            }
+          </tbody>
+        </table>
+        {articleCount < allArticleCount && <p className="more-load" onClick={this.fetchMoreArticles}>さらに読み込む</p>}
       </div>
     );
   }
@@ -52,5 +81,7 @@ class Howto extends Component {
 export default connect(
   state => ({
     articles: state.howto.articles,
+    articleCount: state.howto.articleCount,
+    allArticleCount: state.howto.allArticleCount,
   })
 )(Howto);

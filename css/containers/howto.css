@@ -1,0 +1,30 @@
+@import "../color";
+@import "../size";
+
+.howto {
+  .howto-table {
+    width: 100%;
+    .title {
+      color: $text;
+      font-size: 18px;
+    }
+    .date {
+      color: #aaaaaa;
+      font-size: 12px;
+      @mixin smartphone {
+        display: none;
+      }
+    }
+    .icon {
+      margin: 10px;
+    }
+  }
+  .more-load {
+    margin: 14px auto 16px;
+    text-align: center;
+    font-size: 13px;
+    color: #ccc;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
