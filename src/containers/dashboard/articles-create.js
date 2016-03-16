@@ -3,6 +3,10 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Form, FormField, FormInput } from 'elemental';
+import Dropzone from 'react-dropzone';
+
+import Markdown from '../../components/markdown';
+import ImageUpload from '../../components/image-upload';
 
 class Articles extends Component {
 
@@ -17,6 +21,7 @@ class Articles extends Component {
     editorial_right: 'selected', // or 'all' or 'classmate' or 'cohort'
     editors: [],
     comment: '新規作成',
+    images: [],
   };
 
   handleTitleChange = (ev) => {
@@ -44,6 +49,14 @@ class Articles extends Component {
     this.context.router.push('/dashboard/articles');
   };
 
+  handleDrop = (files) => {
+    const images = this.state.images.concat(files.map(f => <ImageUpload image={f}/>));
+    this.setState({
+      ...this.state,
+      images,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -62,9 +75,17 @@ class Articles extends Component {
                        name="body"
                        onChange={this.handleBodyChange}/>
           </FormField>
+          <Markdown md={this.state.body}/>
+          <Dropzone onDrop={this.handleDrop}>
+            画像をアップロード (クリックまたはドラッグアンドドロップ)
+          </Dropzone>
+          <ul>
+            {this.state.images.map((image, i) => <li key={i}>{image}</li>)}
+          </ul>
           <FormField label="コメント" htmlFor="comment">
             <FormInput type="text"
                        name="comment"
+                       value={this.state.comment}
                        onChange={this.handleCommentChange}/>
           </FormField>
           <button className="submit-button" type="button" onClick={this.handleSubmit}>送信</button>

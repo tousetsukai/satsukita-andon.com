@@ -1,9 +1,19 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const api = axios.create({
   baseURL: 'https://api.satsukita-andon.com/dev/',
   /* baseURL: 'http://localhost:6039/dev/', */
 });
+
+const tokenHeader = () => {
+  const token = Cookies.get('token');
+  return {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  };
+};
 
 export default {
   getFixedContent: (type) => api.get(`/contents/${type}`),
@@ -34,4 +44,9 @@ export default {
     password,
   }),
   getUser: (login) => api.get(`/users/${login}`),
+  postImage: (image) => {
+    const data = new FormData();
+    data.append('file', image);
+    return api.post('/file/images', data, tokenHeader());
+  },
 };
