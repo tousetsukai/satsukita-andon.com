@@ -24,7 +24,11 @@ class ClassBasic extends Component {
           <dt>紹介文</dt>
           <dd>{clazz.description || '未登録'}</dd>
           <dt>タグ</dt>
-          <dd>{clazz.tags.map((tag, i) => <Link key={i} className="class-tag" to={`/search?tag=${tag}`}>{tag}</Link>)}</dd>
+          <dd>
+            <ul className="tags">
+              {clazz.tags.map((tag, i) => <li key={i}><Link className="tag class-tag" to={`/search?tag=${tag}`}>{tag}</Link></li>)}
+            </ul>
+          </dd>
         </dl>
       </div>
     );

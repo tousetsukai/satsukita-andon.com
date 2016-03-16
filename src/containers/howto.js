@@ -69,11 +69,13 @@ class Howto extends Component {
           <tbody>
             {articles.map((article) =>
               <tr key={article.id}>
-                <td>
+                <td className="title-box">
                   <Link className="title" to={`/howto/articles/${article.id}`}>
                     {article.title}
                   </Link>
-                  {article.tags && article.tags.map((t, i) => <div key={i} className="class-tag">{t}</div>)}
+                  <ul className="tags">
+                    {article.tags.map((t, i) => <li key={i}><Link to="#" className="tag article-tag">{t}</Link></li>)}
+                  </ul>
                 </td>
                 <td>
                   <Link to={`/users/${article.owner.login}`}>

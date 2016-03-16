@@ -10,23 +10,24 @@
   color: $fg;
   background-color: $bg;
 
-  font-size: 12px;
-  height: 20px;
-  line-height: 20px;
-  margin: 0 16px 8px 0;
-  padding: 0 10px 0 8px;
+  font-size: 11px;
+  height: 18px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0 6px 0 4px;
+  white-space: nowrap;
   &:after {
     content: '';
     position: absolute;
 
     width: 0;
     height: 0;
-    left: -10px;
+    left: -9px;
     top: 0;
 
     border-style: solid;
     border-color: transparent $bg transparent transparent;
-    border-width: 10px 10px 10px 0;
+    border-width: 9px 9px 9px 0;
   }
   &:hover {
     text-decoration: none;
@@ -36,4 +37,17 @@
 
 .class-tag {
   @mixin tag #333333, #dddddd;
+}
+
+.article-tag {
+  @mixin tag #333333, #dddddd;
+}
+
+.tags {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  li {
+    margin: 0 0 0 14px;
+  }
 }
