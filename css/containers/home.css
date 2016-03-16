@@ -1,5 +1,5 @@
-$num-images: 10;
-$num-images-1: 9; /* num-images - 1 */
+$num-images: 5;
+$num-images-1: 4; /* num-images - 1 */
 $switch-sec: 8;
 
 @keyframes jumbotronAnimation {
@@ -7,16 +7,16 @@ $switch-sec: 8;
     opacity: 0;
     animation-timing-function: ease-in;
   }
-  3% { /* 30 / $num-images */
+  6% { /* 30 / $num-images */
     opacity: 1;
     transform: scale(1.04);
     animation-timing-function: ease-out;
   }
-  9% { /* 100 / $num-images - 10 / $num-images */
+  18% { /* 100 / $num-images - 10 / $num-images */
     opacity: 1;
     transform: scale(1.1);
   }
-  13% { /* 100 / $num-images + 10 / $num-images */
+  22% { /* 100 / $num-images + 10 / $num-images */
     opacity: 0;
     transform: scale(1.1);
   }
