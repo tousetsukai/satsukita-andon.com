@@ -5,6 +5,8 @@ import _ from 'lodash';
 
 import { loading, all, getClassResources, getClassArticles, clearClassResources, clearClassArticles } from '../actions';
 import * as classutil from '../util/class';
+import Icon from '../components/icon';
+import DateString from '../components/date-string';
 
 class ClassResources extends Component {
 
@@ -51,15 +53,66 @@ class ClassResources extends Component {
     const { clazz, resources, articles } = this.props;
     const classId = classutil.classIdWithSlash(clazz);
     return (
-      <div>
-        <h2>記事</h2>
-        <ul>
-          {articles.map(a => <li key={a.id}><Link to={`/gallery/${classId}/articles/${a.id}`}>{a.title}</Link></li>)}
-        </ul>
-        <h2>資料</h2>
-        <ul>
-          {resources.map(r => <li key={r.id}><Link to={`/gallery/${classId}/resources/${r.id}`}>{r.title}</Link></li>)}
-        </ul>
+      <div className="howto">
+        <table className="howto-table">
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>作成</th>
+              <th>更新</th>
+            </tr>
+          </thead>
+          <tbody>
+            {articles.map((article) =>
+              <tr key={article.id}>
+                <td className="title-box">
+                  <Link className="title" to={`/gallery/${classId}/articles/${article.id}`}>
+                    <i className="fa fa-file-text-o"/>&nbsp;
+                    {article.title}
+                  </Link>
+                </td>
+                <td>
+                  {article.created_by &&
+                    <Link to={`/users/${article.created_by}`}>
+                      <Icon user={article.created_by}/>
+                    </Link>}
+                  <DateString className="date" date={article.created_at}/>
+                </td>
+                <td>
+                  {article.updated_by &&
+                    <Link to={`/users/${article.updated_by}`}>
+                      <Icon user={article.updated_by}/>
+                    </Link>}
+                  <DateString className="date" date={article.updated_at}/>
+                </td>
+              </tr>)
+            }
+            {resources.map((resource) =>
+              <tr key={resource.id}>
+                <td className="title-box">
+                  <Link className="title" to={`/gallery/${classId}/resources/${resource.id}`}>
+                    <i className="fa fa-paperclip"/>&nbsp;
+                    {resource.title}
+                  </Link>
+                </td>
+                <td>
+                  {resource.created_by &&
+                    <Link to={`/users/${resource.created_by}`}>
+                      <Icon user={resource.created_by}/>
+                    </Link>}
+                  <DateString className="date" date={resource.created_at}/>
+                </td>
+                <td>
+                  {resource.updated_by &&
+                    <Link to={`/users/${resource.updated_by}`}>
+                      <Icon user={resource.updated_by}/>
+                    </Link>}
+                  <DateString className="date" date={resource.updated_at}/>
+                </td>
+              </tr>)
+            }
+          </tbody>
+        </table>
       </div>
     );
   }
