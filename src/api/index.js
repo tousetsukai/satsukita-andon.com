@@ -46,6 +46,7 @@ export default {
     password,
   }),
   getUser: (login) => api.get(`/users/${login}`),
+  putMe: (params) => api.put('/users', params, tokenHeader()),
   postImage: (image) => {
     const data = new FormData();
     data.append('file', image);

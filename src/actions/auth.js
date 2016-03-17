@@ -26,3 +26,10 @@ export const signin = (login, password) => (dispatch) => api.getToken(login, pas
 export const setIcon = (url) => (dispatch) => {
   dispatch({ type: 'app:icon:set', url: url });
 };
+
+export const updateMe = (params) => (dispatch) => api.putMe(params)
+  .then(res => {
+    dispatch({ type: 'app:user:set', user: res.data });
+    return true;
+  })
+  .catch(res => showError(res.data.code, '変更に失敗しました', 3000)(dispatch));
