@@ -16,11 +16,15 @@ export default class ResourceHeader extends Component {
           </ul>
           <div className="editors">
             <div>
-              <Icon user={createdBy}/> が <DateString date={createdAt}/> に作成
+              <Link to={`/users/${createdBy.login}`}>
+                <Icon user={createdBy}/>
+              </Link> が <DateString date={createdAt}/> に作成
             </div>
             {updatedAt !== createdAt &&
              <div>
-               <Icon user={updatedBy}/> が <DateString date={updatedAt}/> に編集
+               <Link to={`/users/${updatedBy.login}`}>
+                 <Icon user={updatedBy}/>
+               </Link> が <DateString date={updatedAt}/> に編集
              </div>}
           </div>
         </div>
