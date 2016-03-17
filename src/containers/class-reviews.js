@@ -50,22 +50,24 @@ class ClassReviews extends Component {
   render() {
     const { reviews } = this.props;
     return (
-      <ul className="padding-container class-reviews">
-        {reviews.map((review) => (
-           <li key={review.id} className="class-review">
-             <div className="class-review-left">
-               <Link to={`/users/${review.user.login}`}>
-                 <Icon user={review.user}/>
-                 <p>{review.user.name}</p>
-               </Link>
-             </div>
-             <div className="class-review-right">
-               <p className="class-review-title">{review.title}</p>
-               <BreakableParagraph className="class-review-body" text={review.body}/>
-             </div>
-           </li>
-         ))}
-      </ul>
+      <div className="container padding-container">
+        <ul className="padding-container class-reviews">
+          {reviews.map((review) => (
+             <li key={review.id} className="class-review">
+               <div className="class-review-left">
+                 <Link to={`/users/${review.user.login}`}>
+                   <Icon user={review.user}/>
+                   <p>{review.user.name}</p>
+                 </Link>
+               </div>
+               <div className="class-review-right">
+                 <p className="class-review-title">{review.title}</p>
+                 <BreakableParagraph className="class-review-body" text={review.body}/>
+               </div>
+             </li>
+           ))}
+        </ul>
+      </div>
     );
   }
 }

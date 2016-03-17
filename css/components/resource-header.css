@@ -1,0 +1,17 @@
+.resource-header {
+  width: 100%;
+  padding: 24px 10px;
+  background-color: #060610;
+  h1 {
+    color: white;
+    font-size: 34px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  .editors {
+    display: flex;
+    div {
+      margin-right: 14px;
+    }
+  }
+}

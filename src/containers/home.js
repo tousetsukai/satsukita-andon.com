@@ -51,7 +51,7 @@ class Home extends Component {
     const { topNews } = this.props;
     const { backgroundImages } = this.state;
     return (
-      <div>
+      <div className="home-container">
         <Helmet
           title="行灯職人への道"
           titleTemplate="%s"

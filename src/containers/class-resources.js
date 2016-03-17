@@ -53,7 +53,7 @@ class ClassResources extends Component {
     const { clazz, resources, articles } = this.props;
     const classId = classutil.classIdWithSlash(clazz);
     return (
-      <div className="howto">
+      <div className="container padding-container howto">
         <div className="two-columns">
           <div className="column column-articles">
             <h2 className="column-title">記事</h2>

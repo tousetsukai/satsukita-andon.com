@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { loading, getArticle, clearArticle } from '../actions';
 import Markdown from '../components/markdown';
+import ResourceHeader from '../components/resource-header';
 import { meta } from '../util/helmet';
 import f from '../util/f';
 
@@ -31,14 +32,27 @@ class Article extends Component {
 
   render() {
     const { article } = this.props;
-    return (
-      <div className="container padding-container">
-        <Helmet title={`${article.title} - Howto`}
-                meta={meta(article.title, `${f.map(article.body, (b) => b.substring(0, 180))}...`)}
-        />
-        {article.body && <Markdown md={article.body} debug={true}/>}
-      </div>
-    );
+    if (_.isEmpty(article)) {
+      return <p>loading...</p>;
+    } else {
+      return (
+        <div>
+          <Helmet title={`${article.title} - Howto`}
+                  meta={meta(article.title, `${f.map(article.body, (b) => b.substring(0, 180))}...`)}
+          />
+          <ResourceHeader
+              title={article.title}
+              tags={article.tags}
+              createdBy={article.owner}
+              updatedBy={article.editor}
+              createdAt={article.created_at}
+              updatedAt={article.updated_at}/>
+          <div className="container padding-container">
+            {article.body && <Markdown md={article.body} debug={true}/>}
+          </div>
+        </div>
+      );
+    }
   }
 }
 

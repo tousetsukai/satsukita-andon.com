@@ -1,3 +1,5 @@
+@import "../size";
+
 $num-images: 5;
 $num-images-1: 4; /* num-images - 1 */
 $switch-sec: 8;
@@ -22,6 +24,17 @@ $switch-sec: 8;
   }
   100% {
     opacity: 0;
+  }
+}
+
+/* special treatment for header */
+.home-container {
+  /* for header height */
+  @mixin smartphone {
+    margin-top: -45px;
+  }
+  @mixin not-smartphone {
+    margin-top: -55px;
   }
 }
 

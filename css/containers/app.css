@@ -1,16 +1,19 @@
 @import "../size";
 
 .app-wrapper {
+  /* for header height */
+  @mixin smartphone {
+    margin: 45px auto 0;
+  }
+  @mixin not-smartphone {
+    margin: 55px auto 0;
+  }
+  /* for footer height */
   padding-bottom: 100px;
+
   .container {
     padding: 0;
-    /* for header height */
-    @mixin smartphone {
-      margin: 45px auto 0;
-    }
-    @mixin not-smartphone {
-      margin: 55px auto 0;
-    }
+    margin: auto;
     /* for width */
     @mixin fluid {
       width: 100%;

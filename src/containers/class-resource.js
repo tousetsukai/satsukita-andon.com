@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { loading, getClassResource, clearClassResource } from '../actions';
+import ResourceHeader from '../components/resource-header';
+import Downloader from '../components/downloader';
 
 class ClassResource extends React.Component {
 
@@ -25,11 +27,21 @@ class ClassResource extends React.Component {
       return <p>loading...</p>;
     } else if (resource.class.id === clazz.id) {
       // normal case
+      const ext = resource.url.split('.').pop();
       return (
         <div>
-          <h1>{resource.title}</h1>
-          <p>{resource.description}</p>
-          <a href={resource.url}>ダウンロード</a>
+          <ResourceHeader
+              title={resource.title}
+              tags={[]}
+              createdBy={resource.created_by}
+              updatedBy={resource.updated_by}
+              createdAt={resource.created_at}
+              updatedAt={resource.updated_at}/>
+          <div className="container padding-container">
+            <p>{resource.description}</p>
+            <p>ファイル形式: {ext}</p>
+            <Downloader url={resource.url} filename={`${resource.title}.${ext}`}/>
+          </div>
         </div>
       );
     } else {

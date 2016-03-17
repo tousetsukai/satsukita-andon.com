@@ -13,7 +13,7 @@ class ClassBasic extends Component {
   render() {
     const { clazz } = this.props;
     return (
-      <div>
+      <div className="container padding-container">
         <dl>
           <dt>クラス</dt>
           <dd>{classutil.classNameJa(clazz)}</dd>

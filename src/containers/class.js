@@ -59,8 +59,10 @@ class Class extends Component {
     const tab = location.pathname.substring(`/gallery/${classutil.classIdWithSlash(clazz)}/`.length) || 'images';
     return (
       <div>
-        <ClassHeader clazz={clazz}/>
-        <ClassTabs tab={tab} clazz={clazz}/>
+        <div className="container">
+          <ClassHeader clazz={clazz}/>
+          <ClassTabs tab={tab} clazz={clazz}/>
+        </div>
         {this.props.children}
       </div>
     );
@@ -91,13 +93,15 @@ class Class extends Component {
     const { clazz } = this.props;
     const classTitle = `${classutil.classNameJa(clazz)} ${clazz.title}`;
     return (
-      <div className="container">
+      <div>
         <Helmet
           title={classTitle}
           meta={meta(classTitle, clazz.description || `${classTitle} の写真や記録など`, clazz.header_image_url)}
         />
-        {this.renderFestivalNavBar()}
-        {this.renderTimesNavBar()}
+        <div className="container">
+          {this.renderFestivalNavBar()}
+          {this.renderTimesNavBar()}
+        </div>
         {this.renderClass()}
       </div>
     );

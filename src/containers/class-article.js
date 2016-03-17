@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import { loading, getClassArticle, clearClassArticle } from '../actions';
 import Markdown from '../components/markdown';
+import ResourceHeader from '../components/resource-header';
 
 class ClassArticle extends React.Component {
 
@@ -28,8 +29,16 @@ class ClassArticle extends React.Component {
       // normal case
       return (
         <div>
-          <h1>{article.title}</h1>
-          <Markdown md={article.body}/>
+          <ResourceHeader
+              title={article.title}
+              tags={[]}
+              createdBy={article.created_by}
+              updatedBy={article.updated_by}
+              createdAt={article.created_at}
+              updatedAt={article.updated_at}/>
+          <div className="container padding-container">
+            <Markdown md={article.body}/>
+          </div>
         </div>
       );
     } else {

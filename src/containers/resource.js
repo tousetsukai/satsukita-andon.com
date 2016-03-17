@@ -7,6 +7,7 @@ import { loading, getResource, clearResource } from '../actions';
 import { meta } from '../util/helmet';
 import f from '../util/f';
 import Downloader from '../components/downloader';
+import ResourceHeader from '../components/resource-header';
 
 class Resource extends Component {
 
@@ -36,14 +37,22 @@ class Resource extends Component {
     } else {
       const ext = resource.url.split('.').pop();
       return (
-        <div className="container padding-container">
+        <div>
           <Helmet title={`${resource.title} - Howto`}
                   meta={meta(resource.title, `${f.map(resource.body, (b) => b.substring(0, 180))}...`)}
           />
-          <h1>{resource.title}</h1>
-          <p>{resource.description}</p>
-          <p>ファイル形式: {ext}</p>
-          <Downloader url={resource.url} filename={`${resource.title}.${ext}`}/>
+          <ResourceHeader
+              title={resource.title}
+              tags={resource.tags}
+              createdBy={resource.owner}
+              updatedBy={resource.editor}
+              createdAt={resource.created_at}
+              updatedAt={resource.updated_at}/>
+          <div className="container padding-container">
+            <p>{resource.description}</p>
+            <p>ファイル形式: {ext}</p>
+            <Downloader url={resource.url} filename={`${resource.title}.${ext}`}/>
+          </div>
         </div>
       );
     }

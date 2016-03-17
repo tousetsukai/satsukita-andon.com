@@ -139,7 +139,7 @@ class ClassImages extends Component {
       );
     };
     return (
-      <div>
+      <div className="container">
         <ul className="class-images">
           {images.map((image, i) => (
              <li key={image.id}>
