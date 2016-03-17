@@ -8,7 +8,7 @@ module.exports = {
     app: './src/client.js',
     vendor: _.without(
       Object.keys(packagedef.dependencies),
-      'express', 'cookie-parser',
+      'express', 'serve-favicon', 'cookie-parser',
       'babel-preset-es2015', 'babel-preset-react', 'babel-preset-stage-0',
       'babel-register',
       'font-awesome', 'normalize.css'
