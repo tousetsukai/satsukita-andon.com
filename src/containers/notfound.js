@@ -5,7 +5,7 @@ export default class NotFound extends Component {
     const { location } = this.props;
     return (
       <div className="container">
-        <p>Not Found: {location.pathname + location.search}</p>
+        <p>ページが見つからないか、未実装です: {location.pathname + location.search}</p>
       </div>
     );
   }
