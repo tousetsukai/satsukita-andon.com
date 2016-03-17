@@ -13,6 +13,7 @@ export ClassResource from './class-resource';
 export ClassImages from './class-images';
 export Howto from './howto';
 export Article from './article';
+export Resource from './resource';
 export User from './user';
 export NotFound from './notfound';
 export Signin from './signin';

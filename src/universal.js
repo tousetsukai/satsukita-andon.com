@@ -29,6 +29,7 @@ export const routes = (
     {/* Howto */}
     <Route path="howto" component={C.Howto}/>
     <Route path="howto/articles/:id" component={C.Article}/>
+    <Route path="howto/resources/:id" component={C.Resource}/>
     {/* User page */}
     <Route path="users/:login" component={C.User}/>
     {/* Static pages */}
