@@ -23,6 +23,8 @@
     }
   }
   > li {
-    margin-bottom: 28px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid gray;
   }
 }
