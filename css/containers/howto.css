@@ -1,34 +1,8 @@
 @import "../color";
 @import "../size";
+@import "../util/icon";
 
 .howto {
-  .howto-table {
-    width: 100%;
-    .title-box {
-      padding: 8px 0;
-      .title {
-        color: $text;
-        font-size: 18px;
-      }
-      .tags {
-        margin: 5px 0 0 0;
-      }
-    }
-    .author-box {
-      .icon {
-        display: block;
-        margin: 10px auto;
-      }
-      .date {
-        margin: 0 auto;
-        padding: 0 4px;
-        display: block;
-        color: #aaaaaa;
-        font-size: 12px;
-        text-align: center;
-      }
-    }
-  }
   .two-columns {
     .column-title {
       margin: 20px 0 30px;
@@ -39,17 +13,16 @@
       padding: 10px;
       margin-bottom: 16px;
       @mixin fixed {
-        width: calc($fixed-width / 2 - 10px);
+        width: calc($fixed-width / 2 - 15px);
       }
       @mixin fluid {
         @mixin laptop {
-          width: calc(50% - 10px);
+          width: calc(50% - 15px);
         }
         @mixin not-laptop {
           width: 100%;
         }
       }
-      border: dashed 2px gray;
     }
     @mixin laptop {
       display: flex;

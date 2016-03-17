@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
-import DateString from '../components/date-string';
-import Icon from '../components/icon';
+import ResourceListColumn from '../components/resource-list-column';
 import { loading, getArticles, getResources, all } from '../actions';
 
 class Howto extends Component {
@@ -95,83 +93,25 @@ class Howto extends Component {
         <div className="two-columns">
           <div className="column column-articles">
             <h2 className="column-title">記事</h2>
-            <table className="howto-table">
-              <thead>
-                <tr>
-                  <th>タイトル</th>
-                  <th>作成</th>
-                  <th>更新</th>
-                </tr>
-              </thead>
-              <tbody>
-                {articles.map((article) =>
-                  <tr key={article.id}>
-                    <td className="title-box">
-                      <Link className="title" to={`/howto/articles/${article.id}`}>
-                        <i className="fa fa-file-text"/>&nbsp;
-                        {article.title}
-                      </Link>
-                      <ul className="tags">
-                        {article.tags.map((t, i) => <li key={i}><Link to={`/howto/tags/${t}`} className="tag resource-tag">{t}</Link></li>)}
-                      </ul>
-                    </td>
-                    <td className="author-box">
-                      <Link to={`/users/${article.owner.login}`}>
-                        <Icon user={article.owner}/>
-                      </Link>
-                      <DateString className="date" date={article.created_at}/>
-                    </td>
-                    <td className="author-box">
-                      <Link to={`/users/${article.editor.login}`}>
-                        <Icon user={article.editor}/>
-                      </Link>
-                      <DateString className="date" date={article.updated_at}/>
-                    </td>
-                  </tr>)
-                }
-              </tbody>
-            </table>
+            <ResourceListColumn
+                icon="fa-file-text"
+                items={articles}
+                url={item => `/howto/articles/${item.id}`}
+                tags={item => item.tags}
+                createdBy={item => item.owner}
+                updatedBy={item => item.editor}/>
             {loadArticle}
           </div>
 
           <div className="column column-resources">
             <h2 className="column-title">資料</h2>
-            <table className="howto-table">
-              <thead>
-                <tr>
-                  <th>タイトル</th>
-                  <th>作成</th>
-                  <th>更新</th>
-                </tr>
-              </thead>
-              <tbody>
-                {resources.map((resource) =>
-                  <tr key={resource.id}>
-                    <td className="title-box">
-                      <Link className="title" to={`/howto/resources/${resource.id}`}>
-                        <i className="fa fa-paperclip"/>&nbsp;
-                        {resource.title}
-                      </Link>
-                      <ul className="tags">
-                        {resource.tags.map((t, i) => <li key={i}><Link to={`/howto/tags/${t}`} className="tag resource-tag">{t}</Link></li>)}
-                      </ul>
-                    </td>
-                    <td className="author-box">
-                      <Link to={`/users/${resource.owner.login}`}>
-                        <Icon user={resource.owner}/>
-                      </Link>
-                      <DateString className="date" date={resource.created_at}/>
-                    </td>
-                    <td className="author-box">
-                      <Link to={`/users/${resource.editor.login}`}>
-                        <Icon user={resource.editor}/>
-                      </Link>
-                      <DateString className="date" date={resource.updated_at}/>
-                    </td>
-                  </tr>)
-                }
-              </tbody>
-            </table>
+            <ResourceListColumn
+                icon="fa-paperclip"
+                items={resources}
+                url={item => `/howto/resources/${item.id}`}
+                tags={item => item.tags}
+                createdBy={item => item.owner}
+                updatedBy={item => item.editor}/>
             {loadResource}
           </div>
         </div>
