@@ -3,6 +3,11 @@ const initialState = {
   articleCount: 0,
   allArticleCount: 0,
   article: {},
+
+  resources: [],
+  resourceCount: 0,
+  allResourceCount: 0,
+  resource: {},
 };
 
 export function howto(state = initialState, action) {
@@ -23,6 +28,24 @@ export function howto(state = initialState, action) {
     return {
       ...state,
       article: {},
+    };
+
+  case 'howto:resources:append':
+    return {
+      ...state,
+      resources: state.resources.concat(action.items.items),
+      resourceCount: state.resourceCount + action.items.count,
+      allResourceCount: action.items.all_count,
+    };
+  case 'howto:resource:set':
+    return {
+      ...state,
+      resource: action.resource,
+    };
+  case 'howto:resource:clear':
+    return {
+      ...state,
+      resource: {},
     };
   default:
     return state;

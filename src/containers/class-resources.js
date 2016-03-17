@@ -54,65 +54,85 @@ class ClassResources extends Component {
     const classId = classutil.classIdWithSlash(clazz);
     return (
       <div className="howto">
-        <table className="howto-table">
-          <thead>
-            <tr>
-              <th>タイトル</th>
-              <th>作成</th>
-              <th>更新</th>
-            </tr>
-          </thead>
-          <tbody>
-            {articles.map((article) =>
-              <tr key={article.id}>
-                <td className="title-box">
-                  <Link className="title" to={`/gallery/${classId}/articles/${article.id}`}>
-                    <i className="fa fa-file-text-o"/>&nbsp;
-                    {article.title}
-                  </Link>
-                </td>
-                <td>
-                  {article.created_by &&
-                    <Link to={`/users/${article.created_by}`}>
-                      <Icon user={article.created_by}/>
-                    </Link>}
-                  <DateString className="date" date={article.created_at}/>
-                </td>
-                <td>
-                  {article.updated_by &&
-                    <Link to={`/users/${article.updated_by}`}>
-                      <Icon user={article.updated_by}/>
-                    </Link>}
-                  <DateString className="date" date={article.updated_at}/>
-                </td>
-              </tr>)
-            }
-            {resources.map((resource) =>
-              <tr key={resource.id}>
-                <td className="title-box">
-                  <Link className="title" to={`/gallery/${classId}/resources/${resource.id}`}>
-                    <i className="fa fa-paperclip"/>&nbsp;
-                    {resource.title}
-                  </Link>
-                </td>
-                <td>
-                  {resource.created_by &&
-                    <Link to={`/users/${resource.created_by}`}>
-                      <Icon user={resource.created_by}/>
-                    </Link>}
-                  <DateString className="date" date={resource.created_at}/>
-                </td>
-                <td>
-                  {resource.updated_by &&
-                    <Link to={`/users/${resource.updated_by}`}>
-                      <Icon user={resource.updated_by}/>
-                    </Link>}
-                  <DateString className="date" date={resource.updated_at}/>
-                </td>
-              </tr>)
-            }
-          </tbody>
-        </table>
+        <div className="two-columns">
+          <div className="column column-articles">
+            <h2 className="column-title">記事</h2>
+            <table className="howto-table">
+              <thead>
+                <tr>
+                  <th>タイトル</th>
+                  <th>作成</th>
+                  <th>更新</th>
+                </tr>
+              </thead>
+              <tbody>
+                {articles.map((article) =>
+                  <tr key={article.id}>
+                    <td className="title-box">
+                      <Link className="title" to={`/gallery/${classId}/articles/${article.id}`}>
+                        <i className="fa fa-file-text"/>&nbsp;
+                        {article.title}
+                      </Link>
+                    </td>
+                    <td className="author-box">
+                      {article.created_by &&
+                       <Link to={`/users/${article.created_by}`}>
+                         <Icon user={article.created_by}/>
+                       </Link>}
+                       <DateString className="date" date={article.created_at}/>
+                    </td>
+                    <td className="author-box">
+                      {article.updated_by &&
+                       <Link to={`/users/${article.updated_by}`}>
+                         <Icon user={article.updated_by}/>
+                       </Link>}
+                       <DateString className="date" date={article.updated_at}/>
+                    </td>
+                  </tr>)
+                }
+              </tbody>
+            </table>
+          </div>
+
+          <div className="column column-resources">
+            <h2 className="column-title">資料</h2>
+            <table className="howto-table">
+              <thead>
+                <tr>
+                  <th>タイトル</th>
+                  <th>作成</th>
+                  <th>更新</th>
+                </tr>
+              </thead>
+              <tbody>
+                {resources.map((resource) =>
+                  <tr key={resource.id}>
+                    <td className="title-box">
+                      <Link className="title" to={`/gallery/${classId}/resources/${resource.id}`}>
+                        <i className="fa fa-paperclip"/>&nbsp;
+                        {resource.title}
+                      </Link>
+                    </td>
+                    <td className="author-box">
+                      {resource.created_by &&
+                       <Link to={`/users/${resource.created_by}`}>
+                         <Icon user={resource.created_by}/>
+                       </Link>}
+                       <DateString className="date" date={resource.created_at}/>
+                    </td>
+                    <td className="author-box">
+                      {resource.updated_by &&
+                       <Link to={`/users/${resource.updated_by}`}>
+                         <Icon user={resource.updated_by}/>
+                       </Link>}
+                       <DateString className="date" date={resource.updated_at}/>
+                    </td>
+                  </tr>)
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     );
   }

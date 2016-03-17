@@ -14,15 +14,46 @@
         margin: 5px 0 0 0;
       }
     }
-    .date {
-      color: #aaaaaa;
-      font-size: 12px;
-      @mixin smartphone {
-        display: none;
+    .author-box {
+      .icon {
+        display: block;
+        margin: 10px auto;
+      }
+      .date {
+        margin: 0 auto;
+        padding: 0 4px;
+        display: block;
+        color: #aaaaaa;
+        font-size: 12px;
+        text-align: center;
       }
     }
-    .icon {
-      margin: 10px;
+  }
+  .two-columns {
+    .column-title {
+      margin: 20px 0 30px;
+      color: $text;
+      text-align: center;
+    }
+    .column {
+      padding: 10px;
+      margin-bottom: 16px;
+      @mixin fixed {
+        width: calc($fixed-width / 2 - 10px);
+      }
+      @mixin fluid {
+        @mixin laptop {
+          width: calc(50% - 10px);
+        }
+        @mixin not-laptop {
+          width: 100%;
+        }
+      }
+      border: dashed 2px gray;
+    }
+    @mixin laptop {
+      display: flex;
+      justify-content: space-between;
     }
   }
   .more-load {

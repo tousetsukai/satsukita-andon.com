@@ -37,6 +37,8 @@ export const clearTimesClasses = (dispatch) => {
   return Promise.resolve(true);
 };
 
+// howto
+
 export const getArticles = (params) => (dispatch) => api.getArticles(params)
   .then(res => {
     dispatch({ type: 'howto:articles:append', items: res.data });
@@ -51,6 +53,23 @@ export const getArticle = (id) => (dispatch) => api.getArticle(id)
 
 export const clearArticle = (dispatch) => {
   dispatch({ type: 'howto:article:clear' });
+  return Promise.resolve(true);
+};
+
+export const getResources = (params) => (dispatch) => api.getResources(params)
+  .then(res => {
+    dispatch({ type: 'howto:resources:append', items: res.data });
+    return true;
+  }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+
+export const getResource = (id) => (dispatch) => api.getResource(id)
+  .then(res => {
+    dispatch({ type: 'howto:resource:set', resource: res.data });
+    return true;
+  }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+
+export const clearResource = (dispatch) => {
+  dispatch({ type: 'howto:resource:clear' });
   return Promise.resolve(true);
 };
 

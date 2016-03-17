@@ -34,6 +34,8 @@ export default {
   }),
   getArticles: (params) => api.get('/articles', { params }),
   getArticle: (id) => api.get(`/articles/${id}`),
+  getResources: (params) => api.get('/resources', { params }),
+  getResource: (id) => api.get(`/resources/${id}`),
   getMe: (token) => api.get('/auth/me', {
     headers: {
       'Authorization': `Bearer ${token}`,

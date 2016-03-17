@@ -36,11 +36,11 @@
 }
 
 .class-tag {
-  @mixin tag #333333, #dddddd;
+  @mixin tag #008000, #ddfddd;
 }
 
-.article-tag {
-  @mixin tag #333333, #dddddd;
+.resource-tag {
+  @mixin tag #000080, #ddddfd;
 }
 
 .tags {
