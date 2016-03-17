@@ -14,6 +14,14 @@ export function app(state = initialState, action) {
       ...state,
       user: action.user,
     };
+  case 'app:icon:set':
+    return {
+      ...state,
+      user: {
+        ...action.user,
+        icon_url: action.url,
+      },
+    };
   case 'app:loading:show':
     loadingCount++;
     return {

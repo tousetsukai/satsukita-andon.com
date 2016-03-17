@@ -22,3 +22,7 @@ export const signin = (login, password) => (dispatch) => api.getToken(login, pas
       return showError(res.data.code, '何かがおかしいです。')(dispatch);
     }
   });
+
+export const setIcon = (url) => (dispatch) => {
+  dispatch({ type: 'app:icon:set', url: url });
+};

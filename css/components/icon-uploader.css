@@ -1,0 +1,16 @@
+@import "../util/ghost-button";
+
+.icon-uploader {
+  width: 250px;
+  .file-selector {
+    margin-bottom: 10px;
+  }
+  .scale-slider {
+    margin: 10px auto 20px;
+    width: 90%;
+    display: block;
+  }
+  .upload-button {
+    @mixin ghost-button #00bbff, white;
+  }
+}
