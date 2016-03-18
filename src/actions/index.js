@@ -1,23 +1,25 @@
 import api from '../api';
 import { showError } from './util';
+import F from '../util/f';
 
 export * from './util';
 export * from './class';
 export * from './auth';
+export * from './dashboard';
 
 export const getFixedContent = (type) => (dispatch) => api.getFixedContent(type)
   .then(res => {
     dispatch({ type: `contents:${type}:set`, content: res.data });
     return true;
   })
-  .catch(res => showError(res.data.code, '内容を取得できませんでした。')(dispatch));
+  .catch(res => showError(F.map(res.data, d => d.code), '内容を取得できませんでした。')(dispatch));
 
 export const getFestivals = (dispatch) => api.getFestivals()
   .then(res => {
     dispatch({ type: 'festivals:set', festivals: res.data.items });
     return true;
   })
-  .catch(res => showError(res.data.code, '情報を取得できませんでした。', 3000)(dispatch));
+  .catch(res => showError(F.map(res.data, d => d.code), '情報を取得できませんでした。', 3000)(dispatch));
 
 export const getTimesClasses = (times) => (dispatch) => api.getClasses({ times, limit: 50 })
   .then(res => {
@@ -26,9 +28,9 @@ export const getTimesClasses = (times) => (dispatch) => api.getClasses({ times, 
   })
   .catch(res => {
     if (res.status === 404) {
-      return showError(res.data.code, 'その回は見つかりませんでした。')(dispatch);
+      return showError(F.map(res.data, d => d.code), 'その回は見つかりませんでした。')(dispatch);
     } else {
-      return showError(res.data.code, '情報を取得できませんでした。')(dispatch);
+      return showError(F.map(res.data, d => d.code), '情報を取得できませんでした。')(dispatch);
     }
   });
 
@@ -43,13 +45,13 @@ export const getArticles = (params) => (dispatch) => api.getArticles(params)
   .then(res => {
     dispatch({ type: 'howto:articles:append', items: res.data });
     return true;
-  }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+  }).catch(res => showError(F.map(res.data, d => d.code), '情報を取得できませんでした。')(dispatch));
 
 export const getArticle = (id) => (dispatch) => api.getArticle(id)
   .then(res => {
     dispatch({ type: 'howto:article:set', article: res.data });
     return true;
-  }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+  }).catch(res => showError(F.map(res.data, d => d.code), '情報を取得できませんでした。')(dispatch));
 
 export const clearArticle = (dispatch) => {
   dispatch({ type: 'howto:article:clear' });
@@ -60,13 +62,13 @@ export const getResources = (params) => (dispatch) => api.getResources(params)
   .then(res => {
     dispatch({ type: 'howto:resources:append', items: res.data });
     return true;
-  }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+  }).catch(res => showError(F.map(res.data, d => d.code), '情報を取得できませんでした。')(dispatch));
 
 export const getResource = (id) => (dispatch) => api.getResource(id)
   .then(res => {
     dispatch({ type: 'howto:resource:set', resource: res.data });
     return true;
-  }).catch(res => showError(res.data.code, '情報を取得できませんでした。')(dispatch));
+  }).catch(res => showError(F.map(res.data, d => d.code), '情報を取得できませんでした。')(dispatch));
 
 export const clearResource = (dispatch) => {
   dispatch({ type: 'howto:resource:clear' });
@@ -77,7 +79,7 @@ export const getUser = (login) => (dispatch) => api.getUser(login)
   .then(res => {
     dispatch({ type: 'users:user:set', user: res.data });
     return true;
-  }).catch(res => showError(res.data.code)(dispatch));
+  }).catch(res => showError(F.map(res.data, d => d.code))(dispatch));
 
 export const clearUser = (dispatch) => {
   dispatch({ type: 'users:user:clear' });

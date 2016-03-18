@@ -1,14 +1,15 @@
 import { showError } from './util';
 
 import api from '../api';
+import F from '../util/f';
 
 export const getClass = (classId) => (dispatch) => api.getClass(classId)
   .then(res => dispatch({ type: 'class:set', clazz: res.data }))
   .catch(res => {
     if (res.status === 404) {
-      return showError(res.data.code, 'クラスが見つかりませんでした。')(dispatch);
+      return showError(F.map(res.data, d => d.code), 'クラスが見つかりませんでした。')(dispatch);
     } else {
-      return showError(res.data.code)(dispatch);
+      return showError(F.map(res.data, d => d.code))(dispatch);
     }
   });
 
@@ -23,7 +24,7 @@ export const getReviews = (classId) => (dispatch) => api.getReviews(classId)
     return true;
   })
   .catch(res => {
-    return showError(res.data.code)(dispatch);
+    return showError(F.map(res.data, d => d.code))(dispatch);
   });
 
 export const clearReviews = (dispatch) => {
@@ -37,7 +38,7 @@ export const getClassArticles = (classId) => (dispatch) => api.getClassArticles(
     return true;
   })
   .catch(res => {
-    return showError(res.data.code)(dispatch);
+    return showError(F.map(res.data, d => d.code))(dispatch);
   });
 
 export const clearClassArticles = (dispatch) => {
@@ -51,7 +52,7 @@ export const getClassArticle = (id) => (dispatch) => api.getClassArticle(id)
     return true;
   })
   .catch(res => {
-    return showError(res.data.code)(dispatch);
+    return showError(F.map(res.data, d => d.code))(dispatch);
   });
 
 export const clearClassArticle = (dispatch) => {
@@ -65,7 +66,7 @@ export const getClassResources = (classId) => (dispatch) => api.getClassResource
     return true;
   })
   .catch(res => {
-    return showError(res.data.code)(dispatch);
+    return showError(F.map(res.data, d => d.code))(dispatch);
   });
 
 export const clearClassResources = (dispatch) => {
@@ -79,7 +80,7 @@ export const getClassResource = (id) => (dispatch) => api.getClassResource(id)
     return true;
   })
   .catch(res => {
-    return showError(res.data.code)(dispatch);
+    return showError(F.map(res.data, d => d.code))(dispatch);
   });
 
 export const clearClassResource = (dispatch) => {
@@ -90,7 +91,7 @@ export const clearClassResource = (dispatch) => {
 export const getImages = (classId, offset = 0) => (dispatch) => api.getImages(classId, offset)
   .then(res => dispatch({ type: 'class:images:append', items: res.data, of: classId }))
   .catch(res => {
-    return showError(res.data.code, '画像情報を取得できませんでした。')(dispatch);
+    return showError(F.map(res.data, d => d.code), '画像情報を取得できませんでした。')(dispatch);
   });
 
 export const clearImages = (dispatch) => {

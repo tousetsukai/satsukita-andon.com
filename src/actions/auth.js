@@ -2,13 +2,14 @@ import Cookies from 'js-cookie';
 
 import api from '../api';
 import { showError } from './util';
+import F from '../util/f';
 
 export const me = (token) => (dispatch) => api.getMe(token)
   .then(res => {
     dispatch({ type: 'app:user:set', user: res.data });
     return true;
   })
-  .catch(res => showError(res.data.code, 'アクセストークンが正しくありません。', 3000)(dispatch));
+  .catch(res => showError(F.map(res.data, d => d.code), 'アクセストークンが正しくありません。', 3000)(dispatch));
 
 export const signin = (login, password) => (dispatch) => api.getToken(login, password)
   .then(res => {
@@ -17,9 +18,9 @@ export const signin = (login, password) => (dispatch) => api.getToken(login, pas
     return me(token)(dispatch);
   }).catch(res => {
     if (res.status === 400) {
-      return showError(res.data.code, 'ユーザー名またはパスワードが間違っています。')(dispatch);
+      return showError(F.map(res.data, d => d.code), 'ユーザー名またはパスワードが間違っています。')(dispatch);
     } else {
-      return showError(res.data.code, '何かがおかしいです。')(dispatch);
+      return showError(F.map(res.data, d => d.code), '何かがおかしいです。')(dispatch);
     }
   });
 
@@ -32,4 +33,4 @@ export const updateMe = (params) => (dispatch) => api.putMe(params)
     dispatch({ type: 'app:user:set', user: res.data });
     return true;
   })
-  .catch(res => showError(res.data.code, '変更に失敗しました', 3000)(dispatch));
+  .catch(res => showError(F.map(res.data, d => d.code), '変更に失敗しました', 3000)(dispatch));
