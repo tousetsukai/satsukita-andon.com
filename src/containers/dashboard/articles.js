@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 class Articles extends Component {
-
   render() {
     return (
       <div>
@@ -19,4 +18,8 @@ class Articles extends Component {
   }
 }
 
-export default connect()(Articles);
+export default connect(
+  state => ({
+    articles: state.dashboard.articles,
+  })
+)(Articles);
