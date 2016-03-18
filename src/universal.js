@@ -3,7 +3,6 @@ import { Router, Route, RouterContext, IndexRoute } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
 
 import * as C from './containers';
 import * as D from './containers/dashboard';
@@ -64,13 +63,9 @@ export const routes = (
   </Route>
 );
 
-const logger = createLogger({
-  logger: console,
-});
 export const configureStore = (initialState, ...middlewares) => {
   return applyMiddleware(
     thunk,
-    logger,
     ...middlewares
   )(createStore)(reducer, initialState);
 };
