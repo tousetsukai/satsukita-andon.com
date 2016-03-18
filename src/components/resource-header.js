@@ -9,7 +9,7 @@ export default class ResourceHeader extends Component {
     const { title, tags, createdBy, updatedBy, createdAt, updatedAt } = this.props;
     return (
       <div className="resource-header">
-        <div className="container">
+        <div className="container padding-container">
           <h1>{title}</h1>
           <ul className="tags">
             {tags.map((tag, i) => <li key={i}><Link className="resource-tag" to={`/howto/tags/${tag}`}>{tag}</Link></li>)}
