@@ -40,6 +40,10 @@
     line-height: 1.7em;
   }
 
+  a {
+    color: $link;
+  }
+
   ul:not(.image-list), ol {
     margin: 20px;
     padding: 0;
