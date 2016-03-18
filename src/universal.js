@@ -42,6 +42,20 @@ export const routes = (
       <IndexRoute component={D.Home}/>
       <Route path="articles" component={D.Articles}/>
       <Route path="articles/create" component={D.ArticlesCreate}/>
+      <Route path="articles/:id/edit" component={D.ArticlesCreate}/>
+      <Route path="resources" component={D.Resources}/>
+      <Route path="resources/create" component={D.ResourcesCreate}/>
+      <Route path="resources/:id/edit" component={D.ResourcesCreate}/>
+      <Route path="classes" component={D.Classes}/>
+      <Route path="classes/:times" component={D.Classes}/>
+      <Route path="classes/:classId/images" component={D.ClassesImages}/>
+      <Route path="classes/:classId/review" component={D.ClassesReview}/>
+      <Route path="classes/:classId/articles" component={D.ClassesArticles}/>
+      <Route path="classes/:classId/articles/create" component={D.ClassesArticlesEdit}/>
+      <Route path="classes/:classId/articles/:id/edit" component={D.ClassesArticlesEdit}/>
+      <Route path="classes/:classId/resources" component={D.ClassesResources}/>
+      <Route path="classes/:classId/resources/create" component={D.ClassesResourcesEdit}/>
+      <Route path="classes/:classId/resources/:id/edit" component={D.ClassesResourcesEdit}/>
       <Route path="settings" component={D.Settings}/>
       <Route path="*" component={C.NotFound}/>
     </Route>
