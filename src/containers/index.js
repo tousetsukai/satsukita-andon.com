@@ -17,4 +17,5 @@ export Resource from './resource';
 export User from './user';
 export NotFound from './notfound';
 export Signin from './signin';
+export Signup from './signup';
 export License from './license';

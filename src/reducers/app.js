@@ -18,7 +18,7 @@ export function app(state = initialState, action) {
     return {
       ...state,
       user: {
-        ...action.user,
+        ...state.user,
         icon_url: action.url,
       },
     };

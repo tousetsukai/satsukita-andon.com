@@ -46,6 +46,9 @@ export default {
     password,
   }),
   getUser: (login) => api.get(`/users/${login}`),
+  postUser: (login, password, name, times) => api.post('/users', {
+    login, password, name, times,
+  }),
   putMe: (params) => api.put('/users', params, tokenHeader()),
   postImage: (image) => {
     const data = new FormData();
@@ -56,5 +59,5 @@ export default {
     const data = new FormData();
     data.append('file', image, 'icon.png'); // must be a png image. FIXME
     return api.post('/file/icon', data, tokenHeader());
-  }
+  },
 };

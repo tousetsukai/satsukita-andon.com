@@ -24,6 +24,16 @@ export const signin = (login, password) => (dispatch) => api.getToken(login, pas
     }
   });
 
+export const signup = (login, password, name, times) => (dispatch) => api.postUser(login, password, name, times)
+  .then(res => {
+    const token = res.data.token;
+    Cookies.set('token', token);
+    dispatch({ type: 'app:user:set', user: res.data.user });
+    return true;
+  }).catch(res => {
+    return showError(F.map(res.data, d => d.code), '登録できませんでした')(dispatch);
+  });
+
 export const setIcon = (url) => (dispatch) => {
   dispatch({ type: 'app:icon:set', url: url });
 };

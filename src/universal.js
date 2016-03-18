@@ -37,6 +37,7 @@ export const routes = (
     <Route path="license" component={C.License}/>
     {/* Dashboard */}
     <Route path="signin" component={C.Signin}/>
+    <Route path="signup" component={C.Signup}/>
     <Route path="dashboard" component={D.Container} onEnter={undefined}>
       <IndexRoute component={D.Home}/>
       <Route path="articles" component={D.Articles}/>
