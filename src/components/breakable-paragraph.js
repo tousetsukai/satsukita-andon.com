@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 export default class BreakableParagraph extends React.Component {
   static propTypes = {
@@ -6,7 +7,7 @@ export default class BreakableParagraph extends React.Component {
   };
   render() {
     const { text, ...props } = this.props;
-    if (typeof text === 'undefined') {
+    if (_.isEmpty(text)) {
       return <p {...props}></p>;
     } else {
       const html = [].concat.apply([], text.split(/\r\n|\n/).map((t, i) => {
