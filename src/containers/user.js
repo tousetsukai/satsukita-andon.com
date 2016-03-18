@@ -53,7 +53,7 @@ class User extends React.Component {
   render() {
     const { user } = this.props;
     return (
-      <div className="container user-profile">
+      <div className="container padding-container user-profile">
         <div className="user-profile-header">
           <Icon user={user}/>
           <p className="user-profile-name">

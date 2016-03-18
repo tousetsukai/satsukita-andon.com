@@ -1,21 +1,21 @@
 @import "../size";
 
-@define-mixin gallery-size {
+@define-mixin gallery-size $pad: 0px {
   @mixin col2 {
-    width: calc(100vw / 2);
-    height: calc(100vw / 2 * (3 / 4));
+    width: calc(100vw / 2 - $pad);
+    height: calc((100vw / 2 - $pad) * (3 / 4));
   }
   @mixin col3 {
-    width: calc(100vw / 3);
-    height: calc(100vw / 3 * (3 / 4));
+    width: calc(100vw / 3 - $pad * 2 / 3);
+    height: calc((100vw / 3 - $pad * 2 / 3) * (3 / 4));
   }
   @mixin col4 {
-    width: calc(100vw / 4);
-    height: calc(100vw / 4 * (3 / 4));
+    width: calc(100vw / 4 - $pad / 2);
+    height: calc((100vw / 4 - $pad / 2) * (3 / 4));
   }
   @mixin fixed {
-    width: calc($fixed-width / 4);
-    height: calc($fixed-width / 4 * (3 / 4));
+    width: calc($fixed-width / 4 - $pad / 2);
+    height: calc(($fixed-width / 4 - $pad / 2) * (3 / 4));
   }
 }
 @define-mixin gallery-font-size $weight {

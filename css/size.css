@@ -5,7 +5,7 @@ $fixed-width: 1180px;
 $smartphone-max-width: 500px;
 $tablet-max-width: 900px;
 
-$padding: 8px;
+$padding: 10px;
 
 @define-mixin smartphone {
   @media (max-width: $smartphone-max-width) {

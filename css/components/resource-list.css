@@ -1,9 +1,15 @@
 @import "../util/icon";
+@import "../size";
 
 .resource-list {
   list-style-type: none;
   width: 100%;
-  padding: 0 15px;
+  @mixin not-smartphone {
+    padding: 0 10px;
+  }
+  @mixin smartphone {
+    padding: 0;
+  }
   .title {
     display: block;
     color: $text;

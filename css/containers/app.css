@@ -21,8 +21,8 @@
     @mixin fixed {
       width: $fixed-width;
     }
-    .padding-container {
-      padding: 0 $padding;
-    }
+  }
+  .padding-container {
+    padding: 0 $padding;
   }
 }

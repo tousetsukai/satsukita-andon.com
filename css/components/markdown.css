@@ -1,3 +1,4 @@
+@import "../size";
 @import "../util/object-fit";
 @import "../util/gallery";
 
@@ -122,7 +123,7 @@
     li {
       list-style-type: none;
       padding: 2px;
-      @mixin gallery-size;
+      @mixin gallery-size $padding;
       a {
         @mixin object-fit-wrapper;
         width: 100%;
