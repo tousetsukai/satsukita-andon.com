@@ -33,7 +33,7 @@ class Article extends Component {
   render() {
     const { article } = this.props;
     if (_.isEmpty(article)) {
-      return <p>loading...</p>;
+      return <p className="container padding-container">loading...</p>;
     } else {
       return (
         <div>

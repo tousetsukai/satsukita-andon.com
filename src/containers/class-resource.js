@@ -24,7 +24,7 @@ class ClassResource extends React.Component {
     const { resource, clazz } = this.props;
     if (_.isEmpty(resource) || _.isEmpty(clazz)) {
       // not fetched yet
-      return <p>loading...</p>;
+      return <p className="container padding-container">loading...</p>;
     } else if (resource.class.id === clazz.id) {
       // normal case
       const ext = resource.url.split('.').pop();

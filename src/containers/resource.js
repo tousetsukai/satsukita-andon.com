@@ -33,7 +33,7 @@ class Resource extends Component {
   render() {
     const { resource } = this.props;
     if (_.isEmpty(resource)) {
-      return <p>loading...</p>;
+      return <p className="container padding-container">loading...</p>;
     } else {
       const ext = resource.url.split('.').pop();
       return (

@@ -24,7 +24,7 @@ class ClassArticle extends React.Component {
     const { article, clazz } = this.props;
     if (_.isEmpty(article) || _.isEmpty(clazz)) {
       // not fetched yet
-      return <p>loading...</p>;
+      return <p className="container padding-container">loading...</p>;
     } else if (article.class.id === clazz.id) {
       // normal case
       return (
