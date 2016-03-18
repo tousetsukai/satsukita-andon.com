@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { loading, getUser, clearUser } from '../actions';
 import Icon from '../components/icon';
+import BreakableParagraph from '../components/breakable-paragraph';
 import { classIdWithSlash, classNameJa } from '../util/class';
 import * as prizeutil from '../util/prize';
 
@@ -63,7 +64,7 @@ class User extends React.Component {
             {user.admin && <span className="user-profile-admin"> 管理人</span>}
           </p>
         </div>
-        <p className="user-profile-biography">{user.biography}</p>
+        <BreakableParagraph className="user-profile-biography" text={user.biography}/>
         <h2>- 制作 -</h2>
         <div className="user-profile-classes">
           {user.class_first && this.renderClass(user.class_first, user.chief_first)}
