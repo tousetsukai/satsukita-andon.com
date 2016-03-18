@@ -7,6 +7,7 @@ import Dropzone from 'react-dropzone';
 
 import Markdown from '../../components/markdown';
 import ImageUpload from '../../components/image-upload';
+import { postArticle } from '../../actions';
 
 class Articles extends Component {
 
@@ -46,7 +47,19 @@ class Articles extends Component {
   };
 
   handleSubmit = () => {
-    this.context.router.push('/dashboard/articles');
+    const { title, body, comment } = this.state;
+    this.props.dispatch(postArticle({
+      title,
+      body,
+      comment,
+      status: 'published',
+      editorial_right: 'selected',
+      editors: [],
+    })).then(ok => {
+      if (ok) {
+        this.context.router.push('/dashboard/articles');
+      }
+    });
   };
 
   handleDrop = (files) => {

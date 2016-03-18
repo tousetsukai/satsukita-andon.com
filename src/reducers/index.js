@@ -7,6 +7,7 @@ import { times } from './times';
 import { clazz } from './class';
 import { howto } from './howto';
 import { users } from './users';
+import { dashboard } from './dashboard';
 import { routerReducer } from 'react-router-redux';
 
 export default combineReducers({
@@ -18,5 +19,6 @@ export default combineReducers({
   clazz,
   howto,
   users,
+  dashboard,
   routing: routerReducer,
 });

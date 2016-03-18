@@ -60,4 +60,5 @@ export default {
     data.append('file', image, 'icon.png'); // must be a png image. FIXME
     return api.post('/file/icon', data, tokenHeader());
   },
+  postArticle: (params) => api.post('/articles', params, tokenHeader()),
 };
