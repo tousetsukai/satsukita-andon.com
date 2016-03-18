@@ -5,6 +5,7 @@ import { Form, FormField, FormRow, FormInput, Checkbox } from 'elemental';
 
 import IconUploader from '../../components/icon-uploader';
 import { setIcon, updateMe } from '../../actions';
+import F from '../../util/f';
 
 class Settings extends Component {
 
@@ -26,14 +27,13 @@ class Settings extends Component {
 
   componentWillMount() {
     const { user } = this.props;
-    console.log(user);
     this.setState({
       login: user.login,
       name: user.name,
       biography: user.biography,
-      class_first: user.class_first.class,
-      class_second: user.class_second.class,
-      class_third: user.class_third.class,
+      class_first: F.map(user.class_first, c => c.class),
+      class_second: F.map(user.class_second, c => c.class),
+      class_third: F.map(user.class_third, c => c.class),
       chief_first: user.chief_first,
       chief_second: user.chief_second,
       chief_third: user.chief_third,
@@ -113,7 +113,6 @@ class Settings extends Component {
   };
 
   render() {
-    const { user } = this.props;
     const state = this.state;
     return (
       <div>
@@ -123,13 +122,13 @@ class Settings extends Component {
           <FormField label="ユーザー名" htmlFor="name">
             <FormInput autofocus type="text"
                        name="name"
-                       defaultValue={user.name}
+                       defaultValue={state.name}
                        onChange={this.handleNameChange}/>
           </FormField>
           <FormField label="プロフィール" htmlFor="biography">
             <FormInput multiline type="text"
                        name="biography"
-                       defaultValue={user.biography}
+                       defaultValue={state.biography}
                        onChange={this.handleBiographyChange}/>
           </FormField>
 
@@ -137,7 +136,7 @@ class Settings extends Component {
             <FormField label={'1年時のクラス (1年1組なら"1")'} htmlFor="class-first">
               <FormInput type="number" min="1" max="15"
                          name="class-first"
-                         defaultValue={user.class_first.class}
+                         defaultValue={state.class_first}
                          onChange={this.handleClassFirstChange}/>
             </FormField>
             <FormField>
@@ -146,7 +145,7 @@ class Settings extends Component {
             <FormField label={'2年時のクラス (2年1組なら"1")'} htmlFor="class-second">
               <FormInput type="number" min="1" max="15"
                          name="class-second"
-                         defaultValue={user.class_second.class}
+                         defaultValue={state.class_second}
                          onChange={this.handleClassSecondChange}/>
             </FormField>
             <FormField>
@@ -155,7 +154,7 @@ class Settings extends Component {
             <FormField label={'3年時のクラス (3年1組なら"1")'} htmlFor="class-third">
               <FormInput type="number" min="1" max="15"
                          name="class-third"
-                         defaultValue={user.class_third.class}
+                         defaultValue={state.class_third}
                          onChange={this.handleClassThirdChange}/>
             </FormField>
             <FormField>
