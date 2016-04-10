@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 import Markdown from '../components/markdown';
 import { loading, getFixedContent } from '../actions';
@@ -14,7 +13,7 @@ class About extends Component {
   };
 
   componentWillMount = () => {
-    if (_.isEmpty(this.props.about)) {
+    if (this.props.rendered) {
       return About.fetchData({ dispatch: this.props.dispatch });
     }
   };
@@ -34,5 +33,6 @@ class About extends Component {
 export default connect(
   state => ({
     about: state.contents.about,
+    rendered: state.app.rendered,
   })
 )(About);

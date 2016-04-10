@@ -14,7 +14,7 @@ class ClassArticle extends React.Component {
 
   componentWillMount() {
     const { params, dispatch, article } = this.props;
-    if (_.isEmpty(article) || params.id !== article.id) {
+    if (this.props.rendered) {
       dispatch(clearClassArticle);
       ClassArticle.fetchData({ params, dispatch });
     }
@@ -52,5 +52,6 @@ export default connect(
   state => ({
     clazz: state.clazz.clazz,
     article: state.clazz.article,
+    rendered: state.app.rendered,
   })
 )(ClassArticle);

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import _ from 'lodash';
 
 import ResourceListColumn from '../components/resource-list-column';
-import { loading, getArticles, getResources, all } from '../actions';
+import { loading, getArticles, getResources, all, clearArticles, clearResources } from '../actions';
 
 class Howto extends Component {
 
@@ -21,8 +20,10 @@ class Howto extends Component {
   };
 
   componentWillMount() {
-    if (_.isEmpty(this.props.articles) || _.isEmpty(this.props.resources)) {
-      Howto.fetchData({ dispatch: this.props.dispatch });
+    const { dispatch, rendered } = this.props;
+    if (rendered) {
+      dispatch(all([clearArticles, clearResources ]));
+      Howto.fetchData({ dispatch });
     }
   }
 
@@ -128,5 +129,6 @@ export default connect(
     resources: state.howto.resources,
     resourceCount: state.howto.resourceCount,
     allResourceCount: state.howto.allResourceCount,
+    rendered: state.app.rendered,
   })
 )(Howto);

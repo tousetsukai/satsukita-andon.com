@@ -16,8 +16,8 @@ class Resource extends Component {
   }
 
   componentWillMount() {
-    const { params, dispatch, resource } = this.props;
-    if (_.isEmpty(resource) || (params.id !== resource.id)) {
+    const { params, dispatch, rendered } = this.props;
+    if (rendered) {
       dispatch(clearResource);
       Resource.fetchData({ params, dispatch });
     }
@@ -62,5 +62,6 @@ class Resource extends Component {
 export default connect(
   state => ({
     resource: state.howto.resource,
+    rendered: state.app.rendered,
   })
 )(Resource);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 import { loading, getUser, clearUser } from '../actions';
 import Icon from '../components/icon';
@@ -10,24 +9,25 @@ import { classIdWithSlash, classNameJa } from '../util/class';
 import * as prizeutil from '../util/prize';
 
 class User extends React.Component {
+
   static fetchData = ({ params, dispatch }) => {
     return dispatch(loading(getUser(params.login)));
   };
-  fetchData = (props) => {
-    const { dispatch, params, user } = props;
-    if (_.isEmpty(user) || user.login !== params.login) {
-      dispatch(clearUser);
-      User.fetchData(props);
-    }
-  };
+
   componentWillMount() {
-    this.fetchData(this.props);
+    if (this.props.rendered) {
+      this.props.dispatch(clearUser);
+      User.fetchData(this.props);
+    }
   }
+
   componentWillUpdate(nextProps) {
     if (nextProps.params.login !== this.props.params.login) {
-      this.fetchData(nextProps);
+      nextProps.dispatch(clearUser);
+      User.fetchData(nextProps);
     }
   }
+
   renderClass = (clazz, chief) => {
     return (
       <div className="user-profile-class">
@@ -79,5 +79,6 @@ class User extends React.Component {
 export default connect(
   state => ({
     user: state.users.user,
+    rendered: state.app.rendered,
   }),
 )(User);

@@ -15,8 +15,8 @@ class Gallery extends Component {
   }
 
   componentWillMount() {
-    if (_.isEmpty(this.props.festivals)) {
-      Gallery.fetchData({ dispatch: this.props.dispatch });
+    if (this.props.rendered) {
+      Gallery.fetchData(this.props);
     }
   }
 
@@ -51,5 +51,6 @@ class Gallery extends Component {
 export default connect(
   state => ({
     festivals: state.gallery.festivals,
+    rendered: state.app.rendered,
   })
 )(Gallery);

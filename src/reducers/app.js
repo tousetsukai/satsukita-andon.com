@@ -3,6 +3,7 @@ const initialState = {
   error: {},
   showingError: false,
   loading: false,
+  rendered: false, // !(server-side rendering || client initial rendering)
 };
 
 let loadingCount = 0;
@@ -45,6 +46,11 @@ export function app(state = initialState, action) {
       ...state,
       error: {},
       showingError: false,
+    };
+  case 'app:rendered':
+    return {
+      ...state,
+      rendered: true,
     };
   default:
     return state;

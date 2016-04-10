@@ -6,7 +6,7 @@ import ProgressBar from 'react-progress-bar-plus';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
-import { me } from '../actions';
+import { me, rendered } from '../actions';
 import { meta } from '../util/helmet';
 
 class App extends Component {
@@ -40,6 +40,7 @@ class App extends Component {
     if (this.props.showingError) {
       this.showError(this.props.error.message);
     }
+    this.props.dispatch(rendered);
   };
 
   componentDidUpdate = (prevProps) => {

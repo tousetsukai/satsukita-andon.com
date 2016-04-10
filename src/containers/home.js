@@ -18,8 +18,8 @@ class Home extends Component {
   };
 
   componentWillMount() {
-    if (_.isEmpty(this.props.topNews)) {
-      Home.fetchData({ dispatch: this.props.dispatch });
+    if (this.props.rendered) {
+      Home.fetchData(this.props);
     }
   }
 
@@ -80,5 +80,6 @@ class Home extends Component {
 export default connect(
   state => ({
     topNews: state.contents.news,
+    rendered: state.app.rendered,
   })
 )(Home);

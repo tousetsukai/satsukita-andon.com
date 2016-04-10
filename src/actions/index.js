@@ -7,6 +7,11 @@ export * from './class';
 export * from './auth';
 export * from './dashboard';
 
+export const rendered = (dispatch) => {
+  dispatch({ type: 'app:rendered' });
+  return Promise.resolve(true);
+};
+
 export const getFixedContent = (type) => (dispatch) => api.getFixedContent(type)
   .then(res => {
     dispatch({ type: `contents:${type}:set`, content: res.data });
@@ -47,6 +52,11 @@ export const getArticles = (params) => (dispatch) => api.getArticles(params)
     return true;
   }).catch(res => showError(F.map(res.data, d => d.code), '情報を取得できませんでした。')(dispatch));
 
+export const clearArticles = (dispatch) => {
+  dispatch({ type: 'howto:articles:clear' });
+  return Promise.resolve(true);
+};
+
 export const getArticle = (id) => (dispatch) => api.getArticle(id)
   .then(res => {
     dispatch({ type: 'howto:article:set', article: res.data });
@@ -63,6 +73,11 @@ export const getResources = (params) => (dispatch) => api.getResources(params)
     dispatch({ type: 'howto:resources:append', items: res.data });
     return true;
   }).catch(res => showError(F.map(res.data, d => d.code), '情報を取得できませんでした。')(dispatch));
+
+export const clearResources = (dispatch) => {
+  dispatch({ type: 'howto:resources:clear' });
+  return Promise.resolve(true);
+};
 
 export const getResource = (id) => (dispatch) => api.getResource(id)
   .then(res => {

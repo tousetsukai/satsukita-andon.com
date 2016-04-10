@@ -19,6 +19,13 @@ export function howto(state = initialState, action) {
       articleCount: state.articleCount + action.items.count,
       allArticleCount: action.items.all_count,
     };
+  case 'howto:articles:clear':
+    return {
+      ...state,
+      articles: [],
+      articleCount: 0,
+      allArticleCount: 0,
+    };
   case 'howto:article:set':
     return {
       ...state,
@@ -36,6 +43,13 @@ export function howto(state = initialState, action) {
       resources: state.resources.concat(action.items.items),
       resourceCount: state.resourceCount + action.items.count,
       allResourceCount: action.items.all_count,
+    };
+  case 'howto:resources:clear':
+    return {
+      ...state,
+      resources: [],
+      resourceCount: 0,
+      allResourceCount: 0,
     };
   case 'howto:resource:set':
     return {

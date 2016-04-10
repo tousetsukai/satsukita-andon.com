@@ -16,8 +16,8 @@ class Article extends Component {
   }
 
   componentWillMount() {
-    const { params, dispatch, article } = this.props;
-    if (_.isEmpty(article) || (params.id !== article.id)) {
+    const { params, dispatch } = this.props;
+    if (this.props.rendered) {
       dispatch(clearArticle);
       Article.fetchData({ params, dispatch });
     }
@@ -59,5 +59,6 @@ class Article extends Component {
 export default connect(
   state => ({
     article: state.howto.article,
+    rendered: state.app.rendered,
   })
 )(Article);
