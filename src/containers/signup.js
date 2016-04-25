@@ -86,44 +86,45 @@ class Signup extends Component {
         <Helmet
           title="ユーザー登録"
         />
-        <Form>
-          <FormField label="ログインID (半角英数字, アンダースコア(_), ハイフン(-) のみ)" htmlFor="login">
-            <FormInput autofocus type="text"
-                       name="login"
-                       onChange={this.handleLoginChange}
-                       value={login}
-                       onKeyPress={this.submitIfEnter}/>
-          </FormField>
-          <FormField label="名前" htmlFor="name">
-            <FormInput type="text"
-                       name="name"
-                       onChange={this.handleNameChange}
-                       value={name}
-                       onKeyPress={this.submitIfEnter}/>
-          </FormField>
-          <FormField label="パスワード" htmlFor="password">
-            <FormInput type="password"
-                       name="password"
-                       onChange={this.handlePasswordChange}
-                       value={password}
-                       onKeyPress={this.submitIfEnter}/>
-          </FormField>
-          <FormField label="パスワード (確認)" htmlFor="password-confirm">
-            <FormInput type="password"
-                       name="password-confirm"
-                       onChange={this.handlePasswordConfirmChange}
-                       value={passwordConfirm}
-                       onKeyPress={this.submitIfEnter}/>
-          </FormField>
-          <FormField label={`札幌北高卒業期 (現1年生: ${info.firstGradeTimes}期, 現2年生: ${info.secondGradeTimes}期, 現3年生: ${info.thirdGradeTimes}期)`} htmlFor="times">
-            <FormInput type="number" min="1" max={info.firstGradeTimes}
-                       name="times"
-                       value={times}
-                       onChange={this.handleTimesChange}
-                       onKeyPress={this.submitIfEnter}/>
-          </FormField>
-          <button className="submit-button" type="button" onClick={this.handleSubmit}>登録</button>
-        </Form>
+        <p>もうしばらくお待ち下さい</p>
+        {/* <Form>
+        <FormField label="ログインID (半角英数字, アンダースコア(_), ハイフン(-) のみ)" htmlFor="login">
+        <FormInput autofocus type="text"
+        name="login"
+        onChange={this.handleLoginChange}
+        value={login}
+        onKeyPress={this.submitIfEnter}/>
+        </FormField>
+        <FormField label="名前" htmlFor="name">
+        <FormInput type="text"
+        name="name"
+        onChange={this.handleNameChange}
+        value={name}
+        onKeyPress={this.submitIfEnter}/>
+        </FormField>
+        <FormField label="パスワード" htmlFor="password">
+        <FormInput type="password"
+        name="password"
+        onChange={this.handlePasswordChange}
+        value={password}
+        onKeyPress={this.submitIfEnter}/>
+        </FormField>
+        <FormField label="パスワード (確認)" htmlFor="password-confirm">
+        <FormInput type="password"
+        name="password-confirm"
+        onChange={this.handlePasswordConfirmChange}
+        value={passwordConfirm}
+        onKeyPress={this.submitIfEnter}/>
+        </FormField>
+        <FormField label={`札幌北高卒業期 (現1年生: ${info.firstGradeTimes}期, 現2年生: ${info.secondGradeTimes}期, 現3年生: ${info.thirdGradeTimes}期)`} htmlFor="times">
+        <FormInput type="number" min="1" max={info.firstGradeTimes}
+        name="times"
+        value={times}
+        onChange={this.handleTimesChange}
+        onKeyPress={this.submitIfEnter}/>
+        </FormField>
+        <button className="submit-button" type="button" onClick={this.handleSubmit}>登録</button>
+        </Form> */}
       </div>
     );
   }
