@@ -1,15 +1,14 @@
 import React from 'react'
 
 import { Link } from '../routes'
+import Header from '../components/header'
 
 export default class Default extends React.Component {
 
   render() {
     return (
       <div>
-        <Link route='/'>
-          <a>ロゴ</a>
-        </Link>
+        <Header />
         {this.props.children}
         <Link route='/about'>
           <a>このサイトについて</a>
