@@ -1,12 +1,22 @@
 import React from 'react'
-import remark from 'remark'
-import reactRenderer from 'remark-react'
+
+import unified from 'unified'
+import parse from 'remark-parse'
+import remark2react from 'remark-react'
 
 export default class Markdown extends React.Component {
+
+  static defaultProps = {
+    md: ''
+  }
+
   render() {
+    const processor = unified()
+      .use(parse)
+      .use(remark2react)
     return (
       <div>
-        {remark().use(reactRenderer).processSync(this.props.md).contents}
+        {processor.processSync(this.props.md).contents}
       </div>
     )
   }
