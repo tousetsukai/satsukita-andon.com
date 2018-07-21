@@ -3,6 +3,7 @@ import axios from 'axios'
 import Head from 'next/head'
 
 import Markdown from '../components/markdown'
+import Layout from '../layouts/default'
 
 export default class About extends React.Component {
 
@@ -14,12 +15,12 @@ export default class About extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <Head>
           <title>行灯職人への道 - About</title>
         </Head>
         <Markdown md={this.props.content} />
-      </div>
+      </Layout>
     )
   }
 }

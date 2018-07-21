@@ -4,6 +4,7 @@ import Head from 'next/head'
 import _ from 'lodash'
 
 import Markdown from '../components/markdown'
+import Layout from '../layouts/default'
 
 export default class Index extends React.Component {
 
@@ -47,7 +48,7 @@ export default class Index extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <Head>
           <title>行灯職人への道</title>
         </Head>
@@ -55,7 +56,7 @@ export default class Index extends React.Component {
           <h3>News</h3>
           <Markdown md={this.props.news.body}/>
         </div>
-      </div>
+      </Layout>
     )
   }
 }
