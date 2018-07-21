@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+import Markdown from '../components/markdown'
+
 export default class About extends React.Component {
 
   static async getInitialProps() {
@@ -12,7 +14,7 @@ export default class About extends React.Component {
   render() {
     return (
       <div>
-        {this.props.content}
+        <Markdown md={this.props.content} />
       </div>
     )
   }
