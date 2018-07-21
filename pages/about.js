@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Head from 'next/head'
 
 import Markdown from '../components/markdown'
 
@@ -14,6 +15,9 @@ export default class About extends React.Component {
   render() {
     return (
       <div>
+        <Head>
+          <title>行灯職人への道 - About</title>
+        </Head>
         <Markdown md={this.props.content} />
       </div>
     )
