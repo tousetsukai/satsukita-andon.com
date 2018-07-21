@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 
-class About extends Component {
+export default class About extends React.Component {
+
   static async getInitialProps() {
     const res = await axios.get('https://api.satsukita-andon.com/dev/contents/about')
     console.log(res)
@@ -16,5 +17,3 @@ class About extends Component {
     )
   }
 }
-
-export default About
