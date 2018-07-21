@@ -3,24 +3,25 @@ andon-frontend
 
 The frontend of satsukita-andon.com
 
-build
------
-
-```
-npm install
-bower install
-npm run static
-npm run build
-npm run build-css
-```
-
-generates `/static/bundle.js` and `/static/vendor.bundle.js` and `/static/bundle.css`
-
-start server
+Prerequisite
 ------------
 
+- nodejs
+- npm
+
+Development
+-----------
+
 ```
-npm start
+npm i
+npm run dev
 ```
 
-then the server started on port 5927
+Production
+----------
+
+```
+npm i
+npm run build
+npm run start
+```
