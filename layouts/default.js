@@ -15,6 +15,7 @@ export default class Default extends React.Component {
         <style global jsx>{`
           body {
             background-color: black;
+            color: white;
           }
         `}</style>
       </div>
