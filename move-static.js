@@ -1,5 +1,6 @@
 const files = [
-  'bulma/css/bulma.min.css'
+  'bulma/css/bulma.min.css',
+  'normalize.css/normalize.css'
 ]
 
 const fs = require('fs-extra')
