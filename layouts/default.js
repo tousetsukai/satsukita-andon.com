@@ -12,6 +12,11 @@ export default class Default extends React.Component {
         <Header />
         {this.props.children}
         <Footer />
+        <style global jsx>{`
+          body {
+            background-color: black;
+          }
+        `}</style>
       </div>
     )
   }

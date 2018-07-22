@@ -3,8 +3,9 @@ import axios from 'axios'
 import Head from 'next/head'
 import _ from 'lodash'
 
-import Markdown from '../components/markdown'
 import Layout from '../layouts/default'
+import Markdown from '../components/markdown'
+import Jumbotron from '../components/jumbotron'
 
 export default class Index extends React.Component {
 
@@ -47,12 +48,17 @@ export default class Index extends React.Component {
   }
 
   render() {
+    const images = [1,2,3,4,5].map(i =>
+      `https://static.satsukita-andon.com/files/jumbotron/${i}.jpg`
+    )
+    const interval = 8
     return (
       <Layout>
         <Head>
           <title>行灯職人への道</title>
         </Head>
-        <div className="container padding-container">
+        <Jumbotron images={images} interval={interval} />
+        <div>
           <h3>News</h3>
           <Markdown md={this.props.news.body}/>
         </div>
