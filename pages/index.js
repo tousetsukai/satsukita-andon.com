@@ -11,7 +11,6 @@ export default class Index extends React.Component {
 
   static async getInitialProps() {
     const res = await axios.get('https://api.satsukita-andon.com/dev/contents/news')
-    console.log(res)
     return { news: res.data }
   }
 
@@ -34,11 +33,6 @@ export default class Index extends React.Component {
     if (window) { // only browser
       window.addEventListener('scroll', this.handleScroll);
     }
-    this.setState({
-      backgroundImages: _.shuffle([1,2,3,4,5,6,7,8,9,10]).map(i =>
-        `https://static.satsukita-andon.com/files/jumbotron/${i}.jpg`
-      ).slice(0, 5),
-    });
   }
 
   componentWillUnmount() {
