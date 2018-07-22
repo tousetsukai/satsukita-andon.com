@@ -32,6 +32,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           {/* CSS */}
           <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+          <link rel="stylesheet" href="/static/lib/normalize.css" type="text/css" />
           <link rel="stylesheet" href="/static/lib/bulma.min.css" type="text/css" />
           {/* Twitter */}
           <meta name="twitter:card" content="summary" />
