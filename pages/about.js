@@ -1,15 +1,17 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import axios from 'axios'
 import Head from 'next/head'
 
 import Markdown from '../components/markdown'
 import Layout from '../layouts/default'
+import actions from '../actions'
 
-export default class About extends React.Component {
+class About extends React.Component {
 
-  static async getInitialProps() {
-    const res = await axios.get('https://api.satsukita-andon.com/dev/contents/about')
-    return { content: res.data.body }
+  static async getInitialProps({ store }) {
+    await store.dispatch(actions.contents.fetchAbout())
+    return {}
   }
 
   render() {
@@ -18,8 +20,10 @@ export default class About extends React.Component {
         <Head>
           <title>行灯職人への道 - About</title>
         </Head>
-        <Markdown md={this.props.content} />
+        <Markdown md={this.props.about.body} />
       </Layout>
     )
   }
 }
+
+export default connect(state => ({ about: state.contents.about }))(About)
