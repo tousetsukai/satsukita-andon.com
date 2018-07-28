@@ -1,7 +1,7 @@
-const routes = require('next-routes')
+const routes = require("next-routes");
 
 // See: https://github.com/fridays/next-routes
 module.exports = routes()
-  .add('index', '/')
-  .add('about')
-  .add('article', '/articles/:id')
+  .add("index", "/")
+  .add("about")
+  .add("article", "/articles/:id");

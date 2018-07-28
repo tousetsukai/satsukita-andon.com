@@ -1,19 +1,22 @@
-import React from 'react'
-import axios from 'axios'
-import Head from 'next/head'
+import React from "react";
+import Head from "next/head";
+import { connect } from "react-redux";
 
-import Layout from '../layouts/default'
-import Markdown from '../components/markdown'
+import Layout from "../layouts/default";
+import Markdown from "../components/markdown";
+import actions from "../actions";
 
-export default class Article extends React.Component {
-
-  static async getInitialProps({ query }) {
-    const res = await axios.get(`https://api.satsukita-andon.com/dev/articles/${query.id}`)
-    return { article: res.data }
+class Article extends React.Component {
+  static async getInitialProps({ query, store }) {
+    await store.dispatch(actions.howto.article.fetch(query.id));
+    return {};
   }
 
   render() {
-    const { article } = this.props
+    const { article } = this.props;
+    if (typeof article === "undefined") {
+      return <Layout />;
+    }
     return (
       <Layout>
         <Head>
@@ -21,6 +24,8 @@ export default class Article extends React.Component {
         </Head>
         <Markdown md={article.body} />
       </Layout>
-    )
+    );
   }
 }
+
+export default connect(state => ({ article: state.howto.article }))(Article);

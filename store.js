@@ -1,62 +1,80 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { handleActions } from 'redux-actions'
-import promise from 'redux-promise'
-import logger from 'redux-logger'
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { handleActions } from "redux-actions";
+import promise from "redux-promise";
+import logger from "redux-logger";
 
-const app = handleActions({
-  APP: {
-    USER: {
-      FETCH: {
-        next: (state, action) => ({
+const app = handleActions(
+  {
+    APP: {
+      USER: {
+        FETCH: {
+          next: (state, action) => ({
+            ...state,
+            user: action.payload
+          }),
+          throw: (state, action) => ({
+            ...state,
+            user: undefined
+          })
+        }
+      }
+    }
+  },
+  { user: undefined }
+);
+
+const howto = handleActions(
+  {
+    HOWTO: {
+      ARTICLES: {
+        FETCH: (state, action) => ({
           ...state,
-          user: action.payload
-        }),
-        throw: (state, action) => ({
+          articles: action.payload.items.items
+        })
+      },
+      ARTICLE: {
+        FETCH: (state, action) => ({
           ...state,
-          user: undefined
+          article: action.payload
         })
       }
     }
+  },
+  {
+    articles: [],
+    articleCount: 0,
+    allArticleCount: 0,
+    article: undefined
   }
-}, { user: undefined })
+);
 
-const howto = handleActions({
-  ARTICLES: {
-    FETCH: (state, action) => ({
-      ...state,
-      articles: action.payload.items.items,
-    })
+const contents = handleActions(
+  {
+    CONTENTS: {
+      FETCH_NEWS: (state, action) => ({
+        ...state,
+        news: action.payload
+      }),
+      FETCH_ABOUT: (state, action) => ({
+        ...state,
+        about: action.payload
+      }),
+      FETCH_CONTACT: (state, action) => ({
+        ...state,
+        contact: action.payload
+      })
+    }
+  },
+  {
+    news: undefined,
+    about: undefined,
+    contact: undefined
   }
-}, {
-  articles: [],
-  articleCount: 0,
-  allArticleCount: 0
-})
+);
 
-const contents = handleActions({
-  CONTENTS: {
-    FETCH_NEWS: (state, action) => ({
-      ...state,
-      news: action.payload
-    }),
-    FETCH_ABOUT: (state, action) => ({
-      ...state,
-      about: action.payload
-    }),
-    FETCH_CONTACT: (state, action) => ({
-      ...state,
-      contact: action.payload
-    })
-  }
-}, {
-  news: undefined,
-  about: undefined,
-  contact: undefined
-})
-
-const reducer = combineReducers({ app, howto, contents })
+const reducer = combineReducers({ app, howto, contents });
 
 // See https://github.com/kirill-konshin/next-redux-wrapper
 export const makeStore = (state, _options) => {
-  return createStore(reducer, state, applyMiddleware(promise, logger))
-}
+  return createStore(reducer, state, applyMiddleware(promise, logger));
+};
