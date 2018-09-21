@@ -1,0 +1,19 @@
+{
+  "name": "satsukita-andon.com",
+  "version": "0.0.0",
+  "description": "The frontend of satsukita-andon.com",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tousetsukai/satsukita-andon.com.git"
+  },
+  "author": "tousetsukai <tousetsukai@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tousetsukai/satsukita-andon.com/issues"
+  },
+  "homepage": "https://github.com/tousetsukai/satsukita-andon.com#readme"
+}
