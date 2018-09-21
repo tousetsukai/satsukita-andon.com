@@ -1,7 +1,0 @@
-.DS_Store
-/node_modules
-/bower_components
-*bundle.js*
-*bundle.css*
-npm-debug.log
-/static/lib/
