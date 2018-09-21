@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/tousetsukai/satsukita-andon.com/issues"
   },
-  "homepage": "https://github.com/tousetsukai/satsukita-andon.com#readme"
+  "homepage": "https://github.com/tousetsukai/satsukita-andon.com#readme",
+  "dependencies": {
+    "@zeit/next-typescript": "^1.1.1",
+    "next": "^7.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  }
 }
