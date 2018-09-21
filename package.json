@@ -1,0 +1,49 @@
+{
+  "name": "satsukita-andon.com",
+  "version": "0.0.1",
+  "description": "The frontend of satsukita-andon.com",
+  "scripts": {
+    "dev": "next src/app",
+    "check": "npm run lint-app && npm run typecheck-app && npm run lint-functions",
+    "build": "npm run build-functions && npm run build-app && npm run build-public && npm run copy-deps && npm run install-deps",
+    "serve": "NODE_ENV=production firebase serve --only functions,hosting",
+    "deploy": "firebase deploy",
+    "clean": "rimraf \"dist/functions\" && rimraf \"dist/public\"",
+    "build-app": "next build \"src/app\"",
+    "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
+    "build-functions": "tsc --project src/functions",
+    "copy-deps": "cpx \"*{package.json,package-lock.json}\" \"dist/functions\"",
+    "install-deps": "cd \"dist/functions\" && npm i",
+    "lint-app": "tslint --project src/app",
+    "typecheck-app": "tsc --project src/app",
+    "lint-functions": "tslint --project src/functions"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tousetsukai/satsukita-andon.com.git"
+  },
+  "author": "tousetsukai <tousetsukai@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tousetsukai/satsukita-andon.com/issues"
+  },
+  "homepage": "https://github.com/tousetsukai/satsukita-andon.com#readme",
+  "dependencies": {
+    "@zeit/next-typescript": "^1.1.1",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^2.0.5",
+    "next": "^7.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@types/next": "^6.1.7",
+    "@types/react": "^16.4.14",
+    "cpx": "^1.5.0",
+    "firebase-tools": "^4.2.1",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.11.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.0.3"
+  }
+}
