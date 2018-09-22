@@ -1,7 +1,4 @@
 language: node_js
-node_js:
-  - node
-  - 6 # the version of firebase functions
 script:
   - npm run check
   - npm run build
