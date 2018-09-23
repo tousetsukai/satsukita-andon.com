@@ -16,7 +16,8 @@
     "check-app": "tsc --noEmit -p src/app && tslint -p src/app && prettier -l src/app/**/*.{js,jsx,ts,tsx}",
     "check-functions": "tsc --noEmit -p src/functions && tslint -p src/functions && prettier -l src/functions/**/*.{js,jsx,ts,tsx}",
     "fix-app": "tslint --fix -p src/app && prettier --write src/app/**/*.{js,jsx,ts,tsx}",
-    "fix-functions": "tslint --fix -p src/functions && prettier --write src/functions/**/*.{js,jsx,ts,tsx}"
+    "fix-functions": "tslint --fix -p src/functions && prettier --write src/functions/**/*.{js,jsx,ts,tsx}",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,8 @@
     "@types/react": "^16.4.14",
     "cpx": "^1.5.0",
     "firebase-tools": "^4.2.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
     "tslint": "^5.11.0",
