@@ -1,0 +1,10 @@
+{
+  "src/functions/**/*.{js,jsx,ts,tsx}": [
+    "npm run fix-functions",
+    "git add"
+  ],
+  "src/app/**/*.{js,jsx,ts,tsx}": [
+    "npm run fix-app",
+    "git add"
+  ]
+}

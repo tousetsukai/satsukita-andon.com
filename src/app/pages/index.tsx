@@ -1,7 +1,6 @@
-import React from "react";
+import Next from 'next';
+import React from 'react';
 
-export default class Index extends React.Component {
-  public render() {
-    return <React.Fragment>Hello, World</React.Fragment>;
-  }
-}
+const Index: Next.NextSFC<{}> = () => <React.Fragment>Hello, World</React.Fragment>;
+
+export default Index;

@@ -1,13 +1,8 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "lib": ["es6"],
-    "module": "commonjs",
-    "noImplicitReturns": true,
-    "outDir": "../../dist/functions",
-    "sourceMap": true,
-    "target": "es6",
-    "baseUrl": "./src"
-  },
-  "compileOnSave": true,
-  "include": ["src"]
+    "lib": ["es2015", "es2016", "es2017"],
+    "typeRoots": ["../../node_modules/@types"],
+    "outDir": "../../dist/functions"
+  }
 }
