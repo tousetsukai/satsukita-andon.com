@@ -1,0 +1,23 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": {
+    "source": "dist/functions",
+    "predeploy": ["npm run check", "npm run build"]
+  },
+  "hosting": {
+    "public": "dist/public",
+    "rewrites": [
+      {
+        "source": "**/**",
+        "function": "nextApp"
+      }
+    ],
+    "predeploy": "npm run build-public"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}
