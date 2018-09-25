@@ -50,7 +50,7 @@ npm run clean
 
 ## Coding Style
 
-Use [prettier](https://prettier.io/)'s default settings.
+See [.prettierrc](./.prettierrc).
 
 ## Contributing
 
