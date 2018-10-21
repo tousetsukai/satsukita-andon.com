@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next src/app",
     "check": "npm run check-app && npm run check-functions",
-    "build": "npm run build-functions && npm run build-app && npm run build-public && npm run build-deps",
+    "build": "npm run clean && npm run build-functions && npm run build-app && npm run build-public && npm run build-deps",
     "serve": "NODE_ENV=production firebase serve --only functions,hosting",
     "deploy": "firebase deploy",
     "clean": "rimraf dist/functions && rimraf dist/public",
