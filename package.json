@@ -9,7 +9,7 @@
     "serve": "NODE_ENV=production firebase serve --only functions,hosting",
     "deploy": "firebase deploy",
     "clean": "rimraf dist/functions && rimraf dist/public",
-    "build-app": "next build src/app",
+    "build-app": "NODE_ENV=production next build src/app",
     "build-functions": "tsc -p tsconfig.functions.json",
     "build-public": "cpx src/public/**/*.* dist/public -C",
     "build-deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && npm --prefix dist/functions i dist/functions",
