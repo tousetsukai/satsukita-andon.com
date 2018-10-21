@@ -10,13 +10,13 @@
     "deploy": "firebase deploy",
     "clean": "rimraf dist/functions && rimraf dist/public",
     "build-app": "next build src/app",
-    "build-functions": "tsc -p src/functions",
+    "build-functions": "tsc -p tsconfig.functions.json",
     "build-public": "cpx src/public/**/*.* dist/public -C",
     "build-deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && npm --prefix dist/functions i dist/functions",
-    "check-app": "tsc --noEmit -p src/app && tslint -p src/app && prettier -l src/app/**/*.{js,jsx,ts,tsx}",
-    "check-functions": "tsc --noEmit -p src/functions && tslint -p src/functions && prettier -l src/functions/**/*.{js,jsx,ts,tsx}",
-    "fix-app": "tslint --fix -p src/app && prettier --write src/app/**/*.{js,jsx,ts,tsx}",
-    "fix-functions": "tslint --fix -p src/functions && prettier --write src/functions/**/*.{js,jsx,ts,tsx}",
+    "check-app": "tsc --noEmit -p tsconfig.app.json && tslint -p tsconfig.app.json && prettier -l src/app/**/*.{js,jsx,ts,tsx}",
+    "check-functions": "tsc --noEmit -p tsconfig.functions.json && tslint -p tsconfig.functions.json && prettier -l src/functions/**/*.{js,jsx,ts,tsx}",
+    "fix-app": "tslint --fix -p tsconfig.app.json && prettier --write src/app/**/*.{js,jsx,ts,tsx}",
+    "fix-functions": "tslint --fix -p tsconfig.functions.json && prettier --write src/functions/**/*.{js,jsx,ts,tsx}",
     "precommit": "lint-staged"
   },
   "repository": {

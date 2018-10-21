@@ -1,9 +1,9 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "allowJs": true,
+    "lib": ["dom", "es2015", "es2016", "es2017"],
+    "target": "es2016",
+    "module": "commonjs",
+    "allowJs": false,
     "jsx": "preserve",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -11,6 +11,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "preserveConstEnums": true,
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      ".node_modules/@types"
+    ],
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
