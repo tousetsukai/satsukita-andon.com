@@ -20,8 +20,7 @@
     "check:app": "tsc --noEmit -p tsconfig.app.json && tslint -p tsconfig.app.json && prettier -l src/app/**/*.{js,jsx,ts,tsx}",
     "check:functions": "tsc --noEmit -p tsconfig.functions.json && tslint -p tsconfig.functions.json && prettier -l src/functions/**/*.{js,jsx,ts,tsx}",
     "fix:app": "tslint --fix -p tsconfig.app.json && prettier --write src/app/**/*.{js,jsx,ts,tsx}",
-    "fix:functions": "tslint --fix -p tsconfig.functions.json && prettier --write src/functions/**/*.{js,jsx,ts,tsx}",
-    "precommit": "lint-staged"
+    "fix:functions": "tslint --fix -p tsconfig.functions.json && prettier --write src/functions/**/*.{js,jsx,ts,tsx}"
   },
   "repository": {
     "type": "git",
@@ -46,7 +45,7 @@
     "@types/react": "^16.4.14",
     "cpx": "^1.5.0",
     "firebase-tools": "^5.1.1",
-    "husky": "^0.14.3",
+    "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
@@ -54,5 +53,10 @@
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
