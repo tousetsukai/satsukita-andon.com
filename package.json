@@ -4,20 +4,23 @@
   "description": "The frontend of satsukita-andon.com",
   "scripts": {
     "dev": "next src/app",
-    "check": "npm run check-app && npm run check-functions",
-    "build": "npm run build-functions && npm run build-app && npm run build-public && npm run build-deps",
+    "check": "npm run check:app && npm run check:functions",
+    "fix": "npm run fix:app && npm run fix:functions",
+    "build": "npm run clean && npm run build:functions && npm run build:app && npm run build:public && npm run build:deps",
     "serve": "NODE_ENV=production firebase serve --only functions,hosting",
     "deploy": "firebase deploy",
     "clean": "rimraf dist/functions && rimraf dist/public",
-    "build-app": "next build src/app",
-    "build-functions": "tsc -p src/functions",
-    "build-public": "cpx src/public/**/*.* dist/public -C",
-    "build-deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && npm --prefix dist/functions i dist/functions",
-    "check-app": "tsc --noEmit -p src/app && tslint -p src/app && prettier -l src/app/**/*.{js,jsx,ts,tsx}",
-    "check-functions": "tsc --noEmit -p src/functions && tslint -p src/functions && prettier -l src/functions/**/*.{js,jsx,ts,tsx}",
-    "fix-app": "tslint --fix -p src/app && prettier --write src/app/**/*.{js,jsx,ts,tsx}",
-    "fix-functions": "tslint --fix -p src/functions && prettier --write src/functions/**/*.{js,jsx,ts,tsx}",
-    "precommit": "lint-staged"
+    "build:app": "NODE_ENV=production next build src/app",
+    "build:functions": "tsc -p tsconfig.functions.json",
+    "build:public": "cpx src/public/**/*.* dist/public -C",
+    "build:deps": "npm run build-deps:package.json && npm run build-deps:package-lock.json && npm run build-deps:install",
+    "build-deps:package.json": "cat package.json | jq \". | { name: .name, dependencies: .dependencies, repository: .repository, author: .author, license: .license }\" > dist/functions/package.json",
+    "build-deps:package-lock.json": "cpx package-lock.json dist/functions",
+    "build-deps:install": "npm --prefix dist/functions i dist/functions",
+    "check:app": "tsc --noEmit -p tsconfig.app.json && tslint -p tsconfig.app.json && prettier -l src/app/**/*.{js,jsx,ts,tsx}",
+    "check:functions": "tsc --noEmit -p tsconfig.functions.json && tslint -p tsconfig.functions.json && prettier -l src/functions/**/*.{js,jsx,ts,tsx}",
+    "fix:app": "tslint --fix -p tsconfig.app.json && prettier --write src/app/**/*.{js,jsx,ts,tsx}",
+    "fix:functions": "tslint --fix -p tsconfig.functions.json && prettier --write src/functions/**/*.{js,jsx,ts,tsx}"
   },
   "repository": {
     "type": "git",
@@ -42,7 +45,7 @@
     "@types/react": "^16.4.14",
     "cpx": "^1.5.0",
     "firebase-tools": "^5.1.1",
-    "husky": "^0.14.3",
+    "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
@@ -50,5 +53,10 @@
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
