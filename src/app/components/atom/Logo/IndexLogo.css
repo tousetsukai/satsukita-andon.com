@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  animation-name: IndexLogo;
+  animation-iteration-count: 1;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+}
+
+@keyframes IndexLogo {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
