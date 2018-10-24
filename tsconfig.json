@@ -14,7 +14,9 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "typeRoots": [
-      ".node_modules/@types"
+      ".node_modules/@types",
+      "types/modules/external",
+      "types/modules/internal",
     ],
   },
   "exclude": [
