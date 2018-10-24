@@ -13,6 +13,10 @@ export = withTypescript(
       webpack(config: Configuration, options: ServerOptions) {
         config.plugins = config.plugins || [];
 
+        if (options.dev) {
+          config.devtool = 'hidden-source-map';
+        }
+
         if (options.dev && options.isServer) {
           config.plugins.push(
             new ForkTsCheckerWebpackPlugin({
