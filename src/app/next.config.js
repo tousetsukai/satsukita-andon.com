@@ -1,4 +1,2 @@
-const withTypescript = require('@zeit/next-typescript');
-module.exports = withTypescript({
-  distDir: '../../dist/functions/next',
-});
+require('ts-node').register();
+module.exports = require('./config');
