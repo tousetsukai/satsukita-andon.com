@@ -44,7 +44,7 @@
     "@types/next": "^7.0.2",
     "@types/react": "^16.4.14",
     "cpx": "^1.5.0",
-    "firebase-tools": "^5.1.1",
+    "firebase-tools": "^6.0.0",
     "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
