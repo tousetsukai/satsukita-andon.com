@@ -13,7 +13,7 @@ export = withTypescript(
       webpack(config: Configuration, options: ServerOptions) {
         config.plugins = config.plugins || [];
 
-        if (options.dev) {
+        if (!options.dev) {
           config.devtool = 'hidden-source-map';
         }
 
