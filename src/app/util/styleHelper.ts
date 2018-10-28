@@ -3,8 +3,8 @@ interface ClassNameMap {
 }
 
 const styleHelper = (style: ClassNameMap) => (
-  classNames: Array<string | undefined>,
-  nativeClassNames?: Array<string | undefined>,
+  classNames: Array<string | undefined | null | false>,
+  nativeClassNames?: Array<string | undefined | null | false>,
 ) =>
   classNames
     .map((name) => name && style[name])
