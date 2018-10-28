@@ -1,3 +1,3 @@
-import TopLogo from './IndexLogo';
+import IndexLogo from './IndexLogo';
 
-export { TopLogo };
+export { IndexLogo };
