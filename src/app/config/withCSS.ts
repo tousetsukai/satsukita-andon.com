@@ -32,8 +32,8 @@ const withCSS = (nextConfig: NextConfig = {}): NextConfig =>
             loader: 'file-loader',
             options: {
               emitFile: !options.isServer,
-              outputPath: 'static/',
-              publicPath: '/_next/static/',
+              outputPath: 'static/asset/',
+              publicPath: '/_next/static/asset/',
               name: 'common.css',
             },
           },
