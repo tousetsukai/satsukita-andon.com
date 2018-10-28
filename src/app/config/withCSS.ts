@@ -3,12 +3,6 @@ import { NextConfig, ServerOptions } from 'next';
 import * as path from 'path';
 import { Configuration } from 'webpack';
 
-declare module 'next' {
-  interface ServerOptions {
-    isServer?: boolean;
-  }
-}
-
 const withCSS = (nextConfig: NextConfig = {}): NextConfig =>
   NextCSS({
     ...nextConfig,
