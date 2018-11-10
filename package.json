@@ -50,7 +50,7 @@
     "css-loader": "^1.0.0",
     "extract-loader": "^3.0.0",
     "file-loader": "^2.0.0",
-    "firebase-tools": "^5.1.1",
+    "firebase-tools": "^6.0.0",
     "fork-ts-checker-webpack-plugin": "^0.4.11",
     "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
