@@ -6,7 +6,7 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
-    "lib": ["DOM", "ES2015", "ES2016", "ES2017", "ES2018", "ES2019"],
+    "lib": ["DOM","ES2015","ES2016","ES2017","ES2018","ES2019"],
     "module": "ESNext",
     "moduleResolution": "node",
     "noUnusedLocals": true,
@@ -17,9 +17,11 @@
     "target": "ESNext",
     "typeRoots": [
       "node_modules/@types",
-      "src/types",
+      "src/shared/types"
     ],
+    "allowJs": true,
+    "noEmit": true
   },
   "exclude": ["node_modules"],
-  "include": ["**/*"],
+  "include": ["**/*"]
 }

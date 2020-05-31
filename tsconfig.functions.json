@@ -1,11 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "lib": ["es2015", "es2016", "es2017"],
-    "rootDir": "src/functions",
-    "outDir": "dist/functions"
+    "rootDir": "src",
+    "outDir": "dist"
   },
-  "include": [
-    "src/functions"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["functions", "src/app", "src/shared"],
 }
