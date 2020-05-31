@@ -1,4 +1,5 @@
-node_modules
+.DS_Store
 .firebase
-dist
 .next
+node_modules
+dist
