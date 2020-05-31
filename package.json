@@ -44,8 +44,9 @@
     "typescript": "^3.9.3"
   },
   "scripts": {
-    "type-check": "tsc --noEmit",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --fix",
+    "start:type-check": "tsc --noEmit --watch",
+    "type-check": "tsc --noEmit",
     "start:client": "next",
     "build:client": "NODE_ENV=production next build",
     "start:functions": "firebase serve --only functions,hosting",
