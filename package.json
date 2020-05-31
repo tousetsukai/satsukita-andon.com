@@ -52,7 +52,7 @@
     "start:functions": "firebase serve --only functions,hosting",
     "build:functions": "tsc -p tsconfig.functions.json && npm run build:functions:package",
     "build:functions:package": "ts-node-transpile-only --project tsconfig.functions.json scripts/firebase/generate-package-json.ts dist/functions/package.json && cp package-lock.json dist/functions",
-    "build": "npm run clean && npm run build:client && npm run build:functions && npm run build:package",
+    "build": "npm run clean && npm run build:client && npm run build:functions",
     "clean": "rimraf dist/**/*",
     "install-server-package": "npm --prefix dist/functions ci dist/functions",
     "deploy": "npm run install-server-package && firebase deploy"
