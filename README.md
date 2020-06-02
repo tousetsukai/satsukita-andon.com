@@ -8,14 +8,14 @@
 
 ### Install project:
 
-```
-npm install
+```sh
+$ npm i
 ```
 
-### Statically check project:
+### Statically check type:
 
-```
-npm run check
+```sh
+$ make start-type-check
 ```
 
 ### Build project:
@@ -27,13 +27,13 @@ npm run build
 ### Run Next.js development:
 
 ```
-npm run dev
+make start-client
 ```
 
 ### Run Firebase locally for testing:
 
 ```
-npm run serve
+make start-functions
 ```
 
 ### Deploy it to the cloud with Firebase:
@@ -55,7 +55,7 @@ See [.prettierrc](./.prettierrc).
 ## Contributing
 
 1. Fork it (https://github.com/tousetsukai/satsukita-andon.com/fork)
-2. Create your feature branch (git checkout -b my-new-feature)
+2. Create your feature branch (git switch -c my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request

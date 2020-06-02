@@ -2,25 +2,60 @@
   "name": "satsukita-andon.com",
   "version": "0.0.1",
   "description": "The frontend of satsukita-andon.com",
+  "engines": {
+    "node": "12"
+  },
+  "server": {
+    "dependencies": {
+      "firebase-admin": true,
+      "firebase-functions": true,
+      "next": true,
+      "react": true,
+      "react-dom": true,
+      "styled-components": true
+    }
+  },
+  "dependencies": {
+    "firebase-admin": "^8.12.1",
+    "firebase-functions": "^3.6.2",
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "firebase-tools": "^8.4.1",
+    "fs-extra": "^9.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.7",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
+  },
   "scripts": {
-    "dev": "next src/app",
-    "check": "npm run check:app && npm run check:functions",
-    "fix": "npm run fix:app && npm run fix:functions",
-    "build": "npm run clean && npm run build:functions && npm run build:app && npm run build:public && npm run build:deps",
-    "serve": "NODE_ENV=production firebase serve --only functions,hosting",
-    "deploy": "firebase deploy",
-    "clean": "rimraf dist/functions && rimraf dist/public",
-    "build:app": "NODE_ENV=production next build src/app",
-    "build:functions": "tsc -p tsconfig.functions.json",
-    "build:public": "cpx src/public/**/*.* dist/public -C",
-    "build:deps": "npm run build-deps:package.json && npm run build-deps:package-lock.json && npm run build-deps:install",
-    "build-deps:package.json": "cat package.json | jq \". | { name: .name, dependencies: .dependencies, repository: .repository, author: .author, license: .license }\" > dist/functions/package.json",
-    "build-deps:package-lock.json": "cpx package-lock.json dist/functions",
-    "build-deps:install": "npm --prefix dist/functions i dist/functions",
-    "check:app": "tsc --noEmit -p tsconfig.app.json && tslint -p tsconfig.app.json && prettier -l src/app/**/*.{js,jsx,ts,tsx}",
-    "check:functions": "tsc --noEmit -p tsconfig.functions.json && tslint -p tsconfig.functions.json && prettier -l src/functions/**/*.{js,jsx,ts,tsx}",
-    "fix:app": "tslint --fix -p tsconfig.app.json && prettier --write src/app/**/*.{js,jsx,ts,tsx}",
-    "fix:functions": "tslint --fix -p tsconfig.functions.json && prettier --write src/functions/**/*.{js,jsx,ts,tsx}"
+    "lint": "eslint './src/**/*.{js,ts,tsx}' --fix",
+    "start:type-check": "tsc --noEmit --watch",
+    "type-check": "tsc --noEmit",
+    "start:client": "next",
+    "build:client": "NODE_ENV=production next build",
+    "start:functions": "firebase serve --only functions,hosting",
+    "build:functions": "tsc -p tsconfig.functions.json && npm run build:functions:package",
+    "build:functions:package": "ts-node-transpile-only --project tsconfig.functions.json scripts/firebase/generate-package-json.ts dist/functions/package.json && cp package-lock.json dist/functions",
+    "build": "npm run clean && npm run build:client && npm run build:functions",
+    "clean": "rimraf dist/**/*",
+    "install-server-package": "npm --prefix dist/functions ci dist/functions",
+    "deploy": "npm run install-server-package && firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -32,43 +67,14 @@
     "url": "https://github.com/tousetsukai/satsukita-andon.com/issues"
   },
   "homepage": "https://github.com/tousetsukai/satsukita-andon.com#readme",
-  "dependencies": {
-    "firebase-admin": "^6.0.0",
-    "firebase-functions": "^2.0.5",
-    "next": "^7.0.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "sanitize.css": "^8.0.0"
-  },
-  "devDependencies": {
-    "@types/next": "^7.0.2",
-    "@types/react": "^16.4.14",
-    "@types/zeit__next-typescript": "^0.1.1",
-    "@zeit/next-typescript": "^1.1.1",
-    "@zeit/next-css": "^1.0.1",
-    "cpx": "^1.5.0",
-    "css-loader": "^1.0.0",
-    "extract-loader": "^3.0.0",
-    "file-loader": "^2.0.0",
-    "firebase-tools": "^6.0.0",
-    "fork-ts-checker-webpack-plugin": "^0.4.11",
-    "husky": "^1.1.2",
-    "lint-staged": "^7.3.0",
-    "postcss-cssnext": "^3.1.0",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
-    "prettier": "^1.14.3",
-    "rimraf": "^2.6.2",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0",
-    "tslint-react": "^3.6.0",
-    "typescript": "^3.0.3",
-    "url-loader": "^1.1.2"
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run type-check && lint-staged"
     }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npm run lint"
+    ]
   }
 }
