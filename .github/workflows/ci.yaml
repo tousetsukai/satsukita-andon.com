@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: npm i
       - run: npm run type-check
       - run: npm run lint
       - run: npm run build
