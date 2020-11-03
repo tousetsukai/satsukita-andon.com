@@ -5,6 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          # see: https://github.com/actions/cache/blob/main/examples.md#macos-and-ubuntu
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm i
       - run: npm run type-check
       - run: npm run lint
