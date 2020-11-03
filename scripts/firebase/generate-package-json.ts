@@ -1,5 +1,5 @@
 import path from 'path';
-import { writeFile, emptyDir } from 'fs-extra';
+import { writeFile, ensureDir } from 'fs-extra';
 import base, { name, version, engines, server } from '../../package.json';
 
 const createServerPackageJson = () => {
@@ -21,7 +21,7 @@ const main = async (out: string) => {
     console.log('Generation Failed! You tried overwriting the source package.json');
     process.exit(1);
   }
-  await emptyDir(path.dirname(outPath));
+  await ensureDir(path.dirname(outPath));
   await writeFile(outPath, content);
 };
 
