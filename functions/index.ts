@@ -5,7 +5,12 @@ import next from 'next';
 // - dev: true の場合、pages ディレクトリがあるディレクトリを dir で指定する必要があり、
 //   `../../` などで指定することになるが、functions の実行ディレクトリは /srv なので、デプロイに失敗する
 // - dev: true の場合、firebase serve で無限リロードが発生してしまう
-const app = next({ dev: false });
+const app = next({
+  dev: false,
+  conf: {
+    distDir: '.next',
+  },
+});
 const handle = app.getRequestHandler();
 
 export const nextApp = functions.https.onRequest((req, res) => {
