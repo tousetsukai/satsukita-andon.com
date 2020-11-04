@@ -12,14 +12,13 @@
     ]
   },
   "hosting": {
-    "public": "dist/public",
+    "public": "public",
     "rewrites": [
       {
-        "source": "**/**",
+        "source": "**",
         "function": "nextApp"
       }
-    ],
-    "predeploy": "mkdir -p dist/public"
+    ]
   },
   "storage": {
     "rules": "storage.rules"
