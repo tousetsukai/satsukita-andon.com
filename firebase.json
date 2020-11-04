@@ -5,17 +5,20 @@
   },
   "functions": {
     "source": "dist/functions",
-    "predeploy": ["npm run check", "npm run build"]
+    "predeploy": [
+      "npm ci",
+      "npm run build",
+      "npm run install-server-package"
+    ]
   },
   "hosting": {
-    "public": "dist/public",
+    "public": "public",
     "rewrites": [
       {
-        "source": "**/**",
+        "source": "**",
         "function": "nextApp"
       }
-    ],
-    "predeploy": "npm run build-public"
+    ]
   },
   "storage": {
     "rules": "storage.rules"
