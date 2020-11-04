@@ -1,6 +1,6 @@
 # 行灯職人への道 - https://satsukita-andon.com
 
-[![Build Status](https://travis-ci.org/tousetsukai/satsukita-andon.com.svg?branch=master)](https://travis-ci.org/tousetsukai/satsukita-andon.com)
+![ci](https://github.com/tousetsukai/satsukita-andon.com/workflows/ci/badge.svg)
 
 行灯職人への道 (satsukita-andon.com) is a website to record and support _andon-gyoretsu_ (行灯行列), which is one of the most exciting events of Sapporo-Kita High School (札幌北高校).
 
