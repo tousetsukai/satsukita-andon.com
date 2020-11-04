@@ -5,7 +5,11 @@
   },
   "functions": {
     "source": "dist/functions",
-    "predeploy": ["npm run check", "npm run build"]
+    "predeploy": [
+      "npm i",
+      "npm run build",
+      "npm run install-server-package"
+    ]
   },
   "hosting": {
     "public": "dist/public",
@@ -15,7 +19,7 @@
         "function": "nextApp"
       }
     ],
-    "predeploy": "npm run build-public"
+    "predeploy": "mkdir -p dist/public"
   },
   "storage": {
     "rules": "storage.rules"
