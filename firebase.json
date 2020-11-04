@@ -6,7 +6,7 @@
   "functions": {
     "source": "dist/functions",
     "predeploy": [
-      "npm i",
+      "npm ci",
       "npm run build",
       "npm run install-server-package"
     ]
