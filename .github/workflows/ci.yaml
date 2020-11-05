@@ -57,9 +57,9 @@ jobs:
       - run: |
           echo "${{ needs.deploy-info.outputs.needs-deploy }}"
           echo "${{ needs.deploy-info.outputs.firebase-project-id }}"
-      - uses: w9jds/firebase-action@v1.5.0
-        env:
+      - env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_ID: ${{ needs.deploy-info.outputs.firebase-project-id }}
-        with:
-          args: deploy
+        run: |
+          npm ci
+          firebase deploy --project "${PROJECT_ID}"
