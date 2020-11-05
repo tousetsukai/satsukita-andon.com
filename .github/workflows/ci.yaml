@@ -21,3 +21,42 @@ jobs:
       - run: npm run type-check
       - run: npm run lint
       - run: npm run build
+
+  deploy-info:
+    outputs:
+      needs-deploy: ${{ fromJSON(steps.deploy-info.result).needsDeploy }}
+      firebase-project-id: ${{ fromJSON(steps.deploy-info.result).firebaseProjectId }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v3
+        id: deploy-info
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const firebaseProjectId = (() => {
+              if (context.ref === 'refs/heads/master') {
+                return 'satsukita-andon-dev';
+              } else if (context.ref.startsWith('refs/tags/v')) {
+                return 'satsukita-andon';
+              } else {
+                return null;
+              }
+            })();
+            return {
+              needsDeploy: firebaseProjectId !== null,
+              firebaseProjectId,
+            };
+
+  deploy:
+    needs: [deploy-info, build]
+    # master or semver tag (e.g., v1.0.0)
+    if: ${{ jobs.deploy-info.outputs.needs-deploy }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: w9jds/firebase-action@master
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: ${{ jobs.deploy-info.outputs.firebase-project-id }}
+        with:
+          args: deploy
