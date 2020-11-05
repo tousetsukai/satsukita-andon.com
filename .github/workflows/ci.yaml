@@ -27,6 +27,7 @@ jobs:
       target: ${{ (github.ref == 'refs/heads/master' && 'dev') ||
                   (startsWith(github.ref, 'refs/tags/v') && 'prd') ||
                   '' }}
+    runs-on: ubuntu-latest
     steps:
       - run: echo "dummy"
 
