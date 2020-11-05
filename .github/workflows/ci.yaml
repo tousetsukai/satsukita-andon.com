@@ -50,13 +50,13 @@ jobs:
   deploy:
     needs: [deploy-info, build]
     # master or semver tag (e.g., v1.0.0)
-    if: ${{ jobs.deploy-info.outputs.needs-deploy }}
+    if: ${{ needs.deploy-info.outputs.needs-deploy }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: w9jds/firebase-action@master
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: ${{ jobs.deploy-info.outputs.firebase-project-id }}
+          PROJECT_ID: ${{ needs.deploy-info.outputs.firebase-project-id }}
         with:
           args: deploy
