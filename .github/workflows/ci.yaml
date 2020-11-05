@@ -24,14 +24,15 @@ jobs:
 
   deploy-info:
     outputs:
-      needs-deploy: ${{ fromJSON(steps.deploy-info.result).needsDeploy }}
-      firebase-project-id: ${{ fromJSON(steps.deploy-info.result).firebaseProjectId }}
+      needs-deploy: ${{ fromJSON(steps.deploy-info.outputs.result).needsDeploy }}
+      firebase-project-id: ${{ fromJSON(steps.deploy-info.outputs.result).firebaseProjectId }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v3
         id: deploy-info
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
+          debug: true
           script: |
             const firebaseProjectId = (() => {
               if (context.ref === 'refs/heads/master') {
