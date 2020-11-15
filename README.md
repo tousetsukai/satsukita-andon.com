@@ -4,53 +4,9 @@
 
 行灯職人への道 (satsukita-andon.com) is a website to record and support _andon-gyoretsu_ (行灯行列), which is one of the most exciting events of Sapporo-Kita High School (札幌北高校).
 
-## Commands
+## Development
 
-### Install project:
-
-```sh
-$ npm i
-```
-
-### Statically check type:
-
-```sh
-$ make start-type-check
-```
-
-### Build project:
-
-```
-npm run build
-```
-
-### Run Next.js development:
-
-```
-make start-client
-```
-
-### Run Firebase locally for testing:
-
-```
-make start-functions
-```
-
-### Deploy it to the cloud with Firebase:
-
-```
-npm run deploy
-```
-
-### Clean dist folder
-
-```
-npm run clean
-```
-
-## Coding Style
-
-See [.prettierrc](./.prettierrc).
+See [DEVELOPMENT-ja.md](./DEVELOPMENT-ja.md).
 
 ## Contributing
 

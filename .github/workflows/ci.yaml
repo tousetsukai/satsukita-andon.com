@@ -21,3 +21,34 @@ jobs:
       - run: npm run type-check
       - run: npm run lint
       - run: npm run build
+
+  deploy-info:
+    outputs:
+      target: ${{ (github.ref == 'refs/heads/master' && 'dev') ||
+                  (startsWith(github.ref, 'refs/tags/v') && 'prd') ||
+                  '' }} # '' means "skip deploy"
+    runs-on: ubuntu-latest
+    steps:
+      # dummy step
+      - run: echo "${{ github.ref }}"
+
+  deploy:
+    needs: [deploy-info, build]
+    if: ${{ needs.deploy-info.outputs.target != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12' # for firebase functions
+      - uses: actions/cache@v2
+        with:
+          # see: https://github.com/actions/cache/blob/main/examples.md#macos-and-ubuntu
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          DEPLOY_TARGET: ${{ needs.deploy-info.outputs.target }}
+        run: npm ci && npm run deploy

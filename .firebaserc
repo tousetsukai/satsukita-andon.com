@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "dev": "satsukita-andon-dev",
+    "prd": "satsukita-andon"
+  }
+}

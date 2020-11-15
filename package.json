@@ -55,7 +55,7 @@
     "build": "npm run clean && npm run build:client && npm run build:functions",
     "clean": "rimraf dist/**/*",
     "install-server-package": "npm --prefix dist/functions ci dist/functions",
-    "deploy": "npm run install-server-package && firebase deploy"
+    "deploy": "firebase deploy --project ${DEPLOY_TARGET:-dev}"
   },
   "repository": {
     "type": "git",
